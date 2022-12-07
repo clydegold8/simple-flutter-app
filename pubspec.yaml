@@ -34,6 +34,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl:
+  widgetbook_annotation:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,6 +44,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  widgetbook:
+  build_runner:
+  widgetbook_generator:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
