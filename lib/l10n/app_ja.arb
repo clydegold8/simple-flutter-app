@@ -1,5 +1,9 @@
 {
     "pushCounterText": "ボタンを何度も押しました:",
     "titlePage": "Flutter デモのホームページ",
-    "increment": "インクリメント"
+    "increment": "インクリメント",
+    "id": "ID",
+    "password": "パスワード",
+    "forgot_password": "パスワードをお忘れですか?",
+    "login": "ログイン"
 }
