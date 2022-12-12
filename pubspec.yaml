@@ -65,6 +65,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: NunitoSans
+      fonts:
+        - asset: fonts/NunitoSans-Black.ttf
+          style: normal
+        - asset: fonts/NunitoSans-BlackItalic.ttf
+          style: italic
+        - asset: fonts/NunitoSans-Bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
