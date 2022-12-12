@@ -1,5 +1,9 @@
 {
     "pushCounterText": "You have pushed the button this many times:",
     "titlePage": "Flutter Demo Home Page",
-    "increment": "Increment"
+    "increment": "Increment",
+    "id": "ID",
+    "password": "Password",
+    "forgot_password": "Forgot your password",
+    "login": "Login"
 }

@@ -3,14 +3,16 @@
 A K-Block app that blocks unwanted ads to the users
 
 ## Getting Started
+ - Recommended IDE [Android Studio](https://developer.android.com/)
+ - Install necessary libraries and frameworks [See Here](https://docs.flutter.dev/get-started/install?gclsrc=ds&gclsrc=ds)
+ - Run <code>flutter pub get</code>
+ - Run the app through IDE
 
-This project is a starting point for a Flutter application.
+## Widgetbook
 
-A few resources to get you started if this is your first Flutter project:
+ This will create some UI/UX documentation for the app [See More] (https://docs.widgetbook.io/widgetbook/overview)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Run <code>flutter pub get</code> to get latest packages and dependencies
+- Build app <code>flutter pub run build_runner build</code>
+- Run the widgetbook <code>flutter run -t widgetbook/main.dart</code>
+- Select Chrome browser to preview widgetbook

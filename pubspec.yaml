@@ -34,6 +34,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl:
+  widgetbook_annotation:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,6 +44,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  widgetbook:
+  build_runner:
+  widgetbook_generator:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -61,6 +65,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: NunitoSans
+      fonts:
+        - asset: fonts/NunitoSans-Black.ttf
+          style: normal
+        - asset: fonts/NunitoSans-BlackItalic.ttf
+          style: italic
+        - asset: fonts/NunitoSans-Bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
