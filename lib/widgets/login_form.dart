@@ -119,6 +119,32 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                 ),
               ),
             ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(AppLocalizations.of(context)!.terms,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                        color: Color(0xFF656565),
+                      )),
+                    Text('@Stock Tech.Inc',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 15,
+                        color: Color(0xFF656565),
+                      )),
+                  ]
+                )
+              )
+            )
           )
         ],
       ),
