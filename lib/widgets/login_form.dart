@@ -120,12 +120,12 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                            AppLocalizations.of(context)!.login,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Color(0xFF656565),
+                              AppLocalizations.of(context)!.login,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Color(0xFF656565),
+                              )
                             )
-                          )
                           ))),
                 ),
               ),
