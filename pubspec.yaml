@@ -68,7 +68,7 @@ flutter:
   fonts:
     - family: NunitoSans
       fonts:
-        - asset: fonts/NunitoSans-Black.ttf
+        - asset: fonts/NunitoSans-SemiBold.ttf
           style: normal
         - asset: fonts/NunitoSans-BlackItalic.ttf
           style: italic
