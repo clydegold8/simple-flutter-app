@@ -52,10 +52,12 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                 height: 40.0,
                 child: TextField(
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xFFFFFFFF),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40.0),
                     ),
-                  ),
+                  )
                 ),
               )),
           // password field
@@ -76,6 +78,8 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                 height: 40.0,
                 child: TextField(
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xFFFFFFFF),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40.0),
                       borderSide: const BorderSide(color: Color(0xFF898989)),
@@ -101,6 +105,7 @@ class MyCustomFormState extends State<KBlockLoginForm> {
               child: OutlinedButton(
                 onPressed: null,
                 style: OutlinedButton.styleFrom(
+                    backgroundColor: Color(0xFFFFFFFF),
                     side: const BorderSide(color: Color(0xFF898989)),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40.0),
@@ -115,6 +120,9 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                           child: Text(
                             AppLocalizations.of(context)!.login,
                             textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Color(0xFF656565),
+                            )
                           ))),
                 ),
               ),
@@ -130,13 +138,13 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(AppLocalizations.of(context)!.terms,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 15,
                         color: Color(0xFF656565),
                       )),
                     Text('@Stock Tech.Inc',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 15,
                         color: Color(0xFF656565),
