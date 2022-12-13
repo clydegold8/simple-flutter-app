@@ -56,7 +56,8 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40.0),
                     ),
-                    contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+                    isDense: true,
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
                   )
                 )
           ),
@@ -82,7 +83,8 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                       borderRadius: BorderRadius.circular(40.0),
                       borderSide: const BorderSide(color: Color(0xFF898989)),
                     ),
-                    contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+                    isDense: true,
+                    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
                   ),
                 ),),
           // forgot password link
@@ -110,7 +112,7 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                     )),
                 child: SizedBox(
                   width: double.infinity,
-                  height: 50.0,
+                  height: 40.0,
                   child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 12),
                       child: SizedBox(
