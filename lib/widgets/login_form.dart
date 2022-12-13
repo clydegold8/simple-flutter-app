@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 
@@ -149,12 +150,44 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                            Text(AppLocalizations.of(context)!.terms,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 15,
-                                  color: Color(0xFF656565),
-                                )),
+                            RichText(
+                                text: TextSpan(
+                                    children: [
+                                  TextSpan(
+                                      text: AppLocalizations.of(context)!.terms,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          final url = Uri.parse(
+                                              'https://google.com'); // TODO: Terms of Use URL to be decided
+                                          if (await canLaunchUrl(url)) {
+                                            await launchUrl(url,
+                                                mode: LaunchMode
+                                                    .externalApplication);
+                                          } else {
+                                            throw 'Could not launch $url';
+                                          }
+                                        }),
+                                  TextSpan(
+                                      text:
+                                          AppLocalizations.of(context)!.privacy,
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () async {
+                                          final url = Uri.parse(
+                                              'https://google.com'); // TODO: Privacy Policy URL to be decided
+                                          if (await canLaunchUrl(url)) {
+                                            await launchUrl(url,
+                                                mode: LaunchMode
+                                                    .externalApplication);
+                                          } else {
+                                            throw 'Could not launch $url';
+                                          }
+                                        })
+                                ],
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15,
+                                      color: Color(0xFF656565),
+                                    ))),
                             Text('@Stock Tech.Inc',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
