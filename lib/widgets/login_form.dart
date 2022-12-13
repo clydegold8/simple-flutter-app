@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/painting/alignment.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class KBlockLoginForm extends StatefulWidget {
@@ -48,18 +49,17 @@ class MyCustomFormState extends State<KBlockLoginForm> {
           ),
           Padding(
               padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
-              child: SizedBox(
-                height: 40.0,
-                child: TextField(
+              child: TextField(
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFFFFFFF),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40.0),
                     ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
                   )
-                ),
-              )),
+                )
+          ),
           // password field
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
@@ -74,9 +74,7 @@ class MyCustomFormState extends State<KBlockLoginForm> {
           ),
           Padding(
               padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
-              child: SizedBox(
-                height: 40.0,
-                child: TextField(
+              child: TextField(
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFFFFFFF),
@@ -84,9 +82,9 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                       borderRadius: BorderRadius.circular(40.0),
                       borderSide: const BorderSide(color: Color(0xFF898989)),
                     ),
+                    contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
                   ),
-                ),
-              )),
+                ),),
           // forgot password link
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 7),
@@ -112,17 +110,20 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                     )),
                 child: SizedBox(
                   width: double.infinity,
-                  height: 40.0,
+                  height: 50.0,
                   child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 12),
                       child: SizedBox(
                           width: double.infinity,
-                          child: Text(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
                             AppLocalizations.of(context)!.login,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Color(0xFF656565),
                             )
+                          )
                           ))),
                 ),
               ),
