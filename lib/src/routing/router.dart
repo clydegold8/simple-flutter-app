@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:k_block_app/src/constants/routes.dart';
-import 'package:k_block_app/widgets/login_form.dart';
-import 'package:k_block_app/widgets/home_page.dart';
+import 'package:k_block_app/src/features/login/presentation/login_form.dart';
+import 'package:k_block_app/src/common_widgets/home_page.dart';
 
 class RouteGenerator {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
