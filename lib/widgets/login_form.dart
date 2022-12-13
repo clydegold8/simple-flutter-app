@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:k_block_app/src/constants/routes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class KBlockLoginForm extends StatefulWidget {
   const KBlockLoginForm({super.key});
@@ -22,7 +22,7 @@ class MyCustomFormState extends State<KBlockLoginForm> {
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
     return Scaffold(
-        backgroundColor: Color(0xFFEAEAEA),
+        backgroundColor: const Color(0xFFEAEAEA),
         body: Form(
           key: _formKey,
           child: Column(
@@ -52,18 +52,19 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                 ),
               ),
               Padding(
-                  padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
-                  child: SizedBox(
-                    height: 40.0,
-                    child: TextField(
-                        decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFFFFFFFF),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    )),
-                  )),
+                padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
+                child: TextField(
+                    decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color(0xFFFFFFFF),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(40.0),
+                  ),
+                  isDense: true,
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
+                )),
+              ),
               // password field
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
@@ -77,21 +78,21 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                 ),
               ),
               Padding(
-                  padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
-                  child: SizedBox(
-                    height: 40.0,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xFFFFFFFF),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                          borderSide:
-                              const BorderSide(color: Color(0xFF898989)),
-                        ),
-                      ),
+                padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: const Color(0xFFFFFFFF),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                      borderSide: const BorderSide(color: Color(0xFF898989)),
                     ),
-                  )),
+                    isDense: true,
+                    contentPadding:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
+                  ),
+                ),
+              ),
               // forgot password link
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 7),
@@ -120,7 +121,7 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                     },
                     style: OutlinedButton.styleFrom(
                         foregroundColor: const Color(0xFF656565),
-                        backgroundColor: Color(0xFFFFFFFF),
+                        backgroundColor: const Color(0xFFFFFFFF),
                         side: const BorderSide(color: Color(0xFF898989)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40.0),
@@ -188,7 +189,7 @@ class MyCustomFormState extends State<KBlockLoginForm> {
                                       fontSize: 15,
                                       color: Color(0xFF656565),
                                     ))),
-                            Text('@Stock Tech.Inc',
+                            const Text('@Stock Tech.Inc',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 15,

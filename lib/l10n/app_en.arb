@@ -4,7 +4,7 @@
     "increment": "Increment",
     "id": "ID",
     "password": "Password",
-    "forgot_password": "Forgot your password",
+    "forgot_password": "Forgot your password?",
     "login": "Login",
     "terms": "Terms of Use / ",
     "privacy": "Privacy Policy"
