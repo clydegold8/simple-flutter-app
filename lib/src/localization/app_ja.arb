@@ -5,5 +5,10 @@
     "id": "ID",
     "password": "パスワード",
     "forgot_password": "パスワードをお忘れですか?",
-    "login": "ログイン"
+    "login": "ログイン",
+    "terms": "利用規約 / ",
+    "privacy": "プライバシーポリシー",
+    "password_reset": "パスワードの再設定",
+    "enter_id": "IDを入力",
+    "resetting": "再設定用URLを送信"
 }
