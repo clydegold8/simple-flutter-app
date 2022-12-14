@@ -2,7 +2,9 @@
 
 A K-Block app that blocks unwanted ads to the users
 
-## Getting Started for Windows OS users
+## Flutter Setup
+
+### Getting Started for Windows OS users
  - Clone this repo on your desired path.
  - Recommended IDE [Android Studio](https://developer.android.com/)
  - Download flutter framework [See Here](https://docs.flutter.dev/get-started/install/windows)
@@ -14,14 +16,35 @@ A K-Block app that blocks unwanted ads to the users
  - Make sure to run first your Emulator or create a device emulator
  - Run the app through IDE
 
-## Getting Started for MAC OS users
- - Still in Progress .........
+### Getting Started for MAC OS users
+ - Download Flutter SDK and follow steps https://docs.flutter.dev/get-started/install/macos#get-sdk
 
-## Widgetbook
+## Project Setup
+
+Clone Repo
+```sh
+git clone git@github.com:vananaz-systems/k-block.git
+```
+
+Update packages and dependencies
+```sh
+flutter pub get
+```
+
+## Run the main build
+
+### Build and Run project via IDE
+ - to be added
+
+### Build and Run project via CLI
+ - Open simulator or device
+ - Use command <code>flutter run</code>
+
+
+## Run the Widgetbook
 
  This will create some UI/UX documentation for the app [See More](https://docs.widgetbook.io/widgetbook/overview)
-
 - Run <code>flutter pub get</code> to get latest packages and dependencies
 - Build app <code>flutter pub run build_runner build</code>
 - Run the widgetbook <code>flutter run -t widgetbook/main.dart</code>
-- Select Chrome browser to preview widgetbook
+- Select browser/emulator/ to preview widgetbook
