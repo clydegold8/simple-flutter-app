@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:k_block_app/src/features/forgot_password/presentation/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/routes.dart';
@@ -92,8 +93,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // ignore: todo
-                            // TODO: Forget Password
+                           forgotPassword(context);
                           })),
               ),
             ),
