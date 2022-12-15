@@ -2,10 +2,22 @@
 
 A K-Block app that blocks unwanted ads to the users
 
+## Project Setup
+
+Clone Repo
+```sh
+git clone git@github.com:vananaz-systems/k-block.git
+```
+
+Update packages and dependencies
+```sh
+flutter pub get
+```
+
+
 ## Flutter Setup
 
 ### Getting Started for Windows OS users
- - Clone this repo on your desired path.
  - Recommended IDE [Android Studio](https://developer.android.com/)
  - Download flutter framework [See Here](https://docs.flutter.dev/get-started/install/windows)
  - Extract the downloaded zip on your desired path on your pc.
@@ -18,18 +30,7 @@ A K-Block app that blocks unwanted ads to the users
 
 ### Getting Started for MAC OS users
  - Download Flutter SDK and follow steps https://docs.flutter.dev/get-started/install/macos#get-sdk
-
-## Project Setup
-
-Clone Repo
-```sh
-git clone git@github.com:vananaz-systems/k-block.git
-```
-
-Update packages and dependencies
-```sh
-flutter pub get
-```
+ 
 
 ## Run the main build
 
