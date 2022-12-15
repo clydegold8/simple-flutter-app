@@ -34,7 +34,7 @@ flutter pub get
 ## Run the main build
 
 ### Build and Run project via IDE
- - on Run > Run 'main.dart' <code></code>
+ - on Run > Run 'main.dart' <code>shift + F10</code>
 
 ### Build and Run project via CLI
  - Open simulator or device
