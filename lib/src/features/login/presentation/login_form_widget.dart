@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:k_block_app/src/features/forgot_password/presentation/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/routes.dart';
@@ -28,7 +29,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
               child: Center(
-                child: Text(AppLocalizations.of(context)!.id,
+                child: Text(
+                    AppLocalizations.of(context)?.id != null
+                        ? AppLocalizations.of(context)!.id
+                        : 'ID',
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 15,
@@ -54,7 +58,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
               child: Center(
-                child: Text(AppLocalizations.of(context)!.password,
+                child: Text(
+                    AppLocalizations.of(context)?.password != null
+                        ? AppLocalizations.of(context)!.password
+                        : 'パスワード',
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 15,
@@ -84,7 +91,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
               child: Center(
                 child: RichText(
                     text: TextSpan(
-                        text: AppLocalizations.of(context)!.forgot_password,
+                        text: AppLocalizations.of(context)?.forgot_password !=
+                                null
+                            ? AppLocalizations.of(context)!.forgot_password
+                            : 'パスワードをお忘れですか?',
                         style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 15,
@@ -92,8 +102,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // ignore: todo
-                            // TODO: Forget Password
+                            forgotPassword(context);
                           })),
               ),
             ),
@@ -115,10 +124,13 @@ Widget loginFormWidget(BuildContext context, formKey) {
                     width: double.infinity,
                     height: 40.0,
                     child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 12),
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 12),
                         child: SizedBox(
                             width: double.infinity,
-                            child: Text(AppLocalizations.of(context)!.login,
+                            child: Text(
+                                AppLocalizations.of(context)?.login != null
+                                    ? AppLocalizations.of(context)!.login
+                                    : 'ログイン',
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   color: Color(0xFF656565),
@@ -140,7 +152,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
                               text: TextSpan(
                                   children: [
                                 TextSpan(
-                                    text: AppLocalizations.of(context)!.terms,
+                                    text: AppLocalizations.of(context)?.terms !=
+                                            null
+                                        ? AppLocalizations.of(context)!.terms
+                                        : '利用規約 ',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
                                         final url = Uri.parse(
@@ -154,7 +169,11 @@ Widget loginFormWidget(BuildContext context, formKey) {
                                         }
                                       }),
                                 TextSpan(
-                                    text: AppLocalizations.of(context)!.privacy,
+                                    text: AppLocalizations.of(context)
+                                                ?.privacy !=
+                                            null
+                                        ? AppLocalizations.of(context)!.privacy
+                                        : '/ プライバシーポリシー ',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
                                         final url = Uri.parse(
