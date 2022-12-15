@@ -7,5 +7,9 @@
     "forgot_password": "Forgot your password?",
     "login": "Login",
     "terms": "Terms of Use / ",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "home": "Home",
+    "block_control": "Block Control",
+    "history": "History",
+    "others": "Others"
 }

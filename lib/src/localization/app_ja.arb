@@ -7,5 +7,9 @@
     "forgot_password": "パスワードをお忘れですか?",
     "login": "ログイン",
     "terms": "利用規約 / ",
-    "privacy": "プライバシーポリシー"
+    "privacy": "プライバシーポリシー",
+    "home": "ホーム",
+    "block_control": "ブロック管理",
+    "history": "履歴",
+    "others": "その他"
 }
