@@ -34,7 +34,7 @@ flutter pub get
 ## Run the main build
 
 ### Build and Run project via IDE
- - to be added
+ - on Run > Run 'main.dart' <code></code>
 
 ### Build and Run project via CLI
  - Open simulator or device
@@ -46,5 +46,6 @@ flutter pub get
  This will create some UI/UX documentation for the app [See More](https://docs.widgetbook.io/widgetbook/overview)
 - Run <code>flutter pub get</code> to get latest packages and dependencies
 - Build app <code>flutter pub run build_runner build</code>
-- Run the widgetbook <code>flutter run -t widgetbook/main.dart</code>
+- On second terminal run <code>flutter pub run build_runner watch</code> so <code>package:build_runner</code> will listen for changes in the file system and update Widgetbook accordingly.
+- Run the widgetbook <code>flutter run .\lib\src\app.widgetbook.dart</code>
 - Select browser/emulator/ to preview widgetbook
