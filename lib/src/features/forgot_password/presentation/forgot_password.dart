@@ -20,7 +20,23 @@ Future<void> forgotPassword(BuildContext context) {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 23, 0, 35),
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.close,
+                          color: Color(0xFF898989),
+                          size: 16,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 35),
                     child: Center(
                       child: Text(
                           AppLocalizations.of(context)?.password_reset != null
