@@ -4,11 +4,12 @@ import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/routing/router.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+@WidgetbookLocalizationDelegates()
+const localizationsDelegates = AppLocalizations.localizationsDelegates;
+
 @WidgetbookLocales()
-final locales = <Locale>[
-  const Locale('en'),
-  const Locale('ja'),
-];
+const locales = AppLocalizations.supportedLocales;
+
 @WidgetbookTheme(name: 'Dark', isDefault: true)
 ThemeData getDarkTheme() => ThemeData(
       primarySwatch: Colors.blue,

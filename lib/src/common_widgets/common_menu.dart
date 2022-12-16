@@ -3,13 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
-import 'package:k_block_app/src/common_widgets/home_page.dart';
+import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
 
 const List<Widget> widgetOptions = <Widget>[
-  HomePage(),
-  Text('Block Control Page'),
-  Text('History Page'),
-  Text('Others Page'),
+  HomeScreen(),
+  Text('Block Control Screen'),
+  Text('History Screen'),
+  Text('Others Screen'),
 ];
 
 class CommonMenu {
