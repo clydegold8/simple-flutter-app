@@ -21,34 +21,46 @@ class CommonMenu {
         BottomNavigationBarItem(
             icon: Container(
               padding: const EdgeInsets.only(top: 5),
-              child: SvgPicture.asset('assets/icons/home.svg'),
+              height: 24,
+              child: selectedIndex == 0
+                  ? SvgPicture.asset('assets/icons/home_selected.svg')
+                  : SvgPicture.asset('assets/icons/home.svg'),
             ),
             label: AppLocalizations.of(context)!.home),
         BottomNavigationBarItem(
             icon: Container(
               padding: const EdgeInsets.only(top: 5),
-              child: SvgPicture.asset('assets/icons/block_control.svg'),
+              height: 24,
+              child: selectedIndex == 1
+                  ? SvgPicture.asset('assets/icons/block_control_selected.svg')
+                  : SvgPicture.asset('assets/icons/block_control.svg'),
             ),
             label: AppLocalizations.of(context)!.block_control),
         BottomNavigationBarItem(
             icon: Container(
               padding: const EdgeInsets.only(top: 5),
-              child: SvgPicture.asset('assets/icons/history.svg'),
+              height: 24,
+              child: selectedIndex == 2
+                  ? SvgPicture.asset('assets/icons/history_selected.svg')
+                  : SvgPicture.asset('assets/icons/history.svg'),
             ),
             label: AppLocalizations.of(context)!.history),
         BottomNavigationBarItem(
             icon: Container(
               padding: const EdgeInsets.only(top: 5),
-              child: SvgPicture.asset('assets/icons/others.svg'),
+              height: 24,
+              child: selectedIndex == 3
+                  ? SvgPicture.asset('assets/icons/others_selected.svg')
+                  : SvgPicture.asset('assets/icons/others.svg'),
             ),
             label: AppLocalizations.of(context)!.others),
       ],
       currentIndex: selectedIndex,
       onTap: onItemTapped,
-      fixedColor: KBlockColors.text01,
-      unselectedIconTheme: const IconThemeData(size: 24),
+      unselectedItemColor: KBlockColors.text01,
       unselectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.normal, fontSize: 10, height: 2),
+      selectedItemColor: KBlockColors.commonMenuIconSelected,
       selectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.normal, fontSize: 10, height: 2),
     );
