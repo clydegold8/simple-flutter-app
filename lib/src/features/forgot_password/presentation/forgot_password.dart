@@ -19,41 +19,52 @@ Future<void> forgotPassword(BuildContext context) {
               height: 250,
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.close,
-                          color: Color(0xFF898989),
-                          size: 16,
+                  Stack(
+                    children: <Widget>[
+                      Positioned(
+                        right: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.close,
+                                color: Color(0xFF898989),
+                                size: 20,
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
                         ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 35),
-                    child: Center(
-                      child: Text(
-                          AppLocalizations.of(context)?.password_reset != null
-                              ? AppLocalizations.of(context)!.password_reset
-                              : 'パスワードの再設定',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            color: Color(0xFF656565),
-                          )),
-                    ),
+                      Positioned(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 35, 0, 35),
+                          child: Center(
+                            child: Text(
+                                AppLocalizations.of(context)?.password_reset !=
+                                        null
+                                    ? AppLocalizations.of(context)!
+                                        .password_reset
+                                    : 'パスワードの再設定',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: Color(0xFF656565),
+                                )),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
                     child: TextField(
                         decoration: InputDecoration(
-                          hintStyle: const TextStyle(fontSize: 12),
+                      hintStyle: const TextStyle(fontSize: 12),
                       filled: true,
                       hintText: AppLocalizations.of(context)?.enter_id != null
                           ? AppLocalizations.of(context)!.enter_id
