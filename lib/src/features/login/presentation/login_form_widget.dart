@@ -111,7 +111,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
               child: Center(
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeRoute);
+                    Navigator.pushNamed(context, Routes.whitelistRoute);
                   },
                   style: OutlinedButton.styleFrom(
                       foregroundColor: const Color(0xFF656565),
