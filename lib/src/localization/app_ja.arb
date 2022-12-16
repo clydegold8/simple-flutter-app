@@ -10,5 +10,9 @@
     "privacy": "プライバシーポリシー",
     "password_reset": "パスワードの再設定",
     "enter_id": "IDを入力",
-    "resetting": "再設定用URLを送信"
+    "resetting": "再設定用URLを送信",
+    "home": "ホーム",
+    "block_control": "ブロック管理",
+    "history": "履歴",
+    "others": "その他"
 }
