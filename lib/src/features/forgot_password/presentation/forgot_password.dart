@@ -22,7 +22,10 @@ Future<void> forgotPassword(BuildContext context) {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 23, 0, 35),
                     child: Center(
-                      child: Text(AppLocalizations.of(context)!.password_reset,
+                      child: Text(
+                          AppLocalizations.of(context)?.password_reset != null
+                              ? AppLocalizations.of(context)!.password_reset
+                              : 'パスワードの再設定',
                           style: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
@@ -34,9 +37,11 @@ Future<void> forgotPassword(BuildContext context) {
                     padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
                     child: TextField(
                         decoration: InputDecoration(
-                      hintStyle: const TextStyle(fontSize: 12),
+                          hintStyle: const TextStyle(fontSize: 12),
                       filled: true,
-                      hintText: AppLocalizations.of(context)!.enter_id,
+                      hintText: AppLocalizations.of(context)?.enter_id != null
+                          ? AppLocalizations.of(context)!.enter_id
+                          : 'IDを入力',
                       fillColor: const Color(0xFFFFFFFF),
                       border: const OutlineInputBorder(
                           borderRadius: BorderRadius.only(
@@ -69,7 +74,11 @@ Future<void> forgotPassword(BuildContext context) {
                               child: SizedBox(
                                   width: double.infinity,
                                   child: Text(
-                                      AppLocalizations.of(context)!.resetting,
+                                      AppLocalizations.of(context)?.resetting !=
+                                              null
+                                          ? AppLocalizations.of(context)!
+                                              .resetting
+                                          : '再設定用URLを送信',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           color: Color(0xFF656565),

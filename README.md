@@ -2,8 +2,22 @@
 
 A K-Block app that blocks unwanted ads to the users
 
-## Getting Started for Windows OS users
- - Clone this repo on your desired path.
+## Project Setup
+
+Clone Repo
+```sh
+git clone git@github.com:vananaz-systems/k-block.git
+```
+
+Update packages and dependencies
+```sh
+flutter pub get
+```
+
+
+## Flutter Setup
+
+### Getting Started for Windows OS users
  - Recommended IDE [Android Studio](https://developer.android.com/)
  - Download flutter framework [See Here](https://docs.flutter.dev/get-started/install/windows)
  - Extract the downloaded zip on your desired path on your pc.
@@ -14,14 +28,25 @@ A K-Block app that blocks unwanted ads to the users
  - Make sure to run first your Emulator or create a device emulator
  - Run the app through IDE
 
-## Getting Started for MAC OS users
- - Still in Progress .........
+### Getting Started for MAC OS users
+ - Download Flutter SDK and follow steps https://docs.flutter.dev/get-started/install/macos#get-sdk
+ 
 
-## Widgetbook
+## Run the main build
+
+### Build and Run project via IDE
+ - on Run > Run 'main.dart' <code>shift + F10</code>
+
+### Build and Run project via CLI
+ - Open simulator or device
+ - Use command <code>flutter run</code>
+
+
+## Run the Widgetbook
 
  This will create some UI/UX documentation for the app [See More](https://docs.widgetbook.io/widgetbook/overview)
-
 - Run <code>flutter pub get</code> to get latest packages and dependencies
 - Build app <code>flutter pub run build_runner build</code>
-- Run the widgetbook <code>flutter run -t widgetbook/main.dart</code>
-- Select Chrome browser to preview widgetbook
+- On second terminal run <code>flutter pub run build_runner watch</code> so <code>package:build_runner</code> will listen for changes in the file system and update Widgetbook accordingly.
+- Run the widgetbook <code>flutter run .\lib\src\app.widgetbook.dart</code>
+- Select browser/emulator/ to preview widgetbook
