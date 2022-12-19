@@ -10,5 +10,6 @@
     "privacy": "プライバシーポリシー",
     "password_reset": "パスワードの再設定",
     "enter_id": "IDを入力",
-    "resetting": "再設定用URLを送信"
+    "resetting": "再設定用URLを送信",
+    "whitelist": "ホワイトリスト"
 }
