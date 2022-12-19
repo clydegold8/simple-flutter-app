@@ -24,8 +24,9 @@ class BlackList extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF14B53D),
         onPressed: () {},
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add,size: 30.0),
       ),
     );
   }
