@@ -4,10 +4,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
+import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dart';
 
 const List<Widget> widgetOptions = <Widget>[
   HomeScreen(),
-  Text('Block Control Screen'),
+  BlockManagementMenu(),
   Text('History Screen'),
   Text('Others Screen'),
 ];
