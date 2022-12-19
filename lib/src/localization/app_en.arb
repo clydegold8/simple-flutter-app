@@ -11,5 +11,9 @@
     "password_reset": "Password Reset",
     "enter_id": "Enter ID",
     "resetting": "Send URL for resetting",
-    "whitelist": "Whitelist"
+    "whitelist": "Whitelist",
+    "home": "Home",
+    "block_control": "Block Control",
+    "history": "History",
+    "others": "Others"
 }

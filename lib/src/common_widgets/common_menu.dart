@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
+import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dart';
+
+const List<Widget> widgetOptions = <Widget>[
+  HomeScreen(),
+  BlockManagementMenu(),
+  Text('History Screen'),
+  Text('Others Screen'),
+];
+
+class CommonMenu {
+  static Widget generateBottomNavigationBar(
+      BuildContext context, int selectedIndex, Function(int) onItemTapped) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.only(top: 5),
+              height: 24,
+              child: selectedIndex == 0
+                  ? SvgPicture.asset('assets/icons/home_selected.svg')
+                  : SvgPicture.asset('assets/icons/home.svg'),
+            ),
+            label: AppLocalizations.of(context)!.home),
+        BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.only(top: 5),
+              height: 24,
+              child: selectedIndex == 1
+                  ? SvgPicture.asset('assets/icons/block_control_selected.svg')
+                  : SvgPicture.asset('assets/icons/block_control.svg'),
+            ),
+            label: AppLocalizations.of(context)!.block_control),
+        BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.only(top: 5),
+              height: 24,
+              child: selectedIndex == 2
+                  ? SvgPicture.asset('assets/icons/history_selected.svg')
+                  : SvgPicture.asset('assets/icons/history.svg'),
+            ),
+            label: AppLocalizations.of(context)!.history),
+        BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.only(top: 5),
+              height: 24,
+              child: selectedIndex == 3
+                  ? SvgPicture.asset('assets/icons/others_selected.svg')
+                  : SvgPicture.asset('assets/icons/others.svg'),
+            ),
+            label: AppLocalizations.of(context)!.others),
+      ],
+      currentIndex: selectedIndex,
+      onTap: onItemTapped,
+      unselectedItemColor: KBlockColors.text01,
+      unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.normal, fontSize: 10, height: 2),
+      selectedItemColor: KBlockColors.commonMenuIconSelected,
+      selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.normal, fontSize: 10, height: 2),
+    );
+  }
+}
