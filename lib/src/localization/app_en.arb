@@ -14,5 +14,6 @@
     "home": "Home",
     "block_control": "Block Control",
     "history": "History",
-    "others": "Others"
+    "others": "Others",
+    "blacklist": "Blacklist"
 }

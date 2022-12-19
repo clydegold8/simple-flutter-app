@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+import '../../features/blacklist/presentation/blacklist.dart';
+
 @WidgetbookUseCase(name: 'BlockManagementMenu', type: BlockManagementMenu)
 Widget blockManagementUseCase(BuildContext context) => const BlockManagementMenu();
 
@@ -62,7 +64,7 @@ class BlockManagementMenu extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const Text('BlackList Screen')),
+                      builder: (context) => const BlackList()),
                 );
               },
               tileColor: const Color(0xFFFFFFFF),

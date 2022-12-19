@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dart';
+import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
 import 'package:k_block_app/src/common_widgets/screens/common_screen.dart';
@@ -14,6 +15,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const CommonScreen());
       case Routes.blockManagementRoute:
         return MaterialPageRoute(builder: (_) => const BlockManagementMenu());
+      case Routes.blackLists:
+        return MaterialPageRoute(builder: (_) => const BlackList());
       default:
         return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
     }
