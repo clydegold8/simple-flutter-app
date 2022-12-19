@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-import '../../features/blacklist/presentation/blacklist.dart';
+import '../../constants/routes.dart';
 
 @WidgetbookUseCase(name: 'BlockManagementMenu', type: BlockManagementMenu)
 Widget blockManagementUseCase(BuildContext context) => const BlockManagementMenu();
@@ -61,10 +61,8 @@ class BlockManagementMenu extends StatelessWidget {
                     bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
             child: ListTile(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const BlackList()),
+                Navigator.pushNamed(
+                  context, Routes.blackListsRoute
                 );
               },
               tileColor: const Color(0xFFFFFFFF),

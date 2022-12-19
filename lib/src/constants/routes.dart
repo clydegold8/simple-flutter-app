@@ -3,5 +3,5 @@ class Routes {
   static const String homeRoute = '/';
   static const String loginRoute = '/login';
   static const String blockManagementRoute = '/block-management';
-  static const String blackLists = '/black-lists';
+  static const String blackListsRoute = '/black-lists';
 }

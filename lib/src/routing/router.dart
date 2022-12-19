@@ -15,7 +15,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const CommonScreen());
       case Routes.blockManagementRoute:
         return MaterialPageRoute(builder: (_) => const BlockManagementMenu());
-      case Routes.blackLists:
+      case Routes.blackListsRoute:
         return MaterialPageRoute(builder: (_) => const BlackList());
       default:
         return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
