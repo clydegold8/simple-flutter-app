@@ -9,7 +9,11 @@ Widget whitelistWidget(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: Center(
-        child: Text(whitelistText),
+        child: Text(
+          whitelistText,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),),
       ),
       backgroundColor: const Color(0xFFFFFFFF),
       foregroundColor: const Color(0xFF494848),
@@ -17,10 +21,7 @@ Widget whitelistWidget(BuildContext context) {
         IconButton(
           icon: const Icon(Icons.more_vert),
           tooltip: 'Show Snackbar',
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('This is a snackbar')));
-          },
+          onPressed: () {},
         ),
       ],
     ),
