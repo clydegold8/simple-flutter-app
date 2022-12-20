@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
 
 Widget whitelistWidget(BuildContext context) {
   String whitelistText = AppLocalizations.of(context)?.whitelist != null
@@ -33,7 +34,7 @@ Widget whitelistWidget(BuildContext context) {
       ],
     ),
     floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () { addWhitelist(context); },
         tooltip: whitelistText,
         backgroundColor: const Color(0xFF14B53D),
         child: const Icon(
