@@ -11,8 +11,10 @@
     "password_reset": "パスワードの再設定",
     "enter_id": "IDを入力",
     "resetting": "再設定用URLを送信",
+    "whitelist": "ホワイトリスト",
     "home": "ホーム",
     "block_control": "ブロック管理",
     "history": "履歴",
-    "others": "その他"
+    "others": "その他",
+    "blacklist": "ブラックリスト"
 }
