@@ -16,5 +16,8 @@
     "block_control": "ブロック管理",
     "history": "履歴",
     "others": "その他",
-    "blacklist": "ブラックリスト"
+    "blacklist": "ブラックリスト",
+    "set_data_traffic": "データ通信量の上限の設定",
+    "cancel": "キャンセル",
+    "ok": "ＯＫ"
 }

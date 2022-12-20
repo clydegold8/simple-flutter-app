@@ -16,5 +16,8 @@
     "block_control": "Block Control",
     "history": "History",
     "others": "Others",
-    "blacklist": "Blacklist"
+    "blacklist": "Blacklist",
+    "set_data_traffic": "Setting Data Traffic Limit",
+    "cancel": "Cancel",
+    "ok": "OK"
 }
