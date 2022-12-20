@@ -6,20 +6,21 @@ Widget whitelistWidget(BuildContext context) {
         ? AppLocalizations.of(context)!.whitelist
         : 'ホワイトリスト';
   return Scaffold(
-    backgroundColor: const Color(0xFFFFFFFF),
     appBar: AppBar(
-      title: Text(whitelistText),
+      title: Center(
+        child: Text(whitelistText),
+      ),
       backgroundColor: const Color(0xFFFFFFFF),
       foregroundColor: const Color(0xFF494848),
       actions: <Widget>[
         IconButton(
-            icon: const Icon(Icons.more_vert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('This is a snackbar')));
-            },
-          ),
+          icon: const Icon(Icons.more_vert),
+          tooltip: 'Show Snackbar',
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('This is a snackbar')));
+          },
+        ),
       ],
     ),
     body: Column(
