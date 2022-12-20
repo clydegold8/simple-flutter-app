@@ -36,6 +36,9 @@ Widget whitelistWidget(BuildContext context) {
         onPressed: null,
         tooltip: whitelistText,
         backgroundColor: const Color(0xFF14B53D),
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add_rounded,
+          size: 35.0,
+        ),
       ),);
 }
