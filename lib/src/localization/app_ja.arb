@@ -15,5 +15,6 @@
     "home": "ホーム",
     "block_control": "ブロック管理",
     "history": "履歴",
-    "others": "その他"
+    "others": "その他",
+    "blacklist": "ブラックリスト"
 }

@@ -60,10 +60,8 @@ class BlockManagementMenu extends StatelessWidget {
                     bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
             child: ListTile(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const Text('BlackList Screen')),
+                Navigator.pushNamed(
+                  context, Routes.blackListsRoute
                 );
               },
               tileColor: const Color(0xFFFFFFFF),
