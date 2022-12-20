@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
+import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist_widget.dart';
 
 import '../../../constants/colors.dart';
 

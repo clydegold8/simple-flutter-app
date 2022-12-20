@@ -1,28 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist_state.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-Future<void> addWhitelist(BuildContext context) {
-  return showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('AlertDialog Title'),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: const <Widget>[
-              Text('This is a demo alert dialog.'),
-              Text('Would you like to approve of this message?'),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            child: const Text('Approve'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
+@WidgetbookUseCase(name: 'AddWhiteListPage', type: AddWhitelist)
+Widget addWhiteListUseCase(BuildContext context) => const AddWhitelist();
+
+class AddWhitelist extends StatefulWidget {
+  const AddWhitelist({super.key});
+
+  @override
+  AddWhiteListState createState() {
+    return AddWhiteListState();
+  }
 }
