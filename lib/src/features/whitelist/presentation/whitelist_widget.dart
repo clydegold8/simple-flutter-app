@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
 
+import '../../../constants/colors.dart';
+
 Widget whitelistWidget(BuildContext context) {
   String whitelistText = AppLocalizations.of(context)?.whitelist != null
         ? AppLocalizations.of(context)!.whitelist
@@ -15,8 +17,8 @@ Widget whitelistWidget(BuildContext context) {
             fontWeight: FontWeight.bold,
           ),),
       ),
-      backgroundColor: const Color(0xFFFFFFFF),
-      foregroundColor: const Color(0xFF494848),
+      backgroundColor: KBlockColors.white,
+      foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.more_vert),
@@ -30,17 +32,14 @@ Widget whitelistWidget(BuildContext context) {
         Text(whitelistText,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: Color(0xFF656565),
+            color: KBlockColors.text01,
           ))
       ],
     ),
     floatingActionButton: FloatingActionButton(
         onPressed: () { addWhitelist(context); },
         tooltip: whitelistText,
-        backgroundColor: const Color(0xFF14B53D),
-        child: const Icon(
-          Icons.add_rounded,
-          size: 35.0,
-        ),
+        backgroundColor: KBlockColors.greenThemeColor,
+        child: const Icon(Icons.add, size: 35.0,),
       ),);
 }
