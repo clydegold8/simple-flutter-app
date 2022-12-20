@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+import '../../constants/colors.dart';
 import '../../constants/routes.dart';
 
 @WidgetbookUseCase(name: 'BlockManagementMenu', type: BlockManagementMenu)
@@ -12,9 +14,14 @@ class BlockManagementMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: KBlockColors.lightGray,
       appBar: AppBar(
-        title: const Center(child: Text('ブロック管理')),
+        backgroundColor: KBlockColors.white,
+        foregroundColor: KBlockColors.foregroundColor,
+        title: Center(
+            child: Text(AppLocalizations.of(context)?.block_management != null
+                ? AppLocalizations.of(context)!.block_management
+                : 'ブロック管理')),
         automaticallyImplyLeading: false,
       ),
       body: ListView(
@@ -22,32 +29,40 @@ class BlockManagementMenu extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
-            child: const ListTile(
+                    bottom: BorderSide(
+                        width: 2, color: KBlockColors.borderLightGray))),
+            child: ListTile(
               title: Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text('ブラウザの管理')),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Text(
+                      AppLocalizations.of(context)?.browser_management != null
+                          ? AppLocalizations.of(context)!.browser_management
+                          : 'ブラウザの管理')),
             ),
           ),
           Container(
             decoration: const BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
+                    bottom: BorderSide(
+                        width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  Routes.whitelistRoute
-                );
+                Navigator.pushNamed(context, Routes.whitelistRoute);
               },
-              tileColor: const Color(0xFFFFFFFF),
-              title: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text('ホワイトリスト'),
+              tileColor: KBlockColors.white,
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                child: Text(AppLocalizations.of(context)?.whitelist != null
+                    ? AppLocalizations.of(context)!.whitelist
+                    : 'ホワイトリスト'),
               ),
-              subtitle: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-                child: Text('ブロックしたくないWebページを登録'),
+              subtitle: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
+                child: Text(AppLocalizations.of(context)
+                            ?.register_pages_to_not_block !=
+                        null
+                    ? AppLocalizations.of(context)!.register_pages_to_not_block
+                    : 'ブロックしたくないWebページを登録'),
               ),
               trailing: const Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -57,21 +72,26 @@ class BlockManagementMenu extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
+                    bottom: BorderSide(
+                        width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               onTap: () {
-                Navigator.pushNamed(
-                  context, Routes.blackListsRoute
-                );
+                Navigator.pushNamed(context, Routes.blackListsRoute);
               },
-              tileColor: const Color(0xFFFFFFFF),
-              title: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text('ホワイトリスト'),
+              tileColor: KBlockColors.white,
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                child: Text(AppLocalizations.of(context)?.blacklist != null
+                    ? AppLocalizations.of(context)!.blacklist
+                    : 'ブラックリスト'),
               ),
-              subtitle: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-                child: Text('ブロックしたいWebページを登録'),
+              subtitle: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
+                child: Text(
+                    AppLocalizations.of(context)?.register_pages_to_block !=
+                            null
+                        ? AppLocalizations.of(context)!.register_pages_to_block
+                        : 'ブロックしたいWebページを登録'),
               ),
               trailing: const Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -81,17 +101,22 @@ class BlockManagementMenu extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
-            child: const ListTile(
+                    bottom: BorderSide(
+                        width: 2, color: KBlockColors.borderLightGray))),
+            child: ListTile(
               title: Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text('アプリの管理')),
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Text(
+                      AppLocalizations.of(context)?.app_management != null
+                          ? AppLocalizations.of(context)!.app_management
+                          : 'アプリの管理')),
             ),
           ),
           Container(
             decoration: const BoxDecoration(
                 border: Border(
-                    bottom: BorderSide(width: 2, color: Color(0xFFE0E0E0)))),
+                    bottom: BorderSide(
+                        width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               onTap: () {
                 Navigator.push(
@@ -102,13 +127,18 @@ class BlockManagementMenu extends StatelessWidget {
                 );
               },
               tileColor: const Color(0xFFFFFFFF),
-              title: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text('アプリの細かい設定'),
+              title: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                child: Text(
+                    AppLocalizations.of(context)?.detail_app_settings != null
+                        ? AppLocalizations.of(context)!.detail_app_settings
+                        : 'アプリの細かい設定'),
               ),
-              subtitle: const Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-                child: Text('アプリことに広告ブロックを設定'),
+              subtitle: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
+                child: Text(AppLocalizations.of(context)?.set_ad_block != null
+                    ? AppLocalizations.of(context)!.set_ad_block
+                    : 'アプリことに広告ブロックを設定'),
               ),
               trailing: const Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
