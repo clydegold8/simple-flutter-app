@@ -12,8 +12,9 @@ Future<void> dataTrafficLimitDialogueBuilder(BuildContext context) {
 Widget dataTrafficLimitDialogue(BuildContext context) {
   return SimpleDialog(
     title: Center(
-        child: Text(AppLocalizations.of(context)!.set_data_traffic,
-            style: const TextStyle(color: KBlockColors.text02))),
+        child: Text(
+            AppLocalizations.of(context)?.set_data_traffic ?? 'データ通信量の上限の設定',
+            style: const TextStyle(color: KBlockColors.text02, fontSize: 14))),
     children: [
       Padding(
         padding: const EdgeInsets.fromLTRB(32, 13, 32, 0),
@@ -39,13 +40,14 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                           contentPadding: EdgeInsets.all(8)),
                     )),
               ),
-              Text('GB', style: TextStyle(color: KBlockColors.text02))
+              Text('GB',
+                  style: TextStyle(color: KBlockColors.text02, fontSize: 12))
             ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 25),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
                     height: 43,
@@ -60,7 +62,9 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                               color: KBlockColors.buttonNeutralForeground),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8))),
-                      child: Text(AppLocalizations.of(context)!.cancel),
+                      child: Text(
+                          AppLocalizations.of(context)?.cancel ?? 'キャンセル',
+                          style: const TextStyle(fontSize: 12)),
                     )),
                 SizedBox(
                     height: 43,
@@ -80,7 +84,9 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                                         KBlockColors.buttonPositiveBackground),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
-                            child: Text(AppLocalizations.of(context)!.ok))))
+                            child: Text(
+                                AppLocalizations.of(context)?.ok ?? 'ＯＫ',
+                                style: const TextStyle(fontSize: 12)))))
               ],
             ),
           )
