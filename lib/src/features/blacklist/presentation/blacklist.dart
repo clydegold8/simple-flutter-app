@@ -12,13 +12,18 @@ class BlackList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFFFFFFFF),
+        foregroundColor: const Color(0xFF494848),
         title: Center(
             child: Text(AppLocalizations.of(context)?.blacklist != null
                 ? AppLocalizations.of(context)!.blacklist
                 : 'ブラックリスト')),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('This is a snackbar')));
+            },
             icon: const Icon(Icons.more_vert),
           ),
         ],
