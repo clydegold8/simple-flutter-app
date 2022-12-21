@@ -14,6 +14,8 @@ import 'package:k_block_app/src/common_widgets/screens/common_screen.dart';
 import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/routes.dart';
+import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
+import 'package:k_block_app/src/features/app_management/presentation/data_traffic_limit.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist_state.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
@@ -66,6 +68,28 @@ class HotReload extends StatelessWidget {
                             WidgetbookUseCase(
                               name: 'BlackListPage',
                               builder: (context) => blackListUseCase(context),
+                            ),
+                          ],
+                        ),
+                      ],
+                      folders: [],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'app_management',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [
+                        WidgetbookComponent(
+                          name: 'AppIndividualSettings',
+                          useCases: [
+                            WidgetbookUseCase(
+                              name: 'App Individual Settings',
+                              builder: (context) =>
+                                  appIndividualSettingsUseCase(context),
                             ),
                           ],
                         ),
