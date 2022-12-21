@@ -28,5 +28,6 @@
     "register_pages_to_block": "Register the web page you want to block",
     "app_management": "App management",
     "detail_app_settings": "Detailed app settings",
-    "set_ad_block": "Set ad block for app"
+    "set_ad_block": "Set ad block for app",
+    "safari_ad_blocking": "How to set ad blocking in Safari"
 }
