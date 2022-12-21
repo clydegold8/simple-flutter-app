@@ -19,9 +19,8 @@ class BlockManagementMenu extends StatelessWidget {
         backgroundColor: KBlockColors.white,
         foregroundColor: KBlockColors.foregroundColor,
         title: Center(
-            child: Text(AppLocalizations.of(context)?.block_management != null
-                ? AppLocalizations.of(context)!.block_management
-                : 'ブロック管理')),
+            child: Text(
+                AppLocalizations.of(context)?.block_management ?? 'ブロック管理')),
         automaticallyImplyLeading: false,
       ),
       body: ListView(
@@ -33,11 +32,10 @@ class BlockManagementMenu extends StatelessWidget {
                         width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               title: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                   child: Text(
-                      AppLocalizations.of(context)?.browser_management != null
-                          ? AppLocalizations.of(context)!.browser_management
-                          : 'ブラウザの管理')),
+                      AppLocalizations.of(context)?.browser_management ??
+                          'ブラウザの管理')),
             ),
           ),
           Container(
@@ -51,22 +49,19 @@ class BlockManagementMenu extends StatelessWidget {
               },
               tileColor: KBlockColors.white,
               title: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text(AppLocalizations.of(context)?.whitelist != null
-                    ? AppLocalizations.of(context)!.whitelist
-                    : 'ホワイトリスト'),
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
+                child:
+                    Text(AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト'),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-                child: Text(AppLocalizations.of(context)
-                            ?.register_pages_to_not_block !=
-                        null
-                    ? AppLocalizations.of(context)!.register_pages_to_not_block
-                    : 'ブロックしたくないWebページを登録'),
+                child: Text(
+                    AppLocalizations.of(context)?.register_pages_to_not_block ??
+                        'ブロックしたくないWebページを登録'),
               ),
               trailing: const Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Icon(Icons.arrow_forward_ios)),
+                  child: Icon(Icons.chevron_right, size: 30)),
             ),
           ),
           Container(
@@ -80,22 +75,18 @@ class BlockManagementMenu extends StatelessWidget {
               },
               tileColor: KBlockColors.white,
               title: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text(AppLocalizations.of(context)?.blacklist != null
-                    ? AppLocalizations.of(context)!.blacklist
-                    : 'ブラックリスト'),
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
+                child: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト'),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
                 child: Text(
-                    AppLocalizations.of(context)?.register_pages_to_block !=
-                            null
-                        ? AppLocalizations.of(context)!.register_pages_to_block
-                        : 'ブロックしたいWebページを登録'),
+                    AppLocalizations.of(context)?.register_pages_to_block ??
+                        'ブロックしたいWebページを登録'),
               ),
               trailing: const Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Icon(Icons.arrow_forward_ios)),
+                  child: Icon(Icons.chevron_right, size: 30)),
             ),
           ),
           Container(
@@ -105,11 +96,9 @@ class BlockManagementMenu extends StatelessWidget {
                         width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               title: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text(
-                      AppLocalizations.of(context)?.app_management != null
-                          ? AppLocalizations.of(context)!.app_management
-                          : 'アプリの管理')),
+                  padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
+                  child: Text(AppLocalizations.of(context)?.app_management ??
+                      'アプリの管理')),
             ),
           ),
           Container(
@@ -128,21 +117,18 @@ class BlockManagementMenu extends StatelessWidget {
               },
               tileColor: const Color(0xFFFFFFFF),
               title: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-                child: Text(
-                    AppLocalizations.of(context)?.detail_app_settings != null
-                        ? AppLocalizations.of(context)!.detail_app_settings
-                        : 'アプリの細かい設定'),
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
+                child: Text(AppLocalizations.of(context)?.detail_app_settings ??
+                    'アプリの細かい設定'),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-                child: Text(AppLocalizations.of(context)?.set_ad_block != null
-                    ? AppLocalizations.of(context)!.set_ad_block
-                    : 'アプリことに広告ブロックを設定'),
+                child: Text(AppLocalizations.of(context)?.set_ad_block ??
+                    'アプリことに広告ブロックを設定'),
               ),
               trailing: const Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Icon(Icons.arrow_forward_ios)),
+                  child: Icon(Icons.chevron_right, size: 30)),
             ),
           ),
         ],
