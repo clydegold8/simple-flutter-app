@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist_widget.dart';
 
 import '../../../constants/colors.dart';
 
@@ -10,7 +11,11 @@ Widget whitelistWidget(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: Center(
-        child: Text(whitelistText),
+        child: Text(
+          whitelistText,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),),
       ),
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
@@ -18,10 +23,7 @@ Widget whitelistWidget(BuildContext context) {
         IconButton(
           icon: const Icon(Icons.more_vert),
           tooltip: 'Show Snackbar',
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('This is a snackbar')));
-          },
+          onPressed: () {},
         ),
       ],
     ),
@@ -35,9 +37,9 @@ Widget whitelistWidget(BuildContext context) {
       ],
     ),
     floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () { addWhitelist(context); },
         tooltip: whitelistText,
         backgroundColor: KBlockColors.greenThemeColor,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, size: 35.0,),
       ),);
 }
