@@ -13,7 +13,7 @@ Widget adBlockerWidget(BuildContext context) {
       child: _adBlockingWidget(context),
     ),
     Expanded(
-      child: _adBlockerTabDetails(context),
+      child: _adBlockerTabDetailsWidget(context),
     )
   ]);
 }
@@ -55,7 +55,7 @@ Widget _adBlockingWidget(BuildContext context) {
   );
 }
 
-Widget _adBlockerTabDetails(BuildContext context) {
+Widget _adBlockerTabDetailsWidget(BuildContext context) {
   return DefaultTabController(
     initialIndex: 0,
     length: 2,
@@ -83,8 +83,79 @@ Widget _adBlockerTabDetails(BuildContext context) {
             )
           ]),
       Expanded(
-        child: TabBarView(children: [Text('1'), Text('2')]),
+        child: TabBarView(children: [
+          _adBlockerTabBarViewData(context, 3500, 60),
+          _adBlockerTabBarViewData(context, 2500, 120)
+        ]),
       )
     ]),
   );
+}
+
+Widget _adBlockerTabBarViewData(
+    BuildContext context, int numBlocks, int dataCommSav) {
+  final containerDecoration = BoxDecoration(
+      color: Color(0xFFF5F5F5),
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(width: 1, color: Color(0xFFDEDCDC)));
+  const dataTextStyle = TextStyle(
+      color: Color(0xFF494848), fontSize: 28, fontWeight: FontWeight.w800);
+  const titleTextStyle = TextStyle(color: Color(0xFF494848), fontSize: 13);
+
+  return Row(children: [
+    Expanded(
+      child: FractionallySizedBox(
+        widthFactor: 0.85,
+        child: Container(
+            margin: const EdgeInsets.only(left: 10),
+            height: 127,
+            decoration: containerDecoration,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Text(
+                    numBlocks.toString(),
+                    style: dataTextStyle,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Text(
+                    'ブロック数',
+                    style: titleTextStyle,
+                  ),
+                )
+              ],
+            )),
+      ),
+    ),
+    Expanded(
+      child: FractionallySizedBox(
+        widthFactor: 0.85,
+        child: Container(
+            margin: const EdgeInsets.only(right: 10),
+            height: 127,
+            decoration: containerDecoration,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Text(
+                    '${dataCommSav}MB',
+                    style: dataTextStyle,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Text(
+                    'データ通信節約量',
+                    style: titleTextStyle,
+                  ),
+                )
+              ],
+            )),
+      ),
+    )
+  ]);
 }
