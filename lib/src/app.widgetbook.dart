@@ -20,6 +20,7 @@ import 'package:k_block_app/src/features/app_management/presentation/app_individ
 import 'package:k_block_app/src/features/app_management/presentation/data_traffic_limit.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist_state.dart';
+import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_popup_ios_widget.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form_state.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form_widget.dart';
@@ -156,6 +157,27 @@ class HotReload extends StatelessWidget {
                             WidgetbookUseCase(
                               name: 'Login Form',
                               builder: (context) => loginForm(context),
+                            ),
+                          ],
+                        ),
+                      ],
+                      folders: [],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'initialPopup',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [
+                        WidgetbookComponent(
+                          name: 'InitialPopupIOSState',
+                          useCases: [
+                            WidgetbookUseCase(
+                              name: 'Initial Popup IOS',
+                              builder: (context) => initialPopupIOSUseCase(context),
                             ),
                           ],
                         ),
