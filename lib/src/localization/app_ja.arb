@@ -29,5 +29,14 @@
     "app_management": "アプリの管理",
     "detail_app_settings": "アプリの細かい設定",
     "set_ad_block": "アプリことに広告ブロックを設定",
-    "safari_ad_blocking": "Safariで広告ブロックの設定方法"
+    "safari_ad_blocking": "Safariで広告ブロックの設定方法",
+    "request": "【お願い】",
+    "request_subtitle": "こちらの設定は広告ブロックをONにする\n前に行ってください。",
+    "instruction_1_1": "1. iPhoneの ",
+    "instruction_1_2": "「設定」アプリを開く",
+    "instruction_2": "「Safari」を開く",
+    "instruction_3": "3.「拡張機能」を開く",
+    "instruction_4": "「K-BLOCK」をONにする   ",
+    "instruction_5": "5. 設定完了",
+    "setup": "設定する"
 }

@@ -8,19 +8,47 @@ Widget initialPopupIOSWidget(BuildContext context) {
   String howToSafari = AppLocalizations.of(context)?.safari_ad_blocking != null
         ? AppLocalizations.of(context)!.safari_ad_blocking
         : 'Safariで広告ブロックの設定方法';
+  String requestText = AppLocalizations.of(context)?.request != null
+        ? AppLocalizations.of(context)!.request
+        : '【お願い】';
+  String requestSubText = AppLocalizations.of(context)?.request_subtitle != null
+        ? AppLocalizations.of(context)!.request_subtitle
+        : 'こちらの設定は広告ブロックをONにする\n前に行ってください。';
+  String instruction1A  = AppLocalizations.of(context)?.instruction_1_1 != null
+        ? AppLocalizations.of(context)!.instruction_1_1
+        : 'iPhoneの';
+  String instruction1B  = AppLocalizations.of(context)?.instruction_1_2 != null
+        ? AppLocalizations.of(context)!.instruction_1_2
+        : '「設定」アプリを開く';
+  String instruction2 = AppLocalizations.of(context)?.instruction_2 != null
+        ? AppLocalizations.of(context)!.instruction_2
+        : '「Safari」を開く';
+  String instruction3 = AppLocalizations.of(context)?.instruction_3 != null
+        ? AppLocalizations.of(context)!.instruction_3
+        : '「拡張機能」を開く';
+  String instruction4 = AppLocalizations.of(context)?.instruction_4 != null
+        ? AppLocalizations.of(context)!.instruction_4
+        : '「K-BLOCK」をONにする';
+  String instruction5 = AppLocalizations.of(context)?.instruction_5 != null
+        ? AppLocalizations.of(context)!.instruction_5
+        : '設定完了';
+  String setupLabel = AppLocalizations.of(context)?.setup != null
+        ? AppLocalizations.of(context)!.setup
+        : '設定する';
 
   return Scaffold(
     backgroundColor: KBlockColors.white,
     body: Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+          padding: const EdgeInsets.fromLTRB(25, 30, 20, 0),
           child: Center(
             child: Text(howToSafari,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                color: KBlockColors.text01,
-                fontWeight: FontWeight.bold,
+                color: KBlockColors.foregroundColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
               )),
             )
         ),
@@ -52,10 +80,22 @@ Widget initialPopupIOSWidget(BuildContext context) {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                   child: Column(
-                  children: const <Widget>[
-                    Text('【お願い】'),
-                    Text('こちらの設定は広告ブロックをONにする\n前に行ってください。'),
-                  ],
+                    children: <Widget>[
+                      Text(
+                        requestText,
+                        style: const TextStyle(
+                          color: KBlockColors.foregroundColor,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        requestSubText,
+                        style: const TextStyle(
+                          color: KBlockColors.foregroundColor,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
                 ),
                 )
               ),
@@ -72,26 +112,33 @@ Widget initialPopupIOSWidget(BuildContext context) {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          const TextSpan(
-                            text: '1. iPhone の ',
-                            style: TextStyle(color: KBlockColors.text02),
-                          ),
-                          WidgetSpan(
-                            child: Image.asset(
-                              'assets/icons/ios_setting.png',
-                            )
-                          ),
-                          const TextSpan(
-                            text: '「設定」アプリを開く',
-                            style: TextStyle(color: KBlockColors.text02),
-                          ),
-                        ]
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: instruction1A,
+                            ),
+                            WidgetSpan(
+                              child: Image.asset(
+                                'assets/icons/ios_setting.png',
+                              )
+                            ),
+                            TextSpan(
+                              text: instruction1B,
+                            ),
+                          ],
+                          style: const TextStyle(
+                            color: KBlockColors.text02,
+                            fontSize: 15,
+                          )
+                        ),
                       ),
                     ),
-                    RichText(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: RichText(
                       text: TextSpan(
                         children: [
                           const TextSpan(
@@ -103,31 +150,52 @@ Widget initialPopupIOSWidget(BuildContext context) {
                               'assets/icons/safari.png',
                             )
                           ),
-                          const TextSpan(
-                            text: '「Safari」を開く',
-                            style: TextStyle(color: KBlockColors.text02),
+                          TextSpan(
+                            text: instruction2,
+                            style: const TextStyle(color: KBlockColors.text02),
                           ),
-                        ]
+                        ],
+                         style: const TextStyle(
+                            color: KBlockColors.text02,
+                            fontSize: 15,
+                          )
+                        ),
                       ),
                     ),
-                    const Text('3. 「拡張機能」を開く', style: TextStyle(color: KBlockColors.text02)),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          const TextSpan(
-                            text: '4. ',
-                            style: TextStyle(color: KBlockColors.text02),
-                          ),
-                          WidgetSpan(child: SvgPicture.asset('assets/icons/app_logo_empty.svg')),
-                          const TextSpan(
-                            text: '「K-BLOCK」をONにする    ',
-                            style: TextStyle(color: KBlockColors.text02),
-                          ),
-                          WidgetSpan(child: SvgPicture.asset('assets/icons/switch_on.svg')),
-                        ]
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: Text(
+                                instruction3,
+                                style: const TextStyle(
+                                  color: KBlockColors.text02, 
+                                  fontSize: 15,)
+                              ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: '4. ',
+                            ),
+                            WidgetSpan(child: SvgPicture.asset('assets/icons/app_logo_empty.svg')),
+                            TextSpan(
+                              text: instruction4,
+                            ),
+                            WidgetSpan(child: SvgPicture.asset('assets/icons/switch_on.svg')),
+                          ],
+                          style: const TextStyle(
+                            color: KBlockColors.text02,
+                            fontSize: 15,
+                          )
+                        ),
                       ),
                     ),
-                    const Text('5. 設定完了', style: TextStyle(color: KBlockColors.text02)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: Text(instruction5, style: const TextStyle(color: KBlockColors.text02, fontSize: 16)),
+                    )
                   ],
                 ),
                 )
@@ -150,7 +218,7 @@ Widget initialPopupIOSWidget(BuildContext context) {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                 ),
-                child: const Text('設定する'),
+                child: Text(setupLabel),
               ),
             ),
           )
