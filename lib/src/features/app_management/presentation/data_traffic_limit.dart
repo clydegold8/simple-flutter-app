@@ -14,10 +14,13 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
     title: Center(
         child: Text(
             AppLocalizations.of(context)?.set_data_traffic ?? 'データ通信量の上限の設定',
-            style: const TextStyle(color: KBlockColors.text02, fontSize: 14))),
+            style: const TextStyle(
+                color: KBlockColors.text02,
+                fontSize: 16,
+                fontWeight: FontWeight.w800))),
     children: [
       Padding(
-        padding: const EdgeInsets.fromLTRB(32, 13, 32, 0),
+        padding: const EdgeInsets.fromLTRB(32, 5, 32, 0),
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +44,7 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                     )),
               ),
               Text('GB',
-                  style: TextStyle(color: KBlockColors.text02, fontSize: 12))
+                  style: TextStyle(color: KBlockColors.text02, fontSize: 14))
             ],
           ),
           Padding(
@@ -64,7 +67,7 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                               borderRadius: BorderRadius.circular(8))),
                       child: Text(
                           AppLocalizations.of(context)?.cancel ?? 'キャンセル',
-                          style: const TextStyle(fontSize: 12)),
+                          style: const TextStyle(fontSize: 13)),
                     )),
                 SizedBox(
                     height: 43,
@@ -86,7 +89,7 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                                     borderRadius: BorderRadius.circular(8))),
                             child: Text(
                                 AppLocalizations.of(context)?.ok ?? 'ＯＫ',
-                                style: const TextStyle(fontSize: 12)))))
+                                style: const TextStyle(fontSize: 13)))))
               ],
             ),
           )
