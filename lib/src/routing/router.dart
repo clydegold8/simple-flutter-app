@@ -12,7 +12,7 @@ class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.loginRoute:
-        return MaterialPageRoute(builder: (_) => const InitialPopupIOS());
+        return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const CommonScreen());
       case Routes.blockManagementRoute:
@@ -21,8 +21,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const BlackList());
       case Routes.whitelistRoute:
         return MaterialPageRoute(builder: (_) => const Whitelist());
-      default:
+      case Routes.initialPopupIOSRoute:
         return MaterialPageRoute(builder: (_) => const InitialPopupIOS());
+      default:
+        return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
     }
   }
 }

@@ -8,7 +8,7 @@ import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dar
 import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_popup_ios_widget.dart';
 
 const List<Widget> widgetOptions = <Widget>[
-  InitialPopupIOS(),
+  HomeScreen(),
   BlockManagementMenu(),
   Text('History Screen'),
   Text('Others Screen'),

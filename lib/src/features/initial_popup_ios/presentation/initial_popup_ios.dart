@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../constants/colors.dart';
 
+import '../../../constants/routes.dart';
+
 Widget initialPopupIOSWidget(BuildContext context) {
   String howToSafari = AppLocalizations.of(context)?.safari_ad_blocking != null
         ? AppLocalizations.of(context)!.safari_ad_blocking
@@ -131,7 +133,9 @@ Widget initialPopupIOSWidget(BuildContext context) {
               height: 50,
               width: 350,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.homeRoute);
+                },
                 style: OutlinedButton.styleFrom(
                     backgroundColor: KBlockColors.greenThemeColor,
                     foregroundColor: KBlockColors.white,

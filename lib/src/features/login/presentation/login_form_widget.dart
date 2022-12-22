@@ -104,7 +104,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
               child: Center(
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeRoute);
+                    Navigator.pushNamed(context, Routes.initialPopupIOSRoute);
                   },
                   style: OutlinedButton.styleFrom(
                       foregroundColor: KBlockColors.text01,
