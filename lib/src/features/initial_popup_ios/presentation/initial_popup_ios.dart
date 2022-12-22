@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/colors.dart';
-
 import '../../../constants/routes.dart';
 
 Widget initialPopupIOSWidget(BuildContext context) {
@@ -72,14 +72,18 @@ Widget initialPopupIOSWidget(BuildContext context) {
                   child: Column(
                   children: <Widget>[
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: '1. iPhone の ',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
-                          WidgetSpan(child: Icon(Icons.add, size: 20)),
-                          TextSpan(
+                          WidgetSpan(
+                            child: Image.asset(
+                              'assets/icons/ios_setting.png',
+                            )
+                          ),
+                          const TextSpan(
                             text: '「設定」アプリを開く',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
@@ -87,14 +91,18 @@ Widget initialPopupIOSWidget(BuildContext context) {
                       ),
                     ),
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: '2. ',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
-                          WidgetSpan(child: Icon(Icons.add, size: 20)),
-                          TextSpan(
+                          WidgetSpan(
+                            child: Image.asset(
+                              'assets/icons/safari.png',
+                            )
+                          ),
+                          const TextSpan(
                             text: '「Safari」を開く',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
@@ -103,14 +111,14 @@ Widget initialPopupIOSWidget(BuildContext context) {
                     ),
                     const Text('3. 「拡張機能」を開く', style: TextStyle(color: KBlockColors.text02)),
                     RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: '4. ',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
-                          WidgetSpan(child: Icon(Icons.add, size: 20)),
-                          TextSpan(
+                          WidgetSpan(child: SvgPicture.asset('assets/icons/app_logo_empty.svg')),
+                          const TextSpan(
                             text: '「K-BLOCK」をONにする',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
