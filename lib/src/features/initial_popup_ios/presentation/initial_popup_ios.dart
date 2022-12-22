@@ -9,8 +9,6 @@ Widget initialPopupIOSWidget(BuildContext context) {
         ? AppLocalizations.of(context)!.safari_ad_blocking
         : 'Safariで広告ブロックの設定方法';
 
-  // const devicePlatform = Theme.of(context).platform;
-
   return Scaffold(
     backgroundColor: KBlockColors.white,
     body: Column(
