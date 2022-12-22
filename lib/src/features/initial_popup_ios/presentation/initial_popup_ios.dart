@@ -70,6 +70,7 @@ Widget initialPopupIOSWidget(BuildContext context) {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     RichText(
                       text: TextSpan(
@@ -119,9 +120,10 @@ Widget initialPopupIOSWidget(BuildContext context) {
                           ),
                           WidgetSpan(child: SvgPicture.asset('assets/icons/app_logo_empty.svg')),
                           const TextSpan(
-                            text: '「K-BLOCK」をONにする',
+                            text: '「K-BLOCK」をONにする    ',
                             style: TextStyle(color: KBlockColors.text02),
                           ),
+                          WidgetSpan(child: SvgPicture.asset('assets/icons/switch_on.svg')),
                         ]
                       ),
                     ),
