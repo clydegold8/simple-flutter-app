@@ -28,5 +28,15 @@
     "register_pages_to_block": "Register the web page you want to block",
     "app_management": "App management",
     "detail_app_settings": "Detailed app settings",
-    "set_ad_block": "Set ad block for app"
+    "set_ad_block": "Set ad block for app",
+    "safari_ad_blocking": "How to set ad blocking in Safari",
+    "request": "【Request】",
+    "request_subtitle": "Please do this setting before turning ON Block Ads",
+    "instruction_1_1": "1. iPhone ",
+    "instruction_1_2": " Open「Settings」",
+    "instruction_2": " Open「Safari」",
+    "instruction_3": "3. Open「Extensions」",
+    "instruction_4": " Turn ON「K-BLOCK」",
+    "instruction_5": "5. Setup Complete",
+    "setup": "Setup"
 }

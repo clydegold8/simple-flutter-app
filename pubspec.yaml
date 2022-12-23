@@ -90,6 +90,10 @@ flutter:
     - assets/icons/others.svg
     - assets/icons/others_selected.svg
     - assets/icons/logo_kblock.svg
+    - assets/icons/app_logo_empty.svg
+    - assets/icons/ios_setting.png
+    - assets/icons/safari.png
+    - assets/icons/switch_on.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
