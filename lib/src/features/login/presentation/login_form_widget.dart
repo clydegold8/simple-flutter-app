@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/features/forgot_password/presentation/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -8,55 +10,48 @@ import '../../../constants/routes.dart';
 
 Widget loginFormWidget(BuildContext context, formKey) {
   return Scaffold(
-      backgroundColor: const Color(0xFFEAEAEA),
+      backgroundColor: KBlockColors.white,
       body: Form(
         key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 91, 0, 72),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 92, 0, 84),
               child: Center(
-                child: Text('K-BLOCK',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 30,
-                      color: Color(0xFF656565),
-                    )),
+                child: SvgPicture.asset('assets/icons/logo_kblock.svg'),
               ),
             ),
             // Id Field
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Center(
-                child: Text(
-                    AppLocalizations.of(context)?.id != null
-                        ? AppLocalizations.of(context)!.id
-                        : 'ID',
+                child: Text(AppLocalizations.of(context)?.id ?? 'ID',
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 15,
-                      color: Color(0xFF656565),
+                      fontSize: 16,
+                      color: KBlockColors.foregroundColor,
                     )),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
+              padding: const EdgeInsets.fromLTRB(40, 0, 40, 28),
               child: TextField(
+                  style: const TextStyle(height: 2),
                   decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xFFFFFFFF),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40.0),
-                ),
-                isDense: true,
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15.0),
-              )),
+                    filled: true,
+                    fillColor: KBlockColors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                    ),
+                    isDense: true,
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15.0),
+                  )),
             ),
             // password field
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Center(
                 child: Text(
                     AppLocalizations.of(context)?.password != null
@@ -64,20 +59,20 @@ Widget loginFormWidget(BuildContext context, formKey) {
                         : 'パスワード',
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 15,
-                      color: Color(0xFF656565),
+                      fontSize: 16,
+                      color: KBlockColors.foregroundColor,
                     )),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(34, 0, 34, 0),
+              padding: const EdgeInsets.fromLTRB(40, 0, 40, 23),
               child: TextField(
+                style: const TextStyle(height: 2),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: const Color(0xFFFFFFFF),
+                  fillColor: KBlockColors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(40.0),
-                    borderSide: const BorderSide(color: Color(0xFF898989)),
                   ),
                   isDense: true,
                   contentPadding: const EdgeInsets.symmetric(
@@ -87,18 +82,16 @@ Widget loginFormWidget(BuildContext context, formKey) {
             ),
             // forgot password link
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 7),
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 48),
               child: Center(
                 child: RichText(
                     text: TextSpan(
-                        text: AppLocalizations.of(context)?.forgot_password !=
-                                null
-                            ? AppLocalizations.of(context)!.forgot_password
-                            : 'パスワードをお忘れですか?',
+                        text: AppLocalizations.of(context)?.forgot_password ??
+                            'パスワードをお忘れですか?',
                         style: const TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                          color: Color(0xFF656565),
+                          fontSize: 16,
+                          color: KBlockColors.foregroundColor,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
@@ -107,34 +100,31 @@ Widget loginFormWidget(BuildContext context, formKey) {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(34, 30, 34, 7),
+              padding: const EdgeInsets.fromLTRB(45, 0, 45, 7),
               child: Center(
                 child: OutlinedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, Routes.homeRoute);
                   },
                   style: OutlinedButton.styleFrom(
-                      foregroundColor: const Color(0xFF656565),
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      side: const BorderSide(color: Color(0xFF898989)),
+                      foregroundColor: KBlockColors.text01,
+                      backgroundColor: KBlockColors.greenThemeColor,
+                      side:
+                          const BorderSide(color: KBlockColors.greenThemeColor),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40.0),
                       )),
                   child: SizedBox(
-                    width: double.infinity,
-                    height: 40.0,
+                    height: 55.0,
                     child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 12),
+                        padding: const EdgeInsets.fromLTRB(0, 14, 0, 12),
                         child: SizedBox(
                             width: double.infinity,
                             child: Text(
-                                AppLocalizations.of(context)?.login != null
-                                    ? AppLocalizations.of(context)!.login
-                                    : 'ログイン',
+                                AppLocalizations.of(context)?.login ?? 'ログイン',
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                  color: Color(0xFF656565),
-                                )))),
+                                    color: KBlockColors.white, fontSize: 16)))),
                   ),
                 ),
               ),
@@ -152,10 +142,8 @@ Widget loginFormWidget(BuildContext context, formKey) {
                               text: TextSpan(
                                   children: [
                                 TextSpan(
-                                    text: AppLocalizations.of(context)?.terms !=
-                                            null
-                                        ? AppLocalizations.of(context)!.terms
-                                        : '利用規約 ',
+                                    text: AppLocalizations.of(context)?.terms ??
+                                        '利用規約 ',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
                                         final url = Uri.parse(
@@ -169,11 +157,9 @@ Widget loginFormWidget(BuildContext context, formKey) {
                                         }
                                       }),
                                 TextSpan(
-                                    text: AppLocalizations.of(context)
-                                                ?.privacy !=
-                                            null
-                                        ? AppLocalizations.of(context)!.privacy
-                                        : '/ プライバシーポリシー ',
+                                    text:
+                                        AppLocalizations.of(context)?.privacy ??
+                                            '/ プライバシーポリシー ',
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () async {
                                         final url = Uri.parse(
@@ -189,15 +175,18 @@ Widget loginFormWidget(BuildContext context, formKey) {
                               ],
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 15,
-                                    color: Color(0xFF656565),
+                                    fontSize: 14,
+                                    color: KBlockColors.text01,
                                   ))),
-                          const Text('@Stock Tech.Inc',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 15,
-                                color: Color(0xFF656565),
-                              )),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 9, 0, 0),
+                            child: Text('@Stock Tech.Inc',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: KBlockColors.text01,
+                                )),
+                          )
                         ]))))
           ],
         ),

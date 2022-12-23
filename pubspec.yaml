@@ -74,10 +74,14 @@ flutter:
           style: normal
         - asset: fonts/NunitoSans-BlackItalic.ttf
           style: italic
+    - family: NunitoSansBold
+      fonts:
         - asset: fonts/NunitoSans-Bold.ttf
+          style: normal
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/ad_blocker_off.png
     - assets/icons/home.svg
     - assets/icons/home_selected.svg
     - assets/icons/block_control.svg
@@ -86,7 +90,7 @@ flutter:
     - assets/icons/history_selected.svg
     - assets/icons/others.svg
     - assets/icons/others_selected.svg
-    - assets/images/ad_blocker_off.png
+    - assets/icons/logo_kblock.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
