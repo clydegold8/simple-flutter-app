@@ -12,4 +12,7 @@ class KBlockColors {
   static const Color foregroundColor = Color(0xFF494848);
   static const Color borderLightGray = Color(0xFFE0E0E0);
   static const Color greenThemeColor = Color(0xFF14B53D);
+  static const Color borderSide = Color(0xFF898989);
+  static const Color disabledTheme = Color(0xFFA2A2A2);
+  static const Color disabledFontTheme = Color(0xFFCECECE);
 }
