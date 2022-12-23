@@ -11,12 +11,7 @@ class _AdBlockerTabState extends State<AdBlockerTab>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
 
-  static const tabDecoration = BoxDecoration(
-      color: Color(0xFFDEDCDC),
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10), topRight: Radius.circular(10)));
-
-  final tabs = ['24時間', '前日'];
+  final tabs = ['24時間', '前日', '1週間', '1ヶ月', '6ヶ月'];
 
   late TabController _tabController;
 
@@ -40,33 +35,64 @@ class _AdBlockerTabState extends State<AdBlockerTab>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TabBar(
-          controller: _tabController,
-          tabs: List.generate(
-              tabs.length,
-              (index) => Tab(
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: _selectedIndex == index
-                                ? Color(0xFF14B53D)
-                                : Color(0xFFDEDCDC),
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                topRight: Radius.circular(10))),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(tabs[index]),
+        Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(color: Color(0xFF14B53D), width: 1))),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
+            child: Theme(
+              data: ThemeData(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent),
+              child: TabBar(
+                controller: _tabController,
+                indicatorColor: Colors.transparent,
+                indicatorPadding: EdgeInsets.zero,
+                indicatorWeight: 0.1,
+                labelPadding:
+                    const EdgeInsets.only(left: 5, right: 5, bottom: 0),
+                tabs: List.generate(
+                    tabs.length,
+                    (index) => Tab(
+                          height: 26,
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: _selectedIndex == index
+                                      ? Color(0xFF14B53D)
+                                      : Color(0xFFDEDCDC),
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10))),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  tabs[index],
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: _selectedIndex == index
+                                          ? Colors.white
+                                          : Color(0xFF9C9B98),
+                                      fontWeight: _selectedIndex == index
+                                          ? FontWeight.w900
+                                          : FontWeight.normal),
+                                ),
+                              )),
                         )),
-                  )),
-          indicatorColor: Colors.transparent,
-          onTap: (index) => setState(() {
-            _selectedIndex = index;
-          }),
+                onTap: (index) => setState(() {
+                  _selectedIndex = index;
+                }),
+              ),
+            ),
+          ),
         ),
         Expanded(
           child: TabBarView(controller: _tabController, children: [
-            _adBlockerTabBarViewData(context, 3500, 60),
-            _adBlockerTabBarViewData(context, 2500, 120)
+            _adBlockerTabBarViewData(context, '3500', '60MB'),
+            _adBlockerTabBarViewData(context, '4800', '80MB'),
+            _adBlockerTabBarViewData(context, '25000', '80MB'),
+            _adBlockerTabBarViewData(context, '10万', '480MB'),
+            _adBlockerTabBarViewData(context, '60万', '2GB')
           ]),
         )
       ],
@@ -75,11 +101,14 @@ class _AdBlockerTabState extends State<AdBlockerTab>
 }
 
 Widget _adBlockerTabBarViewData(
-    BuildContext context, int numBlocks, int dataCommSav) {
+    BuildContext context, String numBlocks, String dataCommSav) {
   final containerDecoration = BoxDecoration(
       color: Color(0xFFF5F5F5),
       borderRadius: BorderRadius.circular(20),
-      border: Border.all(width: 1, color: Color(0xFFDEDCDC)));
+      border: Border.all(width: 1, color: Color(0xFFDEDCDC)),
+      boxShadow: const [
+        BoxShadow(color: Color(0x16000000), blurRadius: 6, offset: Offset(0, 3))
+      ]);
   const dataTextStyle = TextStyle(
       color: Color(0xFF494848), fontSize: 28, fontWeight: FontWeight.w800);
   const titleTextStyle = TextStyle(color: Color(0xFF494848), fontSize: 13);
@@ -97,7 +126,7 @@ Widget _adBlockerTabBarViewData(
                 Padding(
                   padding: const EdgeInsets.only(top: 25),
                   child: Text(
-                    numBlocks.toString(),
+                    numBlocks,
                     style: dataTextStyle,
                   ),
                 ),
@@ -124,7 +153,7 @@ Widget _adBlockerTabBarViewData(
                 Padding(
                   padding: const EdgeInsets.only(top: 25),
                   child: Text(
-                    '${dataCommSav}MB',
+                    dataCommSav,
                     style: dataTextStyle,
                   ),
                 ),
