@@ -9,10 +9,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFEAEAEA),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
             const Text('TODO: Home Page'),
             Center(
               child: OutlinedButton(
@@ -20,10 +20,9 @@ class HomePage extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.whitelistRoute);
                 },
                 child: const Text('Whitelist Page ->'),
-                ),
-              )
-          ])
-      ),
+              ),
+            )
+          ])),
     );
   }
 }

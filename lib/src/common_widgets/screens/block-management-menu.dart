@@ -6,7 +6,8 @@ import '../../constants/colors.dart';
 import '../../constants/routes.dart';
 
 @WidgetbookUseCase(name: 'BlockManagementMenu', type: BlockManagementMenu)
-Widget blockManagementUseCase(BuildContext context) => const BlockManagementMenu();
+Widget blockManagementUseCase(BuildContext context) =>
+    const BlockManagementMenu();
 
 class BlockManagementMenu extends StatelessWidget {
   const BlockManagementMenu({super.key});
@@ -76,7 +77,8 @@ class BlockManagementMenu extends StatelessWidget {
               tileColor: KBlockColors.white,
               title: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
-                child: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト'),
+                child:
+                    Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト'),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
