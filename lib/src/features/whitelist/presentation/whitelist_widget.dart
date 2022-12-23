@@ -15,7 +15,14 @@ Widget whitelistWidget(BuildContext context) {
           whitelistText,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
+            fontSize: 16,
           ),),
+      ),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back_ios),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
       ),
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
