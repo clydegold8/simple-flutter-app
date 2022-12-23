@@ -115,14 +115,13 @@ Widget loginFormWidget(BuildContext context, formKey) {
                         borderRadius: BorderRadius.circular(40.0),
                       )),
                   child: SizedBox(
-                    height: 55.0,
-                    child: Center(
-                        child: Text(
-                            AppLocalizations.of(context)?.login ?? 'ログイン',
+                      height: 55.0,
+                      child: Center(
+                          child: Text(
+                              AppLocalizations.of(context)?.login ?? 'ログイン',
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                  color: KBlockColors.white, fontSize: 16)))
-                  ),
+                                  color: KBlockColors.white, fontSize: 16)))),
                 ),
               ),
             ),

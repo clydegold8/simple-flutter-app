@@ -6,8 +6,8 @@ import '../../../constants/colors.dart';
 
 Widget whitelistWidget(BuildContext context) {
   String whitelistText = AppLocalizations.of(context)?.whitelist != null
-        ? AppLocalizations.of(context)!.whitelist
-        : 'ホワイトリスト';
+      ? AppLocalizations.of(context)!.whitelist
+      : 'ホワイトリスト';
   return Scaffold(
     appBar: AppBar(
       title: Center(
@@ -16,7 +16,8 @@ Widget whitelistWidget(BuildContext context) {
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16,
-          ),),
+          ),
+        ),
       ),
       leading: IconButton(
         icon: const Icon(Icons.arrow_back_ios),
@@ -37,16 +38,22 @@ Widget whitelistWidget(BuildContext context) {
     body: Column(
       children: [
         Text(whitelistText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: KBlockColors.text01,
-          ))
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: KBlockColors.text01,
+            ))
       ],
     ),
     floatingActionButton: FloatingActionButton(
-        onPressed: () { addWhitelist(context); },
-        tooltip: whitelistText,
-        backgroundColor: KBlockColors.greenThemeColor,
-        child: const Icon(Icons.add, size: 35.0,),
-      ),);
+      onPressed: () {
+        addWhitelist(context);
+      },
+      tooltip: whitelistText,
+      backgroundColor: KBlockColors.greenThemeColor,
+      child: const Icon(
+        Icons.add,
+        size: 35.0,
+      ),
+    ),
+  );
 }
