@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:k_block_app/src/constants/colors.dart';
 
 class AdBlockerTab extends StatefulWidget {
   const AdBlockerTab({super.key});
@@ -11,8 +13,6 @@ class _AdBlockerTabState extends State<AdBlockerTab>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
 
-  final tabs = ['24時間', '前日', '1週間', '1ヶ月', '6ヶ月'];
-
   late TabController _tabController;
 
   @override
@@ -22,7 +22,7 @@ class _AdBlockerTabState extends State<AdBlockerTab>
         initialIndex: _selectedIndex,
         animationDuration: Duration.zero,
         vsync: this,
-        length: tabs.length);
+        length: 5);
   }
 
   @override
@@ -33,12 +33,21 @@ class _AdBlockerTabState extends State<AdBlockerTab>
 
   @override
   Widget build(BuildContext context) {
+    final tabs = [
+      AppLocalizations.of(context)!.tab_24_hours,
+      AppLocalizations.of(context)!.tab_last_day,
+      AppLocalizations.of(context)!.tab_1_week,
+      AppLocalizations.of(context)!.tab_1_month,
+      AppLocalizations.of(context)!.tab_6_months
+    ];
+
     return Column(
       children: [
         Container(
           decoration: const BoxDecoration(
               border: Border(
-                  bottom: BorderSide(color: Color(0xFF14B53D), width: 1))),
+                  bottom: BorderSide(
+                      color: KBlockColors.greenThemeColor, width: 1))),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
             child: Theme(
@@ -59,8 +68,8 @@ class _AdBlockerTabState extends State<AdBlockerTab>
                           child: Container(
                               decoration: BoxDecoration(
                                   color: _selectedIndex == index
-                                      ? Color(0xFF14B53D)
-                                      : Color(0xFFDEDCDC),
+                                      ? KBlockColors.greenThemeColor
+                                      : KBlockColors.tabUnselectedBackground,
                                   borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(10),
                                       topRight: Radius.circular(10))),
@@ -72,7 +81,8 @@ class _AdBlockerTabState extends State<AdBlockerTab>
                                       fontSize: 12,
                                       color: _selectedIndex == index
                                           ? Colors.white
-                                          : Color(0xFF9C9B98),
+                                          : KBlockColors
+                                              .tabUnselectedForeground,
                                       fontWeight: _selectedIndex == index
                                           ? FontWeight.w900
                                           : FontWeight.normal),
@@ -103,15 +113,19 @@ class _AdBlockerTabState extends State<AdBlockerTab>
 Widget _adBlockerTabBarViewData(
     BuildContext context, String numBlocks, String dataCommSav) {
   final containerDecoration = BoxDecoration(
-      color: Color(0xFFF5F5F5),
+      color: KBlockColors.lightGray,
       borderRadius: BorderRadius.circular(20),
-      border: Border.all(width: 1, color: Color(0xFFDEDCDC)),
+      border: Border.all(width: 1, color: KBlockColors.tabUnselectedBackground),
       boxShadow: const [
-        BoxShadow(color: Color(0x16000000), blurRadius: 6, offset: Offset(0, 3))
+        BoxShadow(
+            color: KBlockColors.boxShadow, blurRadius: 6, offset: Offset(0, 3))
       ]);
   const dataTextStyle = TextStyle(
-      color: Color(0xFF494848), fontSize: 28, fontWeight: FontWeight.w800);
-  const titleTextStyle = TextStyle(color: Color(0xFF494848), fontSize: 13);
+      color: KBlockColors.foregroundColor,
+      fontSize: 28,
+      fontWeight: FontWeight.w800);
+  const titleTextStyle =
+      TextStyle(color: KBlockColors.foregroundColor, fontSize: 13);
 
   return Row(children: [
     Expanded(
@@ -130,10 +144,10 @@ Widget _adBlockerTabBarViewData(
                     style: dataTextStyle,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    'ブロック数',
+                    AppLocalizations.of(context)!.num_of_blocks,
                     style: titleTextStyle,
                   ),
                 )
@@ -155,13 +169,15 @@ Widget _adBlockerTabBarViewData(
                   child: Text(
                     dataCommSav,
                     style: dataTextStyle,
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 10),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    'データ通信節約量',
+                    AppLocalizations.of(context)!.data_comm_sav,
                     style: titleTextStyle,
+                    textAlign: TextAlign.center,
                   ),
                 )
               ],

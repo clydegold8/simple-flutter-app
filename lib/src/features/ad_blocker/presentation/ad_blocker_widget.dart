@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:k_block_app/src/constants/colors.dart';
 
 import 'ad_blocker_tab.dart';
 
 Widget adBlockerWidget(BuildContext context) {
   return Column(children: [
     Container(
-      color: Color(0xFF89D68C),
-      child: const Padding(
-        padding: EdgeInsets.only(top: 15, bottom: 13),
+      color: KBlockColors.greenLight,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 15, bottom: 13),
         child: Center(
-            child: Text('広告ブロック停止中',
-                style: TextStyle(
+            child: Text(AppLocalizations.of(context)!.ad_block_suspended,
+                style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF494848)))),
+                    color: KBlockColors.foregroundColor))),
       ),
     ),
     Expanded(
@@ -27,8 +29,8 @@ Widget adBlockerWidget(BuildContext context) {
 
 Widget _adBlockingWidget(BuildContext context) {
   final adBlockerButtonStyle = OutlinedButton.styleFrom(
-      foregroundColor: Color(0xFFFF612A),
-      side: const BorderSide(color: Color(0xFFFF612A)),
+      foregroundColor: KBlockColors.buttonPositiveBackground,
+      side: const BorderSide(color: KBlockColors.buttonPositiveBackground),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)));
 
   return Container(
@@ -37,7 +39,10 @@ Widget _adBlockingWidget(BuildContext context) {
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFFBDEFBF), Color(0x34B3E2B5)])),
+            colors: [
+          KBlockColors.adBlockerGradient1,
+          KBlockColors.adBlockerGradient2
+        ])),
     child: FractionallySizedBox(
       heightFactor: 0.85,
       widthFactor: 0.75,
@@ -47,7 +52,9 @@ Widget _adBlockingWidget(BuildContext context) {
             color: Colors.white,
             boxShadow: const [
               BoxShadow(
-                  color: Color(0x16000000), blurRadius: 6, offset: Offset(0, 3))
+                  color: KBlockColors.boxShadow,
+                  blurRadius: 6,
+                  offset: Offset(0, 3))
             ],
           ),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -57,7 +64,8 @@ Widget _adBlockingWidget(BuildContext context) {
               child: OutlinedButton(
                 onPressed: () {},
                 style: adBlockerButtonStyle,
-                child: Text('ブラウザのみで広告ブロック'),
+                child:
+                    Text(AppLocalizations.of(context)!.ad_block_browser_only),
               ),
             ),
             Padding(
@@ -65,7 +73,8 @@ Widget _adBlockingWidget(BuildContext context) {
               child: OutlinedButton(
                   onPressed: () {},
                   style: adBlockerButtonStyle,
-                  child: Text('アプリとブラウザで広告ブロック')),
+                  child:
+                      Text(AppLocalizations.of(context)!.ad_block_apps_block)),
             )
           ])),
     ),

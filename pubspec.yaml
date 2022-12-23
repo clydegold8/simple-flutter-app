@@ -91,6 +91,7 @@ flutter:
     - assets/icons/others.svg
     - assets/icons/others_selected.svg
     - assets/icons/logo_kblock.svg
+    - assets/icons/help.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
