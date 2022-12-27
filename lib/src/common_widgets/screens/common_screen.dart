@@ -1,33 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:k_block_app/src/common_widgets/common_menu.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-import 'package:k_block_app/src/common_widgets/common_menu.dart';
+import '../../constants/providers.dart';
 
 @WidgetbookUseCase(name: 'CommonScreen', type: CommonScreen)
 Widget commonScreenUseCase(BuildContext context) => const CommonScreen();
 
-class CommonScreen extends StatefulWidget {
+class CommonScreen extends ConsumerWidget {
   const CommonScreen({super.key});
 
   @override
-  State<CommonScreen> createState() => _CommonScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
 
-class _CommonScreenState extends State<CommonScreen> {
-  int _selectedIndex = 0;
+    return Consumer(
+      builder: (context, ref, _) {
+        final selectedIndex = ref.watch(widgetPathProvider);
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+        checkIndex(int selectedIndex){
+          if(selectedIndex == 4 || selectedIndex == 5){
+            return 1;
+          }else{
+            return selectedIndex;
+          }
+        }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: CommonMenu.generateBottomNavigationBar(
-          context, _selectedIndex, _onItemTapped),
+        int validatedIndex = checkIndex(selectedIndex);
+        return Scaffold(
+          body: widgetOptions.elementAt(selectedIndex),
+          bottomNavigationBar: CommonMenu.generateBottomNavigationBar(
+              context, validatedIndex, ref),
+        );
+      },
     );
   }
 }
+
