@@ -7,24 +7,25 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/app.dart';
 import 'package:k_block_app/src/common_widgets/common_menu.dart';
 import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dart';
 import 'package:k_block_app/src/common_widgets/screens/common_screen.dart';
 import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
 import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/constants/providers.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
-import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist_state.dart';
 import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management/presentation/data_traffic_limit.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
-import 'package:k_block_app/src/features/blacklist/presentation/blacklist_state.dart';
+import 'package:k_block_app/src/features/blacklist/presentation/blacklist_widget.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form_state.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form_widget.dart';
 import 'package:k_block_app/src/features/whitelist/presentation/whitelist.dart';
-import 'package:k_block_app/src/features/whitelist/presentation/whitelist_state.dart';
+import 'package:k_block_app/src/features/whitelist/presentation/whitelist_widget.dart';
 import 'package:k_block_app/src/routing/router.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -80,6 +81,27 @@ class HotReload extends StatelessWidget {
                   ],
                 ),
                 WidgetbookFolder(
+                  name: 'blacklist',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [
+                        WidgetbookComponent(
+                          name: 'BlackList',
+                          useCases: [
+                            WidgetbookUseCase(
+                              name: 'BlackListPage',
+                              builder: (context) => blackListUseCase(context),
+                            ),
+                          ],
+                        ),
+                      ],
+                      folders: [],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
                   name: 'app_management',
                   widgets: [],
                   folders: [
@@ -93,27 +115,6 @@ class HotReload extends StatelessWidget {
                               name: 'App Individual Settings',
                               builder: (context) =>
                                   appIndividualSettingsUseCase(context),
-                            ),
-                          ],
-                        ),
-                      ],
-                      folders: [],
-                    ),
-                  ],
-                ),
-                WidgetbookFolder(
-                  name: 'blacklist',
-                  widgets: [],
-                  folders: [
-                    WidgetbookFolder(
-                      name: 'presentation',
-                      widgets: [
-                        WidgetbookComponent(
-                          name: 'BlackList',
-                          useCases: [
-                            WidgetbookUseCase(
-                              name: 'BlackListPage',
-                              builder: (context) => blackListUseCase(context),
                             ),
                           ],
                         ),

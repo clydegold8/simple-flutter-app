@@ -21,7 +21,7 @@
     "cancel": "Cancel",
     "ok": "OK",
     "block_management": "Block management",
-    "browser_management": "Block management",
+    "browser_management": "Browser management",
     "whitelist": "Whitelist",
     "register_pages_to_not_block": "Register web pages you don't want to block",
     "blacklist": "Blacklist",

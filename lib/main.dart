@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/app.dart';
 
 void main() {
-  runApp(const KBlockApp());
+  runApp(const ProviderScope(child: KBlockApp()));
 }
