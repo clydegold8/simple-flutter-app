@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/features/forgot_password/presentation/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:io' show Platform;
 
 import '../../../constants/routes.dart';
 
@@ -104,7 +105,11 @@ Widget loginFormWidget(BuildContext context, formKey) {
               child: Center(
                 child: OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeRoute);
+                    if (Platform.isIOS) {
+                      Navigator.pushNamed(context, Routes.initialPopupIOSRoute);
+                    } else {
+                      Navigator.pushNamed(context, Routes.homeRoute);
+                    }
                   },
                   style: OutlinedButton.styleFrom(
                       foregroundColor: KBlockColors.text01,
@@ -115,17 +120,13 @@ Widget loginFormWidget(BuildContext context, formKey) {
                         borderRadius: BorderRadius.circular(40.0),
                       )),
                   child: SizedBox(
-                    height: 55.0,
-                    child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 14, 0, 12),
-                        child: SizedBox(
-                            width: double.infinity,
-                            child: Text(
-                                AppLocalizations.of(context)?.login ?? 'ログイン',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.white, fontSize: 16)))),
-                  ),
+                      height: 55.0,
+                      child: Center(
+                          child: Text(
+                              AppLocalizations.of(context)?.login ?? 'ログイン',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: KBlockColors.white, fontSize: 16)))),
                 ),
               ),
             ),

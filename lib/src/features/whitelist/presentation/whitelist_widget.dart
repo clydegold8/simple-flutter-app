@@ -8,8 +8,8 @@ import '../../../constants/providers.dart';
 
 Widget whitelistWidget(BuildContext context, WidgetRef ref) {
   String whitelistText = AppLocalizations.of(context)?.whitelist != null
-        ? AppLocalizations.of(context)!.whitelist
-        : 'ホワイトリスト';
+      ? AppLocalizations.of(context)!.whitelist
+      : 'ホワイトリスト';
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
@@ -37,16 +37,22 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
     body: Column(
       children: [
         Text(whitelistText,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: KBlockColors.text01,
-          ))
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: KBlockColors.text01,
+            ))
       ],
     ),
     floatingActionButton: FloatingActionButton(
-        onPressed: () { addWhitelist(context); },
-        tooltip: whitelistText,
-        backgroundColor: KBlockColors.greenThemeColor,
-        child: const Icon(Icons.add, size: 35.0,),
-      ),);
+      onPressed: () {
+        addWhitelist(context);
+      },
+      tooltip: whitelistText,
+      backgroundColor: KBlockColors.greenThemeColor,
+      child: const Icon(
+        Icons.add,
+        size: 35.0,
+      ),
+    ),
+  );
 }

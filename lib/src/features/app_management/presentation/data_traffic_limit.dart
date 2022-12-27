@@ -15,7 +15,7 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
         child: Text(
             AppLocalizations.of(context)?.set_data_traffic ?? 'データ通信量の上限の設定',
             style: const TextStyle(
-                color: KBlockColors.text02,
+                color: KBlockColors.foregroundColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w800))),
     children: [
