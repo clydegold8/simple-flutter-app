@@ -37,187 +37,188 @@ Widget initialPopupIOSWidget(BuildContext context) {
       : '設定する';
 
   return Scaffold(
-    backgroundColor: KBlockColors.white,
-    body: Column(
-      children: [
-        Padding(
-            padding: const EdgeInsets.fromLTRB(25, 30, 20, 0),
-            child: Center(
-              child: Text(howToSafari,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: KBlockColors.foregroundColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
-                  )),
-            )),
-        Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-            child: Center(
-              child: SizedBox(
-                  width: 35.0,
-                  height: 2.0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: KBlockColors.greenThemeColor,
-                      border: Border.all(
-                        width: 8,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  )),
-            )),
-        Padding(
-            padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
-            child: Center(
-              child: SizedBox(
-                width: 350.0,
-                child: Container(
-                    color: KBlockColors.lightGray,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            requestText,
-                            style: const TextStyle(
-                              color: KBlockColors.foregroundColor,
-                              fontSize: 15,
-                            ),
+      backgroundColor: KBlockColors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+                padding: const EdgeInsets.fromLTRB(25, 30, 20, 0),
+                child: Center(
+                  child: Text(howToSafari,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: KBlockColors.foregroundColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      )),
+                )),
+            Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                child: Center(
+                  child: SizedBox(
+                      width: 35.0,
+                      height: 2.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: KBlockColors.greenThemeColor,
+                          border: Border.all(
+                            width: 8,
                           ),
-                          Text(
-                            requestSubText,
-                            style: const TextStyle(
-                              color: KBlockColors.foregroundColor,
-                              fontSize: 15,
-                            ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      )),
+                )),
+            Padding(
+                padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+                child: Center(
+                  child: SizedBox(
+                    width: 350.0,
+                    child: Container(
+                        color: KBlockColors.lightGray,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                requestText,
+                                style: const TextStyle(
+                                  color: KBlockColors.foregroundColor,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              Text(
+                                requestSubText,
+                                style: const TextStyle(
+                                  color: KBlockColors.foregroundColor,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    )),
-              ),
-            )),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-          child: SizedBox(
-            width: 350.0,
-            child: SizedBox(
-                child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
-                    child: RichText(
-                      text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: instruction1A,
-                            ),
-                            WidgetSpan(
-                                child: Image.asset(
-                              'assets/icons/ios_setting.png',
-                            )),
-                            TextSpan(
-                              text: instruction1B,
-                            ),
-                          ],
-                          style: const TextStyle(
-                            color: KBlockColors.text02,
-                            fontSize: 15,
-                          )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
-                    child: RichText(
-                      text: TextSpan(
-                          children: [
-                            const TextSpan(
-                              text: '2. ',
-                              style: TextStyle(color: KBlockColors.text02),
-                            ),
-                            WidgetSpan(
-                                child: Image.asset(
-                              'assets/icons/safari.png',
-                            )),
-                            TextSpan(
-                              text: instruction2,
-                              style:
-                                  const TextStyle(color: KBlockColors.text02),
-                            ),
-                          ],
-                          style: const TextStyle(
-                            color: KBlockColors.text02,
-                            fontSize: 15,
-                          )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
-                    child: Text(instruction3,
-                        style: const TextStyle(
-                          color: KBlockColors.text02,
-                          fontSize: 15,
                         )),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
-                    child: RichText(
-                      text: TextSpan(
-                          children: [
-                            const TextSpan(
-                              text: '4. ',
-                            ),
-                            WidgetSpan(
-                                child: SvgPicture.asset(
-                                    'assets/icons/app_logo_empty.svg')),
-                            TextSpan(
-                              text: instruction4,
-                            ),
-                            WidgetSpan(
-                                child: SvgPicture.asset(
-                                    'assets/icons/switch_on.svg')),
-                          ],
-                          style: const TextStyle(
-                            color: KBlockColors.text02,
-                            fontSize: 15,
-                          )),
+                )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: SizedBox(
+                width: 350.0,
+                child: SizedBox(
+                    child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: RichText(
+                          text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: instruction1A,
+                                ),
+                                WidgetSpan(
+                                    child: Image.asset(
+                                  'assets/icons/ios_setting.png',
+                                )),
+                                TextSpan(
+                                  text: instruction1B,
+                                ),
+                              ],
+                              style: const TextStyle(
+                                color: KBlockColors.text02,
+                                fontSize: 15,
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: RichText(
+                          text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: '2. ',
+                                  style: TextStyle(color: KBlockColors.text02),
+                                ),
+                                WidgetSpan(
+                                    child: Image.asset(
+                                  'assets/icons/safari.png',
+                                )),
+                                TextSpan(
+                                  text: instruction2,
+                                  style: const TextStyle(
+                                      color: KBlockColors.text02),
+                                ),
+                              ],
+                              style: const TextStyle(
+                                color: KBlockColors.text02,
+                                fontSize: 15,
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: Text(instruction3,
+                            style: const TextStyle(
+                              color: KBlockColors.text02,
+                              fontSize: 15,
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: RichText(
+                          text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: '4. ',
+                                ),
+                                WidgetSpan(
+                                    child: SvgPicture.asset(
+                                        'assets/icons/app_logo_empty.svg')),
+                                TextSpan(
+                                  text: instruction4,
+                                ),
+                                WidgetSpan(
+                                    child: SvgPicture.asset(
+                                        'assets/icons/switch_on.svg')),
+                              ],
+                              style: const TextStyle(
+                                color: KBlockColors.text02,
+                                fontSize: 15,
+                              )),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: Text(instruction5,
+                            style: const TextStyle(
+                                color: KBlockColors.text02, fontSize: 16)),
+                      )
+                    ],
+                  ),
+                )),
+              ),
+            ),
+            Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                child: Center(
+                  child: SizedBox(
+                    height: 50,
+                    width: 300,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.homeRoute);
+                      },
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: KBlockColors.greenThemeColor,
+                        foregroundColor: KBlockColors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                      child: Text(setupLabel),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
-                    child: Text(instruction5,
-                        style: const TextStyle(
-                            color: KBlockColors.text02, fontSize: 16)),
-                  )
-                ],
-              ),
-            )),
-          ),
+                )),
+          ],
         ),
-        Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-            child: Center(
-              child: SizedBox(
-                height: 50,
-                width: 300,
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeRoute);
-                  },
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: KBlockColors.greenThemeColor,
-                    foregroundColor: KBlockColors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                  ),
-                  child: Text(setupLabel),
-                ),
-              ),
-            )),
-      ],
-    ),
-  );
+      ));
 }
