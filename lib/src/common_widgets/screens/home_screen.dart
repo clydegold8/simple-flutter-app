@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
+import 'package:flutter_svg/svg.dart';
+
+import 'package:k_block_app/src/features/ad_blocker/presentation/ad_blocker.dart';
 
 @WidgetbookUseCase(name: 'HomeScreen', type: HomeScreen)
 Widget homeScreenUseCase(BuildContext context) => const HomeScreen();
@@ -9,6 +12,25 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('TODO: Home Screen');
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(66),
+        child: AppBar(
+          title: SizedBox(
+              height: 16,
+              child: SvgPicture.asset('assets/icons/logo_kblock.svg')),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 21),
+              child: SvgPicture.asset('assets/icons/help.svg'),
+            )
+          ],
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+        ),
+      ),
+      body: const AdBlocker(),
+    );
   }
 }
