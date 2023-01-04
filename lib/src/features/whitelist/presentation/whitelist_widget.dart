@@ -7,9 +7,7 @@ import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 
 Widget whitelistWidget(BuildContext context, WidgetRef ref) {
-  String whitelistText = AppLocalizations.of(context)?.whitelist != null
-      ? AppLocalizations.of(context)!.whitelist
-      : 'ホワイトリスト';
+  String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,

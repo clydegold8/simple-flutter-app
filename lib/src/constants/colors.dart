@@ -21,4 +21,5 @@ class KBlockColors {
   static const Color boxShadow = Color(0x16000000);
   static const Color tabUnselectedBackground = Color(0xFFDEDCDC);
   static const Color tabUnselectedForeground = Color(0xFF9C9B98);
+  static const Color homePageBackGroundColor = Color(0xFFEAEAEA);
 }
