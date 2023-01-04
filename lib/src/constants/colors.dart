@@ -15,4 +15,11 @@ class KBlockColors {
   static const Color borderSide = Color(0xFF898989);
   static const Color disabledTheme = Color(0xFFA2A2A2);
   static const Color disabledFontTheme = Color(0xFFCECECE);
+  static const Color greenLight = Color(0xFF89D68C);
+  static const Color adBlockerGradient1 = Color(0xFFBDEFBF);
+  static const Color adBlockerGradient2 = Color(0x34B3E2B5);
+  static const Color boxShadow = Color(0x16000000);
+  static const Color tabUnselectedBackground = Color(0xFFDEDCDC);
+  static const Color tabUnselectedForeground = Color(0xFF9C9B98);
+  static const Color homePageBackGroundColor = Color(0xFFEAEAEA);
 }

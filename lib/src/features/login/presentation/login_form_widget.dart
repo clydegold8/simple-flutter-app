@@ -40,6 +40,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
               child: TextField(
                   style: const TextStyle(height: 2),
                   decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
+                      borderRadius: BorderRadius.circular(40.0),
+                    ),
                     filled: true,
                     fillColor: KBlockColors.white,
                     border: OutlineInputBorder(
@@ -47,7 +51,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                     ),
                     isDense: true,
                     contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 15.0),
+                        vertical: 10, horizontal: 25.0),
                   )),
             ),
             // password field
@@ -55,9 +59,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Center(
                 child: Text(
-                    AppLocalizations.of(context)?.password != null
-                        ? AppLocalizations.of(context)!.password
-                        : 'パスワード',
+                    AppLocalizations.of(context)?.password ?? 'パスワード',
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -70,6 +72,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
               child: TextField(
                 style: const TextStyle(height: 2),
                 decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
+                    borderRadius: BorderRadius.circular(40.0),
+                  ),
                   filled: true,
                   fillColor: KBlockColors.white,
                   border: OutlineInputBorder(
@@ -77,7 +83,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                   ),
                   isDense: true,
                   contentPadding: const EdgeInsets.symmetric(
-                      vertical: 10, horizontal: 15.0),
+                      vertical: 10, horizontal: 25.0),
                 ),
               ),
             ),
@@ -120,17 +126,13 @@ Widget loginFormWidget(BuildContext context, formKey) {
                         borderRadius: BorderRadius.circular(40.0),
                       )),
                   child: SizedBox(
-                    height: 55.0,
-                    child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 14, 0, 12),
-                        child: SizedBox(
-                            width: double.infinity,
-                            child: Text(
-                                AppLocalizations.of(context)?.login ?? 'ログイン',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.white, fontSize: 16)))),
-                  ),
+                      height: 55.0,
+                      child: Center(
+                          child: Text(
+                              AppLocalizations.of(context)?.login ?? 'ログイン',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: KBlockColors.white, fontSize: 16)))),
                 ),
               ),
             ),
