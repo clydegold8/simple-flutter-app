@@ -16,13 +16,12 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       title: Center(
-          child: Text(AppLocalizations.of(context)?.blacklist != null
-              ? AppLocalizations.of(context)!.blacklist
-              : 'ブラックリスト',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16
-            ))),
+          child: Text(
+              AppLocalizations.of(context)?.blacklist != null
+                  ? AppLocalizations.of(context)!.blacklist
+                  : 'ブラックリスト',
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
       actions: [
         IconButton(
           onPressed: () {
