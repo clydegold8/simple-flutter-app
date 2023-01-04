@@ -18,7 +18,7 @@ import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/features/ad_blocker/presentation/ad_blocker.dart';
-import 'package:k_block_app/src/features/ad_blocker/presentation/ad_blocker_state.dart';
+import 'package:k_block_app/src/features/ad_blocker/presentation/ad_blocker_widget.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
 import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management/presentation/data_traffic_limit.dart';
