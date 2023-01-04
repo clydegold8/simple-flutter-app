@@ -13,14 +13,15 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
       automaticallyImplyLeading: false,
       leading: IconButton(
           onPressed: () => ref.read(widgetPathProvider.notifier).state = 1,
-          icon: const Icon(Icons.arrow_back_ios, size: 30)),
+          icon: const Icon(Icons.arrow_back_ios, size: 25)),
       title: Center(
         child: Text(
           whitelistText,
           style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16
-          ),),
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+              color: KBlockColors.foregroundColor),
+        ),
       ),
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
