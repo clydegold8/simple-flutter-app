@@ -18,11 +18,8 @@ class _AdBlockerTabState extends State<AdBlockerTab>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(
-        initialIndex: _selectedIndex,
-        animationDuration: Duration.zero,
-        vsync: this,
-        length: 5);
+    _tabController =
+        TabController(initialIndex: _selectedIndex, vsync: this, length: 5);
   }
 
   @override
@@ -97,13 +94,16 @@ class _AdBlockerTabState extends State<AdBlockerTab>
           ),
         ),
         Expanded(
-          child: TabBarView(controller: _tabController, children: [
-            _adBlockerTabBarViewData(context, '3500', '60MB'),
-            _adBlockerTabBarViewData(context, '4800', '80MB'),
-            _adBlockerTabBarViewData(context, '25000', '80MB'),
-            _adBlockerTabBarViewData(context, '10万', '480MB'),
-            _adBlockerTabBarViewData(context, '60万', '2GB')
-          ]),
+          child: TabBarView(
+              controller: _tabController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                _adBlockerTabBarViewData(context, '3500', '60MB'),
+                _adBlockerTabBarViewData(context, '4800', '80MB'),
+                _adBlockerTabBarViewData(context, '25000', '80MB'),
+                _adBlockerTabBarViewData(context, '10万', '480MB'),
+                _adBlockerTabBarViewData(context, '60万', '2GB')
+              ]),
         )
       ],
     );
@@ -127,62 +127,65 @@ Widget _adBlockerTabBarViewData(
   const titleTextStyle =
       TextStyle(color: KBlockColors.foregroundColor, fontSize: 13);
 
-  return Row(children: [
-    Expanded(
-      child: FractionallySizedBox(
-        widthFactor: 0.85,
-        child: Container(
-            margin: const EdgeInsets.only(left: 10),
-            height: 127,
-            decoration: containerDecoration,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 25),
-                  child: Text(
-                    numBlocks,
-                    style: dataTextStyle,
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 10),
+    child: Row(children: [
+      Expanded(
+        child: FractionallySizedBox(
+          widthFactor: 0.85,
+          child: Container(
+              margin: const EdgeInsets.only(left: 10),
+              height: 127,
+              decoration: containerDecoration,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 25),
+                    child: Text(
+                      numBlocks,
+                      style: dataTextStyle,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Text(
-                    AppLocalizations.of(context)?.num_of_blocks ?? 'ブロック数',
-                    style: titleTextStyle,
-                  ),
-                )
-              ],
-            )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      AppLocalizations.of(context)?.num_of_blocks ?? 'ブロック数',
+                      style: titleTextStyle,
+                    ),
+                  )
+                ],
+              )),
+        ),
       ),
-    ),
-    Expanded(
-      child: FractionallySizedBox(
-        widthFactor: 0.85,
-        child: Container(
-            margin: const EdgeInsets.only(right: 10),
-            height: 127,
-            decoration: containerDecoration,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 25),
-                  child: Text(
-                    dataCommSav,
-                    style: dataTextStyle,
-                    textAlign: TextAlign.center,
+      Expanded(
+        child: FractionallySizedBox(
+          widthFactor: 0.85,
+          child: Container(
+              margin: const EdgeInsets.only(right: 10),
+              height: 127,
+              decoration: containerDecoration,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 25),
+                    child: Text(
+                      dataCommSav,
+                      style: dataTextStyle,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Text(
-                    AppLocalizations.of(context)?.data_comm_sav ?? 'データ通信節約量',
-                    style: titleTextStyle,
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
-            )),
-      ),
-    )
-  ]);
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      AppLocalizations.of(context)?.data_comm_sav ?? 'データ通信節約量',
+                      style: titleTextStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+                ],
+              )),
+        ),
+      )
+    ]),
+  );
 }
