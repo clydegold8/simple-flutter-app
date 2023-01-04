@@ -12,7 +12,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
       automaticallyImplyLeading: false,
       leading: IconButton(
           onPressed: () => ref.read(widgetPathProvider.notifier).state = 1,
-          icon: const Icon(Icons.arrow_back_ios, size: 30)),
+          icon: const Icon(Icons.arrow_back_ios, size: 25)),
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       title: Center(

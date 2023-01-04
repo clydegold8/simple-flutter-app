@@ -22,7 +22,9 @@ class BlockManagementMenu extends ConsumerWidget {
         foregroundColor: KBlockColors.foregroundColor,
         title: Center(
             child: Text(
-                AppLocalizations.of(context)?.block_management ?? 'ブロック管理')),
+                AppLocalizations.of(context)?.block_management ?? 'ブロック管理',
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 16))),
         automaticallyImplyLeading: false,
       ),
       body: ListView(
