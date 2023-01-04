@@ -18,11 +18,8 @@ class _AdBlockerTabState extends State<AdBlockerTab>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(
-        initialIndex: _selectedIndex,
-        animationDuration: Duration.zero,
-        vsync: this,
-        length: 5);
+    _tabController =
+        TabController(initialIndex: _selectedIndex, vsync: this, length: 5);
   }
 
   @override
@@ -97,13 +94,16 @@ class _AdBlockerTabState extends State<AdBlockerTab>
           ),
         ),
         Expanded(
-          child: TabBarView(controller: _tabController, children: [
-            _adBlockerTabBarViewData(context, '3500', '60MB'),
-            _adBlockerTabBarViewData(context, '4800', '80MB'),
-            _adBlockerTabBarViewData(context, '25000', '80MB'),
-            _adBlockerTabBarViewData(context, '10万', '480MB'),
-            _adBlockerTabBarViewData(context, '60万', '2GB')
-          ]),
+          child: TabBarView(
+              controller: _tabController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                _adBlockerTabBarViewData(context, '3500', '60MB'),
+                _adBlockerTabBarViewData(context, '4800', '80MB'),
+                _adBlockerTabBarViewData(context, '25000', '80MB'),
+                _adBlockerTabBarViewData(context, '10万', '480MB'),
+                _adBlockerTabBarViewData(context, '60万', '2GB')
+              ]),
         )
       ],
     );
