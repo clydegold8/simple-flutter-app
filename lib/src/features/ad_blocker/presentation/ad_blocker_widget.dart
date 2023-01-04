@@ -15,14 +15,16 @@ Widget adBlockerWidget(BuildContext context) {
                 AppLocalizations.of(context)?.ad_block_suspended ?? '広告ブロック停止中',
                 style: const TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                     color: KBlockColors.foregroundColor))),
       ),
     ),
     Expanded(
+      flex: 6,
       child: _adBlockingWidget(context),
     ),
     const Expanded(
+      flex: 5,
       child: AdBlockerTab(),
     )
   ]);
@@ -33,6 +35,7 @@ Widget _adBlockingWidget(BuildContext context) {
       foregroundColor: KBlockColors.buttonPositiveBackground,
       side: const BorderSide(color: KBlockColors.buttonPositiveBackground),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)));
+  const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
 
   return Container(
     width: double.infinity,
@@ -67,7 +70,8 @@ Widget _adBlockingWidget(BuildContext context) {
                 style: adBlockerButtonStyle,
                 child: Text(
                     AppLocalizations.of(context)?.ad_block_browser_only ??
-                        'ブラウザのみで広告ブロック'),
+                        'ブラウザのみで広告ブロック',
+                    style: adBlockerButtonTextStyle),
               ),
             ),
             Padding(
@@ -77,7 +81,8 @@ Widget _adBlockingWidget(BuildContext context) {
                   style: adBlockerButtonStyle,
                   child: Text(
                       AppLocalizations.of(context)?.ad_block_apps_block ??
-                          'アプリとブラウザで広告ブロック')),
+                          'アプリとブラウザで広告ブロック',
+                      style: adBlockerButtonTextStyle)),
             )
           ])),
     ),
