@@ -11,7 +11,8 @@ Widget adBlockerWidget(BuildContext context) {
       child: Padding(
         padding: const EdgeInsets.only(top: 15, bottom: 13),
         child: Center(
-            child: Text(AppLocalizations.of(context)!.ad_block_suspended,
+            child: Text(
+                AppLocalizations.of(context)?.ad_block_suspended ?? '広告ブロック停止中',
                 style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -64,8 +65,9 @@ Widget _adBlockingWidget(BuildContext context) {
               child: OutlinedButton(
                 onPressed: () {},
                 style: adBlockerButtonStyle,
-                child:
-                    Text(AppLocalizations.of(context)!.ad_block_browser_only),
+                child: Text(
+                    AppLocalizations.of(context)?.ad_block_browser_only ??
+                        'ブラウザのみで広告ブロック'),
               ),
             ),
             Padding(
@@ -73,8 +75,9 @@ Widget _adBlockingWidget(BuildContext context) {
               child: OutlinedButton(
                   onPressed: () {},
                   style: adBlockerButtonStyle,
-                  child:
-                      Text(AppLocalizations.of(context)!.ad_block_apps_block)),
+                  child: Text(
+                      AppLocalizations.of(context)?.ad_block_apps_block ??
+                          'アプリとブラウザで広告ブロック')),
             )
           ])),
     ),

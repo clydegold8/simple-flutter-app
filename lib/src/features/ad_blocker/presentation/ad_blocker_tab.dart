@@ -34,11 +34,11 @@ class _AdBlockerTabState extends State<AdBlockerTab>
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      AppLocalizations.of(context)!.tab_24_hours,
-      AppLocalizations.of(context)!.tab_last_day,
-      AppLocalizations.of(context)!.tab_1_week,
-      AppLocalizations.of(context)!.tab_1_month,
-      AppLocalizations.of(context)!.tab_6_months
+      AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
+      AppLocalizations.of(context)?.tab_last_day ?? '前日',
+      AppLocalizations.of(context)?.tab_1_week ?? '1週間',
+      AppLocalizations.of(context)?.tab_1_month ?? '1ヶ月',
+      AppLocalizations.of(context)?.tab_6_months ?? '6ヶ月'
     ];
 
     return Column(
@@ -147,7 +147,7 @@ Widget _adBlockerTabBarViewData(
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    AppLocalizations.of(context)!.num_of_blocks,
+                    AppLocalizations.of(context)?.num_of_blocks ?? 'ブロック数',
                     style: titleTextStyle,
                   ),
                 )
@@ -175,7 +175,7 @@ Widget _adBlockerTabBarViewData(
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    AppLocalizations.of(context)!.data_comm_sav,
+                    AppLocalizations.of(context)?.data_comm_sav ?? 'データ通信節約量',
                     style: titleTextStyle,
                     textAlign: TextAlign.center,
                   ),

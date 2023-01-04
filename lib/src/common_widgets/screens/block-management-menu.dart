@@ -122,7 +122,7 @@ class BlockManagementMenu extends ConsumerWidget {
                           const Text('App Management Screen')),
                 );
               },
-              tileColor: const Color(0xFFFFFFFF),
+              tileColor: KBlockColors.white,
               title: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
                 child: Text(
