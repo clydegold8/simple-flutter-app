@@ -9,7 +9,48 @@ import '../../../constants/providers.dart';
 Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
   String appManagementText =
       AppLocalizations.of(context)?.app_management ?? 'アプリ管理';
-  final List<String> appNames = <String>['Facebook', 'Messenger'];
+  final List<String> appNames = <String>[
+    'グルメサイトアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ',
+    'ショッピングアプリ'
+  ];
+  final List<String> appIconUrl = <String>[
+    'assets/images/app_sample_1.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+    'assets/images/app_sample_2.png',
+  ];
+  final List<int> appDataUsage = <int>[
+    40,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+    30,
+  ];
 
   return Scaffold(
     appBar: AppBar(
@@ -34,19 +75,55 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       ],
     ),
     body: ListView.builder(
-      padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
       itemCount: appNames.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
-          height: 50,
-          color: KBlockColors.white,
-          child: Row(
-            children: [
-              Center(child: Text('Entry ${appNames[index]}')),
-              const Center(
-                child: SwitchWidget(),
-              )
-            ],
+          height: 60,
+          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          decoration: const BoxDecoration(
+              border: Border(
+                  bottom: BorderSide(
+                      width: 1, color: KBlockColors.borderLightGray))),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Row(
+              children: [
+                Expanded(
+                    flex: 3,
+                    child: Row(
+                      children: [
+                        Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Image.asset(
+                              appIconUrl[index],
+                            )),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
+                                appNames[index],
+                                style:
+                                    const TextStyle(color: KBlockColors.text02),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Text(
+                                '${appDataUsage[index]}mb',
+                                style:
+                                    const TextStyle(color: KBlockColors.text02),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )),
+                const Expanded(flex: 1, child: SwitchWidget()),
+              ],
+            ),
           ),
         );
       },
