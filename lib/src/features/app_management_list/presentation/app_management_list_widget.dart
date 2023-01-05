@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist_widget.dart';
+import 'package:k_block_app/src/common_widgets/switch.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 
 Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
-  String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
+  String appManagementText =
+      AppLocalizations.of(context)?.app_management ?? 'アプリ管理';
+  final List<String> appNames = <String>['Facebook', 'Messenger'];
+
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
       leading: IconButton(
           onPressed: () => ref.read(widgetPathProvider.notifier).state = 1,
-          icon: const Icon(Icons.arrow_back_ios, size: 30)),
+          icon: const Icon(Icons.arrow_back_ios, size: 25)),
       title: Center(
         child: Text(
-          whitelistText,
+          appManagementText,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
       ),
@@ -30,25 +33,23 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
-    body: Column(
-      children: [
-        Text(whitelistText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: KBlockColors.text01,
-            ))
-      ],
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
-        addWhitelist(context);
+    body: ListView.builder(
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+      itemCount: appNames.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 50,
+          color: KBlockColors.white,
+          child: Row(
+            children: [
+              Center(child: Text('Entry ${appNames[index]}')),
+              const Center(
+                child: SwitchWidget(),
+              )
+            ],
+          ),
+        );
       },
-      tooltip: whitelistText,
-      backgroundColor: KBlockColors.greenThemeColor,
-      child: const Icon(
-        Icons.add,
-        size: 35.0,
-      ),
     ),
   );
 }
