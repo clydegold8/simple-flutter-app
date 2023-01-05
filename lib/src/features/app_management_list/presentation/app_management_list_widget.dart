@@ -77,52 +77,62 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
     body: ListView.builder(
       itemCount: appNames.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 60,
-          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          decoration: const BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(
-                      width: 1, color: KBlockColors.borderLightGray))),
+        return InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      Text('${appNames[index]} Management Screen')),
+            );
+          },
           child: Container(
-            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-            child: Row(
-              children: [
-                Expanded(
-                    flex: 3,
-                    child: Row(
-                      children: [
-                        Container(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Image.asset(
-                              appIconUrl[index],
-                            )),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Text(
-                                appNames[index],
-                                style:
-                                    const TextStyle(color: KBlockColors.text02),
+            height: 60,
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+            decoration: const BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(
+                        width: 1, color: KBlockColors.borderLightGray))),
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              child: Row(
+                children: [
+                  Expanded(
+                      flex: 3,
+                      child: Row(
+                        children: [
+                          Container(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Image.asset(
+                                appIconUrl[index],
+                              )),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  appNames[index],
+                                  style: const TextStyle(
+                                      color: KBlockColors.text02),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Text(
-                                '${appDataUsage[index]}mb',
-                                style:
-                                    const TextStyle(color: KBlockColors.text02),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text(
+                                  '${appDataUsage[index]}mb',
+                                  style: const TextStyle(
+                                      color: KBlockColors.text02),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )),
-                const Expanded(flex: 1, child: SwitchWidget()),
-              ],
+                            ],
+                          ),
+                        ],
+                      )),
+                  const Expanded(flex: 1, child: SwitchWidget()),
+                ],
+              ),
             ),
           ),
         );
