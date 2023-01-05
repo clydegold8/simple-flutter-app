@@ -13,10 +13,9 @@ class SwitchState extends State<SwitchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 40,
       width: 40,
-      color: KBlockColors.white,
       child: Switch(
         value: switchValue,
         activeColor: KBlockColors.activeSwitch,
