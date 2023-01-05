@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
+import '../../add_blacklist/presentation/add_blacklist_widget.dart';
 
 @override
 Widget blackListWidget(BuildContext context, WidgetRef ref) {
@@ -40,7 +41,9 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
     ),
     floatingActionButton: FloatingActionButton(
       backgroundColor: KBlockColors.greenThemeColor,
-      onPressed: () {},
+      onPressed: () {
+        addBlacklist(context);
+      },
       child: const Icon(Icons.add, size: 30.0),
     ),
   );

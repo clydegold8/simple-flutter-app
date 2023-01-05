@@ -4,7 +4,7 @@ import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 import '../../../constants/colors.dart';
 
-Future<void> addWhitelist(BuildContext context) {
+Future<void> addBlacklist(BuildContext context) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -15,7 +15,7 @@ Future<void> addWhitelist(BuildContext context) {
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: KBlockColors.foregroundColor),
-                AppLocalizations.of(context)?.add_whitelist ?? 'ホワイトリスト追加')),
+                AppLocalizations.of(context)?.add_blacklist ?? 'ブラックリスト追加')),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
@@ -23,11 +23,11 @@ Future<void> addWhitelist(BuildContext context) {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(
                       style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.w400,
                           color: KBlockColors.foregroundColor),
-                      AppLocalizations.of(context)?.domain_dont_want_to_block ??
-                          'ブロックしたいドメインを入力してください')),
+                      AppLocalizations.of(context)?.domain_wish_to_block ??
+                          'ブロックしたいドメインを入力してください。')),
               Stack(
                 children: <Widget>[
                   Positioned(
@@ -83,7 +83,7 @@ Future<void> addWhitelist(BuildContext context) {
                           style: const TextStyle(height: 0),
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(fontSize: 14),
-                            hintText: 'whitelist.com',
+                            hintText: 'blacklist.com',
                             fillColor: KBlockColors.white,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(0.0),
