@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:k_block_app/src/constants/colors.dart';
 
 class AdBlockerControl extends StatefulWidget {
@@ -10,13 +12,22 @@ class AdBlockerControl extends StatefulWidget {
 }
 
 class _AdBlockerControlState extends State<AdBlockerControl> {
+  final offDownImage = SvgPicture.asset(
+    'assets/icons/off_down.svg',
+  );
+  final offRaisedImage = Image.asset('assets/images/off_raised.png');
+  final onDownImage = SvgPicture.asset(
+    'assets/icons/on_down.svg',
+  );
+  final onRaisedImage = Image.asset('assets/images/on_raised.png');
+
   bool isAdBlockerOn = false;
   bool isAdBlockerBrowserOnly = true;
   bool isAdBlockerBrowserApp = false;
 
-  void toggleAdBlockerOn() {
+  void onTapAdBlockerSwitch(bool value) {
     setState(() {
-      isAdBlockerOn = !isAdBlockerOn;
+      isAdBlockerOn = value;
     });
   }
 
@@ -66,13 +77,27 @@ class _AdBlockerControlState extends State<AdBlockerControl> {
             ),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              GestureDetector(
-                  onTap: toggleAdBlockerOn,
-                  child: Image(
-                      image: isAdBlockerOn
-                          ? const AssetImage('assets/images/ad_blocker_on.png')
-                          : const AssetImage(
-                              'assets/images/ad_blocker_off.png'))),
+              SizedBox(
+                width: 180,
+                child: Stack(alignment: Alignment.center, children: [
+                  Center(
+                      child: SvgPicture.asset(
+                          'assets/icons/ad_blocker_switch_bg.svg')),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        onTap: () => onTapAdBlockerSwitch(false),
+                        child: isAdBlockerOn ? offDownImage : offRaisedImage,
+                      ),
+                      GestureDetector(
+                        onTap: () => onTapAdBlockerSwitch(true),
+                        child: isAdBlockerOn ? onRaisedImage : onDownImage,
+                      )
+                    ],
+                  )
+                ]),
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: OutlinedButton(
