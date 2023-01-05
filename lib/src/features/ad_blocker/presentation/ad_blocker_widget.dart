@@ -26,6 +26,7 @@ Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
       child: AdBlockerControl(),
     ),
     Expanded(
+      flex: 5,
       child: adBlockerTabWidget(context, ref),
     )
   ]);
