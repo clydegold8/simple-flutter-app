@@ -1,113 +1,89 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 
-class AdBlockerTab extends StatefulWidget {
-  const AdBlockerTab({super.key});
+import '../../../constants/providers.dart';
 
-  @override
-  State<AdBlockerTab> createState() => _AdBlockerTabState();
-}
+Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
+  final selectedIndex = ref.watch(widgetHomePageTabProvider);
+  final tabs = [
+    AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
+    AppLocalizations.of(context)?.tab_last_day ?? '前日',
+    AppLocalizations.of(context)?.tab_1_week ?? '1週間',
+    AppLocalizations.of(context)?.tab_1_month ?? '1ヶ月',
+    AppLocalizations.of(context)?.tab_6_months ?? '6ヶ月'
+  ];
 
-class _AdBlockerTabState extends State<AdBlockerTab>
-    with SingleTickerProviderStateMixin {
-  int _selectedIndex = 0;
-
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController =
-        TabController(initialIndex: _selectedIndex, vsync: this, length: 5);
+  void onItemTapped(int index) {
+    ref.read(widgetHomePageTabProvider.notifier).state = index;
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tabs = [
-      AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
-      AppLocalizations.of(context)?.tab_last_day ?? '前日',
-      AppLocalizations.of(context)?.tab_1_week ?? '1週間',
-      AppLocalizations.of(context)?.tab_1_month ?? '1ヶ月',
-      AppLocalizations.of(context)?.tab_6_months ?? '6ヶ月'
-    ];
-
-    return Column(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(
-                      color: KBlockColors.greenThemeColor, width: 1))),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
-            child: Theme(
-              data: ThemeData(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent),
-              child: TabBar(
-                controller: _tabController,
-                indicatorColor: Colors.transparent,
-                indicatorPadding: EdgeInsets.zero,
-                indicatorWeight: 0.1,
-                labelPadding:
-                    const EdgeInsets.only(left: 5, right: 5, bottom: 0),
-                tabs: List.generate(
-                    tabs.length,
-                    (index) => Tab(
-                          height: 26,
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: _selectedIndex == index
-                                      ? KBlockColors.greenThemeColor
-                                      : KBlockColors.tabUnselectedBackground,
-                                  borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10))),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  tabs[index],
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: _selectedIndex == index
-                                          ? Colors.white
-                                          : KBlockColors
-                                              .tabUnselectedForeground,
-                                      fontWeight: _selectedIndex == index
-                                          ? FontWeight.w900
-                                          : FontWeight.normal),
-                                ),
-                              )),
-                        )),
-                onTap: (index) => setState(() {
-                  _selectedIndex = index;
-                }),
+  return DefaultTabController(
+      length: 5,
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(
+                        color: KBlockColors.greenThemeColor, width: 1))),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
+              child: Theme(
+                data: ThemeData(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent),
+                child: TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorPadding: EdgeInsets.zero,
+                  indicatorWeight: 0.1,
+                  labelPadding:
+                      const EdgeInsets.only(left: 5, right: 5, bottom: 0),
+                  tabs: List.generate(
+                      tabs.length,
+                      (index) => Tab(
+                            height: 26,
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: selectedIndex == index
+                                        ? KBlockColors.greenThemeColor
+                                        : KBlockColors.tabUnselectedBackground,
+                                    borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(5),
+                                        topRight: Radius.circular(5))),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    tabs[index],
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: selectedIndex == index
+                                            ? Colors.white
+                                            : KBlockColors
+                                                .tabUnselectedForeground,
+                                        fontWeight: selectedIndex == index
+                                            ? FontWeight.w900
+                                            : FontWeight.normal),
+                                  ),
+                                )),
+                          )),
+                  onTap: onItemTapped,
+                ),
               ),
             ),
           ),
-        ),
-        Expanded(
-          child: TabBarView(
-              controller: _tabController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                _adBlockerTabBarViewData(context, '3500', '60MB'),
-                _adBlockerTabBarViewData(context, '4800', '80MB'),
-                _adBlockerTabBarViewData(context, '25000', '80MB'),
-                _adBlockerTabBarViewData(context, '10万', '480MB'),
-                _adBlockerTabBarViewData(context, '60万', '2GB')
-              ]),
-        )
-      ],
-    );
-  }
+          Expanded(
+            child: TabBarView(children: [
+              _adBlockerTabBarViewData(context, '3500', '60MB'),
+              _adBlockerTabBarViewData(context, '4800', '80MB'),
+              _adBlockerTabBarViewData(context, '25000', '80MB'),
+              _adBlockerTabBarViewData(context, '10万', '480MB'),
+              _adBlockerTabBarViewData(context, '60万', '2GB')
+            ]),
+          ),
+        ],
+      ));
 }
 
 Widget _adBlockerTabBarViewData(
@@ -127,65 +103,62 @@ Widget _adBlockerTabBarViewData(
   const titleTextStyle =
       TextStyle(color: KBlockColors.foregroundColor, fontSize: 13);
 
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 10),
-    child: Row(children: [
-      Expanded(
-        child: FractionallySizedBox(
-          widthFactor: 0.85,
-          child: Container(
-              margin: const EdgeInsets.only(left: 10),
-              height: 127,
-              decoration: containerDecoration,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 25),
-                    child: Text(
-                      numBlocks,
-                      style: dataTextStyle,
-                    ),
+  return Row(children: [
+    Expanded(
+      child: FractionallySizedBox(
+        widthFactor: 0.85,
+        child: Container(
+            margin: const EdgeInsets.only(left: 10),
+            height: 127,
+            decoration: containerDecoration,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Text(
+                    numBlocks,
+                    style: dataTextStyle,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Text(
-                      AppLocalizations.of(context)?.num_of_blocks ?? 'ブロック数',
-                      style: titleTextStyle,
-                    ),
-                  )
-                ],
-              )),
-        ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    AppLocalizations.of(context)?.num_of_blocks ?? 'ブロック数',
+                    style: titleTextStyle,
+                  ),
+                )
+              ],
+            )),
       ),
-      Expanded(
-        child: FractionallySizedBox(
-          widthFactor: 0.85,
-          child: Container(
-              margin: const EdgeInsets.only(right: 10),
-              height: 127,
-              decoration: containerDecoration,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 25),
-                    child: Text(
-                      dataCommSav,
-                      style: dataTextStyle,
-                      textAlign: TextAlign.center,
-                    ),
+    ),
+    Expanded(
+      child: FractionallySizedBox(
+        widthFactor: 0.85,
+        child: Container(
+            margin: const EdgeInsets.only(right: 10),
+            height: 127,
+            decoration: containerDecoration,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Text(
+                    dataCommSav,
+                    style: dataTextStyle,
+                    textAlign: TextAlign.center,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Text(
-                      AppLocalizations.of(context)?.data_comm_sav ?? 'データ通信節約量',
-                      style: titleTextStyle,
-                      textAlign: TextAlign.center,
-                    ),
-                  )
-                ],
-              )),
-        ),
-      )
-    ]),
-  );
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    AppLocalizations.of(context)?.data_comm_sav ?? 'データ通信節約量',
+                    style: titleTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
+            )),
+      ),
+    )
+  ]);
 }
