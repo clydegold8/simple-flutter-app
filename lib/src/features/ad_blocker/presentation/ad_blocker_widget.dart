@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 
 import 'ad_blocker_control.dart';
 import 'ad_blocker_tab.dart';
 
-Widget adBlockerWidget(BuildContext context) {
+Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
   return Column(children: [
     Container(
       color: KBlockColors.greenLight,
@@ -16,7 +17,7 @@ Widget adBlockerWidget(BuildContext context) {
                 AppLocalizations.of(context)?.ad_block_suspended ?? '広告ブロック停止中',
                 style: const TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.bold,
                     color: KBlockColors.foregroundColor))),
       ),
     ),
@@ -24,9 +25,8 @@ Widget adBlockerWidget(BuildContext context) {
       flex: 6,
       child: AdBlockerControl(),
     ),
-    const Expanded(
-      flex: 5,
-      child: AdBlockerTab(),
+    Expanded(
+      child: adBlockerTabWidget(context, ref),
     )
   ]);
 }
