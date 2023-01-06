@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class BlackListItem {
   String name;
   bool isOn;
-  BlackListItem(this.name, {this.isOn = false});
+  BlackListItem(this.name, {this.isOn = true});
 }
 
 // this will handle the actions of the lists

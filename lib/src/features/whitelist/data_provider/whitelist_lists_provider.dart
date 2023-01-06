@@ -6,7 +6,7 @@ class WhiteListItem {
   String name;
   bool isOn;
 
-  WhiteListItem(this.name, {this.isOn = false});
+  WhiteListItem(this.name, {this.isOn = true});
 }
 
 // this will handle the actions of the lists
