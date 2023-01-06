@@ -7,6 +7,8 @@ class KBlockColors {
   static const Color commonMenuIconSelected = Color(0xFF38B140);
   static const Color buttonNeutralForeground = Color(0xFF666666);
   static const Color buttonPositiveBackground = Color(0xFFFF612A);
+  static const Color buttonAccentForeground = Color(0xFFF0A48E);
+  static const Color buttonAccentBackground = Color(0x15E3552B);
   static const Color lightGray = Color(0xFFF5F5F5);
   static const Color white = Color(0xFFFFFFFF);
   static const Color foregroundColor = Color(0xFF494848);
