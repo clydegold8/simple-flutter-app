@@ -42,6 +42,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
       itemCount: listWhitelist.length,
       itemBuilder: (context, index) {
         return SwitchListTile(
+          activeColor: KBlockColors.greenThemeColor,
           title: Text(listWhitelist[index].name),
           value: listWhitelist[index].isOn,
           onChanged: (bool value) {

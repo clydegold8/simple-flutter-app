@@ -36,6 +36,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
       itemCount: listBlacklist.length,
       itemBuilder: (context, index) {
         return SwitchListTile(
+          activeColor: KBlockColors.greenThemeColor,
           title: Text(listBlacklist[index].name),
           value: listBlacklist[index].isOn,
           onChanged: (bool value) {
