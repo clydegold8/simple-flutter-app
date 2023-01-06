@@ -4,9 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
+import '../../add_blacklist/presentation/add_blacklist_widget.dart';
+import '../data_provider/blacklist_list_provider.dart';
 
 @override
 Widget blackListWidget(BuildContext context, WidgetRef ref) {
+  final listBlacklist = ref.watch(blackListProvider).blacklists;
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
@@ -29,18 +32,23 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
-    body: Column(
-      children: const [
-        Text('ブラックリスト',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: KBlockColors.text01,
-            ))
-      ],
+    body:ListView.builder(
+      itemCount: listBlacklist.length,
+      itemBuilder: (context, index) {
+        return SwitchListTile(
+          title: Text(listBlacklist[index].name),
+          value: listBlacklist[index].isOn,
+          onChanged: (bool value) {
+            ref.read(blackListProvider.notifier).toggleSwitch(index, value);
+          },
+        );
+      },
     ),
     floatingActionButton: FloatingActionButton(
       backgroundColor: KBlockColors.greenThemeColor,
-      onPressed: () {},
+      onPressed: () {
+        addBlacklist(context, ref);
+      },
       child: const Icon(Icons.add, size: 30.0),
     ),
   );
