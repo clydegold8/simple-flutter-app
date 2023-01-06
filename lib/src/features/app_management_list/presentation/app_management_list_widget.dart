@@ -55,6 +55,14 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
     ref.read(appAdStatusProvider.notifier).state = [...oldState];
   }
 
+  onPressAllButton(newSwitchValue) {
+    var oldState = ref.read(appAdStatusProvider);
+    for (var i = 0; i < oldState.length; i++) {
+      oldState[i] = newSwitchValue;
+    }
+    ref.read(appAdStatusProvider.notifier).state = [...oldState];
+  }
+
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
@@ -87,9 +95,9 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
             },
             onSelected: (value) {
               if (value == 0) {
-                print("ALL ON");
+                onPressAllButton(true);
               } else if (value == 1) {
-                print("ALL OFF");
+                onPressAllButton(false);
               }
             }),
       ],
