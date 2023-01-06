@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 
+import 'ad_blocker_control.dart';
 import 'ad_blocker_tab.dart';
 
 Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
@@ -20,70 +21,13 @@ Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
                     color: KBlockColors.foregroundColor))),
       ),
     ),
-    Expanded(
-      child: _adBlockingWidget(context),
+    const Expanded(
+      flex: 6,
+      child: AdBlockerControl(),
     ),
     Expanded(
+      flex: 5,
       child: adBlockerTabWidget(context, ref),
     )
   ]);
-}
-
-Widget _adBlockingWidget(BuildContext context) {
-  final adBlockerButtonStyle = OutlinedButton.styleFrom(
-      foregroundColor: KBlockColors.buttonPositiveBackground,
-      side: const BorderSide(color: KBlockColors.buttonPositiveBackground),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)));
-
-  return Container(
-    width: double.infinity,
-    decoration: const BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-          KBlockColors.adBlockerGradient1,
-          KBlockColors.adBlockerGradient2
-        ])),
-    child: FractionallySizedBox(
-      heightFactor: 0.85,
-      widthFactor: 0.75,
-      child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
-            boxShadow: const [
-              BoxShadow(
-                  color: KBlockColors.boxShadow,
-                  blurRadius: 6,
-                  offset: Offset(0, 3))
-            ],
-          ),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: Image(width: 150, image: AssetImage('assets/images/ad_blocker_off.png')),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: OutlinedButton(
-                onPressed: () {},
-                style: adBlockerButtonStyle,
-                child: Text(
-                    AppLocalizations.of(context)?.ad_block_browser_only ??
-                        'ブラウザのみで広告ブロック'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 0),
-              child: OutlinedButton(
-                  onPressed: () {},
-                  style: adBlockerButtonStyle,
-                  child: Text(
-                      AppLocalizations.of(context)?.ad_block_apps_block ??
-                          'アプリとブラウザで広告ブロック')),
-            )
-          ])),
-    ),
-  );
 }
