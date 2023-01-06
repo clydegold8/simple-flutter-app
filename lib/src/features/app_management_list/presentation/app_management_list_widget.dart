@@ -9,6 +9,7 @@ import '../../../constants/providers.dart';
 Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
   String appManagementText =
       AppLocalizations.of(context)?.app_management ?? 'アプリ管理';
+  final statusList = ref.watch(appAdStatusProvider);
   final List<String> appNames = <String>[
     'グルメサイトアプリ',
     'ショッピングアプリ',
@@ -48,6 +49,11 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
     '2MB',
     '200KB',
   ];
+  onPressItem(index, value) {
+    var oldState = ref.read(appAdStatusProvider);
+    oldState[index] = value;
+    ref.read(appAdStatusProvider.notifier).state = [...oldState];
+  }
 
   return Scaffold(
     appBar: AppBar(
@@ -148,7 +154,13 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                           ),
                         ],
                       )),
-                  const Expanded(flex: 1, child: SwitchWidget()),
+                  Expanded(
+                      flex: 1,
+                      child: SwitchWidget(
+                        switchValue: statusList[index],
+                        index: index,
+                        updateValue: onPressItem,
+                      )),
                 ],
               ),
             ),
