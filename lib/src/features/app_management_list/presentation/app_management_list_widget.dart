@@ -64,11 +64,28 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.more_vert),
-          tooltip: 'Show Snackbar',
-          onPressed: () {},
-        ),
+        PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            position: PopupMenuPosition.under,
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem<int>(
+                  value: 0,
+                  child: Text('すべてON'),
+                ),
+                const PopupMenuItem<int>(
+                  value: 1,
+                  child: Text('すべてOFF'),
+                ),
+              ];
+            },
+            onSelected: (value) {
+              if (value == 0) {
+                print("ALL ON");
+              } else if (value == 1) {
+                print("ALL OFF");
+              }
+            }),
       ],
     ),
     body: ListView.builder(
