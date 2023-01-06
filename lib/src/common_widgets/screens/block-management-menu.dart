@@ -117,12 +117,7 @@ class BlockManagementMenu extends ConsumerWidget {
                         width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const Text('App Management Screen')),
-                );
+                ref.read(widgetPathProvider.notifier).state = 6;
               },
               tileColor: KBlockColors.white,
               title: Padding(

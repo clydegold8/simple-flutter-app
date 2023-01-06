@@ -5,6 +5,7 @@ import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dar
 import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
+import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 
 import '../constants/providers.dart';
@@ -16,16 +17,16 @@ const List<Widget> widgetOptions = <Widget>[
   Text('Others Screen'),
   AddWhitelist(),
   BlackList(),
-  Text('App management')
+  AppManagementList()
 ];
 
 class CommonMenu {
   static Widget generateBottomNavigationBar(
       BuildContext context, int selectedIndex, ref) {
-
     void onItemTapped(int index) {
       ref.read(widgetPathProvider.notifier).state = index;
     }
+
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[

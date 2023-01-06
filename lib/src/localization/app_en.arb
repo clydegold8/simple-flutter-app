@@ -46,5 +46,6 @@
     "instruction_3": "3. Open「Extensions」",
     "instruction_4": " Turn ON「K-BLOCK」",
     "instruction_5": "5. Setup Complete",
-    "setup": "Setup"
+    "setup": "Setup",
+    "app_management": "App Management"
 }
