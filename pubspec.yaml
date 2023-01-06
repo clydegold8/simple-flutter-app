@@ -82,7 +82,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/ad_blocker_off.png
+    - assets/images/off_raised.png
+    - assets/images/on_raised.png
+    - assets/icons/ad_blocker_switch_bg.svg
+    - assets/icons/off_down.svg
+    - assets/icons/on_down.svg
     - assets/icons/home.svg
     - assets/icons/home_selected.svg
     - assets/icons/block_control.svg
