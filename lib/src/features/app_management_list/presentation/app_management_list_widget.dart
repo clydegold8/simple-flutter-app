@@ -81,15 +81,36 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
         PopupMenuButton(
             icon: const Icon(Icons.more_vert),
             position: PopupMenuPosition.under,
+            offset: const Offset(0, 10),
             itemBuilder: (context) {
               return [
                 const PopupMenuItem<int>(
                   value: 0,
-                  child: Text('すべてON'),
+                  child: SizedBox(
+                    height: 20,
+                    width: 100,
+                    child: Text(
+                      'すべてON',
+                      style: TextStyle(
+                        color: KBlockColors.foregroundColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                 ),
                 const PopupMenuItem<int>(
                   value: 1,
-                  child: Text('すべてOFF'),
+                  child: SizedBox(
+                    height: 20,
+                    width: 100,
+                    child: Text(
+                      'すべてOFF',
+                      style: TextStyle(
+                        color: KBlockColors.foregroundColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                 ),
               ];
             },
@@ -118,6 +139,7 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
             height: 60,
             margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             decoration: const BoxDecoration(
+                color: KBlockColors.white,
                 border: Border(
                     bottom: BorderSide(
                         width: 1, color: KBlockColors.borderLightGray))),
