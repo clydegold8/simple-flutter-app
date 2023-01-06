@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 import '../../../constants/colors.dart';
+import '../../whitelist/data_provider/whitelist_lists_provider.dart';
 
-Future<void> addWhitelist(BuildContext context) {
+Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
+  String whiteListName = '';
+
+  addWhiteListItem(WidgetRef ref) {
+    ref
+        .read(whiteListListProvider.notifier)
+        .addWhiteList(WhiteListItem(whiteListName));
+    Navigator.pop(context);
+  }
+
   return showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -37,7 +48,7 @@ Future<void> addWhitelist(BuildContext context) {
                           alignment: Alignment.topRight,
                           child: JustTheTooltip(
                             backgroundColor:
-                                KBlockColors.tabUnselectedBackground,
+                            KBlockColors.tabUnselectedBackground,
                             borderRadius: BorderRadius.circular(0.0),
                             preferredDirection: AxisDirection.up,
                             elevation: 10.0,
@@ -63,7 +74,7 @@ Future<void> addWhitelist(BuildContext context) {
                                       fontWeight: FontWeight.w400,
                                       color: KBlockColors.foregroundColor),
                                   AppLocalizations.of(context)
-                                          ?.tooltip_content ??
+                                      ?.tooltip_content ??
                                       'https：//のあとに表示されるドメインを入力',
                                 ),
                               ),
@@ -80,7 +91,10 @@ Future<void> addWhitelist(BuildContext context) {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(5, 30, 50, 0),
                       child: TextField(
-                          style: const TextStyle(height: 0),
+                          onChanged: (value) {
+                            whiteListName = value;
+                          },
+                          style: const TextStyle(height: 1),
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(fontSize: 14),
                             hintText: 'whitelist.com',
@@ -133,7 +147,8 @@ Future<void> addWhitelist(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 28, 20),
                 child: OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () =>
+                      whiteListName != '' ? addWhiteListItem(ref) : null,
                   style: OutlinedButton.styleFrom(
                       backgroundColor: KBlockColors.buttonPositiveBackground,
                       side: const BorderSide(

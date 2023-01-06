@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
+import 'package:k_block_app/src/features/blacklist/data_provider/blacklist_list_provider.dart';
 
 import '../../../constants/colors.dart';
 
-Future<void> addBlacklist(BuildContext context) {
+Future<void> addBlacklist(BuildContext context, WidgetRef ref) {
+  String blackListName = '';
+
+  addBlackListItem(WidgetRef ref) {
+    ref
+        .read(blackListProvider.notifier)
+        .addBlackList(BlackListItem(blackListName));
+    Navigator.pop(context);
+  }
+
   return showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -81,6 +92,9 @@ Future<void> addBlacklist(BuildContext context) {
                       padding: const EdgeInsets.fromLTRB(5, 30, 50, 0),
                       child: TextField(
                           style: const TextStyle(height: 0),
+                          onChanged: (value) {
+                            blackListName = value;
+                          },
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(fontSize: 14),
                             hintText: 'blacklist.com',
@@ -133,7 +147,8 @@ Future<void> addBlacklist(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 28, 20),
                 child: OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () =>
+                      blackListName != '' ? addBlackListItem(ref) : null,
                   style: OutlinedButton.styleFrom(
                       backgroundColor: KBlockColors.buttonPositiveBackground,
                       side: const BorderSide(
