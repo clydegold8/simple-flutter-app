@@ -10,9 +10,6 @@ Widget addWhiteListUseCase(BuildContext context) => const AddWhitelist();
 class AddWhitelist extends ConsumerWidget {
   const AddWhitelist({super.key});
 
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return whitelistWidget(context, ref);
