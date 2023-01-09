@@ -5,8 +5,10 @@ import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelis
 
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
+import '../data_provider/whitelist_lists_provider.dart';
 
 Widget whitelistWidget(BuildContext context, WidgetRef ref) {
+  final listWhitelist = ref.watch(whiteListListProvider).whitelists;
   String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
   return Scaffold(
     appBar: AppBar(
@@ -29,22 +31,29 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
         IconButton(
           icon: const Icon(Icons.more_vert),
           tooltip: 'Show Snackbar',
-          onPressed: () {},
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('This is a snackbar')));
+          },
         ),
       ],
     ),
-    body: Column(
-      children: [
-        Text(whitelistText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: KBlockColors.text01,
-            ))
-      ],
+    body: ListView.builder(
+      itemCount: listWhitelist.length,
+      itemBuilder: (context, index) {
+        return SwitchListTile(
+          activeColor: KBlockColors.greenThemeColor,
+          title: Text(listWhitelist[index].name),
+          value: listWhitelist[index].isOn,
+          onChanged: (bool value) {
+            ref.read(whiteListListProvider.notifier).toggleSwitch(index, value);
+          },
+        );
+      },
     ),
     floatingActionButton: FloatingActionButton(
       onPressed: () {
-        addWhitelist(context);
+        addWhitelist(context, ref);
       },
       tooltip: whitelistText,
       backgroundColor: KBlockColors.greenThemeColor,

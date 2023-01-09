@@ -48,5 +48,10 @@
     "instruction_4": " Turn ON「K-BLOCK」",
     "instruction_5": "5. Setup Complete",
     "setup": "Setup",
-    "app_management": "App Management"
+    "add_whitelist": "Add Whitelist",
+    "domain_dont_want_to_block": "Please enter the domain that you do not want to block",
+    "tooltip_content": "https://enter the domain that appears after",
+    "add_btn": "Add",
+    "add_blacklist": "Add Blacklist",
+    "domain_wish_to_block": "Please enter the domain that you wish to block."
 }

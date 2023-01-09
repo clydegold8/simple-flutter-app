@@ -42,6 +42,7 @@ dependencies:
   url_launcher: ^6.1.7
   flutter_svg: ^1.1.6
   flutter_riverpod: ^2.1.1
+  just_the_tooltip: ^0.0.12
 
 dev_dependencies:
   flutter_test:

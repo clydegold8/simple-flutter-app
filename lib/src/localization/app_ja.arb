@@ -48,5 +48,10 @@
     "instruction_4": "「K-BLOCK」をONにする   ",
     "instruction_5": "5. 設定完了",
     "setup": "設定する",
-    "app_management": "アプリ管理"
+    "add_whitelist": "ホワイトリスト追加",
+    "domain_dont_want_to_block": "ブロックしたいドメインを入力してください",
+    "tooltip_content": "https：//のあとに表示されるドメインを入力",
+    "add_btn": "追加",
+    "add_blacklist": "ブラックリスト追加",
+    "domain_wish_to_block": "ブロックしたいドメインを入力してください。"
 }

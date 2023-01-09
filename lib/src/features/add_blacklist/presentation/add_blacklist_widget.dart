@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
+import 'package:k_block_app/src/features/blacklist/data_provider/blacklist_list_provider.dart';
 
 import '../../../constants/colors.dart';
-import '../../whitelist/data_provider/whitelist_lists_provider.dart';
 
-Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
-  String whiteListName = '';
+Future<void> addBlacklist(BuildContext context, WidgetRef ref) {
+  String blackListName = '';
 
-  addWhiteListItem(WidgetRef ref) {
+  addBlackListItem(WidgetRef ref) {
     ref
-        .read(whiteListListProvider.notifier)
-        .addWhiteList(WhiteListItem(whiteListName));
+        .read(blackListProvider.notifier)
+        .addBlackList(BlackListItem(blackListName));
     Navigator.pop(context);
   }
 
@@ -26,7 +26,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: KBlockColors.foregroundColor),
-                AppLocalizations.of(context)?.add_whitelist ?? 'ホワイトリスト追加')),
+                AppLocalizations.of(context)?.add_blacklist ?? 'ブラックリスト追加')),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
@@ -34,11 +34,11 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(
                       style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.w400,
                           color: KBlockColors.foregroundColor),
-                      AppLocalizations.of(context)?.domain_dont_want_to_block ??
-                          'ブロックしたいドメインを入力してください')),
+                      AppLocalizations.of(context)?.domain_wish_to_block ??
+                          'ブロックしたいドメインを入力してください。')),
               Stack(
                 children: <Widget>[
                   Positioned(
@@ -48,7 +48,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                           alignment: Alignment.topRight,
                           child: JustTheTooltip(
                             backgroundColor:
-                            KBlockColors.tabUnselectedBackground,
+                                KBlockColors.tabUnselectedBackground,
                             borderRadius: BorderRadius.circular(0.0),
                             preferredDirection: AxisDirection.up,
                             elevation: 10.0,
@@ -74,7 +74,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                                       fontWeight: FontWeight.w400,
                                       color: KBlockColors.foregroundColor),
                                   AppLocalizations.of(context)
-                                      ?.tooltip_content ??
+                                          ?.tooltip_content ??
                                       'https：//のあとに表示されるドメインを入力',
                                 ),
                               ),
@@ -91,13 +91,13 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(5, 30, 50, 0),
                       child: TextField(
+                          style: const TextStyle(height: 0),
                           onChanged: (value) {
-                            whiteListName = value;
+                            blackListName = value;
                           },
-                          style: const TextStyle(height: 1),
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(fontSize: 14),
-                            hintText: 'whitelist.com',
+                            hintText: 'blacklist.com',
                             fillColor: KBlockColors.white,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(0.0),
@@ -148,7 +148,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                 padding: const EdgeInsets.fromLTRB(0, 0, 28, 20),
                 child: OutlinedButton(
                   onPressed: () =>
-                      whiteListName != '' ? addWhiteListItem(ref) : null,
+                      blackListName != '' ? addBlackListItem(ref) : null,
                   style: OutlinedButton.styleFrom(
                       backgroundColor: KBlockColors.buttonPositiveBackground,
                       side: const BorderSide(

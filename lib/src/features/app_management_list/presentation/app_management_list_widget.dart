@@ -9,6 +9,7 @@ import '../../../constants/providers.dart';
 Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
   String appManagementText =
       AppLocalizations.of(context)?.app_management ?? 'アプリ管理';
+  final statusList = ref.watch(appAdStatusProvider);
   final List<String> appNames = <String>[
     'グルメサイトアプリ',
     'ショッピングアプリ',
@@ -48,6 +49,19 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
     '2MB',
     '200KB',
   ];
+  onPressItem(index, value) {
+    var oldState = ref.read(appAdStatusProvider);
+    oldState[index] = value;
+    ref.read(appAdStatusProvider.notifier).state = [...oldState];
+  }
+
+  onPressAllButton(newSwitchValue) {
+    var oldState = ref.read(appAdStatusProvider);
+    for (var i = 0; i < oldState.length; i++) {
+      oldState[i] = newSwitchValue;
+    }
+    ref.read(appAdStatusProvider.notifier).state = [...oldState];
+  }
 
   return Scaffold(
     appBar: AppBar(
@@ -64,28 +78,59 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
-        PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            position: PopupMenuPosition.under,
-            itemBuilder: (context) {
-              return [
-                const PopupMenuItem<int>(
-                  value: 0,
-                  child: Text('すべてON'),
-                ),
-                const PopupMenuItem<int>(
-                  value: 1,
-                  child: Text('すべてOFF'),
-                ),
-              ];
-            },
-            onSelected: (value) {
-              if (value == 0) {
-                print("ALL ON");
-              } else if (value == 1) {
-                print("ALL OFF");
-              }
-            }),
+        Theme(
+          data: Theme.of(context).copyWith(
+            dividerTheme: const DividerThemeData(
+              color: KBlockColors.divider,
+            ),
+          ),
+          child: PopupMenuButton<int>(
+              icon: const Icon(Icons.more_vert),
+              position: PopupMenuPosition.under,
+              offset: const Offset(0, 9),
+              itemBuilder: (context) {
+                return [
+                  const PopupMenuItem<int>(
+                    value: 0,
+                    child: SizedBox(
+                      height: 20,
+                      width: 100,
+                      child: Text(
+                        'すべてON',
+                        style: TextStyle(
+                          color: KBlockColors.foregroundColor,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const PopupMenuDivider(
+                    height: 0.5,
+                  ),
+                  const PopupMenuItem<int>(
+                    value: 1,
+                    child: SizedBox(
+                      height: 20,
+                      width: 100,
+                      child: Text(
+                        'すべてOFF',
+                        style: TextStyle(
+                          color: KBlockColors.foregroundColor,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                ];
+              },
+              onSelected: (value) {
+                if (value == 0) {
+                  onPressAllButton(true);
+                } else if (value == 1) {
+                  onPressAllButton(false);
+                }
+              }),
+        ),
       ],
     ),
     body: ListView.builder(
@@ -102,13 +147,13 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
           },
           child: Container(
             height: 60,
-            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             decoration: const BoxDecoration(
+                color: KBlockColors.white,
                 border: Border(
-                    bottom: BorderSide(
-                        width: 1, color: KBlockColors.borderLightGray))),
+                    bottom:
+                        BorderSide(width: 0.5, color: KBlockColors.divider))),
             child: Container(
-              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              padding: const EdgeInsets.only(left: 10),
               child: Row(
                 children: [
                   Expanded(
@@ -148,7 +193,13 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                           ),
                         ],
                       )),
-                  const Expanded(flex: 1, child: SwitchWidget()),
+                  Expanded(
+                      flex: 1,
+                      child: SwitchWidget(
+                        switchValue: statusList[index],
+                        index: index,
+                        updateValue: onPressItem,
+                      )),
                 ],
               ),
             ),
