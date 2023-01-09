@@ -25,4 +25,5 @@ class KBlockColors {
   static const Color tabUnselectedForeground = Color(0xFF9C9B98);
   static const Color homePageBackGroundColor = Color(0xFFEAEAEA);
   static const Color activeSwitch = Color(0xFF70CB33);
+  static const Color divider = Color(0xFFDEDCDC);
 }

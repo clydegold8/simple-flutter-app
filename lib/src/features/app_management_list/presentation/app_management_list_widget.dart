@@ -78,49 +78,59 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
-        PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            position: PopupMenuPosition.under,
-            offset: const Offset(0, 10),
-            itemBuilder: (context) {
-              return [
-                const PopupMenuItem<int>(
-                  value: 0,
-                  child: SizedBox(
-                    height: 20,
-                    width: 100,
-                    child: Text(
-                      'すべてON',
-                      style: TextStyle(
-                        color: KBlockColors.foregroundColor,
-                        fontSize: 14,
+        Theme(
+          data: Theme.of(context).copyWith(
+            dividerTheme: const DividerThemeData(
+              color: KBlockColors.divider,
+            ),
+          ),
+          child: PopupMenuButton<int>(
+              icon: const Icon(Icons.more_vert),
+              position: PopupMenuPosition.under,
+              offset: const Offset(0, 9),
+              itemBuilder: (context) {
+                return [
+                  const PopupMenuItem<int>(
+                    value: 0,
+                    child: SizedBox(
+                      height: 20,
+                      width: 100,
+                      child: Text(
+                        'すべてON',
+                        style: TextStyle(
+                          color: KBlockColors.foregroundColor,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const PopupMenuItem<int>(
-                  value: 1,
-                  child: SizedBox(
-                    height: 20,
-                    width: 100,
-                    child: Text(
-                      'すべてOFF',
-                      style: TextStyle(
-                        color: KBlockColors.foregroundColor,
-                        fontSize: 14,
+                  const PopupMenuDivider(
+                    height: 0.5,
+                  ),
+                  const PopupMenuItem<int>(
+                    value: 1,
+                    child: SizedBox(
+                      height: 20,
+                      width: 100,
+                      child: Text(
+                        'すべてOFF',
+                        style: TextStyle(
+                          color: KBlockColors.foregroundColor,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ];
-            },
-            onSelected: (value) {
-              if (value == 0) {
-                onPressAllButton(true);
-              } else if (value == 1) {
-                onPressAllButton(false);
-              }
-            }),
+                ];
+              },
+              onSelected: (value) {
+                if (value == 0) {
+                  onPressAllButton(true);
+                } else if (value == 1) {
+                  onPressAllButton(false);
+                }
+              }),
+        ),
       ],
     ),
     body: ListView.builder(
@@ -137,14 +147,13 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
           },
           child: Container(
             height: 60,
-            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             decoration: const BoxDecoration(
                 color: KBlockColors.white,
                 border: Border(
-                    bottom: BorderSide(
-                        width: 1, color: KBlockColors.borderLightGray))),
+                    bottom:
+                        BorderSide(width: 0.5, color: KBlockColors.divider))),
             child: Container(
-              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              padding: const EdgeInsets.only(left: 10),
               child: Row(
                 children: [
                   Expanded(
