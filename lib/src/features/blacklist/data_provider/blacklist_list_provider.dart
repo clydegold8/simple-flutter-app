@@ -5,14 +5,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class BlackListItem {
   String name;
   bool isOn;
-  BlackListItem(this.name, {this.isOn = true});
+  bool isSelected;
+
+  BlackListItem(this.name, {this.isOn = true, this.isSelected = false});
 }
 
 // this will handle the actions of the lists
 class BlackListItemNotifier extends ChangeNotifier {
 
   // TODO: this will be replaced with actual data in the future
-  final List<BlackListItem> blacklists = [
+  List<BlackListItem> blacklists = [
     BlackListItem('Blacklist 1'),
     BlackListItem('Blacklist 2'),
     BlackListItem('Blacklist 3'),
@@ -23,8 +25,19 @@ class BlackListItemNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleSwitch (int index, bool value){
+  void toggleSwitch(int index, bool value) {
     blacklists[index].isOn = value;
+    notifyListeners();
+  }
+
+  void toggleCheckbox(int index, bool value) {
+    blacklists[index].isSelected = value;
+    notifyListeners();
+  }
+
+  deleteBlackLists() {
+    blacklists =
+        blacklists.where((element) => element.isSelected != true).toList();
     notifyListeners();
   }
 }
