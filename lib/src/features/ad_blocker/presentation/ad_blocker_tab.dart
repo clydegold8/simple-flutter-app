@@ -74,13 +74,15 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
             ),
           ),
           Expanded(
-            child: TabBarView(children: [
-              _adBlockerTabBarViewData(context, '3500', '60MB'),
-              _adBlockerTabBarViewData(context, '4800', '80MB'),
-              _adBlockerTabBarViewData(context, '25000', '80MB'),
-              _adBlockerTabBarViewData(context, '10万', '480MB'),
-              _adBlockerTabBarViewData(context, '60万', '2GB')
-            ]),
+            child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  _adBlockerTabBarViewData(context, '3500', '60MB'),
+                  _adBlockerTabBarViewData(context, '4800', '80MB'),
+                  _adBlockerTabBarViewData(context, '25000', '80MB'),
+                  _adBlockerTabBarViewData(context, '10万', '480MB'),
+                  _adBlockerTabBarViewData(context, '60万', '2GB')
+                ]),
           ),
         ],
       ));

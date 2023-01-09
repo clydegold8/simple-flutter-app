@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/constants/providers.dart';
 
-class AdBlockerControl extends StatefulWidget {
+class AdBlockerControl extends ConsumerStatefulWidget {
   const AdBlockerControl({super.key});
 
   @override
-  State<AdBlockerControl> createState() => _AdBlockerControlState();
+  ConsumerState<AdBlockerControl> createState() => _AdBlockerControlState();
 }
 
-class _AdBlockerControlState extends State<AdBlockerControl> {
+class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   final offDownImage = SvgPicture.asset(
     'assets/icons/off_down.svg',
   );
@@ -21,13 +23,12 @@ class _AdBlockerControlState extends State<AdBlockerControl> {
   );
   final onRaisedImage = Image.asset('assets/images/on_raised.png');
 
-  bool isAdBlockerOn = false;
   bool isAdBlockerBrowserOnly = true;
   bool isAdBlockerBrowserApp = false;
 
   void onTapAdBlockerSwitch(bool value) {
     setState(() {
-      isAdBlockerOn = value;
+      ref.read(adBlockerSwitchStateProvider.notifier).state = value;
     });
   }
 
@@ -49,6 +50,7 @@ class _AdBlockerControlState extends State<AdBlockerControl> {
   Widget build(BuildContext context) {
     final adBlockerButtonShape =
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
+    final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
     const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
 
     return Container(
