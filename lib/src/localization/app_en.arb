@@ -53,5 +53,6 @@
     "tooltip_content": "https://enter the domain that appears after",
     "add_btn": "Add",
     "add_blacklist": "Add Blacklist",
-    "domain_wish_to_block": "Please enter the domain that you wish to block."
+    "domain_wish_to_block": "Please enter the domain that you wish to block.",
+    "delete": "Delete"
 }

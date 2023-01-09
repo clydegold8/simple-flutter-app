@@ -53,5 +53,6 @@
     "tooltip_content": "https：//のあとに表示されるドメインを入力",
     "add_btn": "追加",
     "add_blacklist": "ブラックリスト追加",
-    "domain_wish_to_block": "ブロックしたいドメインを入力してください。"
+    "domain_wish_to_block": "ブロックしたいドメインを入力してください。",
+    "delete": "削除"
 }
