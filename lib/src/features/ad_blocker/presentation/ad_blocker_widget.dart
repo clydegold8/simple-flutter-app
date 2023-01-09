@@ -9,7 +9,7 @@ import 'ad_blocker_control.dart';
 import 'ad_blocker_tab.dart';
 
 Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
-  final isAdBlockerOn = ref.watch(isAdBlockerOnProvider);
+  final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
 
   return Column(children: [
     Container(

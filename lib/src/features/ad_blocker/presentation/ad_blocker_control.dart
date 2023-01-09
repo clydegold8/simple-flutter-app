@@ -28,7 +28,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
 
   void onTapAdBlockerSwitch(bool value) {
     setState(() {
-      ref.read(isAdBlockerOnProvider.notifier).state = value;
+      ref.read(adBlockerSwitchStateProvider.notifier).state = value;
     });
   }
 
@@ -50,7 +50,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   Widget build(BuildContext context) {
     final adBlockerButtonShape =
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
-    final isAdBlockerOn = ref.watch(isAdBlockerOnProvider);
+    final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
     const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
 
     return Container(
