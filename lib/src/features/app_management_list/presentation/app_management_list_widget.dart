@@ -2,65 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/common_widgets/switch.dart';
+import 'package:k_block_app/src/features/app_management_list/data_provider/app_setting_provider.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 
 Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
+  final appItemsList = ref.watch(appSettingItemProvider).appItems;
   String appManagementText =
       AppLocalizations.of(context)?.app_management ?? 'アプリ管理';
-  final statusList = ref.watch(appAdStatusProvider);
-  final List<String> appNames = <String>[
-    'グルメサイトアプリ',
-    'ショッピングアプリ',
-    'ショップアプリ',
-    '家計＿アプリ',
-    'レシピサイトアプリ',
-    'メモアプリ',
-    'ポイントサイトアプリ',
-    'チャットアプリ',
-    '音楽アプリ',
-    'カメラアプリ',
-    'アプリ',
-  ];
-  final List<String> appIconUrl = <String>[
-    'assets/images/app_sample_1.png',
-    'assets/images/app_sample_2.png',
-    'assets/images/app_sample_3.png',
-    'assets/images/app_sample_4.png',
-    'assets/images/app_sample_5.png',
-    'assets/images/app_sample_6.png',
-    'assets/images/app_sample_7.png',
-    'assets/images/app_sample_8.png',
-    'assets/images/app_sample_9.png',
-    'assets/images/app_sample_10.png',
-    'assets/images/app_sample_11.png',
-  ];
-  final List<String> appDataUsage = <String>[
-    '80MB',
-    '70MB',
-    '60MB',
-    '50MB',
-    '40MB',
-    '30MB',
-    '20MB',
-    '10MB',
-    '5MB',
-    '2MB',
-    '200KB',
-  ];
+
   onPressItem(index, value) {
-    var oldState = ref.read(appAdStatusProvider);
-    oldState[index] = value;
-    ref.read(appAdStatusProvider.notifier).state = [...oldState];
+    ref.read(appSettingItemProvider.notifier).toggleSwitch(index, value);
   }
 
   onPressAllButton(newSwitchValue) {
-    var oldState = ref.read(appAdStatusProvider);
-    for (var i = 0; i < oldState.length; i++) {
-      oldState[i] = newSwitchValue;
-    }
-    ref.read(appAdStatusProvider.notifier).state = [...oldState];
+    ref.read(appSettingItemProvider.notifier).toggleAllSwitches(newSwitchValue);
   }
 
   return Scaffold(
@@ -134,16 +91,12 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       ],
     ),
     body: ListView.builder(
-      itemCount: appNames.length,
+      itemCount: appItemsList.length,
       itemBuilder: (BuildContext context, int index) {
         return InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      Text('${appNames[index]} Management Screen')),
-            );
+            ref.read(selectedAppIndexProvider.notifier).state = index;
+            ref.read(widgetPathProvider.notifier).state = 7;
           },
           child: Container(
             height: 60,
@@ -163,7 +116,7 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                           Container(
                               padding: const EdgeInsets.only(left: 10),
                               child: Image.asset(
-                                appIconUrl[index],
+                                appItemsList[index].imgUrl,
                               )),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +125,7 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                               Padding(
                                 padding: const EdgeInsets.only(left: 15),
                                 child: Text(
-                                  appNames[index],
+                                  appItemsList[index].name,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 13,
@@ -182,7 +135,7 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                               Padding(
                                 padding: const EdgeInsets.only(left: 15),
                                 child: Text(
-                                  appDataUsage[index],
+                                  appItemsList[index].dataUsage,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 13,
@@ -196,7 +149,7 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                   Expanded(
                       flex: 1,
                       child: SwitchWidget(
-                        switchValue: statusList[index],
+                        switchValue: appItemsList[index].isOn,
                         index: index,
                         updateValue: onPressItem,
                       )),

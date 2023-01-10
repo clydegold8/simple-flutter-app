@@ -18,7 +18,10 @@ class CommonScreen extends ConsumerWidget {
         final selectedIndex = ref.watch(widgetPathProvider);
 
         checkIndex(int selectedIndex) {
-          if (selectedIndex == 4 || selectedIndex == 5 || selectedIndex == 6) {
+          if (selectedIndex == 4 ||
+              selectedIndex == 5 ||
+              selectedIndex == 6 ||
+              selectedIndex == 7) {
             return 1;
           } else {
             return selectedIndex;

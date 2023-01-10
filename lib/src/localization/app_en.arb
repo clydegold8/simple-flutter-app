@@ -53,5 +53,19 @@
     "tooltip_content": "https://enter the domain that appears after",
     "add_btn": "Add",
     "add_blacklist": "Add Blacklist",
-    "domain_wish_to_block": "Please enter the domain that you wish to block."
+    "domain_wish_to_block": "Please enter the domain that you wish to block.",
+    "advanced_settings": "Advanced settings",
+    "retention": "Retention by K-BLOCK",
+    "transmission": "Transmission via K-BLOCK",
+    "filtering_https": "Filtering HTTPS Transmission",
+    "block_advertising": "Block Advertising",
+    "firewall_settings": "Firewall settings",
+    "block_entire_app_data": "Block Entire App Data Transmission",
+    "data_transmission_settings": "Data transmission settings",
+    "data_usage_limits": "Data usage limits",
+    "choose_data_limit": "Choose data transmission limit",
+    "data_usage_upper_limit": "Data usage upper limit",
+    "limit_current_setting": "Current setting: ",
+    "transmission_fee_setting": "Data transmission fee notification setting",
+    "limit_reached_notify": "When the limit is reached, notify"
 }
