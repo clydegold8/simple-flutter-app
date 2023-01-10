@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:k_block_app/src/common_widgets/switch.dart';
+import 'package:k_block_app/src/features/app_management/presentation/data_traffic_limit.dart';
 import 'package:k_block_app/src/features/app_management_list/data_provider/app_setting_provider.dart';
 
 import '../../../constants/colors.dart';
@@ -16,12 +18,16 @@ class AppSettingScreenArguments {
 
 Widget appSettingWidget(BuildContext context, WidgetRef ref) {
   final selectedIdx = ref.read(selectedAppIndexProvider.notifier).state;
-  final selectedItem =
-      ref.read(appSettingItemProvider.notifier).appItems[selectedIdx];
+  final appItemsList = ref.watch(appSettingItemProvider).appItems;
+  final selectedItem = appItemsList[selectedIdx];
 
   String appName = selectedItem.name;
   String appDataUsage = selectedItem.dataUsage;
   bool isActive = selectedItem.isOn;
+
+  onPressItem(index, value) {
+    ref.read(appSettingItemProvider.notifier).toggleSwitch(index, value);
+  }
 
   return Scaffold(
     appBar: AppBar(
@@ -69,9 +75,11 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
               child: Text(AppLocalizations.of(context)?.transmission ??
                   'K‐BLOCKを経由した通信'),
             ),
-            trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Icon(Icons.chevron_right, size: 30)),
+            trailing: SwitchWidget(
+              switchValue: isActive,
+              index: selectedIdx,
+              updateValue: onPressItem,
+            ),
           ),
         ),
         Container(
@@ -94,9 +102,11 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
               child: Text(AppLocalizations.of(context)?.block_advertising ??
                   '号化され広告をブロッグ'),
             ),
-            trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Icon(Icons.chevron_right, size: 30)),
+            trailing: SwitchWidget(
+              switchValue: isActive,
+              index: selectedIdx,
+              updateValue: onPressItem,
+            ),
           ),
         ),
         Container(
@@ -119,9 +129,11 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
               child: Text(AppLocalizations.of(context)?.block_entire_app_data ??
                   'アプリのデータ通信を丸ごとブロック'),
             ),
-            trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Icon(Icons.chevron_right, size: 30)),
+            trailing: SwitchWidget(
+              switchValue: isActive,
+              index: selectedIdx,
+              updateValue: onPressItem,
+            ),
           ),
         ),
         Container(
@@ -157,9 +169,11 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
               child: Text(AppLocalizations.of(context)?.choose_data_limit ??
                   'データ通信量の上限を選択'),
             ),
-            trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Icon(Icons.chevron_right, size: 30)),
+            trailing: SwitchWidget(
+              switchValue: isActive,
+              index: selectedIdx,
+              updateValue: onPressItem,
+            ),
           ),
         ),
         Container(
@@ -168,6 +182,9 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   bottom: BorderSide(
                       width: 2, color: KBlockColors.borderLightGray))),
           child: ListTile(
+            onTap: () {
+              dataTrafficLimitDialogueBuilder(context);
+            },
             tileColor: KBlockColors.white,
             title: Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
@@ -207,9 +224,11 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
               child: Text(AppLocalizations.of(context)?.limit_reached_notify ??
                   '上限に達した場合、端末上に警告を通知'),
             ),
-            trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Icon(Icons.chevron_right, size: 30)),
+            trailing: SwitchWidget(
+              switchValue: isActive,
+              index: selectedIdx,
+              updateValue: onPressItem,
+            ),
           ),
         ),
       ],
