@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
+
+import 'package:k_block_app/src/common_widgets/switch.dart';
 
 class OtherSettingsMenu extends StatefulWidget {
   const OtherSettingsMenu({super.key});
@@ -12,6 +15,21 @@ class OtherSettingsMenu extends StatefulWidget {
 }
 
 class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
+  bool isMsgReceiveSettingsOn = true;
+  bool isAdBlockWifiOnlyOn = false;
+
+  void toggleMsgReceiveSettingsOn(index, value) {
+    setState(() {
+      isMsgReceiveSettingsOn = value;
+    });
+  }
+
+  void toggleAdBlockWifiOnlyOn(index, value) {
+    setState(() {
+      isAdBlockWifiOnlyOn = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     const listTileContDecoration = BoxDecoration(
@@ -27,6 +45,9 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
         color: KBlockColors.greenIcon, borderRadius: BorderRadius.circular(56));
     const aboutSectionTextStyle =
         TextStyle(color: KBlockColors.foregroundColor, fontSize: 8);
+    const trailingChevron = Padding(
+        padding: EdgeInsets.fromLTRB(0, 7, 0, 0),
+        child: Icon(Icons.chevron_right, size: 30));
 
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +78,8 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     AppLocalizations.of(context)?.account_settings_subtitle ??
                         'シリアルコード・アプリのバージョン確認',
                     style: listTileSubtitleStyle,
-                  )),
+                  ),
+                  trailing: trailingChevron),
             ),
             Container(
               decoration: listTileContDecoration,
@@ -70,7 +92,8 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     AppLocalizations.of(context)?.design_settings_subtitle ??
                         '着せかえ・デザインの変更',
                     style: listTileSubtitleStyle,
-                  )),
+                  ),
+                  trailing: trailingChevron),
             ),
             Container(
               decoration: listTileContDecoration,
@@ -85,7 +108,8 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                             ?.notification_settings_subtitle ??
                         '広告ブロック数・節約約通信量をお知らせ',
                     style: listTileSubtitleStyle,
-                  )),
+                  ),
+                  trailing: trailingChevron),
             ),
             Container(
               decoration: listTileContDecoration,
@@ -100,6 +124,11 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                             ?.msg_receive_settings_subtitle ??
                         'Docomo回線をご利用の方のみ',
                     style: listTileSubtitleStyle,
+                  ),
+                  trailing: SwitchWidget(
+                    index: 0,
+                    switchValue: isMsgReceiveSettingsOn,
+                    updateValue: toggleMsgReceiveSettingsOn,
                   )),
             ),
             Container(
@@ -114,6 +143,11 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     AppLocalizations.of(context)?.ad_block_wifi_only_subtitle ??
                         'モバイルデータ通信を利用せず広告をブロック',
                     style: listTileSubtitleStyle,
+                  ),
+                  trailing: SwitchWidget(
+                    index: 1,
+                    switchValue: isAdBlockWifiOnlyOn,
+                    updateValue: toggleAdBlockWifiOnlyOn,
                   )),
             )
           ]),
@@ -129,25 +163,36 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    Container(
-                      height: 56,
-                      width: 56,
-                      margin: const EdgeInsets.only(bottom: 7),
-                      decoration: aboutSectionIconContDecoration,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 14, bottom: 14),
-                        child: SvgPicture.asset('assets/icons/faq.svg'),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)?.faq ?? 'よくある質問',
-                      textAlign: TextAlign.center,
-                      style: aboutSectionTextStyle,
-                    )
-                  ],
-                ),
+                GestureDetector(
+                    onTap: () async {
+                      final url = Uri.parse(
+                          'https://google.com'); // TODO: Terms of Use URL to be decided
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url,
+                            mode: LaunchMode.externalApplication);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 56,
+                          width: 56,
+                          margin: const EdgeInsets.only(bottom: 7),
+                          decoration: aboutSectionIconContDecoration,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 14, bottom: 14),
+                            child: SvgPicture.asset('assets/icons/faq.svg'),
+                          ),
+                        ),
+                        Text(
+                          AppLocalizations.of(context)?.faq ?? 'よくある質問',
+                          textAlign: TextAlign.center,
+                          style: aboutSectionTextStyle,
+                        )
+                      ],
+                    )),
                 Column(
                   children: [
                     Container(
