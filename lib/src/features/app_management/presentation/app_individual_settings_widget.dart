@@ -24,6 +24,10 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
   String appName = selectedItem.name;
   String appDataUsage = selectedItem.dataUsage;
   bool isActive = selectedItem.isOn;
+  bool httpsFilteringEnabled = selectedItem.httpsFilteringEnabled;
+  bool firewallSettingEnabled = selectedItem.firewallSettingEnabled;
+  bool dataUsageLimitEnabled = selectedItem.dataUsageLimitEnabled;
+  bool dataTransmissionFeeEnabled = selectedItem.dataTransmissionFeeEnabled;
 
   onPressItem(index, value) {
     ref.read(appSettingItemProvider.notifier).toggleSwitch(index, value);
@@ -103,9 +107,13 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   '号化され広告をブロッグ'),
             ),
             trailing: SwitchWidget(
-              switchValue: isActive,
+              switchValue: httpsFilteringEnabled,
               index: selectedIdx,
-              updateValue: onPressItem,
+              updateValue: (index, value) {
+                ref
+                    .read(appSettingItemProvider.notifier)
+                    .toggleHttpsFiltering(index, value);
+              },
             ),
           ),
         ),
@@ -130,9 +138,13 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   'アプリのデータ通信を丸ごとブロック'),
             ),
             trailing: SwitchWidget(
-              switchValue: isActive,
+              switchValue: firewallSettingEnabled,
               index: selectedIdx,
-              updateValue: onPressItem,
+              updateValue: (index, value) {
+                ref
+                    .read(appSettingItemProvider.notifier)
+                    .toggleFirewallSetting(index, value);
+              },
             ),
           ),
         ),
@@ -170,9 +182,13 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   'データ通信量の上限を選択'),
             ),
             trailing: SwitchWidget(
-              switchValue: isActive,
+              switchValue: dataUsageLimitEnabled,
               index: selectedIdx,
-              updateValue: onPressItem,
+              updateValue: (index, value) {
+                ref
+                    .read(appSettingItemProvider.notifier)
+                    .toggleDataUsageLimit(index, value);
+              },
             ),
           ),
         ),
@@ -225,9 +241,13 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   '上限に達した場合、端末上に警告を通知'),
             ),
             trailing: SwitchWidget(
-              switchValue: isActive,
+              switchValue: dataTransmissionFeeEnabled,
               index: selectedIdx,
-              updateValue: onPressItem,
+              updateValue: (index, value) {
+                ref
+                    .read(appSettingItemProvider.notifier)
+                    .toggleDataTransmissionFee(index, value);
+              },
             ),
           ),
         ),

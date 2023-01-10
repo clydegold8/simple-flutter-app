@@ -6,7 +6,16 @@ class AppSettingItem {
   bool isOn;
   String imgUrl;
   String dataUsage;
-  AppSettingItem(this.name, this.imgUrl, this.dataUsage, {this.isOn = true});
+  bool httpsFilteringEnabled;
+  bool firewallSettingEnabled;
+  bool dataUsageLimitEnabled;
+  bool dataTransmissionFeeEnabled;
+  AppSettingItem(this.name, this.imgUrl, this.dataUsage,
+      {this.isOn = true,
+      this.httpsFilteringEnabled = false,
+      this.firewallSettingEnabled = false,
+      this.dataUsageLimitEnabled = false,
+      this.dataTransmissionFeeEnabled = false});
 }
 
 class AppSettingItemNotifier extends ChangeNotifier {
@@ -26,6 +35,26 @@ class AppSettingItemNotifier extends ChangeNotifier {
 
   void toggleSwitch(int index, bool value) {
     appItems[index].isOn = value;
+    notifyListeners();
+  }
+
+  void toggleHttpsFiltering(int index, bool value) {
+    appItems[index].httpsFilteringEnabled = value;
+    notifyListeners();
+  }
+
+  void toggleFirewallSetting(int index, bool value) {
+    appItems[index].firewallSettingEnabled = value;
+    notifyListeners();
+  }
+
+  void toggleDataUsageLimit(int index, bool value) {
+    appItems[index].dataUsageLimitEnabled = value;
+    notifyListeners();
+  }
+
+  void toggleDataTransmissionFee(int index, bool value) {
+    appItems[index].dataTransmissionFeeEnabled = value;
     notifyListeners();
   }
 
