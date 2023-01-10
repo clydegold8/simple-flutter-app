@@ -67,5 +67,6 @@
     "data_usage_upper_limit": "Data usage upper limit",
     "limit_current_setting": "Current setting: ",
     "transmission_fee_setting": "Data transmission fee notification setting",
-    "limit_reached_notify": "When the limit is reached, notify"
+    "limit_reached_notify": "When the limit is reached, notify",
+    "delete": "Delete"
 }

@@ -67,5 +67,6 @@
     "data_usage_upper_limit": "データ通信量の上限値",
     "limit_current_setting": "現在の設定: ",
     "transmission_fee_setting": "データ通信料の通知設定",
-    "limit_reached_notify": "上限に達した場合、端末上に警告を通知"
+    "limit_reached_notify": "上限に達した場合、端末上に警告を通知",
+    "delete": "削除"
 }
