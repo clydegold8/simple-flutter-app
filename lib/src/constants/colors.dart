@@ -26,4 +26,5 @@ class KBlockColors {
   static const Color homePageBackGroundColor = Color(0xFFEAEAEA);
   static const Color activeSwitch = Color(0xFF70CB33);
   static const Color divider = Color(0xFFDEDCDC);
+  static const Color grayThemeColor = Color(0xFFB6B5B3);
 }

@@ -54,5 +54,7 @@
     "add_btn": "追加",
     "add_blacklist": "ブラックリスト追加",
     "domain_wish_to_block": "ブロックしたいドメインを入力してください。",
-    "delete": "削除"
+    "delete": "削除",
+    "number_of_ads_blocked": "広告ブロック数",
+    "communication_cost_savings_hour": "節約通信料 / 時間"
 }
