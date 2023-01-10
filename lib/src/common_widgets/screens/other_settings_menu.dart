@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
@@ -14,27 +15,33 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
   @override
   Widget build(BuildContext context) {
     const listTileContDecoration = BoxDecoration(
-        border: Border(bottom: BorderSide(width: 2, color: Color(0x12000000))));
+        border: Border(
+            bottom: BorderSide(width: 2, color: KBlockColors.tileBorder)));
     const listTileTitleStyle = TextStyle(
-        color: Color(0xFF494848), fontSize: 16, fontWeight: FontWeight.w800);
+        color: KBlockColors.foregroundColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w800);
     const listTileSubtitleStyle =
-        TextStyle(color: Color(0xFF71706C), fontSize: 12);
+        TextStyle(color: KBlockColors.tileSub, fontSize: 12);
     final aboutSectionIconContDecoration = BoxDecoration(
-        color: Color(0xFFB3E2B5), borderRadius: BorderRadius.circular(56));
+        color: KBlockColors.greenIcon, borderRadius: BorderRadius.circular(56));
     const aboutSectionTextStyle =
-        TextStyle(color: Color(0xFF494848), fontSize: 8);
+        TextStyle(color: KBlockColors.foregroundColor, fontSize: 8);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'その他',
-          style: TextStyle(color: Color(0xFF494848)),
+          AppLocalizations.of(context)?.others ?? 'その他',
+          style: const TextStyle(
+              color: KBlockColors.foregroundColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w800),
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: KBlockColors.lightGray,
       body: Column(children: [
         Container(
           color: Colors.white,
@@ -43,11 +50,12 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
               decoration: listTileContDecoration,
               child: ListTile(
                   title: Text(
-                    'アカウント',
+                    AppLocalizations.of(context)?.account_settings ?? 'アカウント',
                     style: listTileTitleStyle,
                   ),
                   subtitle: Text(
-                    'シリアルコード・アプリのバージョン確認',
+                    AppLocalizations.of(context)?.account_settings_subtitle ??
+                        'シリアルコード・アプリのバージョン確認',
                     style: listTileSubtitleStyle,
                   )),
             ),
@@ -55,11 +63,12 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
               decoration: listTileContDecoration,
               child: ListTile(
                   title: Text(
-                    'デザイン設定',
+                    AppLocalizations.of(context)?.design_settings ?? 'デザイン設定',
                     style: listTileTitleStyle,
                   ),
                   subtitle: Text(
-                    '着せかえ・デザインの変更',
+                    AppLocalizations.of(context)?.design_settings_subtitle ??
+                        '着せかえ・デザインの変更',
                     style: listTileSubtitleStyle,
                   )),
             ),
@@ -67,11 +76,14 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
               decoration: listTileContDecoration,
               child: ListTile(
                   title: Text(
-                    '通知設定',
+                    AppLocalizations.of(context)?.notification_settings ??
+                        '通知設定',
                     style: listTileTitleStyle,
                   ),
                   subtitle: Text(
-                    '広告ブロック数・節約約通信量をお知らせ',
+                    AppLocalizations.of(context)
+                            ?.notification_settings_subtitle ??
+                        '広告ブロック数・節約約通信量をお知らせ',
                     style: listTileSubtitleStyle,
                   )),
             ),
@@ -79,11 +91,14 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
               decoration: listTileContDecoration,
               child: ListTile(
                   title: Text(
-                    'メッセージR受信設定',
+                    AppLocalizations.of(context)?.msg_receive_settings ??
+                        'メッセージR受信設定',
                     style: listTileTitleStyle,
                   ),
                   subtitle: Text(
-                    'Docomo回線をご利用の方のみ',
+                    AppLocalizations.of(context)
+                            ?.msg_receive_settings_subtitle ??
+                        'Docomo回線をご利用の方のみ',
                     style: listTileSubtitleStyle,
                   )),
             ),
@@ -91,23 +106,25 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
               decoration: listTileContDecoration,
               child: ListTile(
                   title: Text(
-                    'Wi-Fi接続時のみ広告ブロック',
+                    AppLocalizations.of(context)?.ad_block_wifi_only ??
+                        'Wi-Fi接続時のみ広告ブロック',
                     style: listTileTitleStyle,
                   ),
                   subtitle: Text(
-                    'モバイルデータ通信を利用せず広告をブロック',
+                    AppLocalizations.of(context)?.ad_block_wifi_only_subtitle ??
+                        'モバイルデータ通信を利用せず広告をブロック',
                     style: listTileSubtitleStyle,
                   )),
             )
           ]),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
           color: Colors.white,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(30, 12, 30, 20),
+            padding: const EdgeInsets.fromLTRB(30, 12, 30, 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,15 +134,16 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     Container(
                       height: 56,
                       width: 56,
-                      margin: EdgeInsets.only(bottom: 7),
+                      margin: const EdgeInsets.only(bottom: 7),
                       decoration: aboutSectionIconContDecoration,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 14, bottom: 14),
+                        padding: const EdgeInsets.only(top: 14, bottom: 14),
                         child: SvgPicture.asset('assets/icons/faq.svg'),
                       ),
                     ),
                     Text(
-                      'よくある質問',
+                      AppLocalizations.of(context)?.faq ?? 'よくある質問',
+                      textAlign: TextAlign.center,
                       style: aboutSectionTextStyle,
                     )
                   ],
@@ -135,14 +153,16 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     Container(
                       height: 56,
                       width: 56,
-                      margin: EdgeInsets.only(bottom: 7),
+                      margin: const EdgeInsets.only(bottom: 7),
                       decoration: aboutSectionIconContDecoration,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 14, bottom: 14),
+                        padding: const EdgeInsets.only(top: 14, bottom: 14),
                         child: SvgPicture.asset('assets/icons/app.svg'),
                       ),
                     ),
-                    Text('アプリについて', style: aboutSectionTextStyle)
+                    Text(AppLocalizations.of(context)?.about_app ?? 'アプリについて',
+                        textAlign: TextAlign.center,
+                        style: aboutSectionTextStyle)
                   ],
                 ),
                 Column(
@@ -150,14 +170,18 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     Container(
                       height: 56,
                       width: 56,
-                      margin: EdgeInsets.only(bottom: 7),
+                      margin: const EdgeInsets.only(bottom: 7),
                       decoration: aboutSectionIconContDecoration,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 14, right: 14),
+                        padding: const EdgeInsets.only(left: 14, right: 14),
                         child: SvgPicture.asset('assets/icons/youtube.svg'),
                       ),
                     ),
-                    Text('YouTube広告\nについて', style: aboutSectionTextStyle)
+                    Text(
+                        AppLocalizations.of(context)?.about_youtube_ad ??
+                            'YouTube広告\nについて',
+                        textAlign: TextAlign.center,
+                        style: aboutSectionTextStyle)
                   ],
                 ),
                 Column(
@@ -165,14 +189,16 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                     Container(
                       height: 56,
                       width: 56,
-                      margin: EdgeInsets.only(bottom: 7),
+                      margin: const EdgeInsets.only(bottom: 7),
                       decoration: aboutSectionIconContDecoration,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 14, right: 14),
+                        padding: const EdgeInsets.only(left: 14, right: 14),
                         child: SvgPicture.asset('assets/icons/mail.svg'),
                       ),
                     ),
-                    Text('お問い合わせ', style: aboutSectionTextStyle)
+                    Text(AppLocalizations.of(context)?.contact_us ?? 'お問い合わせ',
+                        textAlign: TextAlign.center,
+                        style: aboutSectionTextStyle)
                   ],
                 )
               ],
