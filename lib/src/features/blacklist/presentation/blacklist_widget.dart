@@ -71,7 +71,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
-    body:ListView.builder(
+    body: ListView.builder(
       itemCount: listBlacklist.length,
       itemBuilder: (context, index) {
         return ListTile(
