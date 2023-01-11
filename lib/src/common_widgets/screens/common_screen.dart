@@ -13,15 +13,17 @@ class CommonScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Consumer(
       builder: (context, ref, _) {
         final selectedIndex = ref.watch(widgetPathProvider);
 
-        checkIndex(int selectedIndex){
-          if(selectedIndex == 4 || selectedIndex == 5){
+        checkIndex(int selectedIndex) {
+          if (selectedIndex == 4 ||
+              selectedIndex == 5 ||
+              selectedIndex == 6 ||
+              selectedIndex == 7) {
             return 1;
-          }else{
+          } else {
             return selectedIndex;
           }
         }
@@ -36,4 +38,3 @@ class CommonScreen extends ConsumerWidget {
     );
   }
 }
-

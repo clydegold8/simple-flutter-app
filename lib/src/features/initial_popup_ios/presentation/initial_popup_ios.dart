@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../constants/colors.dart';
 import '../../../constants/routes.dart';
 
 Widget initialPopupIOSWidget(BuildContext context) {
-  String howToSafari = AppLocalizations.of(context)?.safari_ad_blocking != null
-      ? AppLocalizations.of(context)!.safari_ad_blocking
-      : 'Safariで広告ブロックの設定方法';
-  String requestText = AppLocalizations.of(context)?.request != null
-      ? AppLocalizations.of(context)!.request
-      : '【お願い】';
-  String requestSubText = AppLocalizations.of(context)?.request_subtitle != null
-      ? AppLocalizations.of(context)!.request_subtitle
-      : 'こちらの設定は広告ブロックをONにする\n前に行ってください。';
-  String instruction1A = AppLocalizations.of(context)?.instruction_1_1 != null
-      ? AppLocalizations.of(context)!.instruction_1_1
-      : 'iPhoneの';
-  String instruction1B = AppLocalizations.of(context)?.instruction_1_2 != null
-      ? AppLocalizations.of(context)!.instruction_1_2
-      : '「設定」アプリを開く';
-  String instruction2 = AppLocalizations.of(context)?.instruction_2 != null
-      ? AppLocalizations.of(context)!.instruction_2
-      : '「Safari」を開く';
-  String instruction3 = AppLocalizations.of(context)?.instruction_3 != null
-      ? AppLocalizations.of(context)!.instruction_3
-      : '「拡張機能」を開く';
-  String instruction4 = AppLocalizations.of(context)?.instruction_4 != null
-      ? AppLocalizations.of(context)!.instruction_4
-      : '「K-BLOCK」をONにする';
-  String instruction5 = AppLocalizations.of(context)?.instruction_5 != null
-      ? AppLocalizations.of(context)!.instruction_5
-      : '設定完了';
-  String setupLabel = AppLocalizations.of(context)?.setup != null
-      ? AppLocalizations.of(context)!.setup
-      : '設定する';
+  String howToSafari =
+      AppLocalizations.of(context)?.safari_ad_blocking ?? 'Safariで広告ブロックの設定方法';
+  String requestText = AppLocalizations.of(context)?.request ?? '【お願い】';
+  String requestSubText = AppLocalizations.of(context)?.request_subtitle ??
+      'こちらの設定は広告ブロックをONにする\n前に行ってください。';
+  String instruction1A =
+      AppLocalizations.of(context)?.instruction_1_1 ?? 'iPhoneの';
+  String instruction1B =
+      AppLocalizations.of(context)?.instruction_1_2 ?? '「設定」アプリを開く';
+  String instruction2 =
+      AppLocalizations.of(context)?.instruction_2 ?? '「Safari」を開く';
+  String instruction3 =
+      AppLocalizations.of(context)?.instruction_3 ?? '「拡張機能」を開く';
+  String instruction4 =
+      AppLocalizations.of(context)?.instruction_4 ?? '「K-BLOCK」をONにする';
+  String instruction5 = AppLocalizations.of(context)?.instruction_5 ?? '設定完了';
+  String setupLabel = AppLocalizations.of(context)?.setup ?? '設定する';
 
   return Scaffold(
       backgroundColor: KBlockColors.white,

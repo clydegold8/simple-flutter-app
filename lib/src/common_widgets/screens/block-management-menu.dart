@@ -22,7 +22,9 @@ class BlockManagementMenu extends ConsumerWidget {
         foregroundColor: KBlockColors.foregroundColor,
         title: Center(
             child: Text(
-                AppLocalizations.of(context)?.block_management ?? 'ブロック管理')),
+                AppLocalizations.of(context)?.block_management ?? 'ブロック管理',
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 16))),
         automaticallyImplyLeading: false,
       ),
       body: ListView(
@@ -115,14 +117,9 @@ class BlockManagementMenu extends ConsumerWidget {
                         width: 2, color: KBlockColors.borderLightGray))),
             child: ListTile(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const Text('App Management Screen')),
-                );
+                ref.read(widgetPathProvider.notifier).state = 6;
               },
-              tileColor: const Color(0xFFFFFFFF),
+              tileColor: KBlockColors.white,
               title: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
                 child: Text(
