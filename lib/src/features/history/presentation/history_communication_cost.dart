@@ -1,11 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../../common_widgets/graphs/line_graph_widget.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
+import 'history_ads_blocked.dart';
 
-Widget historyCommunicationCostTabWidget(BuildContext context, WidgetRef ref) {
+Widget historyCommunicationCostTabWidget(
+    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehavior) {
   final selectedIndex = ref.watch(widgetCommunicationCostTabProvider);
   final tabs = [
     AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
@@ -13,6 +19,15 @@ Widget historyCommunicationCostTabWidget(BuildContext context, WidgetRef ref) {
     AppLocalizations.of(context)?.tab_1_week ?? '1週間',
     AppLocalizations.of(context)?.tab_1_month ?? '1ヶ月',
     AppLocalizations.of(context)?.tab_6_months ?? '6ヶ月'
+  ];
+
+  // TODO: this will be replaced with actual data
+  List<GraphData> data = [
+    GraphData('Jan', Random().nextInt(100).toDouble()),
+    GraphData('Feb', Random().nextInt(100).toDouble()),
+    GraphData('Mar', Random().nextInt(100).toDouble()),
+    GraphData('Apr', Random().nextInt(100).toDouble()),
+    GraphData('May', Random().nextInt(100).toDouble())
   ];
 
   void onItemTapped(int index) {
@@ -24,8 +39,7 @@ Widget historyCommunicationCostTabWidget(BuildContext context, WidgetRef ref) {
       child: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
-                color: KBlockColors.lightGray),
+            decoration: const BoxDecoration(color: KBlockColors.lightGray),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
               child: Theme(
@@ -38,47 +52,53 @@ Widget historyCommunicationCostTabWidget(BuildContext context, WidgetRef ref) {
                   indicatorPadding: EdgeInsets.zero,
                   indicatorWeight: 0.1,
                   labelPadding:
-                  const EdgeInsets.only(left: 5, right: 5, bottom: 0),
+                      const EdgeInsets.only(left: 5, right: 5, bottom: 0),
                   tabs: List.generate(
                       tabs.length,
-                          (index) => Tab(
-                        height: 26,
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: selectedIndex == index
-                                    ? KBlockColors.white
-                                    : KBlockColors.tabUnselectedBackground,
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(5),
-                                    topRight: Radius.circular(5))),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                tabs[index],
-                                style: TextStyle(
-                                    fontSize: 12,
+                      (index) => Tab(
+                            height: 26,
+                            child: Container(
+                                decoration: BoxDecoration(
                                     color: selectedIndex == index
-                                        ? KBlockColors.greenThemeColor
-                                        : KBlockColors
-                                        .tabUnselectedForeground,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            )),
-                      )),
+                                        ? KBlockColors.white
+                                        : KBlockColors.tabUnselectedBackground,
+                                    borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(5),
+                                        topRight: Radius.circular(5))),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    tabs[index],
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: selectedIndex == index
+                                            ? KBlockColors.greenThemeColor
+                                            : KBlockColors
+                                                .tabUnselectedForeground,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                )),
+                          )),
                   onTap: onItemTapped,
                 ),
               ),
             ),
           ),
-          const Expanded(
-            child:
-            TabBarView(physics: NeverScrollableScrollPhysics(), children: [
-              Text('COne'),
-              Text('CTwo'),
-              Text('CThree'),
-              Text('CFour'),
-              Text('CFive'),
-            ]),
+          Expanded(
+            child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  lineGraphWidget(context, tooltipBehavior, data,
+                      '60MB / 1分30秒', '24時間'), // 24hrs
+                  lineGraphWidget(context, tooltipBehavior, data,
+                      '80MB / 3分05秒', '前日'), // last day
+                  lineGraphWidget(context, tooltipBehavior, data,
+                      '120MB / 6分30秒', '1週間'), // 1 week
+                  lineGraphWidget(context, tooltipBehavior, data,
+                      '480MB / 23分00秒', '1ヶ月'), // 1 month
+                  lineGraphWidget(context, tooltipBehavior, data,
+                      '5GB / 2時間30分', '6ヶ月'), // six months
+                ]),
           ),
         ],
       ));

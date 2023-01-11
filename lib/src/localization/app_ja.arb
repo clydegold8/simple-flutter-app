@@ -56,5 +56,8 @@
     "domain_wish_to_block": "ブロックしたいドメインを入力してください。",
     "delete": "削除",
     "number_of_ads_blocked": "広告ブロック数",
-    "communication_cost_savings_hour": "節約通信料 / 時間"
+    "communication_cost_savings_hour": "節約通信料 / 時間",
+    "history_cases": "件",
+    "min": "分",
+    "sec": "秒"
 }

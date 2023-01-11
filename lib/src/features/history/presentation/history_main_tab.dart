@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 import 'history_ads_blocked.dart';
 import 'history_communication_cost.dart';
 
-Widget historyMainTabWidget(BuildContext context, WidgetRef ref) {
-
+Widget historyMainTabWidget(
+    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehavior) {
   void onTabTapped(int index) {
     ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
     ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
@@ -59,8 +60,9 @@ Widget historyMainTabWidget(BuildContext context, WidgetRef ref) {
                Expanded(
                 child: TabBarView(
                   children: [
-                    historyAdsBlockedTabWidget(context, ref),
-                    historyCommunicationCostTabWidget(context,ref),
+                    historyAdsBlockedTabWidget(context, ref, tooltipBehavior),
+                    historyCommunicationCostTabWidget(
+                        context, ref, tooltipBehavior),
                   ],
                 ),
               ),

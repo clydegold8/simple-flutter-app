@@ -56,5 +56,8 @@
     "domain_wish_to_block": "Please enter the domain that you wish to block.",
     "delete": "Delete",
     "number_of_ads_blocked": "Number of ads blocked",
-    "communication_cost_savings_hour": "Communication cost\nsavings / hour"
+    "communication_cost_savings_hour": "Communication cost\nsavings / hour",
+    "history_cases": "Cases",
+    "min": "min",
+    "sec": "sec"
 }

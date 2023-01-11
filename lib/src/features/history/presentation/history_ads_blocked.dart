@@ -1,11 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../../common_widgets/graphs/line_graph_widget.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 
-Widget historyAdsBlockedTabWidget(BuildContext context, WidgetRef ref) {
+Widget historyAdsBlockedTabWidget(
+    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehavior) {
   final selectedIndex = ref.watch(widgetAdsBlockedTabProvider);
   final tabs = [
     AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
@@ -15,8 +20,16 @@ Widget historyAdsBlockedTabWidget(BuildContext context, WidgetRef ref) {
     AppLocalizations.of(context)?.tab_6_months ?? '6ヶ月'
   ];
 
+  // TODO: this will be replaced with actual data
+  List<GraphData> data = [
+    GraphData('Jan', Random().nextInt(100).toDouble()),
+    GraphData('Feb', Random().nextInt(100).toDouble()),
+    GraphData('Mar', Random().nextInt(100).toDouble()),
+    GraphData('Apr', Random().nextInt(100).toDouble()),
+    GraphData('May', Random().nextInt(100).toDouble())
+  ];
+
   void onItemTapped(int index) {
-    print(index);
     ref.read(widgetAdsBlockedTabProvider.notifier).state = index;
   }
 
@@ -25,8 +38,7 @@ Widget historyAdsBlockedTabWidget(BuildContext context, WidgetRef ref) {
       child: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
-                color: KBlockColors.lightGray),
+            decoration: const BoxDecoration(color: KBlockColors.lightGray),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
               child: Theme(
@@ -71,16 +83,30 @@ Widget historyAdsBlockedTabWidget(BuildContext context, WidgetRef ref) {
               ),
             ),
           ),
-          const Expanded(
-            child:
-                TabBarView(physics: NeverScrollableScrollPhysics(), children: [
-              Text('One'),
-              Text('Two'),
-              Text('Three'),
-              Text('Four'),
-              Text('Five'),
-            ]),
+          Expanded(
+            child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  lineGraphWidget(
+                      context, tooltipBehavior, data, '3500件', '24時間'), // 24hrs
+                  lineGraphWidget(context, tooltipBehavior, data, '4800件',
+                      '前日'), // last day
+                  lineGraphWidget(context, tooltipBehavior, data, '25000件',
+                      '1週間'), // 1 week
+                  lineGraphWidget(
+                      context, tooltipBehavior, data, '10万件', '1ヶ月'), // 1 month
+                  lineGraphWidget(context, tooltipBehavior, data, '60万件',
+                      '6ヶ月'), // six months
+                ]),
           ),
         ],
       ));
+}
+
+// TODO: this will be refactored later for backend use modeling
+class GraphData {
+  GraphData(this.year, this.sales);
+
+  final String year;
+  final double sales;
 }
