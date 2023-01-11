@@ -26,12 +26,11 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       leading: IconButton(
           onPressed: () => ref.read(widgetPathProvider.notifier).state = 1,
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
-      title: Center(
-        child: Text(
-          appManagementText,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-        ),
+      title: Text(
+        appManagementText,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
+      centerTitle: true,
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
@@ -47,16 +46,19 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
               offset: const Offset(0, 9),
               itemBuilder: (context) {
                 return [
-                  const PopupMenuItem<int>(
+                  PopupMenuItem<int>(
                     value: 0,
+                    height: 40,
                     child: SizedBox(
-                      height: 20,
-                      width: 100,
-                      child: Text(
-                        'すべてON',
-                        style: TextStyle(
-                          color: KBlockColors.foregroundColor,
-                          fontSize: 14,
+                      width: 90,
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                        child: const Text(
+                          'すべてON',
+                          style: TextStyle(
+                            color: KBlockColors.foregroundColor,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ),
@@ -64,16 +66,19 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
                   const PopupMenuDivider(
                     height: 0.5,
                   ),
-                  const PopupMenuItem<int>(
+                  PopupMenuItem<int>(
                     value: 1,
+                    height: 40,
                     child: SizedBox(
-                      height: 20,
-                      width: 100,
-                      child: Text(
-                        'すべてOFF',
-                        style: TextStyle(
-                          color: KBlockColors.foregroundColor,
-                          fontSize: 14,
+                      width: 90,
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                        child: const Text(
+                          'すべてOFF',
+                          style: TextStyle(
+                            color: KBlockColors.foregroundColor,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
                     ),
