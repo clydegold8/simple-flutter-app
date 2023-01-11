@@ -76,7 +76,7 @@ class HotReload extends StatelessWidget {
                             WidgetbookUseCase(
                               name: 'App Individual Settings',
                               builder: (context) =>
-                                  appIndividualSettingsUseCase(context),
+                                  appIndividualSettingUseCase(context),
                             ),
                           ],
                         ),

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/features/app_management_list/data_provider/app_setting_provider.dart';
 
-Future<void> dataTrafficLimitDialogueBuilder(BuildContext context) {
+Future<void> dataTrafficLimitDialogueBuilder(
+    BuildContext context, WidgetRef ref) {
   return showDialog<void>(
       context: context,
-      builder: (BuildContext context) => dataTrafficLimitDialogue(context));
+      builder: (BuildContext context) =>
+          dataTrafficLimitDialogue(context, ref));
 }
 
-Widget dataTrafficLimitDialogue(BuildContext context) {
+Widget dataTrafficLimitDialogue(BuildContext context, WidgetRef ref) {
   return SimpleDialog(
     title: Center(
         child: Text(
@@ -75,6 +79,9 @@ Widget dataTrafficLimitDialogue(BuildContext context) {
                         minWidth: 500.0,
                         child: OutlinedButton(
                             onPressed: () {
+                              ref
+                                  .read(appSettingItemProvider.notifier)
+                                  .updateDataUsageLimit(1);
                               Navigator.of(context).pop();
                             },
                             style: OutlinedButton.styleFrom(
