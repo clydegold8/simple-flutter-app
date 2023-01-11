@@ -3,8 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dart';
 import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
+import 'package:k_block_app/src/common_widgets/screens/other_settings_menu.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
+import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 import 'package:k_block_app/src/features/history/presentation/history.dart';
@@ -15,10 +17,11 @@ const List<Widget> widgetOptions = <Widget>[
   HomeScreen(),
   BlockManagementMenu(),
   History(),
-  Text('Others Screen'),
+  OtherSettingsMenu(),
   AddWhitelist(),
   BlackList(),
-  AppManagementList()
+  AppManagementList(),
+  AppIndividualSetting(),
 ];
 
 class CommonMenu {
