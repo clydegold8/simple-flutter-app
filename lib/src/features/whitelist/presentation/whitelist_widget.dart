@@ -89,7 +89,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                   child: Checkbox(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
-                    activeColor: KBlockColors.greenThemeColor,
+                    activeColor: KBlockColors.activeSwitch,
                     value: listWhitelist[index].isSelected,
                     onChanged: (value) {
                       ref
@@ -101,7 +101,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               : null,
           title: Text(listWhitelist[index].name),
           trailing: Switch(
-            activeColor: KBlockColors.greenThemeColor,
+            activeColor: KBlockColors.activeSwitch,
             value: listWhitelist[index].isOn,
             onChanged: (bool value) {
               ref

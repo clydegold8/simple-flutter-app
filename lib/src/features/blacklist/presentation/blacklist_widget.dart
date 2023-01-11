@@ -72,7 +72,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
-    body:ListView.builder(
+    body: ListView.builder(
       itemCount: listBlacklist.length,
       itemBuilder: (context, index) {
         return ListTile(
@@ -82,7 +82,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                   child: Checkbox(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
-                    activeColor: KBlockColors.greenThemeColor,
+                    activeColor: KBlockColors.activeSwitch,
                     value: listBlacklist[index].isSelected,
                     onChanged: (value) {
                       ref
@@ -94,7 +94,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
               : null,
           title: Text(listBlacklist[index].name),
           trailing: Switch(
-            activeColor: KBlockColors.greenThemeColor,
+            activeColor: KBlockColors.activeSwitch,
             value: listBlacklist[index].isOn,
             onChanged: (bool value) {
               ref.read(blackListProvider.notifier).toggleSwitch(index, value);
