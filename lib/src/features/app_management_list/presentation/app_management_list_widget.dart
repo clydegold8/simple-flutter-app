@@ -69,12 +69,11 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
       leading: IconButton(
           onPressed: () => ref.read(widgetPathProvider.notifier).state = 1,
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
-      title: Center(
-        child: Text(
-          appManagementText,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-        ),
+      title: Text(
+        appManagementText,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
+      centerTitle: true,
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
