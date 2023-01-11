@@ -101,6 +101,10 @@ flutter:
     - assets/icons/ios_setting.png
     - assets/icons/safari.png
     - assets/icons/switch_on.svg
+    - assets/icons/app.svg
+    - assets/icons/faq.svg
+    - assets/icons/mail.svg
+    - assets/icons/youtube.svg
     - assets/images/app_sample_1.png
     - assets/images/app_sample_2.png
     - assets/images/app_sample_3.png
