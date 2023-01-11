@@ -64,6 +64,10 @@ class AppSettingItemNotifier extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void updateDataUsageLimit(int dataInGB) {
+    // update data usage limit here
+  }
 }
 
 final appSettingItemProvider =

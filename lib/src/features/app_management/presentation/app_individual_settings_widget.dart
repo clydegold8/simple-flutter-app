@@ -199,7 +199,7 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                       width: 2, color: KBlockColors.borderLightGray))),
           child: ListTile(
             onTap: () {
-              dataTrafficLimitDialogueBuilder(context);
+              dataTrafficLimitDialogueBuilder(context, ref);
             },
             tileColor: KBlockColors.white,
             title: Padding(
