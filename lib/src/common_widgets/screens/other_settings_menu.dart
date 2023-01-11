@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/constants/providers.dart';
 
 import 'package:k_block_app/src/common_widgets/switch.dart';
 
-class OtherSettingsMenu extends StatefulWidget {
+class OtherSettingsMenu extends ConsumerStatefulWidget {
   const OtherSettingsMenu({super.key});
 
   @override
-  State<OtherSettingsMenu> createState() => _OtherSettingsMenuState();
+  ConsumerState<OtherSettingsMenu> createState() => _OtherSettingsMenuState();
 }
 
-class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
+class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
   bool isMsgReceiveSettingsOn = true;
   bool isAdBlockWifiOnlyOn = false;
 
@@ -70,6 +72,9 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
             Container(
               decoration: listTileContDecoration,
               child: ListTile(
+                  onTap: () {
+                    ref.read(widgetPathProvider.notifier).state = 7;
+                  },
                   title: Text(
                     AppLocalizations.of(context)?.account_settings ?? 'アカウント',
                     style: listTileTitleStyle,
@@ -166,7 +171,7 @@ class _OtherSettingsMenuState extends State<OtherSettingsMenu> {
                 GestureDetector(
                     onTap: () async {
                       final url = Uri.parse(
-                          'https://google.com'); // TODO: Terms of Use URL to be decided
+                          'https://google.com'); // TODO: URL to be decided
                       if (await canLaunchUrl(url)) {
                         await launchUrl(url,
                             mode: LaunchMode.externalApplication);
