@@ -70,5 +70,10 @@
     "contact_us": "お問い合わせ",
     "serial_code": "シリアルコード",
     "version_info": "バージョン情報",
+    "serial_code_copied": "クリップボードにシアルコード\nがコピーされました。",
+    "using_latest_version": "最新版をご利用中です。",
+    "update_to_new_version": "最新版へのアップデートを\nお願いします。",
+    "close": "閉じる",
+    "update_now": "今すぐアップデート",
     "delete": "削除"
 }
