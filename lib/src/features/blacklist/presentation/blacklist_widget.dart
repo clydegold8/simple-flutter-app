@@ -56,15 +56,13 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                         )),
                     child: SizedBox(
                       height: 40.0,
-                      child: Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                      child: Center(
                           child: SizedBox(
                               child: Text(
                                   AppLocalizations.of(context)?.delete ?? '削除',
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       color: KBlockColors.text02,
-                                      height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400)))),
                     ),
