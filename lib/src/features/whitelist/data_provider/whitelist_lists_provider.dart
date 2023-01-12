@@ -13,10 +13,17 @@ class WhiteListItem {
 // this will handle the actions of the lists
 class WhitelistNotifier extends ChangeNotifier {
   // TODO: this will be replaced with actual data in the future
-   List<WhiteListItem> whitelists = [
+  List<WhiteListItem> whitelists = [
     WhiteListItem('Whitelist 1'),
     WhiteListItem('Whitelist 2'),
     WhiteListItem('Whitelist 3'),
+    WhiteListItem('Whitelist 4'),
+    WhiteListItem('Whitelist 5'),
+    WhiteListItem('Whitelist 6'),
+    WhiteListItem('Whitelist 7'),
+    WhiteListItem('Whitelist 8'),
+    WhiteListItem('Whitelist 9'),
+    WhiteListItem('Whitelist 10'),
   ];
 
   void addWhiteList(WhiteListItem whitelist) {
@@ -34,8 +41,9 @@ class WhitelistNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  deleteWhiteLists (){
-    whitelists = whitelists.where((element) => element.isSelected != true).toList();
+  deleteWhiteLists() {
+    whitelists =
+        whitelists.where((element) => element.isSelected != true).toList();
     notifyListeners();
   }
 }
