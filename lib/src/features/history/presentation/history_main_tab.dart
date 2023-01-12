@@ -9,7 +9,7 @@ import 'history_ads_blocked.dart';
 import 'history_communication_cost.dart';
 
 Widget historyMainTabWidget(
-    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehavior) {
+    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehaviorAdsBlocked, TooltipBehavior tooltipBehaviorCommunicationCost) {
   void onTabTapped(int index) {
     ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
     ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
@@ -60,9 +60,9 @@ Widget historyMainTabWidget(
                Expanded(
                 child: TabBarView(
                   children: [
-                    historyAdsBlockedTabWidget(context, ref, tooltipBehavior),
+                    historyAdsBlockedTabWidget(context, ref, tooltipBehaviorAdsBlocked),
                     historyCommunicationCostTabWidget(
-                        context, ref, tooltipBehavior),
+                        context, ref, tooltipBehaviorCommunicationCost),
                   ],
                 ),
               ),

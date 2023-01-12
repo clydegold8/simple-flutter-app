@@ -22,11 +22,11 @@ Widget historyAdsBlockedTabWidget(
 
   // TODO: this will be replaced with actual data
   List<GraphData> data = [
-    GraphData('Jan', Random().nextInt(100).toDouble()),
-    GraphData('Feb', Random().nextInt(100).toDouble()),
-    GraphData('Mar', Random().nextInt(100).toDouble()),
-    GraphData('Apr', Random().nextInt(100).toDouble()),
-    GraphData('May', Random().nextInt(100).toDouble())
+    GraphData('0:00', Random().nextInt(100).toDouble()),
+    GraphData('0:50', Random().nextInt(100).toDouble()),
+    GraphData('1:00', Random().nextInt(100).toDouble()),
+    GraphData('1:50', Random().nextInt(100).toDouble()),
+    GraphData('2:00', Random().nextInt(100).toDouble())
   ];
 
   void onItemTapped(int index) {
