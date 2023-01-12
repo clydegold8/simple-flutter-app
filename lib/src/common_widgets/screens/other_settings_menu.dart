@@ -73,7 +73,7 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
               decoration: listTileContDecoration,
               child: ListTile(
                   onTap: () {
-                    ref.read(widgetPathProvider.notifier).state = 7;
+                    ref.read(widgetPathProvider.notifier).state = 8;
                   },
                   title: Text(
                     AppLocalizations.of(context)?.account_settings ?? 'アカウント',

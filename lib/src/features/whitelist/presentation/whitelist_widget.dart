@@ -21,15 +21,14 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                 ref.read(whiteListDeleteMode.notifier).state = false
               },
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
-      title: Center(
-        child: Text(
-          whitelistText,
-          style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-              color: KBlockColors.foregroundColor),
-        ),
+      title: Text(
+        whitelistText,
+        style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: KBlockColors.foregroundColor),
       ),
+      centerTitle: true,
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[

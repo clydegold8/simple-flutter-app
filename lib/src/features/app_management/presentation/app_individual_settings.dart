@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings_widget.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-import 'data_traffic_limit.dart';
+@WidgetbookUseCase(
+    name: 'AppIndividualSettingListPage', type: AppIndividualSetting)
+Widget appIndividualSettingUseCase(BuildContext context) =>
+    const AppIndividualSetting();
 
-@WidgetbookUseCase(name: 'App Individual Settings', type: AppIndividualSettings)
-Widget appIndividualSettingsUseCase(BuildContext context) =>
-    const AppIndividualSettings();
-
-class AppIndividualSettings extends StatefulWidget {
-  const AppIndividualSettings({super.key});
+class AppIndividualSetting extends ConsumerWidget {
+  const AppIndividualSetting({super.key});
 
   @override
-  State<AppIndividualSettings> createState() => _AppIndividualSettingsState();
-}
-
-class _AppIndividualSettingsState extends State<AppIndividualSettings> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: Replace with actual individual settings screen
-    return Center(
-      child: OutlinedButton(
-        onPressed: () => dataTrafficLimitDialogueBuilder(context),
-        child: const Text('Setting data usage limits'),
-      ),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    return appSettingWidget(context, ref);
   }
 }
