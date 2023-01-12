@@ -57,7 +57,9 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
             title: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                 child: Text(
-                    AppLocalizations.of(context)?.advanced_settings ?? '詳細設定')),
+                    AppLocalizations.of(context)?.advanced_settings ?? '詳細設定',
+                    style: const TextStyle(
+                        fontSize: 16, color: KBlockColors.foregroundColor))),
           ),
         ),
         Container(
@@ -72,12 +74,15 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
               child: Text(
                   AppLocalizations.of(context)?.retention ?? 'K‐BLOCKによる保議',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16)),
+                      fontWeight: FontWeight.w600, fontSize: 16)),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-              child: Text(AppLocalizations.of(context)?.transmission ??
-                  'K‐BLOCKを経由した通信'),
+              child: Text(
+                AppLocalizations.of(context)?.transmission ?? 'K‐BLOCKを経由した通信',
+                style:
+                    const TextStyle(fontSize: 12, color: KBlockColors.tileSub),
+              ),
             ),
             trailing: SwitchWidget(
               switchValue: isActive,
@@ -99,12 +104,16 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   AppLocalizations.of(context)?.filtering_https ??
                       'HTTPS通信のフィルタリング',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16)),
+                      fontWeight: FontWeight.w600, fontSize: 16)),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-              child: Text(AppLocalizations.of(context)?.block_advertising ??
-                  '号化され広告をブロッグ'),
+              child: Text(
+                AppLocalizations.of(context)?.block_advertising ??
+                    '号化され広告をブロッグ',
+                style:
+                    const TextStyle(fontSize: 12, color: KBlockColors.tileSub),
+              ),
             ),
             trailing: SwitchWidget(
               switchValue: httpsFilteringEnabled,
@@ -130,12 +139,16 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   AppLocalizations.of(context)?.firewall_settings ??
                       'ファイアウォール設定',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16)),
+                      fontWeight: FontWeight.w600, fontSize: 16)),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-              child: Text(AppLocalizations.of(context)?.block_entire_app_data ??
-                  'アプリのデータ通信を丸ごとブロック'),
+              child: Text(
+                AppLocalizations.of(context)?.block_entire_app_data ??
+                    'アプリのデータ通信を丸ごとブロック',
+                style:
+                    const TextStyle(fontSize: 12, color: KBlockColors.tileSub),
+              ),
             ),
             trailing: SwitchWidget(
               switchValue: firewallSettingEnabled,
@@ -157,8 +170,13 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
             title: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
                 child: Text(
-                    AppLocalizations.of(context)?.data_transmission_settings ??
-                        'データ通信量の設定')),
+                  AppLocalizations.of(context)?.data_transmission_settings ??
+                      'データ通信量の設定',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: KBlockColors.foregroundColor),
+                )),
           ),
         ),
         Container(
@@ -174,12 +192,16 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   AppLocalizations.of(context)?.data_usage_limits ??
                       'データ通信量の制限',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16)),
+                      fontWeight: FontWeight.w600, fontSize: 16)),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-              child: Text(AppLocalizations.of(context)?.choose_data_limit ??
-                  'データ通信量の上限を選択'),
+              child: Text(
+                AppLocalizations.of(context)?.choose_data_limit ??
+                    'データ通信量の上限を選択',
+                style:
+                    const TextStyle(fontSize: 12, color: KBlockColors.tileSub),
+              ),
             ),
             trailing: SwitchWidget(
               switchValue: dataUsageLimitEnabled,
@@ -208,12 +230,15 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   AppLocalizations.of(context)?.data_usage_upper_limit ??
                       'データ通信量の上限値',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16)),
+                      fontWeight: FontWeight.w600, fontSize: 16)),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
               child: Text(
-                  '${AppLocalizations.of(context)?.limit_current_setting ?? '現在の設定：'} $appDataUsage'),
+                '${AppLocalizations.of(context)?.limit_current_setting ?? '現在の設定：'} $appDataUsage',
+                style:
+                    const TextStyle(fontSize: 12, color: KBlockColors.tileSub),
+              ),
             ),
             trailing: const Padding(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -233,12 +258,16 @@ Widget appSettingWidget(BuildContext context, WidgetRef ref) {
                   AppLocalizations.of(context)?.transmission_fee_setting ??
                       'データ通信料の通知設定',
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 16)),
+                      fontWeight: FontWeight.w600, fontSize: 16)),
             ),
             subtitle: Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 10),
-              child: Text(AppLocalizations.of(context)?.limit_reached_notify ??
-                  '上限に達した場合、端末上に警告を通知'),
+              child: Text(
+                AppLocalizations.of(context)?.limit_reached_notify ??
+                    '上限に達した場合、端末上に警告を通知',
+                style:
+                    const TextStyle(fontSize: 12, color: KBlockColors.tileSub),
+              ),
             ),
             trailing: SwitchWidget(
               switchValue: dataTransmissionFeeEnabled,
