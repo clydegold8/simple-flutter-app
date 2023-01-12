@@ -27,10 +27,9 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
-      title: Center(
-          child: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト',
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+      title: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト',
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+      centerTitle: true,
       actions: [
         IconButton(
           icon: const Icon(Icons.more_vert),
