@@ -11,6 +11,10 @@ import '../data_provider/blacklist_list_provider.dart';
 Widget blackListWidget(BuildContext context, WidgetRef ref) {
   final listBlacklist = ref.watch(blackListProvider).blacklists;
   final onDeleteMode = ref.watch(blackListDeleteMode);
+  Color getColor(Set<MaterialState> states) {
+    return KBlockColors.activeSwitch;
+  }
+
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
@@ -80,6 +84,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
               ? Transform.scale(
                   scale: 1.2,
                   child: Checkbox(
+                    fillColor: MaterialStateProperty.resolveWith(getColor),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
                     activeColor: KBlockColors.activeSwitch,
