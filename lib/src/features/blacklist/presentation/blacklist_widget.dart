@@ -16,6 +16,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
   }
 
   return Scaffold(
+    backgroundColor: KBlockColors.white,
     appBar: AppBar(
       automaticallyImplyLeading: false,
       leading: IconButton(
@@ -83,39 +84,48 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
               : const EdgeInsets.only(bottom: 0),
           itemCount: listBlacklist.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              leading: onDeleteMode
-                  ? Transform.scale(
-                      scale: 1.2,
-                      child: Checkbox(
-                        fillColor: MaterialStateProperty.resolveWith(getColor),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        activeColor: KBlockColors.activeSwitch,
-                        value: listBlacklist[index].isSelected,
-                        onChanged: (value) {
-                          ref
-                              .read(blackListProvider.notifier)
-                              .toggleCheckbox(index, value!);
-                        },
-                      ),
-                    )
-                  : null,
-              title: Text(listBlacklist[index].name),
-              trailing: Switch(
-                activeColor: KBlockColors.activeSwitch,
-                value: listBlacklist[index].isOn,
-                onChanged: (bool value) {
-                  ref
-                      .read(blackListProvider.notifier)
-                      .toggleSwitch(index, value);
-                },
+            return Container(
+              decoration: const BoxDecoration(
+                  color: KBlockColors.white,
+                  border: Border(
+                      bottom:
+                          BorderSide(width: 0.5, color: KBlockColors.divider))),
+              child: ListTile(
+                leading: onDeleteMode
+                    ? Transform.scale(
+                        scale: 1.2,
+                        child: Checkbox(
+                          fillColor:
+                              MaterialStateProperty.resolveWith(getColor),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          activeColor: KBlockColors.activeSwitch,
+                          value: listBlacklist[index].isSelected,
+                          onChanged: (value) {
+                            ref
+                                .read(blackListProvider.notifier)
+                                .toggleCheckbox(index, value!);
+                          },
+                        ),
+                      )
+                    : null,
+                title: Text(listBlacklist[index].name),
+                trailing: Switch(
+                  activeColor: KBlockColors.activeSwitch,
+                  value: listBlacklist[index].isOn,
+                  onChanged: (bool value) {
+                    ref
+                        .read(blackListProvider.notifier)
+                        .toggleSwitch(index, value);
+                  },
+                ),
               ),
             );
           },
         )),
         Container(
           height: onDeleteMode ? 0 : 83,
+          color: KBlockColors.white,
         ),
       ],
     ),

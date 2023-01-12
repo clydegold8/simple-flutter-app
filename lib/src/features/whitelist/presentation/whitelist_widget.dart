@@ -80,6 +80,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
+    backgroundColor: KBlockColors.white,
     body: Column(
       children: [
         Expanded(
@@ -90,34 +91,41 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                 : const EdgeInsets.only(bottom: 0),
             itemCount: listWhitelist.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                leading: onDeleteMode
-                    ? Transform.scale(
-                        scale: 1.2,
-                        child: Checkbox(
-                          fillColor:
-                              MaterialStateProperty.resolveWith(getFilledColor),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          activeColor: KBlockColors.activeSwitch,
-                          value: listWhitelist[index].isSelected,
-                          onChanged: (value) {
-                            ref
-                                .read(whiteListListProvider.notifier)
-                                .toggleCheckbox(index, value!);
-                          },
-                        ),
-                      )
-                    : null,
-                title: Text(listWhitelist[index].name),
-                trailing: Switch(
-                  activeColor: KBlockColors.activeSwitch,
-                  value: listWhitelist[index].isOn,
-                  onChanged: (bool value) {
-                    ref
-                        .read(whiteListListProvider.notifier)
-                        .toggleSwitch(index, value);
-                  },
+              return Container(
+                decoration: const BoxDecoration(
+                    color: KBlockColors.white,
+                    border: Border(
+                        bottom: BorderSide(
+                            width: 0.5, color: KBlockColors.divider))),
+                child: ListTile(
+                  leading: onDeleteMode
+                      ? Transform.scale(
+                          scale: 1.2,
+                          child: Checkbox(
+                            fillColor: MaterialStateProperty.resolveWith(
+                                getFilledColor),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                            activeColor: KBlockColors.activeSwitch,
+                            value: listWhitelist[index].isSelected,
+                            onChanged: (value) {
+                              ref
+                                  .read(whiteListListProvider.notifier)
+                                  .toggleCheckbox(index, value!);
+                            },
+                          ),
+                        )
+                      : null,
+                  title: Text(listWhitelist[index].name),
+                  trailing: Switch(
+                    activeColor: KBlockColors.activeSwitch,
+                    value: listWhitelist[index].isOn,
+                    onChanged: (bool value) {
+                      ref
+                          .read(whiteListListProvider.notifier)
+                          .toggleSwitch(index, value);
+                    },
+                  ),
                 ),
               );
             },
@@ -125,6 +133,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
         ),
         Container(
           height: onDeleteMode ? 0 : 83,
+          color: KBlockColors.white,
         ),
       ],
     ),
