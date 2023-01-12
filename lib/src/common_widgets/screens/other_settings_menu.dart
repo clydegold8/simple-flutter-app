@@ -79,10 +79,13 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                     AppLocalizations.of(context)?.account_settings ?? 'アカウント',
                     style: listTileTitleStyle,
                   ),
-                  subtitle: Text(
-                    AppLocalizations.of(context)?.account_settings_subtitle ??
-                        'シリアルコード・アプリのバージョン確認',
-                    style: listTileSubtitleStyle,
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text(
+                      AppLocalizations.of(context)?.account_settings_subtitle ??
+                          'シリアルコード・アプリのバージョン確認',
+                      style: listTileSubtitleStyle,
+                    ),
                   ),
                   trailing: trailingChevron),
             ),
@@ -93,10 +96,13 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                     AppLocalizations.of(context)?.design_settings ?? 'デザイン設定',
                     style: listTileTitleStyle,
                   ),
-                  subtitle: Text(
-                    AppLocalizations.of(context)?.design_settings_subtitle ??
-                        '着せかえ・デザインの変更',
-                    style: listTileSubtitleStyle,
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text(
+                      AppLocalizations.of(context)?.design_settings_subtitle ??
+                          '着せかえ・デザインの変更',
+                      style: listTileSubtitleStyle,
+                    ),
                   ),
                   trailing: trailingChevron),
             ),
@@ -108,11 +114,14 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                         '通知設定',
                     style: listTileTitleStyle,
                   ),
-                  subtitle: Text(
-                    AppLocalizations.of(context)
-                            ?.notification_settings_subtitle ??
-                        '広告ブロック数・節約約通信量をお知らせ',
-                    style: listTileSubtitleStyle,
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text(
+                      AppLocalizations.of(context)
+                              ?.notification_settings_subtitle ??
+                          '広告ブロック数・節約約通信量をお知らせ',
+                      style: listTileSubtitleStyle,
+                    ),
                   ),
                   trailing: trailingChevron),
             ),
@@ -124,11 +133,14 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                         'メッセージR受信設定',
                     style: listTileTitleStyle,
                   ),
-                  subtitle: Text(
-                    AppLocalizations.of(context)
-                            ?.msg_receive_settings_subtitle ??
-                        'Docomo回線をご利用の方のみ',
-                    style: listTileSubtitleStyle,
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text(
+                      AppLocalizations.of(context)
+                              ?.msg_receive_settings_subtitle ??
+                          'Docomo回線をご利用の方のみ',
+                      style: listTileSubtitleStyle,
+                    ),
                   ),
                   trailing: SwitchWidget(
                     index: 0,
@@ -144,10 +156,14 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                         'Wi-Fi接続時のみ広告ブロック',
                     style: listTileTitleStyle,
                   ),
-                  subtitle: Text(
-                    AppLocalizations.of(context)?.ad_block_wifi_only_subtitle ??
-                        'モバイルデータ通信を利用せず広告をブロック',
-                    style: listTileSubtitleStyle,
+                  subtitle: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text(
+                      AppLocalizations.of(context)
+                              ?.ad_block_wifi_only_subtitle ??
+                          'モバイルデータ通信を利用せず広告をブロック',
+                      style: listTileSubtitleStyle,
+                    ),
                   ),
                   trailing: SwitchWidget(
                     index: 1,
@@ -163,7 +179,7 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
         Container(
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 12, 30, 20),
+            padding: const EdgeInsets.fromLTRB(30, 12, 30, 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
