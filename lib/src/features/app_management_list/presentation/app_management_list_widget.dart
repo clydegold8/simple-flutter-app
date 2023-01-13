@@ -37,8 +37,7 @@ Widget appManagementListWidget(BuildContext context, WidgetRef ref) {
         Theme(
           data: Theme.of(context).copyWith(
             dividerTheme: const DividerThemeData(
-              color: KBlockColors.divider,
-            ),
+                color: KBlockColors.divider, thickness: 0.5),
           ),
           child: PopupMenuButton<int>(
               icon: const Icon(Icons.more_vert),
