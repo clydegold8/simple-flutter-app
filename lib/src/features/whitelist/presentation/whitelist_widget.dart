@@ -11,6 +11,10 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
   final listWhitelist = ref.watch(whiteListListProvider).whitelists;
   final onDeleteMode = ref.watch(whiteListDeleteMode);
   String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
+  Color getFilledColor(Set<MaterialState> states) {
+    return KBlockColors.activeSwitch;
+  }
+
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
@@ -86,9 +90,11 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               ? Transform.scale(
                   scale: 1.2,
                   child: Checkbox(
+                    fillColor:
+                        MaterialStateProperty.resolveWith(getFilledColor),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
-                    activeColor: KBlockColors.greenThemeColor,
+                    activeColor: KBlockColors.activeSwitch,
                     value: listWhitelist[index].isSelected,
                     onChanged: (value) {
                       ref
@@ -100,7 +106,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               : null,
           title: Text(listWhitelist[index].name),
           trailing: Switch(
-            activeColor: KBlockColors.greenThemeColor,
+            activeColor: KBlockColors.activeSwitch,
             value: listWhitelist[index].isOn,
             onChanged: (bool value) {
               ref

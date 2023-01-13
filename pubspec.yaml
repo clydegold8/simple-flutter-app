@@ -105,6 +105,7 @@ flutter:
     - assets/icons/faq.svg
     - assets/icons/mail.svg
     - assets/icons/youtube.svg
+    - assets/icons/copy.svg
     - assets/images/app_sample_1.png
     - assets/images/app_sample_2.png
     - assets/images/app_sample_3.png
