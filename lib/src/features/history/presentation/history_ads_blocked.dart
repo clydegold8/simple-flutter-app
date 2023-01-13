@@ -105,8 +105,8 @@ Widget historyAdsBlockedTabWidget(
 
 // TODO: this will be refactored later for backend use modeling
 class GraphData {
-  GraphData(this.year, this.sales);
+  GraphData(this.time, this.consumedData);
 
-  final String year;
-  final double sales;
+  final String time;
+  final double consumedData;
 }

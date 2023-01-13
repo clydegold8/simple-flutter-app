@@ -56,8 +56,8 @@ Widget lineGraphWidget(
               markerSettings: const MarkerSettings(
                   isVisible: true, borderColor: KBlockColors.text02),
               color: KBlockColors.greenThemeColor,
-              xValueMapper: (GraphData sales, _) => sales.year,
-              yValueMapper: (GraphData sales, _) => sales.sales,
+              xValueMapper: (GraphData data, _) => data.time,
+              yValueMapper: (GraphData data, _) => data.consumedData,
             )
           ]),
     ),
