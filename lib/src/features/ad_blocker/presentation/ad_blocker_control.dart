@@ -17,11 +17,39 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   final offDownImage = SvgPicture.asset(
     'assets/icons/off_down.svg',
   );
-  final offRaisedImage = Image.asset('assets/images/off_raised.png');
+  final offRaisedImage = Container(
+      width: 58,
+      height: 49,
+      decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(
+                color: KBlockColors.offRaisedBoxDropShadow,
+                offset: Offset(2, 2)),
+            BoxShadow(
+                color: KBlockColors.offRaisedBoxInnerShadow,
+                offset: Offset(-2, -2))
+          ],
+          borderRadius: BorderRadius.circular(6),
+          color: KBlockColors.offRaisedBoxBackground),
+      child: Center(child: SvgPicture.asset('assets/icons/off.svg')));
   final onDownImage = SvgPicture.asset(
     'assets/icons/on_down.svg',
   );
-  final onRaisedImage = Image.asset('assets/images/on_raised.png');
+  final onRaisedImage = Container(
+    width: 58,
+    height: 49,
+    decoration: BoxDecoration(
+        boxShadow: const [
+          BoxShadow(
+              color: KBlockColors.onRaisedBoxDropShadow, offset: Offset(2, 2)),
+          BoxShadow(
+              color: KBlockColors.onRaisedBoxInnerShadow,
+              offset: Offset(-2, -2))
+        ],
+        borderRadius: BorderRadius.circular(6),
+        color: KBlockColors.onRaisedBoxBackground),
+    child: Center(child: SvgPicture.asset('assets/icons/on.svg')),
+  );
 
   bool isAdBlockerBrowserOnly = true;
   bool isAdBlockerBrowserApp = false;

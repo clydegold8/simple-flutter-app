@@ -32,4 +32,10 @@ class KBlockColors {
   static const Color tileSub = Color(0xFF71706C);
   static const Color greenIcon = Color(0x40B3E2B5);
   static const Color simpleDialogueText = Color(0xFF545353);
+  static const Color offRaisedBoxBackground = Color(0xFFFE703E);
+  static const Color offRaisedBoxDropShadow = Color(0xFFD55124);
+  static const Color offRaisedBoxInnerShadow = Color(0xFFFF9672);
+  static const Color onRaisedBoxBackground = Color(0xFF74CC38);
+  static const Color onRaisedBoxDropShadow = Color(0xFF7FA864);
+  static const Color onRaisedBoxInnerShadow = Color(0xFFA9E085);
 }
