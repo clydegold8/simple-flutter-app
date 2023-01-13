@@ -7,5 +7,6 @@ class Routes {
   static const String blackListsRoute = '/black-lists';
   static const String initialPopupIOSRoute = '/initial-popup';
   static const String appManagementListRoute = '/app-management-list';
+  static const String appHistoryRoute = '/app-history';
   static const String appIndividualSettingRoute = '/app-setting';
 }

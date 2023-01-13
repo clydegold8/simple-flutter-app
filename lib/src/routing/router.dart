@@ -4,6 +4,7 @@ import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dar
 import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
+import 'package:k_block_app/src/features/history/presentation/history.dart';
 import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_popup_ios_widget.dart';
 
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
@@ -27,6 +28,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const InitialPopupIOS());
       case Routes.appManagementListRoute:
         return MaterialPageRoute(builder: (_) => const AppManagementList());
+      case Routes.appHistoryRoute:
+        return MaterialPageRoute(builder: (_) => const History());
       case Routes.appIndividualSettingRoute:
         return MaterialPageRoute(builder: (_) => const AppIndividualSetting());
       default:

@@ -11,7 +11,8 @@ import 'ad_blocker_tab.dart';
 Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
   final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
 
-  return Column(children: [
+  return Column(
+      children: [
     Container(
       color: KBlockColors.greenLight,
       child: Padding(
