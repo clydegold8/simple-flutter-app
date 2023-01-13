@@ -36,41 +36,44 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           icon: const Icon(Icons.more_vert),
           tooltip: 'Delete Blacklist',
           onPressed: () {
-            ref.read(blackListDeleteMode.notifier).state = true;
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
-              duration: const Duration(hours: 1),
-              // this is to imitate duration before the snackbar disappear without user interaction
-              content: Row(
-                children: [
-                  OutlinedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                      ref.read(blackListDeleteMode.notifier).state = false;
-                      ref.read(blackListProvider.notifier).deleteBlackLists();
-                    },
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor: KBlockColors.white,
-                        side: const BorderSide(color: KBlockColors.white),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        )),
-                    child: SizedBox(
-                      height: 40.0,
-                      child: Center(
-                          child: SizedBox(
-                              child: Text(
-                                  AppLocalizations.of(context)?.delete ?? '削除',
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: KBlockColors.text02,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400)))),
-                    ),
-                  )
-                ],
-              ),
-            ));
+            if (!onDeleteMode) {
+              ref.read(blackListDeleteMode.notifier).state = true;
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
+                duration: const Duration(hours: 1),
+                // this is to imitate duration before the snackbar disappear without user interaction
+                content: Row(
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        ref.read(blackListDeleteMode.notifier).state = false;
+                        ref.read(blackListProvider.notifier).deleteBlackLists();
+                      },
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: KBlockColors.white,
+                          side: const BorderSide(color: KBlockColors.white),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          )),
+                      child: SizedBox(
+                        height: 40.0,
+                        child: Center(
+                            child: SizedBox(
+                                child: Text(
+                                    AppLocalizations.of(context)?.delete ??
+                                        '削除',
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        color: KBlockColors.text02,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400)))),
+                      ),
+                    )
+                  ],
+                ),
+              ));
+            }
           },
         ),
       ],
