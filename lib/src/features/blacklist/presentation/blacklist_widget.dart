@@ -11,7 +11,12 @@ import '../data_provider/blacklist_list_provider.dart';
 Widget blackListWidget(BuildContext context, WidgetRef ref) {
   final listBlacklist = ref.watch(blackListProvider).blacklists;
   final onDeleteMode = ref.watch(blackListDeleteMode);
+  Color getColor(Set<MaterialState> states) {
+    return KBlockColors.activeSwitch;
+  }
+
   return Scaffold(
+    backgroundColor: KBlockColors.white,
     appBar: AppBar(
       automaticallyImplyLeading: false,
       leading: IconButton(
@@ -23,10 +28,9 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
-      title: Center(
-          child: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト',
-              style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+      title: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト',
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+      centerTitle: true,
       actions: [
         IconButton(
           icon: const Icon(Icons.more_vert),
@@ -34,6 +38,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           onPressed: () {
             ref.read(blackListDeleteMode.notifier).state = true;
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
               duration: const Duration(hours: 1),
               // this is to imitate duration before the snackbar disappear without user interaction
               content: Row(
@@ -52,15 +57,13 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                         )),
                     child: SizedBox(
                       height: 40.0,
-                      child: Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+                      child: Center(
                           child: SizedBox(
                               child: Text(
                                   AppLocalizations.of(context)?.delete ?? '削除',
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       color: KBlockColors.text02,
-                                      height: 1.5,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400)))),
                     ),
@@ -72,36 +75,59 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
-    body:ListView.builder(
-      itemCount: listBlacklist.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: onDeleteMode
-              ? Transform.scale(
-                  scale: 1.2,
-                  child: Checkbox(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                    activeColor: KBlockColors.greenThemeColor,
-                    value: listBlacklist[index].isSelected,
-                    onChanged: (value) {
-                      ref
-                          .read(blackListProvider.notifier)
-                          .toggleCheckbox(index, value!);
-                    },
-                  ),
-                )
-              : null,
-          title: Text(listBlacklist[index].name),
-          trailing: Switch(
-            activeColor: KBlockColors.greenThemeColor,
-            value: listBlacklist[index].isOn,
-            onChanged: (bool value) {
-              ref.read(blackListProvider.notifier).toggleSwitch(index, value);
-            },
-          ),
-        );
-      },
+    body: Column(
+      children: [
+        Expanded(
+            child: ListView.builder(
+          padding: onDeleteMode
+              ? const EdgeInsets.only(bottom: 80)
+              : const EdgeInsets.only(bottom: 0),
+          itemCount: listBlacklist.length,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: const BoxDecoration(
+                  color: KBlockColors.white,
+                  border: Border(
+                      bottom:
+                          BorderSide(width: 0.5, color: KBlockColors.divider))),
+              child: ListTile(
+                leading: onDeleteMode
+                    ? Transform.scale(
+                        scale: 1.2,
+                        child: Checkbox(
+                          fillColor:
+                              MaterialStateProperty.resolveWith(getColor),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          activeColor: KBlockColors.activeSwitch,
+                          value: listBlacklist[index].isSelected,
+                          onChanged: (value) {
+                            ref
+                                .read(blackListProvider.notifier)
+                                .toggleCheckbox(index, value!);
+                          },
+                        ),
+                      )
+                    : null,
+                title: Text(listBlacklist[index].name),
+                trailing: Switch(
+                  activeColor: KBlockColors.activeSwitch,
+                  value: listBlacklist[index].isOn,
+                  onChanged: (bool value) {
+                    ref
+                        .read(blackListProvider.notifier)
+                        .toggleSwitch(index, value);
+                  },
+                ),
+              ),
+            );
+          },
+        )),
+        Container(
+          height: onDeleteMode ? 0 : 83,
+          color: KBlockColors.white,
+        ),
+      ],
     ),
     floatingActionButton: FloatingActionButton(
       backgroundColor: KBlockColors.greenThemeColor,

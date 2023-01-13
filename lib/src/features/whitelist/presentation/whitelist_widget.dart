@@ -11,6 +11,10 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
   final listWhitelist = ref.watch(whiteListListProvider).whitelists;
   final onDeleteMode = ref.watch(whiteListDeleteMode);
   String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
+  Color getFilledColor(Set<MaterialState> states) {
+    return KBlockColors.activeSwitch;
+  }
+
   return Scaffold(
     appBar: AppBar(
       automaticallyImplyLeading: false,
@@ -21,15 +25,14 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                 ref.read(whiteListDeleteMode.notifier).state = false
               },
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
-      title: Center(
-        child: Text(
-          whitelistText,
-          style: const TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-              color: KBlockColors.foregroundColor),
-        ),
+      title: Text(
+        whitelistText,
+        style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+            color: KBlockColors.foregroundColor),
       ),
+      centerTitle: true,
       backgroundColor: KBlockColors.white,
       foregroundColor: KBlockColors.foregroundColor,
       actions: <Widget>[
@@ -39,6 +42,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
           onPressed: () {
             ref.read(whiteListDeleteMode.notifier).state = true;
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
               duration: const Duration(hours: 1),
               // this is to imitate duration before the snackbar disappear without user interaction
               content: Row(
@@ -59,17 +63,14 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                         )),
                     child: SizedBox(
                       height: 40.0,
-                      child: Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
-                          child: SizedBox(
-                              child: Text(
-                                  AppLocalizations.of(context)?.delete ?? '削除',
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      color: KBlockColors.text02,
-                                      height: 1.5,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400)))),
+                      child: Center(
+                          child: Text(
+                              AppLocalizations.of(context)?.delete ?? '削除',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: KBlockColors.text02,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400))),
                     ),
                   )
                 ],
@@ -79,38 +80,62 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
         ),
       ],
     ),
-    body: ListView.builder(
-      itemCount: listWhitelist.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: onDeleteMode
-              ? Transform.scale(
-                  scale: 1.2,
-                  child: Checkbox(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                    activeColor: KBlockColors.greenThemeColor,
-                    value: listWhitelist[index].isSelected,
-                    onChanged: (value) {
+    backgroundColor: KBlockColors.white,
+    body: Column(
+      children: [
+        Expanded(
+          flex: 5,
+          child: ListView.builder(
+            padding: onDeleteMode
+                ? const EdgeInsets.only(bottom: 80)
+                : const EdgeInsets.only(bottom: 0),
+            itemCount: listWhitelist.length,
+            itemBuilder: (context, index) {
+              return Container(
+                decoration: const BoxDecoration(
+                    color: KBlockColors.white,
+                    border: Border(
+                        bottom: BorderSide(
+                            width: 0.5, color: KBlockColors.divider))),
+                child: ListTile(
+                  leading: onDeleteMode
+                      ? Transform.scale(
+                          scale: 1.2,
+                          child: Checkbox(
+                            fillColor: MaterialStateProperty.resolveWith(
+                                getFilledColor),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                            activeColor: KBlockColors.activeSwitch,
+                            value: listWhitelist[index].isSelected,
+                            onChanged: (value) {
+                              ref
+                                  .read(whiteListListProvider.notifier)
+                                  .toggleCheckbox(index, value!);
+                            },
+                          ),
+                        )
+                      : null,
+                  title: Text(listWhitelist[index].name),
+                  trailing: Switch(
+                    activeColor: KBlockColors.activeSwitch,
+                    value: listWhitelist[index].isOn,
+                    onChanged: (bool value) {
                       ref
                           .read(whiteListListProvider.notifier)
-                          .toggleCheckbox(index, value!);
+                          .toggleSwitch(index, value);
                     },
                   ),
-                )
-              : null,
-          title: Text(listWhitelist[index].name),
-          trailing: Switch(
-            activeColor: KBlockColors.greenThemeColor,
-            value: listWhitelist[index].isOn,
-            onChanged: (bool value) {
-              ref
-                  .read(whiteListListProvider.notifier)
-                  .toggleSwitch(index, value);
+                ),
+              );
             },
           ),
-        );
-      },
+        ),
+        Container(
+          height: onDeleteMode ? 0 : 83,
+          color: KBlockColors.white,
+        ),
+      ],
     ),
     floatingActionButton: FloatingActionButton(
       onPressed: () {

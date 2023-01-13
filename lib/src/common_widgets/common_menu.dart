@@ -10,6 +10,7 @@ import 'package:k_block_app/src/features/app_management/presentation/app_individ
 import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 import 'package:k_block_app/src/features/history/presentation/history.dart';
+import 'package:k_block_app/src/features/account_settings/presentation/account_settings.dart';
 
 import '../constants/providers.dart';
 
@@ -22,6 +23,7 @@ const List<Widget> widgetOptions = <Widget>[
   BlackList(),
   AppManagementList(),
   AppIndividualSetting(),
+  AccountSettings(),
 ];
 
 class CommonMenu {

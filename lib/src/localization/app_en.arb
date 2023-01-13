@@ -87,5 +87,12 @@
     "about_app": "About The App",
     "about_youtube_ad": "YouTube Ads\nAbout",
     "contact_us": "Contact Us",
+    "serial_code": "Serial Code",
+    "version_info": "Version Information",
+    "serial_code_copied": "The serial code has been copied\nto clipboard.",
+    "using_latest_version": "You are currently using the\nlatest version.",
+    "update_to_new_version": "Update to New Version",
+    "close": "OK",
+    "update_now": "Update Now",
     "delete": "Delete"
 }

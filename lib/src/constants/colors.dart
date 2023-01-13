@@ -30,5 +30,6 @@ class KBlockColors {
   static const Color tooltipThemeColor = Color(0xFFE1F3E1);
   static const Color tileBorder = Color(0x12000000);
   static const Color tileSub = Color(0xFF71706C);
-  static const Color greenIcon = Color(0xFFB3E2B5);
+  static const Color greenIcon = Color(0x40B3E2B5);
+  static const Color simpleDialogueText = Color(0xFF545353);
 }
