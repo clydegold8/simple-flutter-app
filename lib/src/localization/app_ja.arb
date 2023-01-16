@@ -97,5 +97,9 @@
     "delete": "削除",
     "account": "アプリについて",
     "terms_of_use": "利用規約",
-    "privacy_policy": "プライバシーポリシー"
+    "privacy_policy": "プライバシーポリシー",
+    "contents_of_inquiry": "お問い合わせ内容",
+    "ads_wont_dissapear": "広告が消えない",
+    "no_idea": "使い方がわからない",
+    "not_listed": "上記以外の不具合"
 }
