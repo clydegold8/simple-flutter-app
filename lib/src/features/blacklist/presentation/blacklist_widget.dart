@@ -39,6 +39,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
             if (!onDeleteMode) {
               ref.read(blackListDeleteMode.notifier).state = true;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                padding: const EdgeInsets.fromLTRB(15,18,0,18),
                 backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
                 duration: const Duration(hours: 1),
                 // this is to imitate duration before the snackbar disappear without user interaction
@@ -58,16 +59,15 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                           )),
                       child: SizedBox(
                         height: 40.0,
+                        width: 55.0,
                         child: Center(
-                            child: SizedBox(
-                                child: Text(
-                                    AppLocalizations.of(context)?.delete ??
-                                        '削除',
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                        color: KBlockColors.text02,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400)))),
+                            child: Text(
+                                AppLocalizations.of(context)?.delete ?? '削除',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    color: KBlockColors.text02,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400))),
                       ),
                     )
                   ],
