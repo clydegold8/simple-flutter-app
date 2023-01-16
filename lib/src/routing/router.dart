@@ -8,6 +8,7 @@ import 'package:k_block_app/src/features/history/presentation/history.dart';
 import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_popup_ios_widget.dart';
 
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
+import 'package:k_block_app/src/features/other/other_account.dart';
 import 'package:k_block_app/src/features/whitelist/presentation/whitelist.dart';
 import 'package:k_block_app/src/common_widgets/screens/common_screen.dart';
 
@@ -32,6 +33,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const History());
       case Routes.appIndividualSettingRoute:
         return MaterialPageRoute(builder: (_) => const AppIndividualSetting());
+      case Routes.otherAccount:
+        return MaterialPageRoute(builder: (_) => const OtherAccount());
       default:
         return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
     }

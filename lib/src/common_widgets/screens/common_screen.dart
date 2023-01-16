@@ -23,7 +23,7 @@ class CommonScreen extends ConsumerWidget {
               selectedIndex == 6 ||
               selectedIndex == 7) {
             return 1;
-          } else if (selectedIndex == 8) {
+          } else if (selectedIndex == 8 || selectedIndex == 9) {
             return 3;
           } else {
             return selectedIndex;

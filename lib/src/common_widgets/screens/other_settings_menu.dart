@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'package:k_block_app/src/common_widgets/switch.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
-
-import 'package:k_block_app/src/common_widgets/switch.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class OtherSettingsMenu extends ConsumerStatefulWidget {
   const OtherSettingsMenu({super.key});
@@ -214,22 +212,27 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                         )
                       ],
                     )),
-                Column(
-                  children: [
-                    Container(
-                      height: 56,
-                      width: 56,
-                      margin: const EdgeInsets.only(bottom: 7),
-                      decoration: aboutSectionIconContDecoration,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 14, bottom: 14),
-                        child: SvgPicture.asset('assets/icons/app.svg'),
+                GestureDetector(
+                  onTap: () {
+                    ref.read(widgetPathProvider.notifier).state = 9;
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 56,
+                        width: 56,
+                        margin: const EdgeInsets.only(bottom: 7),
+                        decoration: aboutSectionIconContDecoration,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 14, bottom: 14),
+                          child: SvgPicture.asset('assets/icons/app.svg'),
+                        ),
                       ),
-                    ),
-                    Text(AppLocalizations.of(context)?.about_app ?? 'アプリについて',
-                        textAlign: TextAlign.center,
-                        style: aboutSectionTextStyle)
-                  ],
+                      Text(AppLocalizations.of(context)?.about_app ?? 'アプリについて',
+                          textAlign: TextAlign.center,
+                          style: aboutSectionTextStyle)
+                    ],
+                  ),
                 ),
                 Column(
                   children: [

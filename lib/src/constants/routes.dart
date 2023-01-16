@@ -9,4 +9,5 @@ class Routes {
   static const String appManagementListRoute = '/app-management-list';
   static const String appHistoryRoute = '/app-history';
   static const String appIndividualSettingRoute = '/app-setting';
+  static const String otherAccount = '/other/other-account';
 }
