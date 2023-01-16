@@ -99,7 +99,10 @@ Widget accountSettingsWidget(BuildContext context, WidgetRef ref) {
             AppLocalizations.of(context)?.serial_code ?? 'シリアルコード',
             style: listTileTitleStyle,
           ),
-          subtitle: const Text(_serialNo, style: listTileSubtitleStyle),
+          subtitle: const Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: Text(_serialNo, style: listTileSubtitleStyle),
+          ),
           trailing: Padding(
             padding: const EdgeInsets.only(top: 7),
             child: SvgPicture.asset('assets/icons/copy.svg'),
@@ -114,7 +117,10 @@ Widget accountSettingsWidget(BuildContext context, WidgetRef ref) {
             AppLocalizations.of(context)?.version_info ?? 'バージョン情報',
             style: listTileTitleStyle,
           ),
-          subtitle: const Text(_appVersion, style: listTileSubtitleStyle),
+          subtitle: const Padding(
+            padding: EdgeInsets.only(top: 5),
+            child: Text(_appVersion, style: listTileSubtitleStyle),
+          ),
           trailing: const Padding(
               padding: EdgeInsets.only(top: 7),
               child: Icon(Icons.chevron_right, size: 30)),
