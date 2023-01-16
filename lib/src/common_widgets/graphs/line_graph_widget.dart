@@ -28,9 +28,10 @@ Widget lineGraphWidget(
     Expanded(
       flex: 7,
       child: SfCartesianChart(
+          backgroundColor: KBlockColors.white,
           title: ChartTitle(
               textStyle: const TextStyle(
-                  fontSize: 32,
+                  fontSize: 30,
                   fontWeight: FontWeight.w700,
                   color: KBlockColors.foregroundColor),
               text: graphTitleHeader),

@@ -11,7 +11,10 @@ import '../../../constants/providers.dart';
 import 'history_ads_blocked.dart';
 
 Widget historyCommunicationCostTabWidget(
-    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehavior) {
+    BuildContext context,
+    WidgetRef ref,
+    TooltipBehavior tooltipBehavior,
+    TooltipBehavior tooltipBehaviorWeekMonthCommunicationsCost) {
   final selectedIndex = ref.watch(widgetCommunicationCostTabProvider);
   final tabs = [
     AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
@@ -23,11 +26,27 @@ Widget historyCommunicationCostTabWidget(
 
   // TODO: this will be replaced with actual data
   List<GraphData> data = [
-    GraphData('12:00', Random().nextInt(100).toDouble()),
-    GraphData('1:50', Random().nextInt(100).toDouble()),
-    GraphData('2:00', Random().nextInt(100).toDouble()),
-    GraphData('3:00', Random().nextInt(100).toDouble()),
-    GraphData('4:50', Random().nextInt(100).toDouble())
+    GraphData('12:00', Random().nextInt(100).toDouble(), '10/1(土)'),
+    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1(土)'),
+    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1(土)'),
+    GraphData('3:00', Random().nextInt(100).toDouble(), '10/1(土)'),
+    GraphData('4:50', Random().nextInt(100).toDouble(), '10/1(土)')
+  ];
+
+  List<GraphData> dataTwo = [
+    GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (金)'),
+    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (金）'),
+    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (金）'),
+    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (金）'),
+    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (金）')
+  ];
+
+  List<GraphData> dataThree = [
+    GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (木）'),
+    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (木）'),
+    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (木）'),
+    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (木）')
   ];
 
   void onItemTapped(int index) {
@@ -90,14 +109,26 @@ Widget historyCommunicationCostTabWidget(
                 children: [
                   lineGraphWidget(context, tooltipBehavior, data,
                       '60MB / 1分30秒', '24時間'), // 24hrs
-                  lineGraphWidget(context, tooltipBehavior, data,
+                  lineGraphWidget(context, tooltipBehavior, dataTwo,
                       '80MB / 3分05秒', '前日'), // last day
-                  lineGraphWidget(context, tooltipBehavior, data,
-                      '120MB / 6分30秒', '1週間'), // 1 week
-                  lineGraphWidget(context, tooltipBehavior, data,
-                      '480MB / 23分00秒', '1ヶ月'), // 1 month
-                  lineGraphWidget(context, tooltipBehavior, data,
-                      '5GB / 2時間30分', '6ヶ月'), // six months
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorWeekMonthCommunicationsCost,
+                      dataThree,
+                      '120MB / 6分30秒',
+                      '1週間'), // 1 week
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorWeekMonthCommunicationsCost,
+                      dataThree,
+                      '480MB / 23分00秒',
+                      '1ヶ月'), // 1 month
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorWeekMonthCommunicationsCost,
+                      dataThree,
+                      '5GB / 2時間30分',
+                      '6ヶ月'), // six months
                 ]),
           ),
         ],
