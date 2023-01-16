@@ -94,5 +94,8 @@
     "update_to_new_version": "最新版へのアップデートを\nお願いします。",
     "close": "閉じる",
     "update_now": "今すぐアップデート",
-    "delete": "削除"
+    "delete": "削除",
+    "account": "アプリについて",
+    "terms_of_use": "利用規約",
+    "privacy_policy": "プライバシーポリシー"
 }

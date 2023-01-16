@@ -34,6 +34,8 @@ import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form_state.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form_widget.dart';
+import 'package:k_block_app/src/features/other/other_account.dart';
+import 'package:k_block_app/src/features/other/other_account_widget.dart';
 import 'package:k_block_app/src/features/whitelist/presentation/whitelist.dart';
 import 'package:k_block_app/src/features/whitelist/presentation/whitelist_widget.dart';
 import 'package:k_block_app/src/routing/router.dart';
@@ -218,6 +220,21 @@ class HotReload extends StatelessWidget {
                       folders: [],
                     ),
                   ],
+                ),
+                WidgetbookFolder(
+                  name: 'other',
+                  widgets: [
+                    WidgetbookComponent(
+                      name: 'OtherAccount',
+                      useCases: [
+                        WidgetbookUseCase(
+                          name: 'OtherAccountPage',
+                          builder: (context) => otherAccountUseCase(context),
+                        ),
+                      ],
+                    ),
+                  ],
+                  folders: [],
                 ),
                 WidgetbookFolder(
                   name: 'ad_blocker',
