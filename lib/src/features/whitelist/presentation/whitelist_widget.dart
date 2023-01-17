@@ -56,122 +56,132 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
     ));
   }
 
-  return Scaffold(
-    appBar: AppBar(
-      automaticallyImplyLeading: false,
-      leading: IconButton(
-          onPressed: () => {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar(),
-                ref.read(widgetPathProvider.notifier).state = 1,
-                ref.read(whiteListDeleteMode.notifier).state = false,
-                ref.read(whiteListDeleteSnackBarShownProvider.notifier).state =
-                    false
+  return WillPopScope(
+      onWillPop: () async {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ref.read(widgetPathProvider.notifier).state = 1;
+        ref.read(whiteListDeleteMode.notifier).state = false;
+        ref.read(whiteListDeleteSnackBarShownProvider.notifier).state = false;
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+              onPressed: () => {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+                    ref.read(widgetPathProvider.notifier).state = 1,
+                    ref.read(whiteListDeleteMode.notifier).state = false,
+                    ref
+                        .read(whiteListDeleteSnackBarShownProvider.notifier)
+                        .state = false
+                  },
+              icon: const Icon(Icons.arrow_back_ios, size: 25)),
+          title: Text(
+            whitelistText,
+            style: const TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                color: KBlockColors.foregroundColor),
+          ),
+          centerTitle: true,
+          backgroundColor: KBlockColors.white,
+          foregroundColor: KBlockColors.foregroundColor,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.more_vert),
+              tooltip: 'Delete Whitelist',
+              onPressed: () {
+                ref.read(whiteListDeleteMode.notifier).state = true;
               },
-          icon: const Icon(Icons.arrow_back_ios, size: 25)),
-      title: Text(
-        whitelistText,
-        style: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
-            color: KBlockColors.foregroundColor),
-      ),
-      centerTitle: true,
-      backgroundColor: KBlockColors.white,
-      foregroundColor: KBlockColors.foregroundColor,
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.more_vert),
-          tooltip: 'Delete Whitelist',
-          onPressed: () {
-            ref.read(whiteListDeleteMode.notifier).state = true;
-          },
+            ),
+          ],
         ),
-      ],
-    ),
-    backgroundColor: KBlockColors.white,
-    body: Column(
-      children: [
-        Expanded(
-          flex: 5,
-          child: ListView.builder(
-            padding: onDeleteMode
-                ? const EdgeInsets.only(bottom: 80)
-                : const EdgeInsets.only(bottom: 0),
-            itemCount: listWhitelist.length,
-            itemBuilder: (context, index) {
-              return Container(
-                decoration: const BoxDecoration(
-                    color: KBlockColors.white,
-                    border: Border(
-                        bottom: BorderSide(
-                            width: 0.5, color: KBlockColors.divider))),
-                child: ListTile(
-                  leading: onDeleteMode
-                      ? Transform.scale(
-                          scale: 1.2,
-                          child: Checkbox(
-                            fillColor: MaterialStateProperty.resolveWith(
-                                getFilledColor),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50)),
-                            activeColor: KBlockColors.activeSwitch,
-                            value: listWhitelist[index].isSelected,
-                            onChanged: (value) {
-                              ref
-                                  .read(whiteListListProvider.notifier)
-                                  .toggleCheckbox(index, value!);
+        backgroundColor: KBlockColors.white,
+        body: Column(
+          children: [
+            Expanded(
+              flex: 5,
+              child: ListView.builder(
+                padding: onDeleteMode
+                    ? const EdgeInsets.only(bottom: 80)
+                    : const EdgeInsets.only(bottom: 0),
+                itemCount: listWhitelist.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: const BoxDecoration(
+                        color: KBlockColors.white,
+                        border: Border(
+                            bottom: BorderSide(
+                                width: 0.5, color: KBlockColors.divider))),
+                    child: ListTile(
+                      leading: onDeleteMode
+                          ? Transform.scale(
+                              scale: 1.2,
+                              child: Checkbox(
+                                fillColor: MaterialStateProperty.resolveWith(
+                                    getFilledColor),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                                activeColor: KBlockColors.activeSwitch,
+                                value: listWhitelist[index].isSelected,
+                                onChanged: (value) {
+                                  ref
+                                      .read(whiteListListProvider.notifier)
+                                      .toggleCheckbox(index, value!);
 
-                              final selectedWhitelistIsEmpty = listWhitelist
-                                  .where(
-                                      (element) => element.isSelected == true)
-                                  .toList()
-                                  .isEmpty;
-                              if (selectedWhitelistIsEmpty) {
-                                ScaffoldMessenger.of(context)
-                                    .hideCurrentSnackBar();
-                                ref
-                                    .read(whiteListDeleteSnackBarShownProvider
-                                        .notifier)
-                                    .state = false;
-                              } else if (!selectedWhitelistIsEmpty &&
-                                  !isDeleteSnackBarShown) {
-                                showDeleteSnackBar();
-                              }
-                            },
-                          ),
-                        )
-                      : null,
-                  title: Text(listWhitelist[index].name),
-                  trailing: Switch(
-                    activeColor: KBlockColors.activeSwitch,
-                    value: listWhitelist[index].isOn,
-                    onChanged: (bool value) {
-                      ref
-                          .read(whiteListListProvider.notifier)
-                          .toggleSwitch(index, value);
-                    },
-                  ),
-                ),
-              );
-            },
+                                  final selectedWhitelistIsEmpty = listWhitelist
+                                      .where((element) =>
+                                          element.isSelected == true)
+                                      .toList()
+                                      .isEmpty;
+                                  if (selectedWhitelistIsEmpty) {
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                    ref
+                                        .read(
+                                            whiteListDeleteSnackBarShownProvider
+                                                .notifier)
+                                        .state = false;
+                                  } else if (!selectedWhitelistIsEmpty &&
+                                      !isDeleteSnackBarShown) {
+                                    showDeleteSnackBar();
+                                  }
+                                },
+                              ),
+                            )
+                          : null,
+                      title: Text(listWhitelist[index].name),
+                      trailing: Switch(
+                        activeColor: KBlockColors.activeSwitch,
+                        value: listWhitelist[index].isOn,
+                        onChanged: (bool value) {
+                          ref
+                              .read(whiteListListProvider.notifier)
+                              .toggleSwitch(index, value);
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              height: onDeleteMode ? 0 : 83,
+              color: KBlockColors.white,
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            addWhitelist(context, ref);
+          },
+          tooltip: whitelistText,
+          backgroundColor: KBlockColors.greenThemeColor,
+          child: const Icon(
+            Icons.add,
+            size: 35.0,
           ),
         ),
-        Container(
-          height: onDeleteMode ? 0 : 83,
-          color: KBlockColors.white,
-        ),
-      ],
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
-        addWhitelist(context, ref);
-      },
-      tooltip: whitelistText,
-      backgroundColor: KBlockColors.greenThemeColor,
-      child: const Icon(
-        Icons.add,
-        size: 35.0,
-      ),
-    ),
-  );
+      ));
 }

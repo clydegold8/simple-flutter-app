@@ -42,13 +42,13 @@ Widget otherAccountWidget(BuildContext context, WidgetRef ref) {
             },
             tileColor: KBlockColors.white,
             title: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
+              padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
               child: Text(AppLocalizations.of(context)?.terms_of_use ?? '利用規約',
                   style: const TextStyle(
                       fontWeight: FontWeight.w400, fontSize: 14)),
             ),
             trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: Icon(Icons.chevron_right, size: 30)),
           ),
         ),
@@ -70,14 +70,14 @@ Widget otherAccountWidget(BuildContext context, WidgetRef ref) {
             },
             tileColor: KBlockColors.white,
             title: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
+              padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
               child: Text(
                   AppLocalizations.of(context)?.privacy_policy ?? 'プライバシーポリシー',
                   style: const TextStyle(
                       fontWeight: FontWeight.w400, fontSize: 14)),
             ),
             trailing: const Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: Icon(Icons.chevron_right, size: 30)),
           ),
         ),

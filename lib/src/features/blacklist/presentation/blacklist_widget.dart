@@ -56,112 +56,121 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
     ));
   }
 
-  return Scaffold(
-    backgroundColor: KBlockColors.white,
-    appBar: AppBar(
-      automaticallyImplyLeading: false,
-      leading: IconButton(
-          onPressed: () => {
-                ref.read(widgetPathProvider.notifier).state = 1,
-                ref.read(blackListDeleteMode.notifier).state = false,
-                ref.read(blackListDeleteSnackBarShownProvider.notifier).state =
-                    false,
-                ScaffoldMessenger.of(context).hideCurrentSnackBar()
-              },
-          icon: const Icon(Icons.arrow_back_ios, size: 25)),
-      backgroundColor: KBlockColors.white,
-      foregroundColor: KBlockColors.foregroundColor,
-      title: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト',
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-      centerTitle: true,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.more_vert),
-          tooltip: 'Delete Blacklist',
-          onPressed: () {
-            if (!onDeleteMode) {
-              ref.read(blackListDeleteMode.notifier).state = true;
-            }
-          },
-        ),
-      ],
-    ),
-    body: Column(
-      children: [
-        Expanded(
-            child: ListView.builder(
-          padding: onDeleteMode
-              ? const EdgeInsets.only(bottom: 80)
-              : const EdgeInsets.only(bottom: 0),
-          itemCount: listBlacklist.length,
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: const BoxDecoration(
-                  color: KBlockColors.white,
-                  border: Border(
-                      bottom:
-                          BorderSide(width: 0.5, color: KBlockColors.divider))),
-              child: ListTile(
-                leading: onDeleteMode
-                    ? Transform.scale(
-                        scale: 1.2,
-                        child: Checkbox(
-                          fillColor:
-                              MaterialStateProperty.resolveWith(getColor),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          activeColor: KBlockColors.activeSwitch,
-                          value: listBlacklist[index].isSelected,
-                          onChanged: (value) {
-                            ref
-                                .read(blackListProvider.notifier)
-                                .toggleCheckbox(index, value!);
-
-                            final selectedBlacklistIsEmpty = listBlacklist
-                                .where((element) => element.isSelected == true)
-                                .toList()
-                                .isEmpty;
-                            if (selectedBlacklistIsEmpty) {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              ref
-                                  .read(blackListDeleteSnackBarShownProvider
-                                      .notifier)
-                                  .state = false;
-                            } else if (!selectedBlacklistIsEmpty &&
-                                !isDeleteSnackBarShown) {
-                              showDeleteSnackBar();
-                            }
-                          },
-                        ),
-                      )
-                    : null,
-                title: Text(listBlacklist[index].name),
-                trailing: Switch(
-                  activeColor: KBlockColors.activeSwitch,
-                  value: listBlacklist[index].isOn,
-                  onChanged: (bool value) {
-                    ref
-                        .read(blackListProvider.notifier)
-                        .toggleSwitch(index, value);
-                  },
-                ),
-              ),
-            );
-          },
-        )),
-        Container(
-          height: onDeleteMode ? 0 : 83,
-          color: KBlockColors.white,
-        ),
-      ],
-    ),
-    floatingActionButton: FloatingActionButton(
-      backgroundColor: KBlockColors.greenThemeColor,
-      onPressed: () {
-        addBlacklist(context, ref);
+  return WillPopScope(
+      onWillPop: () async {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ref.read(widgetPathProvider.notifier).state = 1;
+        ref.read(blackListDeleteMode.notifier).state = false;
+        ref.read(blackListDeleteSnackBarShownProvider.notifier).state = false;
+        return false;
       },
-      child: const Icon(Icons.add, size: 30.0),
-    ),
-  );
+      child: Scaffold(
+        backgroundColor: KBlockColors.white,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+              onPressed: () => {
+                    ref.read(widgetPathProvider.notifier).state = 1,
+                    ref.read(blackListDeleteMode.notifier).state = false,
+                    ref
+                        .read(blackListDeleteSnackBarShownProvider.notifier)
+                        .state = false,
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar()
+                  },
+              icon: const Icon(Icons.arrow_back_ios, size: 25)),
+          backgroundColor: KBlockColors.white,
+          foregroundColor: KBlockColors.foregroundColor,
+          title: Text(AppLocalizations.of(context)?.blacklist ?? 'ブラックリスト',
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.more_vert),
+              tooltip: 'Delete Blacklist',
+              onPressed: () {
+                ref.read(blackListDeleteMode.notifier).state = true;
+              },
+            ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Expanded(
+                child: ListView.builder(
+              padding: onDeleteMode
+                  ? const EdgeInsets.only(bottom: 80)
+                  : const EdgeInsets.only(bottom: 0),
+              itemCount: listBlacklist.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  decoration: const BoxDecoration(
+                      color: KBlockColors.white,
+                      border: Border(
+                          bottom: BorderSide(
+                              width: 0.5, color: KBlockColors.divider))),
+                  child: ListTile(
+                    leading: onDeleteMode
+                        ? Transform.scale(
+                            scale: 1.2,
+                            child: Checkbox(
+                              fillColor:
+                                  MaterialStateProperty.resolveWith(getColor),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)),
+                              activeColor: KBlockColors.activeSwitch,
+                              value: listBlacklist[index].isSelected,
+                              onChanged: (value) {
+                                ref
+                                    .read(blackListProvider.notifier)
+                                    .toggleCheckbox(index, value!);
+
+                                final selectedBlacklistIsEmpty = listBlacklist
+                                    .where(
+                                        (element) => element.isSelected == true)
+                                    .toList()
+                                    .isEmpty;
+                                if (selectedBlacklistIsEmpty) {
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  ref
+                                      .read(blackListDeleteSnackBarShownProvider
+                                          .notifier)
+                                      .state = false;
+                                } else if (!selectedBlacklistIsEmpty &&
+                                    !isDeleteSnackBarShown) {
+                                  showDeleteSnackBar();
+                                }
+                              },
+                            ),
+                          )
+                        : null,
+                    title: Text(listBlacklist[index].name),
+                    trailing: Switch(
+                      activeColor: KBlockColors.activeSwitch,
+                      value: listBlacklist[index].isOn,
+                      onChanged: (bool value) {
+                        ref
+                            .read(blackListProvider.notifier)
+                            .toggleSwitch(index, value);
+                      },
+                    ),
+                  ),
+                );
+              },
+            )),
+            Container(
+              height: onDeleteMode ? 0 : 83,
+              color: KBlockColors.white,
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: KBlockColors.greenThemeColor,
+          onPressed: () {
+            addBlacklist(context, ref);
+          },
+          child: const Icon(Icons.add, size: 30.0),
+        ),
+      ));
 }
