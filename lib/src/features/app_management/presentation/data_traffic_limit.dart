@@ -14,6 +14,7 @@ Future<void> dataTrafficLimitDialogueBuilder(
 
 Widget dataTrafficLimitDialogue(BuildContext context, WidgetRef ref) {
   return SimpleDialog(
+    insetPadding: const EdgeInsets.all(30),
     title: Center(
         child: Text(
             AppLocalizations.of(context)?.set_data_traffic ?? 'データ通信量の上限の設定',
@@ -53,7 +54,7 @@ Widget dataTrafficLimitDialogue(BuildContext context, WidgetRef ref) {
           Padding(
             padding: const EdgeInsets.only(top: 25),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
                     height: 43,
