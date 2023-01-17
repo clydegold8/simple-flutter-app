@@ -13,8 +13,10 @@ const _serialNo = '7tdn4SyuRUh!59s83x6z';
 const _appVersion = '3.23.0';
 const _newAppVersion = '3.23.0';
 
-const _dialogueTextStyle =
-    TextStyle(color: KBlockColors.simpleDialogueText, fontSize: 14);
+const _dialogueTextStyle = TextStyle(
+    color: KBlockColors.simpleDialogueText,
+    fontSize: 14,
+    fontWeight: FontWeight.w500);
 
 Future<void> _onPressedSerialCode(BuildContext context) {
   return showDialog<void>(
@@ -26,6 +28,7 @@ Future<void> _onPressedSerialCode(BuildContext context) {
         }
 
         return SimpleDialogueWidget(
+          edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
           onClickPositiveBtn: onClickPositiveBtn,
           positiveBtnText: AppLocalizations.of(context)?.close ?? '閉じる',
           showNegativeBtn: false,
@@ -56,6 +59,7 @@ Future<void> _onPressedAppVersion(BuildContext context) {
         }
 
         return SimpleDialogueWidget(
+          edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
           onClickPositiveBtn: onClickPositiveBtn,
           positiveBtnText: positiveBtnText,
           showNegativeBtn: false,
