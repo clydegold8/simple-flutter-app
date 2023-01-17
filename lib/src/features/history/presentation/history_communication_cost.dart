@@ -35,18 +35,18 @@ Widget historyCommunicationCostTabWidget(
 
   List<GraphData> dataTwo = [
     GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (金)'),
-    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (金）'),
-    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (金）'),
-    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (金）'),
-    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (金）')
+    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (金)'),
+    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (金)'),
+    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (金)'),
+    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (金)')
   ];
 
   List<GraphData> dataThree = [
     GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (木)'),
-    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (木）'),
-    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (木）'),
-    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (木）'),
-    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (木）')
+    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (木)'),
+    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (木)')
   ];
 
   void onItemTapped(int index) {
