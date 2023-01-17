@@ -12,7 +12,6 @@ class BlackListItem {
 
 // this will handle the actions of the lists
 class BlackListItemNotifier extends ChangeNotifier {
-
   // TODO: this will be replaced with actual data in the future
   List<BlackListItem> blacklists = [
     BlackListItem('Blacklist 1'),
@@ -46,3 +45,5 @@ class BlackListItemNotifier extends ChangeNotifier {
 final blackListProvider = ChangeNotifierProvider<BlackListItemNotifier>((ref) {
   return BlackListItemNotifier();
 });
+
+final blackListDeleteSnackBarShownProvider = StateProvider((ref) => false);

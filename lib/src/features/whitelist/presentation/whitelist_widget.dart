@@ -10,9 +10,50 @@ import '../data_provider/whitelist_lists_provider.dart';
 Widget whitelistWidget(BuildContext context, WidgetRef ref) {
   final listWhitelist = ref.watch(whiteListListProvider).whitelists;
   final onDeleteMode = ref.watch(whiteListDeleteMode);
+  final isDeleteSnackBarShown = ref.watch(whiteListDeleteSnackBarShownProvider);
   String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
   Color getFilledColor(Set<MaterialState> states) {
     return KBlockColors.activeSwitch;
+  }
+
+  void showDeleteSnackBar() {
+    ref.read(whiteListDeleteSnackBarShownProvider.notifier).state = true;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      padding: const EdgeInsets.fromLTRB(15, 18, 0, 18),
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
+      duration: const Duration(hours: 1),
+      // this is to imitate duration before the snackbar disappear without user interaction
+      content: Row(
+        children: [
+          OutlinedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ref.read(whiteListDeleteMode.notifier).state = false;
+              ref.read(whiteListDeleteSnackBarShownProvider.notifier).state =
+                  false;
+              ref.read(whiteListListProvider.notifier).deleteWhiteLists();
+            },
+            style: OutlinedButton.styleFrom(
+                backgroundColor: KBlockColors.white,
+                side: const BorderSide(color: KBlockColors.white),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                )),
+            child: SizedBox(
+              height: 40.0,
+              width: 55.0,
+              child: Center(
+                  child: Text(AppLocalizations.of(context)?.delete ?? '削除',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: KBlockColors.text02,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400))),
+            ),
+          )
+        ],
+      ),
+    ));
   }
 
   return WillPopScope(
@@ -20,6 +61,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ref.read(widgetPathProvider.notifier).state = 1;
         ref.read(whiteListDeleteMode.notifier).state = false;
+        ref.read(whiteListDeleteSnackBarShownProvider.notifier).state = false;
         return false;
       },
       child: Scaffold(
@@ -29,7 +71,10 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               onPressed: () => {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar(),
                     ref.read(widgetPathProvider.notifier).state = 1,
-                    ref.read(whiteListDeleteMode.notifier).state = false
+                    ref.read(whiteListDeleteMode.notifier).state = false,
+                    ref
+                        .read(whiteListDeleteSnackBarShownProvider.notifier)
+                        .state = false
                   },
               icon: const Icon(Icons.arrow_back_ios, size: 25)),
           title: Text(
@@ -45,71 +90,32 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.more_vert),
-          tooltip: 'Delete Whitelist',
-          onPressed: () {
-            if (!onDeleteMode) {
-              ref.read(whiteListDeleteMode.notifier).state = true;
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                padding: const EdgeInsets.fromLTRB(15,18,0,18),
-                backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
-                duration: const Duration(hours: 1),
-                // this is to imitate duration before the snackbar disappear without user interaction
-                content: Row(
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        ref.read(whiteListDeleteMode.notifier).state = false;
-                        ref
-                            .read(whiteListListProvider.notifier)
-                            .deleteWhiteLists();
-                      },
-                      style: OutlinedButton.styleFrom(
-                          backgroundColor: KBlockColors.white,
-                          side: const BorderSide(color: KBlockColors.white),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          )),
-                      child: SizedBox(
-                        height: 40.0,
-                        width: 55.0,
-                        child: Center(
-                            child: Text(
-                                AppLocalizations.of(context)?.delete ?? '削除',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.text02,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400))),
-                      ),
-                    )
-                  ],
-                ),
-              ));
-            }
-          },
+              tooltip: 'Delete Whitelist',
+              onPressed: () {
+                ref.read(whiteListDeleteMode.notifier).state = true;
+              },
+            ),
+          ],
         ),
-      ],
-    ),
-    backgroundColor: KBlockColors.white,
-    body: Column(
-      children: [
-        Expanded(
-          flex: 5,
-          child: ListView.builder(
-            padding: onDeleteMode
-                ? const EdgeInsets.only(bottom: 80)
-                : const EdgeInsets.only(bottom: 0),
-            itemCount: listWhitelist.length,
-            itemBuilder: (context, index) {
-              return Container(
-                decoration: const BoxDecoration(
-                    color: KBlockColors.white,
-                    border: Border(
-                        bottom: BorderSide(
-                            width: 0.5, color: KBlockColors.divider))),
-                child: ListTile(
-                  leading: onDeleteMode
+        backgroundColor: KBlockColors.white,
+        body: Column(
+          children: [
+            Expanded(
+              flex: 5,
+              child: ListView.builder(
+                padding: onDeleteMode
+                    ? const EdgeInsets.only(bottom: 80)
+                    : const EdgeInsets.only(bottom: 0),
+                itemCount: listWhitelist.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: const BoxDecoration(
+                        color: KBlockColors.white,
+                        border: Border(
+                            bottom: BorderSide(
+                                width: 0.5, color: KBlockColors.divider))),
+                    child: ListTile(
+                      leading: onDeleteMode
                           ? Transform.scale(
                               scale: 1.2,
                               child: Checkbox(
@@ -123,6 +129,24 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                                   ref
                                       .read(whiteListListProvider.notifier)
                                       .toggleCheckbox(index, value!);
+
+                                  final selectedWhitelistIsEmpty = listWhitelist
+                                      .where((element) =>
+                                          element.isSelected == true)
+                                      .toList()
+                                      .isEmpty;
+                                  if (selectedWhitelistIsEmpty) {
+                                    ScaffoldMessenger.of(context)
+                                        .hideCurrentSnackBar();
+                                    ref
+                                        .read(
+                                            whiteListDeleteSnackBarShownProvider
+                                                .notifier)
+                                        .state = false;
+                                  } else if (!selectedWhitelistIsEmpty &&
+                                      !isDeleteSnackBarShown) {
+                                    showDeleteSnackBar();
+                                  }
                                 },
                               ),
                             )
@@ -138,7 +162,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                         },
                       ),
                     ),
-              );
+                  );
                 },
               ),
             ),

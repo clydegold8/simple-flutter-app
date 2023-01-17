@@ -94,7 +94,6 @@ Widget accountSettingsWidget(BuildContext context, WidgetRef ref) {
       Container(
         decoration: listTileContDecoration,
         child: ListTile(
-          onTap: () => _onPressedSerialCode(context),
           title: Text(
             AppLocalizations.of(context)?.serial_code ?? 'シリアルコード',
             style: listTileTitleStyle,
@@ -103,9 +102,12 @@ Widget accountSettingsWidget(BuildContext context, WidgetRef ref) {
             padding: EdgeInsets.only(top: 5),
             child: Text(_serialNo, style: listTileSubtitleStyle),
           ),
-          trailing: Padding(
-            padding: const EdgeInsets.only(top: 7),
-            child: SvgPicture.asset('assets/icons/copy.svg'),
+          trailing: GestureDetector(
+            onTap: () => _onPressedSerialCode(context),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 7),
+              child: SvgPicture.asset('assets/icons/copy.svg'),
+            ),
           ),
         ),
       ),
