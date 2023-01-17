@@ -97,6 +97,9 @@
     "delete": "Delete",
     "account": "Account",
     "terms_of_use": "Terms of use",
-    "privacy_policy": "Privacy Policy"
-
+    "privacy_policy": "Privacy Policy",
+    "contents_of_inquiry": "Inquiry Contents",
+    "ads_wont_dissapear": "Advertisement don’t disappear",
+    "no_idea": "Don’t know how to use",
+    "not_listed": "Problems other that the above"
 }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:k_block_app/src/common_widgets/switch.dart';
+import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class OtherSettingsMenu extends ConsumerStatefulWidget {
   const OtherSettingsMenu({super.key});
@@ -28,6 +29,153 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
     setState(() {
       isAdBlockWifiOnlyOn = value;
     });
+  }
+
+  Future<void> _onPressedContactUs(BuildContext context) {
+    const radioVisualDensity = VisualDensity(horizontal: -4, vertical: -4);
+    const radioTextStyle = TextStyle(color: KBlockColors.text02, fontSize: 14);
+
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          String inquiryOption = 'ads_wont_dissapear';
+
+          return StatefulBuilder(builder: (context, setState) {
+            void onChangedRadio(value) {
+              setState(() {
+                inquiryOption = value.toString();
+              });
+            }
+
+            void onClickNegativeBtn() {
+              Navigator.of(context).pop();
+            }
+
+            void onClickPositiveBtn() {
+              Navigator.of(context).pop();
+            }
+
+            return SimpleDialogueWidget(
+                mainAxisAlignmentBtnRow: MainAxisAlignment.spaceBetween,
+                onClickNegativeBtn: onClickNegativeBtn,
+                onClickPositiveBtn: onClickPositiveBtn,
+                negativeBtnText:
+                    AppLocalizations.of(context)?.cancel ?? "キャンセル",
+                positiveBtnText: AppLocalizations.of(context)?.ok ?? "OK",
+                child: SizedBox(
+                  width: 150,
+                  child: Column(
+                    children: [
+                      Center(
+                          child: Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Text(
+                          AppLocalizations.of(context)?.contents_of_inquiry ??
+                              "お問い合わせ内容",
+                          style: const TextStyle(
+                              color: KBlockColors.foregroundColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800),
+                        ),
+                      )),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 9),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Transform.scale(
+                              scale: 0.9,
+                              child: Radio(
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  visualDensity: radioVisualDensity,
+                                  activeColor: KBlockColors.text02,
+                                  value: "ads_wont_dissapear",
+                                  groupValue: inquiryOption,
+                                  onChanged: onChangedRadio),
+                            ),
+                            Text(
+                              AppLocalizations.of(context)
+                                      ?.ads_wont_dissapear ??
+                                  "広告が消えない",
+                              style: radioTextStyle,
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 9),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Transform.scale(
+                              scale: 0.9,
+                              child: Radio(
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  visualDensity: radioVisualDensity,
+                                  activeColor: KBlockColors.text02,
+                                  value: "no_idea",
+                                  groupValue: inquiryOption,
+                                  onChanged: onChangedRadio),
+                            ),
+                            Text(
+                              AppLocalizations.of(context)?.no_idea ??
+                                  "使い方がわからない",
+                              style: radioTextStyle,
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 9),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Transform.scale(
+                              scale: 0.9,
+                              child: Radio(
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  visualDensity: radioVisualDensity,
+                                  activeColor: KBlockColors.text02,
+                                  value: "not_listed",
+                                  groupValue: inquiryOption,
+                                  onChanged: onChangedRadio),
+                            ),
+                            Text(
+                              AppLocalizations.of(context)?.not_listed ??
+                                  "上記以外の不具合",
+                              style: radioTextStyle,
+                            )
+                          ],
+                        ),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Transform.scale(
+                            scale: 0.9,
+                            child: Radio(
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
+                                visualDensity: radioVisualDensity,
+                                activeColor: KBlockColors.text02,
+                                value: "others",
+                                groupValue: inquiryOption,
+                                onChanged: onChangedRadio),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)?.others ?? "その他",
+                            style: radioTextStyle,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ));
+          });
+        });
   }
 
   @override
@@ -253,22 +401,25 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                         style: aboutSectionTextStyle)
                   ],
                 ),
-                Column(
-                  children: [
-                    Container(
-                      height: 56,
-                      width: 56,
-                      margin: const EdgeInsets.only(bottom: 7),
-                      decoration: aboutSectionIconContDecoration,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 14, right: 14),
-                        child: SvgPicture.asset('assets/icons/mail.svg'),
+                GestureDetector(
+                  onTap: () => _onPressedContactUs(context),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 56,
+                        width: 56,
+                        margin: const EdgeInsets.only(bottom: 7),
+                        decoration: aboutSectionIconContDecoration,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 14, right: 14),
+                          child: SvgPicture.asset('assets/icons/mail.svg'),
+                        ),
                       ),
-                    ),
-                    Text(AppLocalizations.of(context)?.contact_us ?? 'お問い合わせ',
-                        textAlign: TextAlign.center,
-                        style: aboutSectionTextStyle)
-                  ],
+                      Text(AppLocalizations.of(context)?.contact_us ?? 'お問い合わせ',
+                          textAlign: TextAlign.center,
+                          style: aboutSectionTextStyle)
+                    ],
+                  ),
                 )
               ],
             ),
