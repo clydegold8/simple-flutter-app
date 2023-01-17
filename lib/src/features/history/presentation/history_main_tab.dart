@@ -9,8 +9,16 @@ import 'history_ads_blocked.dart';
 import 'history_communication_cost.dart';
 
 Widget historyMainTabWidget(
-    BuildContext context, WidgetRef ref, TooltipBehavior tooltipBehaviorAdsBlocked, TooltipBehavior tooltipBehaviorCommunicationCost) {
+    BuildContext context,
+    WidgetRef ref,
+    TooltipBehavior tooltipBehaviorAdsBlocked,
+    TooltipBehavior tooltipBehaviorCommunicationCost,
+    TooltipBehavior tooltipBehaviorWeekMonthAdsBlocked,
+    TooltipBehavior tooltipBehaviorWeekMonthCommunicationsCost) {
+  final selectedIndex = ref.watch(widgetHistoryMainTabProvider);
+
   void onTabTapped(int index) {
+    ref.read(widgetHistoryMainTabProvider.notifier).state = index;
     ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
     ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
   }
@@ -34,35 +42,88 @@ Widget historyMainTabWidget(
             children: [
               Container(
                 color: KBlockColors.lightGray,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Theme(
-                    data: ThemeData(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent),
-                    child: TabBar(
-                      onTap: onTabTapped,
-                      unselectedLabelColor: KBlockColors.grayThemeColor,
-                      labelColor: KBlockColors.greenThemeColor,
-                      indicatorColor: KBlockColors.greenThemeColor,
-                      labelStyle:  const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: KBlockColors.foregroundColor),
-                      tabs: [
-                        Tab(text: AppLocalizations.of(context)?.number_of_ads_blocked ?? '広告ブロック数'),
-                        Tab(text: AppLocalizations.of(context)?.communication_cost_savings_hour ?? '節約通信料 / 時間'),
-                      ],
-                    ),
+                child: Theme(
+                  data: ThemeData(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent),
+                  child: TabBar(
+                    indicator: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                              width: 2, color: KBlockColors.greenThemeColor),
+                        ),
+                        color: KBlockColors.white),
+                    onTap: onTabTapped,
+                    unselectedLabelColor: KBlockColors.grayThemeColor,
+                    labelColor: KBlockColors.greenThemeColor,
+                    indicatorColor: KBlockColors.greenThemeColor,
+                    labelStyle: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: KBlockColors.foregroundColor),
+                    tabs: [
+                      // Tab(text: AppLocalizations.of(context)?.number_of_ads_blocked ?? '広告ブロック数'),
+                      Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: selectedIndex == 0
+                                  ? KBlockColors.white
+                                  : KBlockColors.lightGray),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              AppLocalizations.of(context)
+                                      ?.number_of_ads_blocked ??
+                                  '広告ブロック数',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: selectedIndex == 0
+                                      ? KBlockColors.greenThemeColor
+                                      : KBlockColors.tabUnselectedForeground,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )),
+                      Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: selectedIndex == 1
+                                  ? KBlockColors.white
+                                  : KBlockColors.lightGray),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              AppLocalizations.of(context)
+                                      ?.communication_cost_savings_hour ??
+                                  '節約通信料 / 時間',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: selectedIndex == 1
+                                      ? KBlockColors.greenThemeColor
+                                      : KBlockColors.tabUnselectedForeground,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          )),
+                      // Tab(
+                      //     text: AppLocalizations.of(context)
+                      //             ?.communication_cost_savings_hour ??
+                      //         '節約通信料 / 時間'),
+                    ],
                   ),
                 ),
               ),
-               Expanded(
+              Expanded(
                 child: TabBarView(
                   children: [
-                    historyAdsBlockedTabWidget(context, ref, tooltipBehaviorAdsBlocked),
+                    historyAdsBlockedTabWidget(
+                        context,
+                        ref,
+                        tooltipBehaviorAdsBlocked,
+                        tooltipBehaviorWeekMonthAdsBlocked),
                     historyCommunicationCostTabWidget(
-                        context, ref, tooltipBehaviorCommunicationCost),
+                        context,
+                        ref,
+                        tooltipBehaviorCommunicationCost,
+                        tooltipBehaviorWeekMonthCommunicationsCost),
                   ],
                 ),
               ),

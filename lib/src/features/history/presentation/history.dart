@@ -19,6 +19,8 @@ class History extends ConsumerStatefulWidget {
 class HistoryState extends ConsumerState<History> {
   late TooltipBehavior _tooltipBehaviorAdsBlocked;
   late TooltipBehavior _tooltipBehaviorCommunicationCost;
+  late TooltipBehavior _tooltipBehaviorWeekMonthAdsBlocked;
+  late TooltipBehavior _tooltipBehaviorWeekMonthCommunicationsCost;
 
   // this is to set the behavior and the design of the tooltip in the graph
   @override
@@ -36,13 +38,13 @@ class HistoryState extends ConsumerState<History> {
             height: 58,
             child: Column(
               children: [
-                const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 3),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 3),
                     child: Center(
                         child: Text(
-                      '10/1(土)',
-                      style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+                      '${data.tooltipHeader}',
+                      style: const TextStyle(
+                          fontSize: 10, fontWeight: FontWeight.w400),
                     ))),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
@@ -73,13 +75,13 @@ class HistoryState extends ConsumerState<History> {
             height: 58,
             child: Column(
               children: [
-                const Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 3),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 3),
                     child: Center(
                         child: Text(
-                      '10/1(土)',
-                      style:
-                          TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+                      '${data.tooltipHeader}',
+                      style: const TextStyle(
+                          fontSize: 10, fontWeight: FontWeight.w400),
                     ))),
                 Padding(
                     padding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
@@ -97,12 +99,79 @@ class HistoryState extends ConsumerState<History> {
             ),
           );
         });
+    _tooltipBehaviorWeekMonthAdsBlocked = TooltipBehavior(
+        enable: true,
+        borderColor: KBlockColors.tooltipThemeColor,
+        borderWidth: 5,
+        color: KBlockColors.tooltipThemeColor,
+        textStyle: const TextStyle(color: KBlockColors.foregroundColor),
+        builder: (dynamic data, dynamic point, dynamic series, int pointIndex,
+            int seriesIndex) {
+          return SizedBox(
+            width: 80,
+            height: 45,
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 3),
+                    child: Center(
+                        child: Text(
+                      '${data.tooltipHeader}',
+                      style: const TextStyle(
+                          fontSize: 10, fontWeight: FontWeight.w400),
+                    ))),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: Center(
+                        child: Text('${point.y} 件',
+                            style: const TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.w400))))
+              ],
+            ),
+          );
+        });
+    _tooltipBehaviorWeekMonthCommunicationsCost = TooltipBehavior(
+        enable: true,
+        borderColor: KBlockColors.tooltipThemeColor,
+        borderWidth: 5,
+        color: KBlockColors.tooltipThemeColor,
+        textStyle: const TextStyle(color: KBlockColors.foregroundColor),
+        builder: (dynamic data, dynamic point, dynamic series, int pointIndex,
+            int seriesIndex) {
+          return SizedBox(
+            width: 80,
+            height: 48,
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 3),
+                    child: Center(
+                        child: Text(
+                      '${data.tooltipHeader}',
+                      style: const TextStyle(
+                          fontSize: 10, fontWeight: FontWeight.w400),
+                    ))),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                    child: Center(
+                        child: Text('${point.y} MB',
+                            style: const TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.w400))))
+              ],
+            ),
+          );
+        });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return historyMainTabWidget(context, ref, _tooltipBehaviorAdsBlocked,
-        _tooltipBehaviorCommunicationCost);
+    return historyMainTabWidget(
+        context,
+        ref,
+        _tooltipBehaviorAdsBlocked,
+        _tooltipBehaviorCommunicationCost,
+        _tooltipBehaviorWeekMonthAdsBlocked,
+        _tooltipBehaviorWeekMonthCommunicationsCost);
   }
 }
