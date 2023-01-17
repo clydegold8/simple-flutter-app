@@ -8,6 +8,7 @@ class SimpleDialogueWidget extends StatelessWidget {
   final Widget? title;
   final Widget child;
   final MainAxisAlignment? mainAxisAlignmentBtnRow;
+  final EdgeInsets? edgeInsetsBtnPadding;
   final String negativeBtnText;
   final String positiveBtnText;
   final bool showNegativeBtn;
@@ -20,6 +21,7 @@ class SimpleDialogueWidget extends StatelessWidget {
       this.title,
       required this.child,
       this.mainAxisAlignmentBtnRow,
+      this.edgeInsetsBtnPadding,
       this.negativeBtnText = "",
       this.positiveBtnText = "",
       this.showNegativeBtn = true,
@@ -38,7 +40,8 @@ class SimpleDialogueWidget extends StatelessWidget {
             child,
             showNegativeBtn || showPositiveBtn
                 ? Padding(
-                    padding: const EdgeInsets.only(top: 25),
+                    padding:
+                        edgeInsetsBtnPadding ?? const EdgeInsets.only(top: 25),
                     child: Row(
                       mainAxisAlignment: showNegativeBtn && showPositiveBtn
                           ? (mainAxisAlignmentBtnRow ??
