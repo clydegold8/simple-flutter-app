@@ -52,3 +52,5 @@ class WhitelistNotifier extends ChangeNotifier {
 final whiteListListProvider = ChangeNotifierProvider<WhitelistNotifier>((ref) {
   return WhitelistNotifier();
 });
+
+final whiteListDeleteSnackBarShownProvider = StateProvider((ref) => false);

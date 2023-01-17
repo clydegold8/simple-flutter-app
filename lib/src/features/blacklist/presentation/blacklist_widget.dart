@@ -11,8 +11,49 @@ import '../data_provider/blacklist_list_provider.dart';
 Widget blackListWidget(BuildContext context, WidgetRef ref) {
   final listBlacklist = ref.watch(blackListProvider).blacklists;
   final onDeleteMode = ref.watch(blackListDeleteMode);
+  final isDeleteSnackBarShown = ref.watch(blackListDeleteSnackBarShownProvider);
   Color getColor(Set<MaterialState> states) {
     return KBlockColors.activeSwitch;
+  }
+
+  void showDeleteSnackBar() {
+    ref.read(blackListDeleteSnackBarShownProvider.notifier).state = true;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      padding: const EdgeInsets.fromLTRB(15, 18, 0, 18),
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
+      duration: const Duration(hours: 1),
+      // this is to imitate duration before the snackbar disappear without user interaction
+      content: Row(
+        children: [
+          OutlinedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ref.read(blackListDeleteMode.notifier).state = false;
+              ref.read(blackListDeleteSnackBarShownProvider.notifier).state =
+                  false;
+              ref.read(blackListProvider.notifier).deleteBlackLists();
+            },
+            style: OutlinedButton.styleFrom(
+                backgroundColor: KBlockColors.white,
+                side: const BorderSide(color: KBlockColors.white),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                )),
+            child: SizedBox(
+              height: 40.0,
+              width: 55.0,
+              child: Center(
+                  child: Text(AppLocalizations.of(context)?.delete ?? '削除',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: KBlockColors.text02,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400))),
+            ),
+          )
+        ],
+      ),
+    ));
   }
 
   return Scaffold(
@@ -23,6 +64,8 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           onPressed: () => {
                 ref.read(widgetPathProvider.notifier).state = 1,
                 ref.read(blackListDeleteMode.notifier).state = false,
+                ref.read(blackListDeleteSnackBarShownProvider.notifier).state =
+                    false,
                 ScaffoldMessenger.of(context).hideCurrentSnackBar()
               },
           icon: const Icon(Icons.arrow_back_ios, size: 25)),
@@ -38,41 +81,6 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           onPressed: () {
             if (!onDeleteMode) {
               ref.read(blackListDeleteMode.notifier).state = true;
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                padding: const EdgeInsets.fromLTRB(15,18,0,18),
-                backgroundColor: const Color.fromRGBO(0, 0, 0, 0.6),
-                duration: const Duration(hours: 1),
-                // this is to imitate duration before the snackbar disappear without user interaction
-                content: Row(
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        ref.read(blackListDeleteMode.notifier).state = false;
-                        ref.read(blackListProvider.notifier).deleteBlackLists();
-                      },
-                      style: OutlinedButton.styleFrom(
-                          backgroundColor: KBlockColors.white,
-                          side: const BorderSide(color: KBlockColors.white),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          )),
-                      child: SizedBox(
-                        height: 40.0,
-                        width: 55.0,
-                        child: Center(
-                            child: Text(
-                                AppLocalizations.of(context)?.delete ?? '削除',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.text02,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400))),
-                      ),
-                    )
-                  ],
-                ),
-              ));
             }
           },
         ),
@@ -108,6 +116,22 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                             ref
                                 .read(blackListProvider.notifier)
                                 .toggleCheckbox(index, value!);
+
+                            final selectedBlacklistIsEmpty = listBlacklist
+                                .where((element) => element.isSelected == true)
+                                .toList()
+                                .isEmpty;
+                            if (selectedBlacklistIsEmpty) {
+                              ScaffoldMessenger.of(context)
+                                  .hideCurrentSnackBar();
+                              ref
+                                  .read(blackListDeleteSnackBarShownProvider
+                                      .notifier)
+                                  .state = false;
+                            } else if (!selectedBlacklistIsEmpty &&
+                                !isDeleteSnackBarShown) {
+                              showDeleteSnackBar();
+                            }
                           },
                         ),
                       )
