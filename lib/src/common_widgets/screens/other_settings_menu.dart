@@ -16,21 +16,6 @@ class OtherSettingsMenu extends ConsumerStatefulWidget {
 }
 
 class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
-  bool isMsgReceiveSettingsOn = true;
-  bool isAdBlockWifiOnlyOn = false;
-
-  void toggleMsgReceiveSettingsOn(index, value) {
-    setState(() {
-      isMsgReceiveSettingsOn = value;
-    });
-  }
-
-  void toggleAdBlockWifiOnlyOn(index, value) {
-    setState(() {
-      isAdBlockWifiOnlyOn = value;
-    });
-  }
-
   Future<void> _onPressedContactUs(BuildContext context) {
     const radioVisualDensity = VisualDensity(horizontal: -4, vertical: -4);
     const radioTextStyle = TextStyle(color: KBlockColors.text02, fontSize: 14);
@@ -180,6 +165,17 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final isMsgReceiveSettingsOn = ref.watch(isMsgReceiveSettingsOnProvider);
+    final isAdBlockWifiOnlyOn = ref.watch(isAdBlockWifiOnlyOnProvider);
+
+    void toggleMsgReceiveSettingsOn(index, value) {
+      ref.read(isMsgReceiveSettingsOnProvider.notifier).state = value;
+    }
+
+    void toggleAdBlockWifiOnlyOn(index, value) {
+      ref.read(isAdBlockWifiOnlyOnProvider.notifier).state = value;
+    }
+
     const listTileContDecoration = BoxDecoration(
         border: Border(
             bottom: BorderSide(width: 2, color: KBlockColors.tileBorder)));

@@ -9,3 +9,5 @@ final adBlockerSwitchStateProvider = StateProvider((ref) => false);
 final selectedAppIndexProvider = StateProvider((ref) => -1);
 final whiteListDeleteMode = StateProvider((ref) => false);
 final blackListDeleteMode = StateProvider((ref) => false);
+final isMsgReceiveSettingsOnProvider = StateProvider((ref) => true);
+final isAdBlockWifiOnlyOnProvider = StateProvider((ref) => false);
