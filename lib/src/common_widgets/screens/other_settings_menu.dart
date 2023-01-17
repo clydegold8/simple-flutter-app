@@ -47,9 +47,18 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
               });
             }
 
+            void onClickNegativeBtn() {
+              Navigator.of(context).pop();
+            }
+
+            void onClickPositiveBtn() {
+              Navigator.of(context).pop();
+            }
+
             return SimpleDialogueWidget(
-                onClickNegativeBtn: () {},
-                onClickPositiveBtn: () {},
+                mainAxisAlignmentBtnRow: MainAxisAlignment.spaceBetween,
+                onClickNegativeBtn: onClickNegativeBtn,
+                onClickPositiveBtn: onClickPositiveBtn,
                 negativeBtnText:
                     AppLocalizations.of(context)?.cancel ?? "キャンセル",
                 positiveBtnText: AppLocalizations.of(context)?.ok ?? "OK",

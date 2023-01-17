@@ -7,6 +7,7 @@ class SimpleDialogueWidget extends StatelessWidget {
   final void Function()? onClickPositiveBtn;
   final Widget? title;
   final Widget child;
+  final MainAxisAlignment? mainAxisAlignmentBtnRow;
   final String negativeBtnText;
   final String positiveBtnText;
   final bool showNegativeBtn;
@@ -18,6 +19,7 @@ class SimpleDialogueWidget extends StatelessWidget {
       this.onClickPositiveBtn,
       this.title,
       required this.child,
+      this.mainAxisAlignmentBtnRow,
       this.negativeBtnText = "",
       this.positiveBtnText = "",
       this.showNegativeBtn = true,
@@ -27,6 +29,7 @@ class SimpleDialogueWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleDialog(
       title: title,
+      insetPadding: const EdgeInsets.all(0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       children: [
         Padding(
@@ -38,13 +41,14 @@ class SimpleDialogueWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 25),
                     child: Row(
                       mainAxisAlignment: showNegativeBtn && showPositiveBtn
-                          ? MainAxisAlignment.spaceAround
+                          ? (mainAxisAlignmentBtnRow ??
+                              MainAxisAlignment.spaceAround)
                           : MainAxisAlignment.center,
                       children: [
                         showNegativeBtn
-                            ? SizedBox(
-                                height: 43,
-                                width: 116,
+                            ? ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                    minHeight: 43, minWidth: 116),
                                 child: OutlinedButton(
                                   onPressed: onClickNegativeBtn,
                                   style: OutlinedButton.styleFrom(
@@ -58,12 +62,13 @@ class SimpleDialogueWidget extends StatelessWidget {
                                               BorderRadius.circular(8))),
                                   child: Text(negativeBtnText,
                                       style: const TextStyle(fontSize: 14)),
-                                ))
+                                ),
+                              )
                             : const SizedBox.shrink(),
                         showPositiveBtn
-                            ? SizedBox(
-                                height: 43,
-                                width: 116,
+                            ? ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                    minHeight: 43, minWidth: 116),
                                 child: ButtonTheme(
                                     minWidth: 500.0,
                                     child: OutlinedButton(
@@ -80,7 +85,8 @@ class SimpleDialogueWidget extends StatelessWidget {
                                                     BorderRadius.circular(8))),
                                         child: Text(positiveBtnText,
                                             style: const TextStyle(
-                                                fontSize: 14)))))
+                                                fontSize: 14)))),
+                              )
                             : const SizedBox.shrink()
                       ],
                     ),
