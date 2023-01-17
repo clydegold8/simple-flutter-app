@@ -46,7 +46,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                 children: <Widget>[
                   Positioned(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 15),
+                      padding: const EdgeInsets.only(top: 24),
                       child: Align(
                           alignment: Alignment.topRight,
                           child: JustTheTooltip(
@@ -93,7 +93,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                   ),
                   Positioned(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 17, 33, 0),
+                      padding: const EdgeInsets.fromLTRB(0, 25, 33, 0),
                       child: TextField(
                           style: const TextStyle(height: 1),
                           onChanged: (value) {
@@ -114,68 +114,70 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                   )
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                          foregroundColor: KBlockColors.text01,
+                          side: const BorderSide(
+                              color: KBlockColors.buttonNeutralForeground),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          )),
+                      child: SizedBox(
+                        height: 40.0,
+                        child: Padding(
+                            padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
+                            child: SizedBox(
+                                child: Text(
+                                    AppLocalizations.of(context)?.cancel ??
+                                        'キャンセル',
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        color: KBlockColors
+                                            .buttonNeutralForeground,
+                                        height: 1.5,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400)))),
+                      ),
+                    ),
+                    OutlinedButton(
+                      onPressed: () =>
+                          whiteListName != '' ? addWhiteListItem(ref) : null,
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor:
+                              KBlockColors.buttonPositiveBackground,
+                          side: const BorderSide(
+                              color: KBlockColors.buttonPositiveBackground),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                          )),
+                      child: SizedBox(
+                        height: 40.0,
+                        child: Padding(
+                            padding: const EdgeInsets.fromLTRB(25, 8, 25, 0),
+                            child: SizedBox(
+                                child: Text(
+                                    AppLocalizations.of(context)?.add_btn ??
+                                        '追加',
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        color: KBlockColors.white,
+                                        height: 1.5,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400)))),
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           )),
         ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: OutlinedButton.styleFrom(
-                      foregroundColor: KBlockColors.text01,
-                      side: const BorderSide(
-                          color: KBlockColors.buttonNeutralForeground),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      )),
-                  child: SizedBox(
-                    height: 40.0,
-                    child: Padding(
-                        padding: const EdgeInsets.fromLTRB(5, 8, 5, 0),
-                        child: SizedBox(
-                            child: Text(
-                                AppLocalizations.of(context)?.cancel ?? 'キャンセル',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.buttonNeutralForeground,
-                                    height: 1.5,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400)))),
-                  ),
-                ),
-                OutlinedButton(
-                  onPressed: () =>
-                      whiteListName != '' ? addWhiteListItem(ref) : null,
-                  style: OutlinedButton.styleFrom(
-                      backgroundColor: KBlockColors.buttonPositiveBackground,
-                      side: const BorderSide(
-                          color: KBlockColors.buttonPositiveBackground),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      )),
-                  child: SizedBox(
-                    height: 40.0,
-                    child: Padding(
-                        padding: const EdgeInsets.fromLTRB(25, 8, 25, 0),
-                        child: SizedBox(
-                            child: Text(
-                                AppLocalizations.of(context)?.add_btn ?? '追加',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.white,
-                                    height: 1.5,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400)))),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
       );
     },
   );
