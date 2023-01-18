@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/features/forgot_password/presentation/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'dart:io' show Platform;
 
 import '../../../constants/routes.dart';
 
@@ -114,12 +113,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                 child: Center(
                   child: OutlinedButton(
                     onPressed: () {
-                      if (Platform.isIOS) {
-                        Navigator.pushNamed(
-                            context, Routes.initialPopupIOSRoute);
-                      } else {
-                        Navigator.pushNamed(context, Routes.homeRoute);
-                      }
+                      Navigator.pushNamed(context, Routes.agreementRoute);
                     },
                     style: OutlinedButton.styleFrom(
                         foregroundColor: KBlockColors.text01,
