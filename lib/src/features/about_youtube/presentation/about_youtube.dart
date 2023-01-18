@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
 import '../../../constants/providers.dart';
 import 'about_youtube_widget.dart';
+
+@WidgetbookUseCase(name: 'AboutYoutubePage', type: AboutYoutube)
+Widget aboutYouTubePageUseCase(BuildContext context) => const AboutYoutube();
 
 class AboutYoutube extends ConsumerStatefulWidget {
   const AboutYoutube({super.key});

@@ -18,6 +18,8 @@ import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
 import 'package:k_block_app/src/constants/routes.dart';
+import 'package:k_block_app/src/features/about_youtube/presentation/about_youtube.dart';
+import 'package:k_block_app/src/features/about_youtube/presentation/about_youtube_widget.dart';
 import 'package:k_block_app/src/features/ad_blocker/presentation/ad_blocker.dart';
 import 'package:k_block_app/src/features/ad_blocker/presentation/ad_blocker_widget.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
@@ -127,6 +129,28 @@ class HotReload extends StatelessWidget {
                             WidgetbookUseCase(
                               name: 'BlackListPage',
                               builder: (context) => blackListUseCase(context),
+                            ),
+                          ],
+                        ),
+                      ],
+                      folders: [],
+                    ),
+                  ],
+                ),
+                WidgetbookFolder(
+                  name: 'about_youtube',
+                  widgets: [],
+                  folders: [
+                    WidgetbookFolder(
+                      name: 'presentation',
+                      widgets: [
+                        WidgetbookComponent(
+                          name: 'AboutYoutube',
+                          useCases: [
+                            WidgetbookUseCase(
+                              name: 'AboutYoutubePage',
+                              builder: (context) =>
+                                  aboutYouTubePageUseCase(context),
                             ),
                           ],
                         ),
