@@ -10,5 +10,6 @@ class Routes {
   static const String appHistoryRoute = '/app-history';
   static const String appIndividualSettingRoute = '/app-setting';
   static const String otherAccount = '/other/other-account';
+  static const String agreementRoute = '/agreement';
   static const String otherYoutube = '/other/about-youtube';
 }

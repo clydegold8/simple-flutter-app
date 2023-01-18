@@ -7,10 +7,10 @@ import 'package:k_block_app/src/features/app_management_list/presentation/app_ma
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 import 'package:k_block_app/src/features/history/presentation/history.dart';
 import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_popup_ios_widget.dart';
-
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
 import 'package:k_block_app/src/features/other/other_account.dart';
 import 'package:k_block_app/src/features/whitelist/presentation/whitelist.dart';
+import 'package:k_block_app/src/features/agreement/presentation/agreement.dart';
 import 'package:k_block_app/src/common_widgets/screens/common_screen.dart';
 
 class RouteGenerator {
@@ -36,6 +36,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const AppIndividualSetting());
       case Routes.otherAccount:
         return MaterialPageRoute(builder: (_) => const OtherAccount());
+      case Routes.agreementRoute:
+        return MaterialPageRoute(builder: (_) => const Agreement());
       case Routes.otherYoutube:
         return MaterialPageRoute(builder: (_) => const AboutYoutube());
       default:
