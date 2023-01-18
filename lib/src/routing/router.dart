@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/common_widgets/screens/block-management-menu.dart';
+import 'package:k_block_app/src/features/about_youtube/presentation/about_youtube.dart';
 import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
@@ -35,6 +36,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const AppIndividualSetting());
       case Routes.otherAccount:
         return MaterialPageRoute(builder: (_) => const OtherAccount());
+      case Routes.otherYoutube:
+        return MaterialPageRoute(builder: (_) => const AboutYoutube());
       default:
         return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
     }
