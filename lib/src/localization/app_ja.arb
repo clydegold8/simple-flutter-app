@@ -104,5 +104,19 @@
     "not_listed": "上記以外の不具合",
     "agreement_desciprtion": "利用規約、プライバシーポリシーを\nご確認頂き、同意の上ご利用\nください。",
     "agree": "同意する",
-    "start": "利用開始"
+    "start": "利用開始",
+    "about_youtube": "YouTubeについて",
+    "set_up_blocking_youtube": "YouTube広告のブロック設定方法",
+    "when_watching_app": "【アプリでご視聴の場合】",
+    "launch_youtube_app": "１．YouTubeアプリを起動",
+    "tap_youtube_video": "2．見たい動画の「⋮」ボタンをタップ\n（または見たい動画を選択）",
+    "tap_share": "３.「共有」ボタンをタップ",
+    "select_kblock": "４.「その他」の中から「K-BLOCK」を\n　　選択する。",
+    "player_launched": "５．専用のプレイヤーが立ち上がる",
+    "watching_browser": "【ブラウザで視聴の場合】",
+    "access_youtube": "１．ブラウザからhttps://m.youtube.com\nにアクセスする",
+    "tap_video_to_watch": "2. 見たい動画の「⋮」ボタンをタップ\n(または見たい動画を直接選択)",
+    "tap_share_btn": "3.「共有」ボタンをタップ",
+    "select_kblock_on_list": "4.「その他」の中から「K-BLOCK」を\n選択する",
+    "a_dedicated_player_launched": "5. 専用のプレイヤーが立ち上がる"
 }
