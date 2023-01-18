@@ -84,7 +84,7 @@ class HistoryState extends ConsumerState<History> {
                           fontSize: 10, fontWeight: FontWeight.w400),
                     ))),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
+                    padding: const EdgeInsets.fromLTRB(0, 1, 0, 2),
                     child: Center(
                         child: Text('${point.x}',
                             style: const TextStyle(
