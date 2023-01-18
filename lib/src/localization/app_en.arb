@@ -101,5 +101,8 @@
     "contents_of_inquiry": "Inquiry Contents",
     "ads_wont_dissapear": "Advertisement don’t disappear",
     "no_idea": "Don’t know how to use",
-    "not_listed": "Problems other that the above"
+    "not_listed": "Problems other that the above",
+    "agreement_desciprtion": "Please check the terms of use and\nprivacy policy, agree to use it.",
+    "agree": "Agree",
+    "start": "Get started"
 }

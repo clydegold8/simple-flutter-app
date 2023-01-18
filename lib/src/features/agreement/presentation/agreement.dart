@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:io' show Platform;
 
 import 'package:k_block_app/src/constants/colors.dart';
@@ -18,16 +19,16 @@ class _AgreementState extends State<Agreement> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = TextStyle(
+    const textStyle = TextStyle(
         color: KBlockColors.foregroundColor,
         fontSize: 15,
         fontWeight: FontWeight.w500);
     final bulletBox = Padding(
-      padding: EdgeInsets.only(left: 5.5, right: 5.5),
+      padding: const EdgeInsets.only(left: 5.5, right: 5.5),
       child: Container(
         height: 12,
         width: 12,
-        decoration: BoxDecoration(color: Color(0xFF494848)),
+        decoration: const BoxDecoration(color: Color(0xFF494848)),
       ),
     );
 
@@ -65,17 +66,19 @@ class _AgreementState extends State<Agreement> {
           child: Column(children: [
         const Spacer(flex: 1),
         Padding(
-            padding: EdgeInsets.only(bottom: 24),
+            padding: const EdgeInsets.only(bottom: 24),
             child: SvgPicture.asset('assets/icons/logo_kblock.svg')),
         Padding(
-            padding: EdgeInsets.only(bottom: 24),
+            padding: const EdgeInsets.only(bottom: 24),
             child: Image.asset('assets/images/tutorial_illust.png')),
         Padding(
-            padding: EdgeInsets.only(bottom: 29),
-            child: Text('利用規約、プライバシーポリシーを\nご確認頂き、同意の上ご利用\nください。',
+            padding: const EdgeInsets.only(bottom: 29),
+            child: Text(
+                AppLocalizations.of(context)?.agreement_desciprtion ??
+                    '利用規約、プライバシーポリシーを\nご確認頂き、同意の上ご利用\nください。',
                 style: textStyle)),
         Padding(
-            padding: EdgeInsets.only(bottom: 27),
+            padding: const EdgeInsets.only(bottom: 27),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -84,7 +87,7 @@ class _AgreementState extends State<Agreement> {
                   GestureDetector(
                       onTap: onTapTermsOfUse,
                       child: Text(
-                        '利用規約',
+                        AppLocalizations.of(context)?.terms_of_use ?? '利用規約',
                         style: textStyle.copyWith(
                             decoration: TextDecoration.underline),
                       )),
@@ -93,13 +96,15 @@ class _AgreementState extends State<Agreement> {
                   bulletBox,
                   GestureDetector(
                     onTap: onTapPrivacyPolicy,
-                    child: Text('プライバシーポリシー',
+                    child: Text(
+                        AppLocalizations.of(context)?.privacy_policy ??
+                            'プライバシーポリシー',
                         style: textStyle.copyWith(
                             decoration: TextDecoration.underline)),
                   )
                 ]),
                 Padding(
-                    padding: EdgeInsets.only(top: 28),
+                    padding: const EdgeInsets.only(top: 28),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -108,9 +113,9 @@ class _AgreementState extends State<Agreement> {
                           child: Checkbox(
                               materialTapTargetSize:
                                   MaterialTapTargetSize.shrinkWrap,
-                              visualDensity:
-                                  VisualDensity(horizontal: -4, vertical: -4),
-                              side: BorderSide(
+                              visualDensity: const VisualDensity(
+                                  horizontal: -4, vertical: -4),
+                              side: const BorderSide(
                                   color: KBlockColors.foregroundColor),
                               value: isAgreeChecked,
                               onChanged: (value) {
@@ -120,9 +125,9 @@ class _AgreementState extends State<Agreement> {
                               }),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.only(right: 10),
                           child: Text(
-                            '同意する',
+                            AppLocalizations.of(context)?.agree ?? '同意する',
                             style: textStyle,
                           ),
                         ),
@@ -130,7 +135,7 @@ class _AgreementState extends State<Agreement> {
                           decoration: BoxDecoration(
                               color: KBlockColors.requiredBackground,
                               borderRadius: BorderRadius.circular(3)),
-                          child: Padding(
+                          child: const Padding(
                               padding: EdgeInsets.fromLTRB(7, 5, 7, 5),
                               child: Text(
                                 '必要',
@@ -158,13 +163,13 @@ class _AgreementState extends State<Agreement> {
                   borderRadius: BorderRadius.circular(50)),
             ),
             child: Text(
-              '利用開始',
-              style: TextStyle(fontSize: 15),
+              AppLocalizations.of(context)?.start ?? '利用開始',
+              style: const TextStyle(fontSize: 15),
             ),
           ),
         ),
         const Spacer(flex: 1),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(bottom: 33),
           child: Text(
             '@Stock Tech.Inc',
