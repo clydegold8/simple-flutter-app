@@ -113,6 +113,7 @@ Widget historyMainTabWidget(
               ),
               Expanded(
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     historyAdsBlockedTabWidget(
                         context,
