@@ -31,6 +31,9 @@ class _AgreementState extends State<Agreement> {
         decoration: const BoxDecoration(color: Color(0xFF494848)),
       ),
     );
+    const underlineDecoration = BoxDecoration(
+        border: Border(
+            bottom: BorderSide(color: KBlockColors.foregroundColor, width: 1)));
 
     void onTapTermsOfUse() async {
       final url = Uri.parse(
@@ -86,23 +89,30 @@ class _AgreementState extends State<Agreement> {
                   bulletBox,
                   GestureDetector(
                       onTap: onTapTermsOfUse,
-                      child: Text(
-                        AppLocalizations.of(context)?.terms_of_use ?? '利用規約',
-                        style: textStyle.copyWith(
-                            decoration: TextDecoration.underline),
+                      child: Container(
+                        decoration: underlineDecoration,
+                        child: Text(
+                            AppLocalizations.of(context)?.terms_of_use ??
+                                '利用規約',
+                            style: textStyle.copyWith(height: 1)),
                       )),
                 ]),
-                Row(mainAxisSize: MainAxisSize.min, children: [
-                  bulletBox,
-                  GestureDetector(
-                    onTap: onTapPrivacyPolicy,
-                    child: Text(
-                        AppLocalizations.of(context)?.privacy_policy ??
-                            'プライバシーポリシー',
-                        style: textStyle.copyWith(
-                            decoration: TextDecoration.underline)),
-                  )
-                ]),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    bulletBox,
+                    GestureDetector(
+                      onTap: onTapPrivacyPolicy,
+                      child: Container(
+                        decoration: underlineDecoration,
+                        child: Text(
+                            AppLocalizations.of(context)?.privacy_policy ??
+                                'プライバシーポリシー',
+                            style: textStyle.copyWith(height: 1)),
+                      ),
+                    )
+                  ]),
+                ),
                 Padding(
                     padding: const EdgeInsets.only(top: 28),
                     child: Row(
