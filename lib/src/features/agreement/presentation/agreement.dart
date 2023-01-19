@@ -6,6 +6,7 @@ import 'dart:io' show Platform;
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/routes.dart';
+import 'package:k_block_app/src/constants/urls.dart';
 
 class Agreement extends StatefulWidget {
   const Agreement({super.key});
@@ -33,8 +34,7 @@ class _AgreementState extends State<Agreement> {
     );
 
     void onTapTermsOfUse() async {
-      final url = Uri.parse(
-          'https://google.com'); // TODO: Terms of Use URL to be decided
+      final url = Uri.parse(KBlockUrls.terms);
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {
@@ -43,8 +43,7 @@ class _AgreementState extends State<Agreement> {
     }
 
     void onTapPrivacyPolicy() async {
-      final url = Uri.parse(
-          'https://google.com'); // TODO: Privacy Policy URL to be decided
+      final url = Uri.parse(KBlockUrls.privacy);
       if (await canLaunchUrl(url)) {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {

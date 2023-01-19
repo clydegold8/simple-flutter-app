@@ -8,6 +8,8 @@ import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:k_block_app/src/constants/urls.dart';
+
 class OtherSettingsMenu extends ConsumerStatefulWidget {
   const OtherSettingsMenu({super.key});
 
@@ -328,8 +330,7 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
               children: [
                 GestureDetector(
                     onTap: () async {
-                      final url = Uri.parse(
-                          'https://google.com'); // TODO: URL to be decided
+                      final url = Uri.parse(KBlockUrls.faq);
                       if (await canLaunchUrl(url)) {
                         await launchUrl(url,
                             mode: LaunchMode.externalApplication);
