@@ -11,3 +11,4 @@ final whiteListDeleteMode = StateProvider((ref) => false);
 final blackListDeleteMode = StateProvider((ref) => false);
 final isMsgReceiveSettingsOnProvider = StateProvider((ref) => true);
 final isAdBlockWifiOnlyOnProvider = StateProvider((ref) => false);
+final widgetSixMonthsTabProvider = StateProvider((ref) => 0);

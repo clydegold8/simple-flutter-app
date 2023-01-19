@@ -3,17 +3,20 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../common_widgets/graphs/line_graph_widget.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
+import 'history_six_months_tabs.dart';
 
 Widget historyAdsBlockedTabWidget(
     BuildContext context,
     WidgetRef ref,
     TooltipBehavior tooltipBehavior,
-    TooltipBehavior tooltipBehaviorWeekMonthAdsBlocked) {
+    TooltipBehavior tooltipBehaviorWeekMonthAdsBlocked,
+    ZoomPanBehavior zoomPanBehavior) {
   final selectedIndex = ref.watch(widgetAdsBlockedTabProvider);
   final tabs = [
     AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
@@ -25,31 +28,122 @@ Widget historyAdsBlockedTabWidget(
 
   // TODO: this will be replaced with actual data
   List<GraphData> data = [
-    GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (土)'),
-    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (土)'),
-    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (土)'),
-    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (土)'),
-    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (土)')
+    GraphData(
+        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (土)'),
+    GraphData(
+        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (土)'),
+    GraphData(
+        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (土)'),
+    GraphData(
+        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (土)'),
+    GraphData(
+        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (土)'),
+    GraphData(
+        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/5 (土)'),
+    GraphData(
+        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/5 (土)'),
   ];
 
   List<GraphData> dataTwo = [
-    GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (金)'),
-    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (金)'),
-    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (金)'),
-    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (金)'),
-    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (金)')
+    GraphData(
+        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (金)'),
+    GraphData(
+        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (金)'),
+    GraphData(
+        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (金)'),
+    GraphData(
+        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (金)'),
+    GraphData(
+        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (金)'),
+    GraphData(
+        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/6 (金)'),
+    GraphData(
+        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (金)')
   ];
 
   List<GraphData> dataThree = [
-    GraphData('0:00', Random().nextInt(100).toDouble(), '10/1 (木)'),
-    GraphData('0:50', Random().nextInt(100).toDouble(), '9/30 (木)'),
-    GraphData('1:00', Random().nextInt(100).toDouble(), '10/1 (木)'),
-    GraphData('1:50', Random().nextInt(100).toDouble(), '10/1 (木)'),
-    GraphData('2:00', Random().nextInt(100).toDouble(), '10/1 (木)')
+    GraphData(
+        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (木)'),
+    GraphData(
+        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (木)'),
+    GraphData(
+        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (木)'),
+    GraphData(
+        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (木)'),
+    GraphData(
+        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/6 (木)'),
+    GraphData(
+        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (木)'),
+  ];
+
+  List<GraphData> dataFour = [
+    GraphData(
+        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '9/30 (木)'),
+    GraphData(
+        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 8, 8), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(
+        DateTime(2022, 10, 9, 9), Random().nextInt(100).toDouble(), '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 10, 10), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 11, 11), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 12, 12), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 13, 1), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 14, 2), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 15, 3), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 16, 4), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 17, 5), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 18, 6), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 19, 7), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 20, 8), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 21, 9), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 22, 10), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 23, 11), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 24, 12), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 25, 1), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 26, 2), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 27, 3), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 28, 4), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 29, 5), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
+    GraphData(DateTime(2022, 10, 30, 6), Random().nextInt(100).toDouble(),
+        '10/1 (木)'),
   ];
 
   void onItemTapped(int index) {
     ref.read(widgetAdsBlockedTabProvider.notifier).state = index;
+    ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
   }
 
   return DefaultTabController(
@@ -107,15 +201,64 @@ Widget historyAdsBlockedTabWidget(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   lineGraphWidget(
-                      context, tooltipBehavior, data, '3500件', '24時間'), // 24hrs
-                  lineGraphWidget(context, tooltipBehavior, dataTwo, '4800件',
-                      '前日'), // last day
-                  lineGraphWidget(context, tooltipBehaviorWeekMonthAdsBlocked,
-                      dataThree, '25000件', '1週間'), // 1 week
-                  lineGraphWidget(context, tooltipBehaviorWeekMonthAdsBlocked,
-                      dataThree, '10万件', '1ヶ月'), // 1 month
-                  lineGraphWidget(context, tooltipBehaviorWeekMonthAdsBlocked,
-                      dataThree, '60万件', '6ヶ月'), // six months
+                      context,
+                      tooltipBehavior,
+                      data,
+                      '3500件',
+                      '24時間',
+                      true,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.HOUR24_MINUTE),
+                      DateTimeIntervalType.hours,
+                      '十月',
+                      false),
+                  // 24hrs
+                  lineGraphWidget(
+                      context,
+                      tooltipBehavior,
+                      dataTwo,
+                      '4800件',
+                      '前日',
+                      true,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.HOUR24_MINUTE),
+                      DateTimeIntervalType.hours,
+                      '十月',
+                      false),
+                  // last day
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorWeekMonthAdsBlocked,
+                      dataThree,
+                      '25000件',
+                      '1週間',
+                      false,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      '十月',
+                      true),
+                  // 1 week
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorWeekMonthAdsBlocked,
+                      dataFour,
+                      '10万件',
+                      '1ヶ月',
+                      false,
+                      zoomPanBehavior,
+                      15,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      '十月',
+                      true),
+                  // 1 month
+                  historySixMonthsTabWidget(context, ref,
+                      tooltipBehaviorWeekMonthAdsBlocked, zoomPanBehavior),
+                  // six months
                 ]),
           ),
         ],
@@ -126,7 +269,7 @@ Widget historyAdsBlockedTabWidget(
 class GraphData {
   GraphData(this.time, this.consumedData, this.tooltipHeader);
 
-  final String time;
+  final DateTime time;
   final double consumedData;
   final String tooltipHeader;
 }

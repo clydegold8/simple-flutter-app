@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -10,75 +9,13 @@ import '../../../common_widgets/graphs/line_graph_widget.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 import 'history_ads_blocked.dart';
-import 'history_six_months_tabs.dart';
 
-Widget historyCommunicationCostTabWidget(
-    BuildContext context,
-    WidgetRef ref,
-    TooltipBehavior tooltipBehavior,
-    TooltipBehavior tooltipBehaviorWeekMonthCommunicationsCost,
-    ZoomPanBehavior zoomPanBehavior) {
-  final selectedIndex = ref.watch(widgetCommunicationCostTabProvider);
-  final tabs = [
-    AppLocalizations.of(context)?.tab_24_hours ?? '24時間',
-    AppLocalizations.of(context)?.tab_last_day ?? '前日',
-    AppLocalizations.of(context)?.tab_1_week ?? '1週間',
-    AppLocalizations.of(context)?.tab_1_month ?? '1ヶ月',
-    AppLocalizations.of(context)?.tab_6_months ?? '6ヶ月'
-  ];
+Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
+    TooltipBehavior tooltipBehaviorSixMonths, ZoomPanBehavior zoomPanBehavior) {
+  final selectedIndex = ref.watch(widgetSixMonthsTabProvider);
+  final tabs = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN'];
 
   // TODO: this will be replaced with actual data
-  List<GraphData> data = [
-    GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (土)'),
-    GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (土)'),
-    GraphData(
-        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (土)'),
-    GraphData(
-        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (土)'),
-    GraphData(
-        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (土)'),
-    GraphData(
-        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/5 (土)'),
-    GraphData(
-        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/5 (土)'),
-  ];
-
-  List<GraphData> dataTwo = [
-    GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (金)'),
-    GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (金)'),
-    GraphData(
-        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (金)'),
-    GraphData(
-        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (金)'),
-    GraphData(
-        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (金)'),
-    GraphData(
-        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/6 (金)'),
-    GraphData(
-        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (金)')
-  ];
-
-  List<GraphData> dataThree = [
-    GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
-    GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (木)'),
-    GraphData(
-        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (木)'),
-    GraphData(
-        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (木)'),
-    GraphData(
-        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (木)'),
-    GraphData(
-        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/6 (木)'),
-    GraphData(
-        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (木)'),
-  ];
-
   List<GraphData> dataFour = [
     GraphData(
         DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
@@ -143,12 +80,11 @@ Widget historyCommunicationCostTabWidget(
   ];
 
   void onItemTapped(int index) {
-    ref.read(widgetCommunicationCostTabProvider.notifier).state = index;
-    ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
+    ref.read(widgetSixMonthsTabProvider.notifier).state = index;
   }
 
   return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Column(
         children: [
           Container(
@@ -203,61 +139,82 @@ Widget historyCommunicationCostTabWidget(
                 children: [
                   lineGraphWidget(
                       context,
-                      tooltipBehavior,
-                      data,
-                      '60MB / 1分30秒',
-                      '24時間',
-                      true,
-                      zoomPanBehavior,
-                      null,
-                      DateFormat(DateFormat.HOUR24_MINUTE),
-                      DateTimeIntervalType.hours,
-                      '十月',
-                      false), // 24hrs
-                  lineGraphWidget(
-                      context,
-                      tooltipBehavior,
-                      dataTwo,
-                      '80MB / 3分05秒',
-                      '前日',
-                      true,
-                      zoomPanBehavior,
-                      null,
-                      DateFormat(DateFormat.HOUR24_MINUTE),
-                      DateTimeIntervalType.hours,
-                      '十月',
-                      false), // last day
-                  lineGraphWidget(
-                      context,
-                      tooltipBehaviorWeekMonthCommunicationsCost,
-                      dataThree,
-                      '120MB / 6分30秒',
-                      '1週間',
-                      false,
-                      zoomPanBehavior,
-                      null,
-                      DateFormat(DateFormat.DAY),
-                      DateTimeIntervalType.days,
-                      '十月',
-                      true), // 1 week
-                  lineGraphWidget(
-                      context,
-                      tooltipBehaviorWeekMonthCommunicationsCost,
+                      tooltipBehaviorSixMonths,
                       dataFour,
-                      '480MB / 23分00秒',
-                      '1ヶ月',
+                      '5GB / 2時間30分',
+                      '6ヶ月',
                       false,
                       zoomPanBehavior,
                       null,
                       DateFormat(DateFormat.DAY),
                       DateTimeIntervalType.days,
-                      '十月',
-                      true), // 1 month
-                  historySixMonthsTabWidget(
+                      tabs[0],
+                      true),
+                  lineGraphWidget(
                       context,
-                      ref,
-                      tooltipBehaviorWeekMonthCommunicationsCost,
-                      zoomPanBehavior), // six months
+                      tooltipBehaviorSixMonths,
+                      dataFour,
+                      '6GB / 2時間30分',
+                      '6ヶ月',
+                      false,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      tabs[1],
+                      true),
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorSixMonths,
+                      dataFour,
+                      '7GB / 2時間30分',
+                      '6ヶ月',
+                      false,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      tabs[2],
+                      true),
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorSixMonths,
+                      dataFour,
+                      '8GB / 2時間30分',
+                      '6ヶ月',
+                      false,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      tabs[3],
+                      true),
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorSixMonths,
+                      dataFour,
+                      '9GB / 2時間30分',
+                      '6ヶ月',
+                      false,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      tabs[4],
+                      true),
+                  lineGraphWidget(
+                      context,
+                      tooltipBehaviorSixMonths,
+                      dataFour,
+                      '10GB / 2時間30分',
+                      '6ヶ月',
+                      false,
+                      zoomPanBehavior,
+                      null,
+                      DateFormat(DateFormat.DAY),
+                      DateTimeIntervalType.days,
+                      tabs[5],
+                      true), // six months
                 ]),
           ),
         ],

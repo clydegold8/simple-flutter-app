@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
@@ -21,6 +22,7 @@ class HistoryState extends ConsumerState<History> {
   late TooltipBehavior _tooltipBehaviorCommunicationCost;
   late TooltipBehavior _tooltipBehaviorWeekMonthAdsBlocked;
   late TooltipBehavior _tooltipBehaviorWeekMonthCommunicationsCost;
+  late ZoomPanBehavior _zoomPanBehavior;
 
   // this is to set the behavior and the design of the tooltip in the graph
   @override
@@ -49,7 +51,7 @@ class HistoryState extends ConsumerState<History> {
                 Padding(
                     padding: const EdgeInsets.fromLTRB(0, 2, 0, 2),
                     child: Center(
-                        child: Text('${point.x}',
+                        child: Text(DateFormat.Hm().format(point.x),
                             style: const TextStyle(
                                 fontSize: 10, fontWeight: FontWeight.w400)))),
                 Padding(
@@ -84,9 +86,9 @@ class HistoryState extends ConsumerState<History> {
                           fontSize: 10, fontWeight: FontWeight.w400),
                     ))),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 3, 0, 4),
+                    padding: const EdgeInsets.fromLTRB(0, 1, 0, 2),
                     child: Center(
-                        child: Text('${point.x}',
+                        child: Text(DateFormat.Hm().format(point.x),
                             style: const TextStyle(
                                 fontSize: 10, fontWeight: FontWeight.w400)))),
                 Padding(
@@ -161,6 +163,10 @@ class HistoryState extends ConsumerState<History> {
             ),
           );
         });
+    _zoomPanBehavior = ZoomPanBehavior(
+      zoomMode: ZoomMode.x,
+      enablePanning: true,
+    );
     super.initState();
   }
 
@@ -172,6 +178,7 @@ class HistoryState extends ConsumerState<History> {
         _tooltipBehaviorAdsBlocked,
         _tooltipBehaviorCommunicationCost,
         _tooltipBehaviorWeekMonthAdsBlocked,
-        _tooltipBehaviorWeekMonthCommunicationsCost);
+        _tooltipBehaviorWeekMonthCommunicationsCost,
+        _zoomPanBehavior);
   }
 }
