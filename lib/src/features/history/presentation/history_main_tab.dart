@@ -14,13 +14,15 @@ Widget historyMainTabWidget(
     TooltipBehavior tooltipBehaviorAdsBlocked,
     TooltipBehavior tooltipBehaviorCommunicationCost,
     TooltipBehavior tooltipBehaviorWeekMonthAdsBlocked,
-    TooltipBehavior tooltipBehaviorWeekMonthCommunicationsCost) {
+    TooltipBehavior tooltipBehaviorWeekMonthCommunicationsCost,
+    ZoomPanBehavior zoomPanBehavior) {
   final selectedIndex = ref.watch(widgetHistoryMainTabProvider);
 
   void onTabTapped(int index) {
     ref.read(widgetHistoryMainTabProvider.notifier).state = index;
     ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
     ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
+    ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
   }
 
   return MaterialApp(
@@ -119,12 +121,14 @@ Widget historyMainTabWidget(
                         context,
                         ref,
                         tooltipBehaviorAdsBlocked,
-                        tooltipBehaviorWeekMonthAdsBlocked),
+                        tooltipBehaviorWeekMonthAdsBlocked,
+                        zoomPanBehavior),
                     historyCommunicationCostTabWidget(
                         context,
                         ref,
                         tooltipBehaviorCommunicationCost,
-                        tooltipBehaviorWeekMonthCommunicationsCost),
+                        tooltipBehaviorWeekMonthCommunicationsCost,
+                        zoomPanBehavior),
                   ],
                 ),
               ),

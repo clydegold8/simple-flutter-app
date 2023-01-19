@@ -39,4 +39,6 @@ class KBlockColors {
   static const Color onRaisedBoxDropShadow = Color(0xFF7FA864);
   static const Color onRaisedBoxInnerShadow = Color(0xFFA9E085);
   static const Color requiredBackground = Color(0xFFF16363);
+  static const Color blueDate = Color(0xFF0066C0);
+  static const Color redDate = Color(0xFFF74646);
 }
