@@ -47,117 +47,125 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                 negativeBtnText:
                     AppLocalizations.of(context)?.cancel ?? "キャンセル",
                 positiveBtnText: AppLocalizations.of(context)?.ok ?? "OK",
-                child: SizedBox(
-                  width: 150,
-                  child: Column(
-                    children: [
-                      Center(
-                          child: Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Text(
-                          AppLocalizations.of(context)?.contents_of_inquiry ??
-                              "お問い合わせ内容",
-                          style: const TextStyle(
-                              color: KBlockColors.foregroundColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w800),
-                        ),
-                      )),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Transform.scale(
-                              scale: 0.9,
-                              child: Radio(
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  visualDensity: radioVisualDensity,
-                                  activeColor: KBlockColors.text02,
-                                  value: "ads_wont_dissapear",
-                                  groupValue: inquiryOption,
-                                  onChanged: onChangedRadio),
-                            ),
-                            Text(
-                              AppLocalizations.of(context)
-                                      ?.ads_wont_dissapear ??
-                                  "広告が消えない",
-                              style: radioTextStyle,
-                            )
-                          ],
-                        ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                        child: Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Text(
+                        AppLocalizations.of(context)?.contents_of_inquiry ??
+                            "お問い合わせ内容",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            color: KBlockColors.foregroundColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Transform.scale(
-                              scale: 0.9,
-                              child: Radio(
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  visualDensity: radioVisualDensity,
-                                  activeColor: KBlockColors.text02,
-                                  value: "no_idea",
-                                  groupValue: inquiryOption,
-                                  onChanged: onChangedRadio),
-                            ),
-                            Text(
-                              AppLocalizations.of(context)?.no_idea ??
-                                  "使い方がわからない",
-                              style: radioTextStyle,
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Transform.scale(
-                              scale: 0.9,
-                              child: Radio(
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  visualDensity: radioVisualDensity,
-                                  activeColor: KBlockColors.text02,
-                                  value: "not_listed",
-                                  groupValue: inquiryOption,
-                                  onChanged: onChangedRadio),
-                            ),
-                            Text(
-                              AppLocalizations.of(context)?.not_listed ??
-                                  "上記以外の不具合",
-                              style: radioTextStyle,
-                            )
-                          ],
-                        ),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Transform.scale(
-                            scale: 0.9,
-                            child: Radio(
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
-                                visualDensity: radioVisualDensity,
-                                activeColor: KBlockColors.text02,
-                                value: "others",
-                                groupValue: inquiryOption,
-                                onChanged: onChangedRadio),
+                    )),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Transform.scale(
+                                scale: 0.9,
+                                child: Radio(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    visualDensity: radioVisualDensity,
+                                    activeColor: KBlockColors.text02,
+                                    value: "ads_wont_dissapear",
+                                    groupValue: inquiryOption,
+                                    onChanged: onChangedRadio),
+                              ),
+                              Text(
+                                AppLocalizations.of(context)
+                                        ?.ads_wont_dissapear ??
+                                    "広告が消えない",
+                                style: radioTextStyle,
+                              )
+                            ],
                           ),
-                          Text(
-                            AppLocalizations.of(context)?.others ?? "その他",
-                            style: radioTextStyle,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Transform.scale(
+                                scale: 0.9,
+                                child: Radio(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    visualDensity: radioVisualDensity,
+                                    activeColor: KBlockColors.text02,
+                                    value: "no_idea",
+                                    groupValue: inquiryOption,
+                                    onChanged: onChangedRadio),
+                              ),
+                              Text(
+                                AppLocalizations.of(context)?.no_idea ??
+                                    "使い方がわからない",
+                                style: radioTextStyle,
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Transform.scale(
+                                scale: 0.9,
+                                child: Radio(
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    visualDensity: radioVisualDensity,
+                                    activeColor: KBlockColors.text02,
+                                    value: "not_listed",
+                                    groupValue: inquiryOption,
+                                    onChanged: onChangedRadio),
+                              ),
+                              Text(
+                                AppLocalizations.of(context)?.not_listed ??
+                                    "上記以外の不具合",
+                                style: radioTextStyle,
+                              )
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Transform.scale(
+                              scale: 0.9,
+                              child: Radio(
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.shrinkWrap,
+                                  visualDensity: radioVisualDensity,
+                                  activeColor: KBlockColors.text02,
+                                  value: "others",
+                                  groupValue: inquiryOption,
+                                  onChanged: onChangedRadio),
+                            ),
+                            Text(
+                              AppLocalizations.of(context)?.others ?? "その他",
+                              style: radioTextStyle,
+                            )
+                          ],
+                        )
+                      ],
+                    )
+                  ],
                 ));
           });
         });
