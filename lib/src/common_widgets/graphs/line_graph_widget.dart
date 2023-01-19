@@ -53,6 +53,7 @@ Widget lineGraphWidget(
           // Enable tooltip
           tooltipBehavior: tooltipBehavior,
           primaryXAxis: DateTimeAxis(
+              plotOffset: 20,
               visibleMinimum: data[0].time,
               visibleMaximum: data[6].time,
               dateFormat: dateFormat,
