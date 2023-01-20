@@ -43,7 +43,6 @@ Widget historyAdsBlockedTabWidget(
     GraphData(
         DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/5 (土)'),
   ];
-
   List<GraphData> dataTwo = [
     GraphData(
         DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (金)'),
@@ -60,7 +59,6 @@ Widget historyAdsBlockedTabWidget(
     GraphData(
         DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (金)')
   ];
-
   List<GraphData> dataThree = [
     GraphData(
         DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
@@ -77,7 +75,6 @@ Widget historyAdsBlockedTabWidget(
     GraphData(
         DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (木)'),
   ];
-
   List<GraphData> dataFour = [
     GraphData(
         DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
@@ -204,8 +201,8 @@ Widget historyAdsBlockedTabWidget(
                       context,
                       tooltipBehavior,
                       data,
-                      '3500件',
-                      '24時間',
+                      '3000${AppLocalizations.of(context)?.history_cases ?? '件'}',
+                      tabs[0],
                       true,
                       zoomPanBehavior,
                       null,
@@ -218,8 +215,8 @@ Widget historyAdsBlockedTabWidget(
                       context,
                       tooltipBehavior,
                       dataTwo,
-                      '4800件',
-                      '前日',
+                      '4800${AppLocalizations.of(context)?.history_cases ?? '件'}',
+                      tabs[1],
                       true,
                       zoomPanBehavior,
                       null,
@@ -232,8 +229,8 @@ Widget historyAdsBlockedTabWidget(
                       context,
                       tooltipBehaviorWeekMonthAdsBlocked,
                       dataThree,
-                      '25000件',
-                      '1週間',
+                      '25000${AppLocalizations.of(context)?.history_cases ?? '件'}',
+                      tabs[2],
                       false,
                       zoomPanBehavior,
                       null,
@@ -246,8 +243,8 @@ Widget historyAdsBlockedTabWidget(
                       context,
                       tooltipBehaviorWeekMonthAdsBlocked,
                       dataFour,
-                      '10万件',
-                      '1ヶ月',
+                      '10${AppLocalizations.of(context)?.pieces ?? '万件'}',
+                      tabs[3],
                       false,
                       zoomPanBehavior,
                       15,
