@@ -7,6 +7,7 @@ import 'package:k_block_app/src/features/forgot_password/presentation/forgot_pas
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/routes.dart';
+import 'package:k_block_app/src/constants/urls.dart';
 
 Widget loginFormWidget(BuildContext context, formKey) {
   return Scaffold(
@@ -154,8 +155,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                                       '利用規約 ',
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () async {
-                                      final url = Uri.parse(
-                                          'https://google.com'); // TODO: Terms of Use URL to be decided
+                                      final url = Uri.parse(KBlockUrls.terms);
                                       if (await canLaunchUrl(url)) {
                                         await launchUrl(url,
                                             mode:
@@ -169,8 +169,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                                       '/ プライバシーポリシー ',
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () async {
-                                      final url = Uri.parse(
-                                          'https://google.com'); // TODO: Privacy Policy URL to be decided
+                                      final url = Uri.parse(KBlockUrls.privacy);
                                       if (await canLaunchUrl(url)) {
                                         await launchUrl(url,
                                             mode:
