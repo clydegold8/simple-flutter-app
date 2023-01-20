@@ -71,8 +71,8 @@ class _AgreementState extends State<Agreement> {
             padding: const EdgeInsets.only(bottom: 24),
             child: SvgPicture.asset('assets/icons/logo_kblock.svg')),
         Padding(
-            padding: const EdgeInsets.only(bottom: 24),
-            child: Image.asset('assets/images/tutorial_illust.png')),
+            padding: const EdgeInsets.only(left: 15, bottom: 33),
+            child: SvgPicture.asset('assets/icons/tutorial_illustration.svg')),
         Padding(
             padding: const EdgeInsets.only(bottom: 29),
             child: Text(

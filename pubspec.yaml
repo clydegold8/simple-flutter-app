@@ -108,6 +108,7 @@ flutter:
     - assets/icons/youtube.svg
     - assets/icons/copy.svg
     - assets/icons/arrow_head_down.svg
+    - assets/icons/tutorial_illustration.svg
     - assets/images/app_sample_1.png
     - assets/images/app_sample_2.png
     - assets/images/app_sample_3.png
@@ -119,7 +120,6 @@ flutter:
     - assets/images/app_sample_9.png
     - assets/images/app_sample_10.png
     - assets/images/app_sample_11.png
-    - assets/images/tutorial_illust.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
