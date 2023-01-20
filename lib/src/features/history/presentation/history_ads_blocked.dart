@@ -29,41 +29,41 @@ Widget historyAdsBlockedTabWidget(
   // TODO: this will be replaced with actual data
   List<GraphData> data = [
     GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (土)'),
+        DateTime(2022, 10, 1, 0), Random().nextInt(100).toDouble(), '10/1 (土)'),
     GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (土)'),
+        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/2 (土)'),
     GraphData(
-        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (土)'),
+        DateTime(2022, 10, 1, 2), Random().nextInt(100).toDouble(), '10/3 (土)'),
     GraphData(
-        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (土)'),
+        DateTime(2022, 10, 1, 3), Random().nextInt(100).toDouble(), '10/4 (土)'),
     GraphData(
-        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (土)'),
+        DateTime(2022, 10, 1, 4), Random().nextInt(100).toDouble(), '10/5 (土)'),
     GraphData(
-        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/5 (土)'),
+        DateTime(2022, 10, 1, 5), Random().nextInt(100).toDouble(), '10/5 (土)'),
     GraphData(
-        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/5 (土)'),
+        DateTime(2022, 10, 1, 6), Random().nextInt(100).toDouble(), '10/5 (土)'),
   ];
   List<GraphData> dataTwo = [
     GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (金)'),
+        DateTime(2022, 10, 2, 0), Random().nextInt(100).toDouble(), '10/1 (金)'),
     GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (金)'),
+        DateTime(2022, 10, 2, 1), Random().nextInt(100).toDouble(), '10/2 (金)'),
     GraphData(
-        DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (金)'),
+        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/3 (金)'),
     GraphData(
-        DateTime(2022, 10, 4, 4), Random().nextInt(100).toDouble(), '10/4 (金)'),
+        DateTime(2022, 10, 2, 3), Random().nextInt(100).toDouble(), '10/4 (金)'),
     GraphData(
-        DateTime(2022, 10, 5, 5), Random().nextInt(100).toDouble(), '10/5 (金)'),
+        DateTime(2022, 10, 2, 4), Random().nextInt(100).toDouble(), '10/5 (金)'),
     GraphData(
-        DateTime(2022, 10, 6, 6), Random().nextInt(100).toDouble(), '10/6 (金)'),
+        DateTime(2022, 10, 2, 5), Random().nextInt(100).toDouble(), '10/6 (金)'),
     GraphData(
-        DateTime(2022, 10, 7, 7), Random().nextInt(100).toDouble(), '10/7 (金)')
+        DateTime(2022, 10, 2, 6), Random().nextInt(100).toDouble(), '10/7 (金)')
   ];
   List<GraphData> dataThree = [
     GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
+        DateTime(2022, 10, 1, 0), Random().nextInt(100).toDouble(), '10/1 (木)'),
     GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '10/2 (木)'),
+        DateTime(2022, 10, 2, 1), Random().nextInt(100).toDouble(), '10/2 (木)'),
     GraphData(
         DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/3 (木)'),
     GraphData(
@@ -77,9 +77,9 @@ Widget historyAdsBlockedTabWidget(
   ];
   List<GraphData> dataFour = [
     GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
+        DateTime(2022, 10, 1, 0), Random().nextInt(100).toDouble(), '10/1 (木)'),
     GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '9/30 (木)'),
+        DateTime(2022, 10, 2, 1), Random().nextInt(100).toDouble(), '9/30 (木)'),
     GraphData(
         DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/1 (木)'),
     GraphData(
@@ -254,7 +254,7 @@ Widget historyAdsBlockedTabWidget(
                       true),
                   // 1 month
                   historySixMonthsTabWidget(context, ref,
-                      tooltipBehaviorWeekMonthAdsBlocked, zoomPanBehavior),
+                      tooltipBehaviorWeekMonthAdsBlocked, zoomPanBehavior, true),
                   // six months
                 ]),
           ),

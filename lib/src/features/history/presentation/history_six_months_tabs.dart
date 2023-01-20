@@ -11,17 +11,39 @@ import '../../../constants/colors.dart';
 import '../../../constants/providers.dart';
 import 'history_ads_blocked.dart';
 
-Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
-    TooltipBehavior tooltipBehaviorSixMonths, ZoomPanBehavior zoomPanBehavior) {
+Widget historySixMonthsTabWidget(
+    BuildContext context,
+    WidgetRef ref,
+    TooltipBehavior tooltipBehaviorSixMonths,
+    ZoomPanBehavior zoomPanBehavior,
+    bool isFirstTab) {
   final selectedIndex = ref.watch(widgetSixMonthsTabProvider);
   final tabs = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN'];
 
   // TODO: this will be replaced with actual data
+  List tabTitles = [
+    '5GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+    '6GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+    '7GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+    '8GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+    '9GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+    '10GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+  ];
+
+  List tabTitlesTwo = [
+    '10${AppLocalizations.of(context)?.pieces ?? '万件'}',
+    '20${AppLocalizations.of(context)?.pieces ?? '万件'}',
+    '30${AppLocalizations.of(context)?.pieces ?? '万件'}',
+    '40${AppLocalizations.of(context)?.pieces ?? '万件'}',
+    '50${AppLocalizations.of(context)?.pieces ?? '万件'}',
+    '60${AppLocalizations.of(context)?.pieces ?? '万件'}',
+  ];
+
   List<GraphData> dataFour = [
     GraphData(
-        DateTime(2022, 10, 1, 1), Random().nextInt(100).toDouble(), '10/1 (木)'),
+        DateTime(2022, 10, 1, 0), Random().nextInt(100).toDouble(), '10/1 (木)'),
     GraphData(
-        DateTime(2022, 10, 2, 2), Random().nextInt(100).toDouble(), '9/30 (木)'),
+        DateTime(2022, 10, 2, 1), Random().nextInt(100).toDouble(), '9/30 (木)'),
     GraphData(
         DateTime(2022, 10, 3, 3), Random().nextInt(100).toDouble(), '10/1 (木)'),
     GraphData(
@@ -142,7 +164,7 @@ Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
                       context,
                       tooltipBehaviorSixMonths,
                       dataFour,
-                      '5GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+                      isFirstTab ? tabTitlesTwo[0] : tabTitles[0],
                       '6ヶ月',
                       false,
                       zoomPanBehavior,
@@ -155,7 +177,7 @@ Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
                       context,
                       tooltipBehaviorSixMonths,
                       dataFour,
-                      '6GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+                      isFirstTab ? tabTitlesTwo[1] : tabTitles[1],
                       '6ヶ月',
                       false,
                       zoomPanBehavior,
@@ -168,7 +190,7 @@ Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
                       context,
                       tooltipBehaviorSixMonths,
                       dataFour,
-                      '7GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+                      isFirstTab ? tabTitlesTwo[2] : tabTitles[2],
                       '6ヶ月',
                       false,
                       zoomPanBehavior,
@@ -181,7 +203,7 @@ Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
                       context,
                       tooltipBehaviorSixMonths,
                       dataFour,
-                      '8GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+                      isFirstTab ? tabTitlesTwo[3] : tabTitles[3],
                       '6ヶ月',
                       false,
                       zoomPanBehavior,
@@ -194,7 +216,7 @@ Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
                       context,
                       tooltipBehaviorSixMonths,
                       dataFour,
-                      '9GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+                      isFirstTab ? tabTitlesTwo[4] : tabTitles[4],
                       '6ヶ月',
                       false,
                       zoomPanBehavior,
@@ -207,7 +229,7 @@ Widget historySixMonthsTabWidget(BuildContext context, WidgetRef ref,
                       context,
                       tooltipBehaviorSixMonths,
                       dataFour,
-                      '10GB / 2${AppLocalizations.of(context)?.hours ?? '時間'}30${AppLocalizations.of(context)?.min ?? '分'}',
+                      isFirstTab ? tabTitlesTwo[5] : tabTitles[5],
                       '6ヶ月',
                       false,
                       zoomPanBehavior,
