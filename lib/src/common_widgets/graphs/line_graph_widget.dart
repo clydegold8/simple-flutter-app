@@ -53,6 +53,7 @@ Widget lineGraphWidget(
           // Enable tooltip
           tooltipBehavior: tooltipBehavior,
           primaryXAxis: DateTimeAxis(
+              desiredIntervals: 7,
               plotOffset: 20,
               visibleMinimum: data[0].time,
               visibleMaximum: data[6].time,
@@ -78,20 +79,20 @@ Widget lineGraphWidget(
 
                 TextStyle style = (hasWeekendColors && saturdayDate == text
                     ? const TextStyle(
-                        color: KBlockColors.blueDate,
-                        fontWeight: FontWeight.w400)
+                    color: KBlockColors.blueDate,
+                    fontWeight: FontWeight.w400)
                     : hasWeekendColors && sundayDate == text
-                        ? const TextStyle(
-                            color: KBlockColors.redDate,
-                            fontWeight: FontWeight.w400)
-                        : const TextStyle(
-                            color: KBlockColors.foregroundColor,
-                            fontWeight: FontWeight.w400));
+                    ? const TextStyle(
+                    color: KBlockColors.redDate,
+                    fontWeight: FontWeight.w400)
+                    : const TextStyle(
+                    color: KBlockColors.foregroundColor,
+                    fontWeight: FontWeight.w400));
                 return ChartAxisLabel(text, style);
               }),
           primaryYAxis: NumericAxis(
               anchorRangeToVisiblePoints: false,
-              interval: 30,
+              interval: 20,
               majorGridLines: const MajorGridLines(
                   width: 1,
                   color: KBlockColors.text02,
@@ -110,15 +111,19 @@ Widget lineGraphWidget(
           ]),
     ),
     Expanded(
-        child: Padding(
-            padding: const EdgeInsets.only(left: 35, right: 9, bottom: 15),
-            child: Container(
-              width: double.infinity,
-              decoration: containerDecoration,
-              child: Center(
-                child: Text(style: dateTextStyle, monthName),
-              ),
-            )))
-    //Initialize the chart widget
+        child: Container(
+            width: double.infinity,
+            color: KBlockColors.white,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 35, right: 9, bottom: 15),
+              child: Container(
+                  width: double.infinity,
+                  decoration: containerDecoration,
+                  child: Center(
+                    child: Text(style: dateTextStyle, monthName),
+                  )),
+            ))
+        //Initialize the chart widget
+        )
   ]);
 }
