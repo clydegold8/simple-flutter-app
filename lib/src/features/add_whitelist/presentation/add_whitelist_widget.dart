@@ -95,7 +95,6 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 25, 33, 0),
                       child: TextField(
-                          style: const TextStyle(height: 1),
                           onChanged: (value) {
                             whiteListName = value;
                           },
@@ -108,7 +107,7 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                             ),
                             isDense: true,
                             contentPadding: const EdgeInsets.symmetric(
-                                vertical: 6, horizontal: 15.0),
+                                vertical: 5, horizontal: 15.0),
                           )),
                     ),
                   )
