@@ -1,21 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:io' show Platform;
 
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/constants/urls.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class Agreement extends StatefulWidget {
+import '../../../constants/providers.dart';
+
+class Agreement extends ConsumerStatefulWidget {
   const Agreement({super.key});
 
   @override
-  State<Agreement> createState() => _AgreementState();
+  ConsumerState<Agreement> createState() => _AgreementState();
 }
 
-class _AgreementState extends State<Agreement> {
+class _AgreementState extends ConsumerState<Agreement> {
   bool isAgreeChecked = false;
 
   @override
@@ -59,6 +62,7 @@ class _AgreementState extends State<Agreement> {
         Navigator.pushNamed(context, Routes.initialPopupIOSRoute);
       } else {
         Navigator.pushNamed(context, Routes.homeRoute);
+        ref.read(widgetPathProvider.notifier).state = 0;
       }
     }
 

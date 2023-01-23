@@ -120,5 +120,7 @@
     "tap_video_to_watch": "2. 見たい動画の「⋮」ボタンをタップ\n(または見たい動画を直接選択)",
     "tap_share_btn": "3.「共有」ボタンをタップ",
     "select_kblock_on_list": "4.「その他」の中から「K-BLOCK」を\n選択する",
-    "a_dedicated_player_launched": "5. 専用のプレイヤーが立ち上がる"
+    "a_dedicated_player_launched": "5. 専用のプレイヤーが立ち上がる",
+    "log_out": "ログアウト",
+    "sure_to_logout": "ログアウトしてよろしいですか?"
 }
