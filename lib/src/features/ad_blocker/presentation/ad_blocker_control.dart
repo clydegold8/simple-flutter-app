@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
+import 'package:k_block_app/src/utils/theming.dart';
 
 class AdBlockerControl extends ConsumerStatefulWidget {
   const AdBlockerControl({super.key});
@@ -79,18 +80,16 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
     final adBlockerButtonShape =
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
     final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
+    final activeTheme = ref.watch(activeThemeNameProvider);
     const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
 
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-            KBlockColors.adBlockerGradient1,
-            KBlockColors.adBlockerGradient2
-          ])),
+              colors: getThemeGradient(activeTheme))),
       child: FractionallySizedBox(
         heightFactor: 0.85,
         widthFactor: 0.75,

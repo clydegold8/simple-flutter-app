@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/constants/themes.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
+import 'package:k_block_app/src/utils/theming.dart';
 
 import 'package:k_block_app/src/common_widgets/radio.dart';
 
@@ -56,32 +57,7 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
 
     void onChangedTheme(value) {
       ref.read(activeThemeNameProvider.notifier).state = value;
-      switch (value) {
-        case ThemeNames.simple:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.simple;
-          break;
-        case ThemeNames.black:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.black;
-          break;
-        case ThemeNames.skyBlue:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.skyBlue;
-          break;
-        case ThemeNames.pink:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.pink;
-          break;
-        case ThemeNames.green:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.green;
-          break;
-        case ThemeNames.yellow:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.yellow;
-          break;
-        case ThemeNames.beige:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.beige;
-          break;
-        case ThemeNames.gradient:
-          ref.read(activeThemeProvider.notifier).state = KBlockThemes.gradient;
-          break;
-      }
+      ref.read(activeThemeProvider.notifier).state = getTheme(value);
     }
 
     void onChangedSwitchButton(value) {

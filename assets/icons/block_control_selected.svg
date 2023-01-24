@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
-    <path d="M0,1.375L0,20.625C0,20.99 0.145,21.339 0.403,21.597C0.661,21.855 1.01,22 1.375,22L20.625,22C20.99,22 21.339,21.855 21.597,21.597C21.855,21.339 22,20.99 22,20.625L22,1.375C22,1.01 21.855,0.661 21.597,0.403C21.339,0.145 20.99,0 20.625,0L1.375,0C1.01,0 0.661,0.145 0.403,0.403C0.145,0.661 0,1.01 0,1.375Z" style="fill:rgb(56,177,64);fill-rule:nonzero;"/>
-    <g id="Group-11433.svg" serif:id="Group 11433.svg" transform="matrix(1,0,0,1,11,11)">
-        <g transform="matrix(1,0,0,1,-7,-6)">
-            <clipPath id="_clip1">
-                <rect x="0" y="0" width="14" height="12"/>
-            </clipPath>
-            <g clip-path="url(#_clip1)">
-                <path d="M1.361,1.771C1.669,1.771 1.918,1.537 1.918,1.248C1.918,0.959 1.669,0.725 1.361,0.725C1.053,0.725 0.804,0.959 0.804,1.248C0.804,1.537 1.053,1.771 1.361,1.771Z" style="fill:rgb(112,112,112);fill-rule:nonzero;stroke:white;stroke-width:1.19px;"/>
-                <path d="M4.525,1.248L13.196,1.248" style="fill:none;fill-rule:nonzero;stroke:white;stroke-width:1.19px;stroke-linecap:round;stroke-linejoin:round;"/>
-                <path d="M1.361,11.275C1.669,11.275 1.918,11.041 1.918,10.752C1.918,10.463 1.669,10.229 1.361,10.229C1.053,10.229 0.804,10.463 0.804,10.752C0.804,11.041 1.053,11.275 1.361,11.275Z" style="fill:rgb(112,112,112);fill-rule:nonzero;stroke:white;stroke-width:1.19px;stroke-linecap:round;stroke-linejoin:round;"/>
-                <path d="M4.525,10.752L13.196,10.752" style="fill:none;fill-rule:nonzero;stroke:white;stroke-width:1.19px;stroke-linecap:round;stroke-linejoin:round;"/>
-                <path d="M1.361,6.523C1.669,6.523 1.918,6.289 1.918,6C1.918,5.711 1.669,5.477 1.361,5.477C1.053,5.477 0.804,5.711 0.804,6C0.804,6.289 1.053,6.523 1.361,6.523Z" style="fill:rgb(112,112,112);fill-rule:nonzero;stroke:white;stroke-width:1.19px;"/>
-                <path d="M4.525,6L13.196,6" style="fill:none;fill-rule:nonzero;stroke:white;stroke-width:1.19px;stroke-linecap:round;stroke-linejoin:round;"/>
-            </g>
-        </g>
-    </g>
+<svg width="100%" height="100%" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <path d="M0,1.375l0,19.25c0,0.365 0.145,0.714 0.403,0.972c0.258,0.258 0.607,0.403 0.972,0.403l19.25,0c0.365,0 0.714,-0.145 0.972,-0.403c0.258,-0.258 0.403,-0.607 0.403,-0.972l0,-19.25c0,-0.365 -0.145,-0.714 -0.403,-0.972c-0.258,-0.258 -0.607,-0.403 -0.972,-0.403l-19.25,0c-0.365,0 -0.714,0.145 -0.972,0.403c-0.258,0.258 -0.403,0.607 -0.403,0.972Zm5.361,13.215c0.641,0 1.162,0.521 1.162,1.162c-0,0.641 -0.521,1.162 -1.162,1.162c-0.641,-0 -1.162,-0.521 -1.162,-1.162c0,-0.641 0.521,-1.162 1.162,-1.162Zm3.164,1.768c-0.334,-0 -0.606,-0.272 -0.606,-0.606c0,-0.334 0.272,-0.606 0.606,-0.606l8.675,0c0.333,0.002 0.602,0.273 0.602,0.606c-0,0.334 -0.272,0.606 -0.606,0.606l-8.671,-0Zm-3.164,-6.52c0.641,0 1.162,0.521 1.162,1.162c-0,0.641 -0.521,1.162 -1.162,1.162c-0.641,-0 -1.162,-0.521 -1.162,-1.162c0,-0.641 0.521,-1.162 1.162,-1.162Zm3.164,1.768c-0.334,-0 -0.606,-0.272 -0.606,-0.606c0,-0.334 0.272,-0.606 0.606,-0.606l8.675,0c0.333,0.002 0.602,0.273 0.602,0.606c-0,0.334 -0.272,0.606 -0.606,0.606l-8.671,-0Zm-3.164,-6.52c0.641,0 1.162,0.521 1.162,1.162c-0,0.641 -0.521,1.162 -1.162,1.162c-0.641,-0 -1.162,-0.521 -1.162,-1.162c0,-0.641 0.521,-1.162 1.162,-1.162Zm3.164,1.768c-0.334,-0 -0.606,-0.272 -0.606,-0.606c0,-0.334 0.272,-0.606 0.606,-0.606l8.675,0c0.333,0.002 0.602,0.273 0.602,0.606c-0,0.334 -0.272,0.606 -0.606,0.606l-8.671,-0Z" style="fill:#38b140;fill-rule:nonzero;"/>
 </svg>

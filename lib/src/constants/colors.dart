@@ -42,28 +42,47 @@ class KBlockColors {
   static const Color blueDate = Color(0xFF0066C0);
   static const Color redDate = Color(0xFFF74646);
 
-  // Simple Theme
-  static const Color simplePrimary = Color(0xFF14B53D);
-
   // Black Theme
   static const Color blackPrimary = Color(0xFF292929);
+  static const Color blackSurface = Color(0xFF464545);
+  static const Color blackGradient1 = Color(0xFF585656);
+  static const Color blackGradient2 = Color(0x34585656);
 
   // Sky Blue Theme
   static const Color skyBluePrimary = Color(0xFF8CBCE9);
+  static const Color skyBlueSurface = Color(0xFFA3CBF0);
+  static const Color skyGradient1 = Color(0xFFBADBFA);
+  static const Color skyGradient2 = Color(0x34BADBFA);
 
   // Pink Theme
   static const Color pinkPrimary = Color(0xFFED93A7);
+  static const Color pinkSurface = Color(0xFFF5AEBE);
+  static const Color pinkGradient1 = Color(0xFFFECAD6);
+  static const Color pinkGradient2 = Color(0x34FECAD6);
 
   // Green Theme
   static const Color greenPrimary = Color(0xFF14B53D);
+  static const Color greenSurface = Color(0xFF89D68C);
+  static const Color greenGradient1 = Color(0xFFBDEFBF);
+  static const Color greenGradient2 = Color(0x34B3E2B5);
 
   // Yellow Theme
   static const Color yellowPrimary = Color(0xFFEED125);
+  static const Color yellowSurface = Color(0xFFFCE871);
+  static const Color yellowGradient1 = Color(0xFFFFF6BD);
+  static const Color yellowGradient2 = Color(0x34FFF6BD);
 
   // Beige Theme
   static const Color beigePrimary = Color(0xFFDCAFA0);
+  static const Color beigeSurface = Color(0xFFEBCFC6);
+  static const Color beigeGradient1 = Color(0xFFFAE7E1);
+  static const Color beigeGradient2 = Color(0x34FAE7E1);
 
   // Gradient Theme
-  static const Color gradientPrimary = Color(0xFFA0E7A3);
-  static const Color gradientSecondary = Color(0xFF67C36B);
+  static const Color gradientPrimary = Color(0xFF0F9631);
+  static const Color gradientSecondary = Color(0xFFA0E7A3);
+  static const Color gradientSurface = Color(0xFFA0E7A3);
+  static const Color gradientSurfaceVariant = Color(0xFF67C36B);
+  static const Color gradientGradient1 = Color(0xFFBDEFBF);
+  static const Color gradientGradient2 = Color(0x34BDEFBF);
 }

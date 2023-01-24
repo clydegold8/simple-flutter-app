@@ -244,6 +244,9 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
             Container(
               decoration: listTileContDecoration,
               child: ListTile(
+                  onTap: () {
+                    ref.read(widgetPathProvider.notifier).state = 11;
+                  },
                   title: Text(
                     AppLocalizations.of(context)?.design_settings ?? 'デザイン設定',
                     style: listTileTitleStyle,

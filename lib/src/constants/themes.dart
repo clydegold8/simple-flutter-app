@@ -28,49 +28,80 @@ class KBlockThemes {
   static KBlockTheme simple = KBlockTheme(
       name: ThemeNames.simple,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.greenThemeColor)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.greenThemeColor,
+              secondary: KBlockColors.greenThemeColor,
+              surface: KBlockColors.greenSurface,
+              surfaceVariant: KBlockColors.greenSurface,
+              surfaceTint: KBlockColors.foregroundColor)));
 
   static KBlockTheme black = KBlockTheme(
       name: ThemeNames.black,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.blackPrimary)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.blackPrimary,
+              secondary: KBlockColors.blackPrimary,
+              surface: KBlockColors.blackSurface,
+              surfaceVariant: KBlockColors.blackSurface,
+              surfaceTint: Colors.white)));
 
   static KBlockTheme skyBlue = KBlockTheme(
       name: ThemeNames.skyBlue,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.skyBluePrimary)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.skyBluePrimary,
+              secondary: KBlockColors.skyBluePrimary,
+              surface: KBlockColors.skyBlueSurface,
+              surfaceVariant: KBlockColors.skyBlueSurface,
+              surfaceTint: KBlockColors.foregroundColor)));
 
   static KBlockTheme pink = KBlockTheme(
       name: ThemeNames.pink,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.pinkPrimary)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.pinkPrimary,
+              secondary: KBlockColors.pinkPrimary,
+              surface: KBlockColors.pinkSurface,
+              surfaceVariant: KBlockColors.pinkSurface,
+              surfaceTint: KBlockColors.foregroundColor)));
 
   static KBlockTheme green = KBlockTheme(
       name: ThemeNames.green,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.greenPrimary)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.greenPrimary,
+              secondary: KBlockColors.greenPrimary,
+              surface: KBlockColors.greenSurface,
+              surfaceVariant: KBlockColors.greenSurface,
+              surfaceTint: KBlockColors.foregroundColor)));
 
   static KBlockTheme yellow = KBlockTheme(
       name: ThemeNames.yellow,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.yellowPrimary)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.yellowPrimary,
+              secondary: KBlockColors.yellowPrimary,
+              surface: KBlockColors.yellowSurface,
+              surfaceVariant: KBlockColors.yellowSurface,
+              surfaceTint: KBlockColors.foregroundColor)));
 
   static KBlockTheme beige = KBlockTheme(
       name: ThemeNames.beige,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch()
-              .copyWith(primary: KBlockColors.beigePrimary)));
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: KBlockColors.beigePrimary,
+              secondary: KBlockColors.beigePrimary,
+              surface: KBlockColors.beigeSurface,
+              surfaceVariant: KBlockColors.beigeSurface,
+              surfaceTint: KBlockColors.foregroundColor)));
 
   static KBlockTheme gradient = KBlockTheme(
       name: ThemeNames.gradient,
       themeData: _baseThemeData.copyWith(
           colorScheme: ColorScheme.fromSwatch().copyWith(
               primary: KBlockColors.gradientPrimary,
-              secondary: KBlockColors.gradientSecondary)));
+              secondary: KBlockColors.gradientSecondary,
+              surface: KBlockColors.gradientSurface,
+              surfaceVariant: KBlockColors.gradientSurfaceVariant,
+              surfaceTint: KBlockColors.foregroundColor)));
 }
