@@ -41,4 +41,29 @@ class KBlockColors {
   static const Color requiredBackground = Color(0xFFF16363);
   static const Color blueDate = Color(0xFF0066C0);
   static const Color redDate = Color(0xFFF74646);
+
+  // Simple Theme
+  static const Color simplePrimary = Color(0xFF14B53D);
+
+  // Black Theme
+  static const Color blackPrimary = Color(0xFF292929);
+
+  // Sky Blue Theme
+  static const Color skyBluePrimary = Color(0xFF8CBCE9);
+
+  // Pink Theme
+  static const Color pinkPrimary = Color(0xFFED93A7);
+
+  // Green Theme
+  static const Color greenPrimary = Color(0xFF14B53D);
+
+  // Yellow Theme
+  static const Color yellowPrimary = Color(0xFFEED125);
+
+  // Beige Theme
+  static const Color beigePrimary = Color(0xFFDCAFA0);
+
+  // Gradient Theme
+  static const Color gradientPrimary = Color(0xFFA0E7A3);
+  static const Color gradientSecondary = Color(0xFF67C36B);
 }

@@ -3,18 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:k_block_app/src/constants/themes.dart';
 import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/constants/providers.dart';
 
 import 'package:k_block_app/src/common_widgets/radio.dart';
 
 final List<RadioOption> _themeOptions = [
-  RadioOption(value: KBlockThemes.simple, name: 'グリーン（初期設定）'),
-  RadioOption(value: KBlockThemes.black, name: 'ブラック'),
-  RadioOption(value: KBlockThemes.skyBlue, name: 'スカイブルー'),
-  RadioOption(value: KBlockThemes.pink, name: 'ピンク'),
-  RadioOption(value: KBlockThemes.green, name: 'グリーン'),
-  RadioOption(value: KBlockThemes.yellow, name: 'イエロー'),
-  RadioOption(value: KBlockThemes.beige, name: 'ベージュ'),
-  RadioOption(value: KBlockThemes.gradient, name: 'グラデーション'),
+  RadioOption(value: ThemeNames.simple, name: 'グリーン（初期設定）'),
+  RadioOption(value: ThemeNames.black, name: 'ブラック'),
+  RadioOption(value: ThemeNames.skyBlue, name: 'スカイブルー'),
+  RadioOption(value: ThemeNames.pink, name: 'ピンク'),
+  RadioOption(value: ThemeNames.green, name: 'グリーン'),
+  RadioOption(value: ThemeNames.yellow, name: 'イエロー'),
+  RadioOption(value: ThemeNames.beige, name: 'ベージュ'),
+  RadioOption(value: ThemeNames.gradient, name: 'グラデーション'),
 ];
 
 final List<RadioOption> _switchButtonOptions = [
@@ -37,12 +38,12 @@ class DesignSettings extends ConsumerStatefulWidget {
 }
 
 class _DesignSettingsState extends ConsumerState<DesignSettings> {
-  String activeTheme = KBlockThemes.simple;
-  String activeSwitchButton = 'switch';
-  String activeHomeBackground = 'design1';
-
   @override
   Widget build(BuildContext context) {
+    final activeTheme = ref.watch(activeThemeNameProvider);
+    final activeSwitchButton = ref.watch(activeSwitchButtonProvider);
+    final activeHomeBackground = ref.watch(activeHomeBackgroundProvider);
+
     const sectionContainerDecor = BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(10)));
@@ -54,9 +55,41 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
         TextStyle(color: KBlockColors.foregroundColor, fontSize: 14);
 
     void onChangedTheme(value) {
-      setState(() {
-        activeTheme = value;
-      });
+      ref.read(activeThemeNameProvider.notifier).state = value;
+      switch (value) {
+        case ThemeNames.simple:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.simple;
+          break;
+        case ThemeNames.black:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.black;
+          break;
+        case ThemeNames.skyBlue:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.skyBlue;
+          break;
+        case ThemeNames.pink:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.pink;
+          break;
+        case ThemeNames.green:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.green;
+          break;
+        case ThemeNames.yellow:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.yellow;
+          break;
+        case ThemeNames.beige:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.beige;
+          break;
+        case ThemeNames.gradient:
+          ref.read(activeThemeProvider.notifier).state = KBlockThemes.gradient;
+          break;
+      }
+    }
+
+    void onChangedSwitchButton(value) {
+      ref.read(activeSwitchButtonProvider.notifier).state = value;
+    }
+
+    void onChangedHomeBackground(value) {
+      ref.read(activeHomeBackgroundProvider.notifier).state = value;
     }
 
     return Scaffold(
@@ -126,7 +159,7 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                             selectedColor: KBlockColors.greenThemeColor,
                             value: _switchButtonOptions[index].value,
                             groupValue: activeSwitchButton,
-                            onChanged: onChangedTheme,
+                            onChanged: onChangedSwitchButton,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 14),
@@ -161,7 +194,7 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                             selectedColor: KBlockColors.greenThemeColor,
                             value: _homeBackgroundOptions[index].value,
                             groupValue: activeHomeBackground,
-                            onChanged: onChangedTheme,
+                            onChanged: onChangedHomeBackground,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 14),
