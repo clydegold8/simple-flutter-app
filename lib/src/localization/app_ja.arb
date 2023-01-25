@@ -137,5 +137,7 @@
     "home_background_settings": "ホームの背景の設定",
     "design_1": "デザイン1",
     "design_2": "デザイン2",
-    "design_3": "デザイン3"
+    "design_3": "デザイン3",
+    "log_out": "ログアウト",
+    "sure_to_logout": "ログアウトしてよろしいですか?"
 }

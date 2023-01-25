@@ -3,43 +3,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:k_block_app/src/constants/colors.dart';
+import 'package:k_block_app/src/constants/urls.dart';
 import 'package:k_block_app/src/features/forgot_password/presentation/forgot_password.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/routes.dart';
-import 'package:k_block_app/src/constants/urls.dart';
 
 Widget loginFormWidget(BuildContext context, formKey) {
-  return Scaffold(
-      backgroundColor: KBlockColors.white,
-      body: Form(
-        key: formKey,
-        child: Column(children: [
-          const Spacer(flex: 1),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 92, 0, 84),
-                child: Center(
-                  child: SvgPicture.asset('assets/icons/logo_kblock.svg'),
+  return GestureDetector(
+    onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+    child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: KBlockColors.white,
+        body: Form(
+          key: formKey,
+          child: Column(children: [
+            const Spacer(flex: 1),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 92, 0, 84),
+                  child: Center(
+                    child: SvgPicture.asset('assets/icons/logo_kblock.svg'),
+                  ),
                 ),
-              ),
-              // Id Field
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: Center(
-                  child: Text(AppLocalizations.of(context)?.id ?? 'ID',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: KBlockColors.foregroundColor,
+                // Id Field
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Center(
+                    child: Text(AppLocalizations.of(context)?.id ?? 'ID',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          color: KBlockColors.foregroundColor,
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(40, 0, 40, 28),
+                  child: TextField(
+                      style: const TextStyle(height: 2),
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: KBlockColors.greenThemeColor, width: 2.0),
+                          borderRadius: BorderRadius.circular(40.0),
+                        ),
+                        filled: true,
+                        fillColor: KBlockColors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(40.0),
+                        ),
+                        isDense: true,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 25.0),
                       )),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 0, 40, 28),
-                child: TextField(
+                // password field
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Center(
+                    child:
+                        Text(AppLocalizations.of(context)?.password ?? 'パスワード',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              color: KBlockColors.foregroundColor,
+                            )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(40, 0, 40, 23),
+                  child: TextField(
                     style: const TextStyle(height: 2),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -55,145 +91,118 @@ Widget loginFormWidget(BuildContext context, formKey) {
                       isDense: true,
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 25.0),
-                    )),
-              ),
-              // password field
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: Center(
-                  child: Text(AppLocalizations.of(context)?.password ?? 'パスワード',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: KBlockColors.foregroundColor,
-                      )),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 0, 40, 23),
-                child: TextField(
-                  style: const TextStyle(height: 2),
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: KBlockColors.greenThemeColor, width: 2.0),
-                      borderRadius: BorderRadius.circular(40.0),
                     ),
-                    filled: true,
-                    fillColor: KBlockColors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40.0),
-                    ),
-                    isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 25.0),
                   ),
                 ),
-              ),
-              // forgot password link
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 48),
-                child: Center(
-                  child: RichText(
-                      text: TextSpan(
-                          text: AppLocalizations.of(context)?.forgot_password ??
-                              'パスワードをお忘れですか?',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: KBlockColors.foregroundColor,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              forgotPassword(context);
-                            })),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(45, 0, 45, 7),
-                child: Center(
-                  child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.agreementRoute);
-                    },
-                    style: OutlinedButton.styleFrom(
-                        foregroundColor: KBlockColors.text01,
-                        backgroundColor: KBlockColors.greenThemeColor,
-                        side: const BorderSide(
-                            color: KBlockColors.greenThemeColor),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                        )),
-                    child: SizedBox(
-                        height: 55.0,
-                        child: Center(
-                            child: Text(
-                                AppLocalizations.of(context)?.login ?? 'ログイン',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: KBlockColors.white, fontSize: 16)))),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-              flex: 2,
-              child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                // forgot password link
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 48),
                   child: Center(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                        RichText(
-                            text: TextSpan(
-                                children: [
-                              TextSpan(
-                                  text: AppLocalizations.of(context)?.terms ??
-                                      '利用規約 ',
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () async {
-                                      final url = Uri.parse(KBlockUrls.terms);
-                                      if (await canLaunchUrl(url)) {
-                                        await launchUrl(url,
-                                            mode:
-                                                LaunchMode.externalApplication);
-                                      } else {
-                                        throw 'Could not launch $url';
-                                      }
-                                    }),
-                              TextSpan(
-                                  text: AppLocalizations.of(context)?.privacy ??
-                                      '/ プライバシーポリシー ',
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () async {
-                                      final url = Uri.parse(KBlockUrls.privacy);
-                                      if (await canLaunchUrl(url)) {
-                                        await launchUrl(url,
-                                            mode:
-                                                LaunchMode.externalApplication);
-                                      } else {
-                                        throw 'Could not launch $url';
-                                      }
-                                    })
-                            ],
-                                style: const TextStyle(
+                    child: RichText(
+                        text: TextSpan(
+                            text:
+                                AppLocalizations.of(context)?.forgot_password ??
+                                    'パスワードをお忘れですか?',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              color: KBlockColors.foregroundColor,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                forgotPassword(context);
+                              })),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(45, 0, 45, 7),
+                  child: Center(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.agreementRoute);
+                      },
+                      style: OutlinedButton.styleFrom(
+                          foregroundColor: KBlockColors.text01,
+                          backgroundColor: KBlockColors.greenThemeColor,
+                          side: const BorderSide(
+                              color: KBlockColors.greenThemeColor),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40.0),
+                          )),
+                      child: SizedBox(
+                          height: 55.0,
+                          child: Center(
+                              child: Text(
+                                  AppLocalizations.of(context)?.login ?? 'ログイン',
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      color: KBlockColors.white,
+                                      fontSize: 16)))),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+                flex: 2,
+                child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+                    child: Center(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                          RichText(
+                              text: TextSpan(
+                                  children: [
+                                TextSpan(
+                                    text: AppLocalizations.of(context)?.terms ??
+                                        '利用規約 ',
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        final url = Uri.parse(KBlockUrls.terms);
+                                        if (await canLaunchUrl(url)) {
+                                          await launchUrl(url,
+                                              mode: LaunchMode
+                                                  .externalApplication);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      }),
+                                TextSpan(
+                                    text:
+                                        AppLocalizations.of(context)?.privacy ??
+                                            '/ プライバシーポリシー ',
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        final url =
+                                            Uri.parse(KBlockUrls.privacy);
+                                        if (await canLaunchUrl(url)) {
+                                          await launchUrl(url,
+                                              mode: LaunchMode
+                                                  .externalApplication);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      })
+                              ],
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: KBlockColors.text01,
+                                  ))),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(0, 9, 0, 0),
+                            child: Text('@Stock Tech.Inc',
+                                style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   color: KBlockColors.text01,
-                                ))),
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(0, 9, 0, 0),
-                          child: Text('@Stock Tech.Inc',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: KBlockColors.text01,
-                              )),
-                        )
-                      ]))))
-        ]),
-      ));
+                                )),
+                          )
+                        ]))))
+          ]),
+        )),
+  );
 }

@@ -6,9 +6,10 @@ import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
 import 'package:k_block_app/src/common_widgets/switch.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
+import 'package:k_block_app/src/constants/urls.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:k_block_app/src/constants/urls.dart';
+import '../../features/logout/logout-widget.dart';
 
 class OtherSettingsMenu extends ConsumerStatefulWidget {
   const OtherSettingsMenu({super.key});
@@ -435,6 +436,36 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                   ),
                 )
               ],
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(45, 0, 45, 7),
+            child: Center(
+              child: OutlinedButton(
+                onPressed: () {
+                  logOutWidget(context, ref);
+                },
+                style: OutlinedButton.styleFrom(
+                    foregroundColor: KBlockColors.text01,
+                    backgroundColor: KBlockColors.greenThemeColor,
+                    side: const BorderSide(color: KBlockColors.greenThemeColor),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                    )),
+                child: SizedBox(
+                    height: 55.0,
+                    child: Center(
+                        child: Text(
+                            AppLocalizations.of(context)?.log_out ?? 'ログアウト',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: KBlockColors.white, fontSize: 16)))),
+              ),
             ),
           ),
         )
