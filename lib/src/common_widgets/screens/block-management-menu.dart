@@ -66,7 +66,7 @@ class BlockManagementMenu extends ConsumerWidget {
                         'ブロックしたくないWebページを登録'),
               ),
               trailing: const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Icon(Icons.chevron_right, size: 30)),
             ),
           ),
@@ -94,7 +94,7 @@ class BlockManagementMenu extends ConsumerWidget {
                         'ブロックしたいWebページを登録'),
               ),
               trailing: const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Icon(Icons.chevron_right, size: 30)),
             ),
           ),
@@ -134,7 +134,7 @@ class BlockManagementMenu extends ConsumerWidget {
                     'アプリことに広告ブロックを設定'),
               ),
               trailing: const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Icon(Icons.chevron_right, size: 30)),
             ),
           ),
