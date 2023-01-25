@@ -2,16 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:app_settings/app_settings.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
 import 'package:k_block_app/src/utils/theming.dart';
+
+import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
 
 class AdBlockerControl extends ConsumerStatefulWidget {
   const AdBlockerControl({super.key});
 
   @override
   ConsumerState<AdBlockerControl> createState() => _AdBlockerControlState();
+}
+
+Future<void> onFirstTimeOn(BuildContext context) {
+  return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        const baseTextStyle = TextStyle(color: KBlockColors.foregroundColor);
+
+        return SimpleDialogueWidget(
+            edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
+            onClickNegativeBtn: () {
+              Navigator.of(context).pop();
+            },
+            onClickPositiveBtn: () {
+              Navigator.of(context).pop();
+              AppSettings.openDeviceSettings();
+            },
+            negativeBtnText:
+                AppLocalizations.of(context)?.dont_allow ?? '許可しない',
+            positiveBtnText: AppLocalizations.of(context)?.allow ?? '許可',
+            child: Column(
+              children: [
+                Text(
+                  AppLocalizations.of(context)?.request_vpn_config_title ??
+                      '「K-BLOCK」 がVPN構成の追加を\n求めています。',
+                  style: baseTextStyle.copyWith(
+                      fontSize: 16, fontWeight: FontWeight.w800),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 21, bottom: 11),
+                  child: Text(
+                      AppLocalizations.of(context)?.request_vpn_config_desc ??
+                          'K-BLOCKから広告ブロックをするために\nは、VPN構成追加の許可が必要です。',
+                      style: baseTextStyle.copyWith(fontSize: 14)),
+                )
+              ],
+            ));
+      });
 }
 
 class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
@@ -59,11 +100,16 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
 
   bool isAdBlockerBrowserOnly = true;
   bool isAdBlockerBrowserApp = false;
+  bool isFirstTimeOn = true;
 
   void onTapAdBlockerSwitch(bool value) {
     setState(() {
       ref.read(adBlockerSwitchStateProvider.notifier).state = value;
     });
+
+    if (value && isFirstTimeOn) {
+      onFirstTimeOn(context);
+    }
   }
 
   void onPressedAdBlockerBrowserOnly() {
@@ -127,7 +173,9 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             GestureDetector(
-                              onTap: () => onTapAdBlockerSwitch(false),
+                              onTap: () => isAdBlockerOn
+                                  ? onTapAdBlockerSwitch(false)
+                                  : null,
                               child: isAdBlockerOn
                                   ? (activeSwitchButton == 'switch'
                                       ? offDownImage
@@ -137,7 +185,9 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                                       : powerOrangeImage),
                             ),
                             GestureDetector(
-                              onTap: () => onTapAdBlockerSwitch(true),
+                              onTap: () => isAdBlockerOn
+                                  ? null
+                                  : onTapAdBlockerSwitch(true),
                               child: isAdBlockerOn
                                   ? (activeSwitchButton == 'switch'
                                       ? onRaisedImage

@@ -145,5 +145,9 @@
     "enter_btn": "認正",
     "close_btn": "閉じる",
     "incorrect_serial_code": "シリアルコードが正しくありません。\nもう一度入力し直してください。",
-    "maximum_devices_reached": "利用台数の上限を超えているため\nご利用いただけません。"
+    "maximum_devices_reached": "利用台数の上限を超えているため\nご利用いただけません。",
+    "request_vpn_config_title": "「K-BLOCK」 がVPN構成の追加を\n求めています。",
+    "request_vpn_config_desc": "K-BLOCKから広告ブロックをするために\nは、VPN構成追加の許可が必要です。",
+    "dont_allow": "許可しない",
+    "allow": "許可"
 }
