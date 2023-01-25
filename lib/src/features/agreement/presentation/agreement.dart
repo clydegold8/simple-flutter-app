@@ -1,5 +1,3 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,8 +6,6 @@ import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/routes.dart';
 import 'package:k_block_app/src/constants/urls.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../../constants/providers.dart';
 
 class Agreement extends ConsumerStatefulWidget {
   const Agreement({super.key});
@@ -58,12 +54,7 @@ class _AgreementState extends ConsumerState<Agreement> {
     }
 
     void onPressedStart() {
-      if (Platform.isIOS) {
-        Navigator.pushNamed(context, Routes.initialPopupIOSRoute);
-      } else {
-        Navigator.pushNamed(context, Routes.homeRoute);
-        ref.read(widgetPathProvider.notifier).state = 0;
-      }
+      Navigator.pushNamed(context, Routes.firstTimeUsage);
     }
 
     return Scaffold(
