@@ -139,5 +139,11 @@
     "design_2": "デザイン2",
     "design_3": "デザイン3",
     "log_out": "ログアウト",
-    "sure_to_logout": "ログアウトしてよろしいですか?"
+    "sure_to_logout": "ログアウトしてよろしいですか?",
+    "a_serial_code_required": "  K-BLOCKを利用するには\nシリアルコードが必要です。",
+    "enter_serial_code": "シリアルコードの入力",
+    "enter_btn": "認正",
+    "close_btn": "閉じる",
+    "incorrect_serial_code": "シリアルコードが正しくありません。\nもう一度入力し直してください。",
+    "maximum_devices_reached": "利用台数の上限を超えているため\nご利用いただけません。"
 }

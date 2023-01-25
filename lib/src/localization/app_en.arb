@@ -139,5 +139,11 @@
     "design_2": "Design 2",
     "design_3": "Design 3",
     "log_out": "Logout",
-    "sure_to_logout": "Are you sure you want to logout?"
+    "sure_to_logout": "Are you sure you want to logout?",
+    "a_serial_code_required": "A serial code is required to use K-BLOCK.",
+    "enter_serial_code": "Enter serial code",
+    "enter_btn": "Proceed",
+    "close_btn": "Close up",
+    "incorrect_serial_code": "Incorrect serial code. Please try again.",
+    "maximum_devices_reached": "It cannot be used because it exceeds the maximum number of devices that can be used."
 }
