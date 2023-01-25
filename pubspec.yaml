@@ -44,6 +44,7 @@ dependencies:
   flutter_riverpod: ^2.1.1
   just_the_tooltip: ^0.0.12
   syncfusion_flutter_charts: ^20.4.43
+  app_settings: ^4.2.0
 
 dev_dependencies:
   flutter_test:
