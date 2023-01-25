@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
 
+import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
+
 class AdBlockerControl extends ConsumerStatefulWidget {
   const AdBlockerControl({super.key});
 
@@ -53,11 +55,55 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
 
   bool isAdBlockerBrowserOnly = true;
   bool isAdBlockerBrowserApp = false;
+  bool isFirstTimeOn = true;
+
+  Future<void> onFirstTimeOn() {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          const baseTextStyle = TextStyle(color: KBlockColors.foregroundColor);
+
+          return SimpleDialogueWidget(
+              edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
+              onClickNegativeBtn: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  ref.read(adBlockerSwitchStateProvider.notifier).state = true;
+                });
+              },
+              onClickPositiveBtn: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  ref.read(adBlockerSwitchStateProvider.notifier).state = true;
+                });
+              },
+              negativeBtnText: '許可しない',
+              positiveBtnText: '許可',
+              child: Column(
+                children: [
+                  Text(
+                    '「K-BLOCK」 がVPN構成の追加を\n求めています。',
+                    style: baseTextStyle.copyWith(
+                        fontSize: 16, fontWeight: FontWeight.w800),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 21, bottom: 11),
+                    child: Text('K-BLOCKから広告ブロックをするために\nは、VPN構成追加の許可が必要です。',
+                        style: baseTextStyle.copyWith(fontSize: 14)),
+                  )
+                ],
+              ));
+        });
+  }
 
   void onTapAdBlockerSwitch(bool value) {
-    setState(() {
-      ref.read(adBlockerSwitchStateProvider.notifier).state = value;
-    });
+    if (value && isFirstTimeOn) {
+      onFirstTimeOn();
+    } else {
+      setState(() {
+        ref.read(adBlockerSwitchStateProvider.notifier).state = value;
+      });
+    }
   }
 
   void onPressedAdBlockerBrowserOnly() {
