@@ -88,6 +88,11 @@ flutter:
     - assets/icons/on.svg
     - assets/icons/off_down.svg
     - assets/icons/on_down.svg
+    - assets/icons/power_gray.svg
+    - assets/icons/power_green.svg
+    - assets/icons/power_orange.svg
+    - assets/icons/toggle_off.svg
+    - assets/icons/toggle_on.svg
     - assets/icons/home.svg
     - assets/icons/home_selected.svg
     - assets/icons/block_control.svg

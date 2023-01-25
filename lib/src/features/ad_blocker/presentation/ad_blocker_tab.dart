@@ -24,10 +24,11 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
       child: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: KBlockColors.greenThemeColor, width: 1))),
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 1))),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
               child: Theme(
@@ -46,9 +47,24 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
                             height: 26,
                             child: Container(
                                 decoration: BoxDecoration(
-                                    color: selectedIndex == index
-                                        ? KBlockColors.greenThemeColor
-                                        : KBlockColors.tabUnselectedBackground,
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: selectedIndex == index
+                                            ? [
+                                                Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary,
+                                                Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              ]
+                                            : [
+                                                KBlockColors
+                                                    .tabUnselectedBackground,
+                                                KBlockColors
+                                                    .tabUnselectedBackground
+                                              ]),
                                     borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(5),
                                         topRight: Radius.circular(5))),

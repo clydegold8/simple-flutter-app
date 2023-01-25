@@ -13,6 +13,8 @@ import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
 import 'package:k_block_app/src/features/history/presentation/history.dart';
 import 'package:k_block_app/src/features/account_settings/presentation/account_settings.dart';
 import 'package:k_block_app/src/features/other/other_account.dart';
+import 'package:k_block_app/src/features/design_settings/presentation/design_settings.dart';
+import 'package:k_block_app/src/common_widgets/gradient_icon.dart';
 
 import '../constants/providers.dart';
 
@@ -28,11 +30,19 @@ const List<Widget> widgetOptions = <Widget>[
   AccountSettings(),
   OtherAccount(),
   AboutYoutube(),
+  DesignSettings(),
 ];
 
 class CommonMenu {
   static Widget generateBottomNavigationBar(
       BuildContext context, int selectedIndex, ref) {
+    final iconGradient = LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          Theme.of(context).colorScheme.secondary,
+          Theme.of(context).colorScheme.primary
+        ]);
     void onItemTapped(int index) {
       ref.read(widgetPathProvider.notifier).state = index;
     }
@@ -45,7 +55,13 @@ class CommonMenu {
               padding: const EdgeInsets.only(top: 5),
               height: 24,
               child: selectedIndex == 0
-                  ? SvgPicture.asset('assets/icons/home_selected.svg')
+                  ? GradientIcon(
+                      size: 19,
+                      icon: SvgPicture.asset(
+                        'assets/icons/home_selected.svg',
+                        color: Colors.white,
+                      ),
+                      gradient: iconGradient)
                   : SvgPicture.asset('assets/icons/home.svg'),
             ),
             label: AppLocalizations.of(context)!.home),
@@ -54,7 +70,13 @@ class CommonMenu {
               padding: const EdgeInsets.only(top: 5),
               height: 24,
               child: selectedIndex == 1
-                  ? SvgPicture.asset('assets/icons/block_control_selected.svg')
+                  ? GradientIcon(
+                      size: 19,
+                      icon: SvgPicture.asset(
+                        'assets/icons/block_control_selected.svg',
+                        color: Colors.white,
+                      ),
+                      gradient: iconGradient)
                   : SvgPicture.asset('assets/icons/block_control.svg'),
             ),
             label: AppLocalizations.of(context)!.block_control),
@@ -63,7 +85,13 @@ class CommonMenu {
               padding: const EdgeInsets.only(top: 5),
               height: 24,
               child: selectedIndex == 2
-                  ? SvgPicture.asset('assets/icons/history_selected.svg')
+                  ? GradientIcon(
+                      size: 19,
+                      icon: SvgPicture.asset(
+                        'assets/icons/history_selected.svg',
+                        color: Colors.white,
+                      ),
+                      gradient: iconGradient)
                   : SvgPicture.asset('assets/icons/history.svg'),
             ),
             label: AppLocalizations.of(context)!.history),
@@ -72,7 +100,13 @@ class CommonMenu {
               padding: const EdgeInsets.only(top: 5),
               height: 24,
               child: selectedIndex == 3
-                  ? SvgPicture.asset('assets/icons/others_selected.svg')
+                  ? GradientIcon(
+                      size: 19,
+                      icon: SvgPicture.asset(
+                        'assets/icons/others_selected.svg',
+                        color: Colors.white,
+                      ),
+                      gradient: iconGradient)
                   : SvgPicture.asset('assets/icons/others.svg'),
             ),
             label: AppLocalizations.of(context)!.others),
@@ -82,7 +116,9 @@ class CommonMenu {
       unselectedItemColor: KBlockColors.text01,
       unselectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.normal, fontSize: 10, height: 2),
-      selectedItemColor: KBlockColors.commonMenuIconSelected,
+      selectedItemColor: Theme.of(context)
+          .colorScheme
+          .primary, //KBlockColors.commonMenuIconSelected,
       selectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.normal, fontSize: 10, height: 2),
     );

@@ -12,4 +12,5 @@ class Routes {
   static const String otherAccount = '/other/other-account';
   static const String agreementRoute = '/agreement';
   static const String otherYoutube = '/other/about-youtube';
+  static const String firstTimeUsage = '/first-time-usage';
 }

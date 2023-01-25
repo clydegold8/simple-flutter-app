@@ -5,6 +5,7 @@ import 'package:k_block_app/src/features/about_youtube/presentation/about_youtub
 import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
+import 'package:k_block_app/src/features/first_time_usage/presentation/first_time_usage.dart';
 import 'package:k_block_app/src/features/history/presentation/history.dart';
 import 'package:k_block_app/src/features/initial_popup_ios/presentation/initial_popup_ios_widget.dart';
 import 'package:k_block_app/src/features/login/presentation/login_form.dart';
@@ -40,6 +41,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const Agreement());
       case Routes.otherYoutube:
         return MaterialPageRoute(builder: (_) => const AboutYoutube());
+      case Routes.firstTimeUsage:
+        return MaterialPageRoute(builder: (_) => const FirstTimeUsage());
       default:
         return MaterialPageRoute(builder: (_) => const KBlockLoginForm());
     }

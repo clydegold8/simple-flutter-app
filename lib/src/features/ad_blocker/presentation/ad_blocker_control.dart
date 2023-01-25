@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
+import 'package:k_block_app/src/utils/theming.dart';
 
 import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
 
@@ -52,6 +53,11 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
         color: KBlockColors.onRaisedBoxBackground),
     child: Center(child: SvgPicture.asset('assets/icons/on.svg')),
   );
+  final powerGrayImage = SvgPicture.asset('assets/icons/power_gray.svg');
+  final powerGreenImage = SvgPicture.asset('assets/icons/power_green.svg');
+  final powerOrangeImage = SvgPicture.asset('assets/icons/power_orange.svg');
+  final toggleOffImage = SvgPicture.asset('assets/icons/toggle_off.svg');
+  final toggleOnImage = SvgPicture.asset('assets/icons/toggle_on.svg');
 
   bool isAdBlockerBrowserOnly = true;
   bool isAdBlockerBrowserApp = false;
@@ -122,21 +128,21 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
 
   @override
   Widget build(BuildContext context) {
+    final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
+    final activeTheme = ref.watch(activeThemeNameProvider);
+    final activeSwitchButton = ref.watch(activeSwitchButtonProvider);
+
     final adBlockerButtonShape =
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
-    final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
     const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
 
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-            KBlockColors.adBlockerGradient1,
-            KBlockColors.adBlockerGradient2
-          ])),
+              colors: getThemeGradient(activeTheme))),
       child: FractionallySizedBox(
         heightFactor: 0.85,
         widthFactor: 0.75,
@@ -159,19 +165,35 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                   Center(
                       child: SvgPicture.asset(
                           'assets/icons/ad_blocker_switch_bg.svg')),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () => onTapAdBlockerSwitch(false),
-                        child: isAdBlockerOn ? offDownImage : offRaisedImage,
-                      ),
-                      GestureDetector(
-                        onTap: () => onTapAdBlockerSwitch(true),
-                        child: isAdBlockerOn ? onRaisedImage : onDownImage,
-                      )
-                    ],
-                  )
+                  activeSwitchButton == 'toggle'
+                      ? GestureDetector(
+                          onTap: () => onTapAdBlockerSwitch(!isAdBlockerOn),
+                          child: isAdBlockerOn ? toggleOnImage : toggleOffImage)
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () => onTapAdBlockerSwitch(false),
+                              child: isAdBlockerOn
+                                  ? (activeSwitchButton == 'switch'
+                                      ? offDownImage
+                                      : powerGrayImage)
+                                  : (activeSwitchButton == 'switch'
+                                      ? offRaisedImage
+                                      : powerOrangeImage),
+                            ),
+                            GestureDetector(
+                              onTap: () => onTapAdBlockerSwitch(true),
+                              child: isAdBlockerOn
+                                  ? (activeSwitchButton == 'switch'
+                                      ? onRaisedImage
+                                      : powerGreenImage)
+                                  : (activeSwitchButton == 'switch'
+                                      ? onDownImage
+                                      : powerGrayImage),
+                            )
+                          ],
+                        )
                 ]),
               ),
               Padding(
