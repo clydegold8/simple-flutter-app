@@ -75,7 +75,9 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: selectedIndex == index
-                                            ? Colors.white
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .inversePrimary
                                             : KBlockColors
                                                 .tabUnselectedForeground,
                                         fontWeight: selectedIndex == index

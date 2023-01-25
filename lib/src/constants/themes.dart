@@ -33,7 +33,7 @@ class KBlockThemes {
               secondary: KBlockColors.greenThemeColor,
               surface: KBlockColors.greenSurface,
               surfaceVariant: KBlockColors.greenSurface,
-              surfaceTint: KBlockColors.foregroundColor)));
+              inversePrimary: Colors.white)));
 
   static KBlockTheme black = KBlockTheme(
       name: ThemeNames.black,
@@ -43,7 +43,7 @@ class KBlockThemes {
               secondary: KBlockColors.blackPrimary,
               surface: KBlockColors.blackSurface,
               surfaceVariant: KBlockColors.blackSurface,
-              surfaceTint: Colors.white)));
+              inversePrimary: Colors.white)));
 
   static KBlockTheme skyBlue = KBlockTheme(
       name: ThemeNames.skyBlue,
@@ -53,7 +53,7 @@ class KBlockThemes {
               secondary: KBlockColors.skyBluePrimary,
               surface: KBlockColors.skyBlueSurface,
               surfaceVariant: KBlockColors.skyBlueSurface,
-              surfaceTint: KBlockColors.foregroundColor)));
+              inversePrimary: Colors.white)));
 
   static KBlockTheme pink = KBlockTheme(
       name: ThemeNames.pink,
@@ -63,7 +63,7 @@ class KBlockThemes {
               secondary: KBlockColors.pinkPrimary,
               surface: KBlockColors.pinkSurface,
               surfaceVariant: KBlockColors.pinkSurface,
-              surfaceTint: KBlockColors.foregroundColor)));
+              inversePrimary: Colors.white)));
 
   static KBlockTheme green = KBlockTheme(
       name: ThemeNames.green,
@@ -73,7 +73,7 @@ class KBlockThemes {
               secondary: KBlockColors.greenPrimary,
               surface: KBlockColors.greenSurface,
               surfaceVariant: KBlockColors.greenSurface,
-              surfaceTint: KBlockColors.foregroundColor)));
+              inversePrimary: Colors.white)));
 
   static KBlockTheme yellow = KBlockTheme(
       name: ThemeNames.yellow,
@@ -83,7 +83,7 @@ class KBlockThemes {
               secondary: KBlockColors.yellowPrimary,
               surface: KBlockColors.yellowSurface,
               surfaceVariant: KBlockColors.yellowSurface,
-              surfaceTint: KBlockColors.foregroundColor)));
+              inversePrimary: KBlockColors.foregroundColor)));
 
   static KBlockTheme beige = KBlockTheme(
       name: ThemeNames.beige,
@@ -93,15 +93,10 @@ class KBlockThemes {
               secondary: KBlockColors.beigePrimary,
               surface: KBlockColors.beigeSurface,
               surfaceVariant: KBlockColors.beigeSurface,
-              surfaceTint: KBlockColors.foregroundColor)));
+              inversePrimary: KBlockColors.foregroundColor)));
 
   static KBlockTheme gradient = KBlockTheme(
       name: ThemeNames.gradient,
       themeData: _baseThemeData.copyWith(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: KBlockColors.gradientPrimary,
-              secondary: KBlockColors.gradientSecondary,
-              surface: KBlockColors.gradientSurface,
-              surfaceVariant: KBlockColors.gradientSurfaceVariant,
-              surfaceTint: KBlockColors.foregroundColor)));
+          colorScheme: ColorScheme.fromSwatch().copyWith()));
 }

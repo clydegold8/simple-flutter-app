@@ -142,7 +142,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: getThemeGradient(activeTheme))),
+              colors: getLinearGradient(activeTheme))),
       child: FractionallySizedBox(
         heightFactor: 0.85,
         widthFactor: 0.75,

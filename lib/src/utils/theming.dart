@@ -24,24 +24,22 @@ KBlockTheme getTheme(String name) {
   return KBlockThemes.simple;
 }
 
-List<Color> getThemeGradient(String name) {
+List<Color> getLinearGradient(String name) {
   switch (name) {
     case ThemeNames.simple:
-      return [KBlockColors.greenGradient1, KBlockColors.greenGradient2];
+      return [KBlockColors.greenLG1, KBlockColors.greenLG2];
     case ThemeNames.black:
-      return [KBlockColors.blackGradient1, KBlockColors.blackGradient2];
+      return [KBlockColors.blackLG1, KBlockColors.blackLG2];
     case ThemeNames.skyBlue:
-      return [KBlockColors.skyGradient1, KBlockColors.skyGradient2];
+      return [KBlockColors.skyBlueLG1, KBlockColors.skyBlueLG2];
     case ThemeNames.pink:
-      return [KBlockColors.pinkGradient1, KBlockColors.pinkGradient2];
+      return [KBlockColors.pinkLG1, KBlockColors.pinkLG2];
     case ThemeNames.green:
-      return [KBlockColors.greenGradient1, KBlockColors.greenGradient2];
+      return [KBlockColors.greenLG1, KBlockColors.greenLG2];
     case ThemeNames.yellow:
-      return [KBlockColors.yellowGradient1, KBlockColors.yellowGradient2];
+      return [KBlockColors.yellowLG1, KBlockColors.yellowLG2];
     case ThemeNames.beige:
-      return [KBlockColors.beigeGradient1, KBlockColors.beigeGradient2];
-    case ThemeNames.gradient:
-      return [KBlockColors.gradientGradient1, KBlockColors.gradientGradient2];
+      return [KBlockColors.beigeLG1, KBlockColors.beigeLG2];
   }
-  return [KBlockColors.greenGradient2, KBlockColors.greenGradient2];
+  return [KBlockColors.greenLG1, KBlockColors.greenLG2];
 }
