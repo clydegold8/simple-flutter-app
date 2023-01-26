@@ -14,6 +14,8 @@ final isMsgReceiveSettingsOnProvider = StateProvider((ref) => true);
 final isAdBlockWifiOnlyOnProvider = StateProvider((ref) => false);
 final widgetSixMonthsTabProvider = StateProvider((ref) => 0);
 final activeThemeNameProvider = StateProvider((ref) => ThemeNames.simple);
-final activeThemeProvider = StateProvider((ref) => KBlockThemes.simple);
+final lastActiveThemeNameProvider = StateProvider((ref) => ThemeNames.simple);
+final activeThemeProvider =
+    StateProvider((ref) => KBlockThemes.solid[ThemeNames.simple]);
 final activeSwitchButtonProvider = StateProvider((ref) => 'switch');
 final activeHomeBackgroundProvider = StateProvider((ref) => 'design1');

@@ -27,7 +27,7 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.secondary,
                         width: 1))),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
@@ -54,10 +54,10 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
                                             ? [
                                                 Theme.of(context)
                                                     .colorScheme
-                                                    .secondary,
+                                                    .primary,
                                                 Theme.of(context)
                                                     .colorScheme
-                                                    .primary,
+                                                    .secondary,
                                               ]
                                             : [
                                                 KBlockColors
@@ -75,7 +75,9 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: selectedIndex == index
-                                            ? Colors.white
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .inversePrimary
                                             : KBlockColors
                                                 .tabUnselectedForeground,
                                         fontWeight: selectedIndex == index

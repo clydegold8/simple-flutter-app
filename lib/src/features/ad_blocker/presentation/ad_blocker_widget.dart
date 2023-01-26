@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:k_block_app/src/constants/colors.dart';
 
 import 'package:k_block_app/src/constants/providers.dart';
 
@@ -28,10 +29,10 @@ Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
                     ? AppLocalizations.of(context)?.ad_block_on ?? '広告ブロック中'
                     : AppLocalizations.of(context)?.ad_block_suspended ??
                         '広告ブロック停止中'),
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.surfaceTint))),
+                    color: KBlockColors.foregroundColor))),
       ),
     ),
     const Expanded(

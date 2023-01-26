@@ -6,7 +6,7 @@ import 'package:app_settings/app_settings.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
-import 'package:k_block_app/src/utils/theming.dart';
+import 'package:k_block_app/src/constants/themes.dart';
 
 import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
 
@@ -129,12 +129,47 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   @override
   Widget build(BuildContext context) {
     final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
-    final activeTheme = ref.watch(activeThemeNameProvider);
+    final lastActiveTheme = ref.watch(lastActiveThemeNameProvider);
     final activeSwitchButton = ref.watch(activeSwitchButtonProvider);
 
     final adBlockerButtonShape =
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
     const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
+
+    final Map<String, Widget> switchButtons = {
+      'switch': Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? onTapAdBlockerSwitch(false) : null,
+            child: isAdBlockerOn ? offDownImage : offRaisedImage,
+          ),
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? null : onTapAdBlockerSwitch(true),
+            child: isAdBlockerOn ? onRaisedImage : onDownImage,
+          )
+        ],
+      ),
+      'toggle': GestureDetector(
+          onTap: () => onTapAdBlockerSwitch(!isAdBlockerOn),
+          child: isAdBlockerOn ? toggleOnImage : toggleOffImage),
+      'circle': Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? onTapAdBlockerSwitch(false) : null,
+            child: isAdBlockerOn ? powerGrayImage : powerOrangeImage,
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? null : onTapAdBlockerSwitch(true),
+            child: isAdBlockerOn ? powerGreenImage : powerGrayImage,
+          )
+        ],
+      )
+    };
 
     return Container(
       width: double.infinity,
@@ -142,7 +177,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: getThemeGradient(activeTheme))),
+              colors: KBlockThemes.linearGradient[lastActiveTheme]!)),
       child: FractionallySizedBox(
         heightFactor: 0.85,
         widthFactor: 0.75,
@@ -165,91 +200,65 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                   Center(
                       child: SvgPicture.asset(
                           'assets/icons/ad_blocker_switch_bg.svg')),
-                  activeSwitchButton == 'toggle'
-                      ? GestureDetector(
-                          onTap: () => onTapAdBlockerSwitch(!isAdBlockerOn),
-                          child: isAdBlockerOn ? toggleOnImage : toggleOffImage)
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () => isAdBlockerOn
-                                  ? onTapAdBlockerSwitch(false)
-                                  : null,
-                              child: isAdBlockerOn
-                                  ? (activeSwitchButton == 'switch'
-                                      ? offDownImage
-                                      : powerGrayImage)
-                                  : (activeSwitchButton == 'switch'
-                                      ? offRaisedImage
-                                      : powerOrangeImage),
-                            ),
-                            GestureDetector(
-                              onTap: () => isAdBlockerOn
-                                  ? null
-                                  : onTapAdBlockerSwitch(true),
-                              child: isAdBlockerOn
-                                  ? (activeSwitchButton == 'switch'
-                                      ? onRaisedImage
-                                      : powerGreenImage)
-                                  : (activeSwitchButton == 'switch'
-                                      ? onDownImage
-                                      : powerGrayImage),
-                            )
-                          ],
-                        )
+                  switchButtons[activeSwitchButton]!,
                 ]),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: OutlinedButton(
-                  onPressed:
-                      isAdBlockerOn ? onPressedAdBlockerBrowserOnly : null,
-                  style: OutlinedButton.styleFrom(
-                      disabledForegroundColor:
-                          KBlockColors.buttonPositiveBackground,
-                      disabledBackgroundColor: Colors.white,
-                      foregroundColor: isAdBlockerBrowserOnly
-                          ? Colors.white
-                          : KBlockColors.buttonAccentForeground,
-                      backgroundColor: isAdBlockerBrowserOnly
-                          ? KBlockColors.buttonPositiveBackground
-                          : KBlockColors.buttonAccentBackground,
-                      side: BorderSide(
-                          color: !isAdBlockerOn || isAdBlockerBrowserOnly
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 20, left: 28, right: 28),
+                    child: OutlinedButton(
+                      onPressed:
+                          isAdBlockerOn ? onPressedAdBlockerBrowserOnly : null,
+                      style: OutlinedButton.styleFrom(
+                          disabledForegroundColor:
+                              KBlockColors.buttonPositiveBackground,
+                          disabledBackgroundColor: Colors.white,
+                          foregroundColor: isAdBlockerBrowserOnly
+                              ? Colors.white
+                              : KBlockColors.buttonAccentForeground,
+                          backgroundColor: isAdBlockerBrowserOnly
                               ? KBlockColors.buttonPositiveBackground
-                              : Colors.transparent),
-                      shape: adBlockerButtonShape),
-                  child: Text(
-                      AppLocalizations.of(context)?.ad_block_browser_only ??
-                          'ブラウザのみで広告ブロック',
-                      style: adBlockerButtonTextStyle),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: OutlinedButton(
-                    onPressed:
-                        isAdBlockerOn ? onPressedAdBlockerBrowserApp : null,
-                    style: OutlinedButton.styleFrom(
-                        disabledForegroundColor:
-                            KBlockColors.buttonPositiveBackground,
-                        disabledBackgroundColor: Colors.white,
-                        foregroundColor: isAdBlockerBrowserApp
-                            ? Colors.white
-                            : KBlockColors.buttonAccentForeground,
-                        backgroundColor: isAdBlockerBrowserApp
-                            ? KBlockColors.buttonPositiveBackground
-                            : KBlockColors.buttonAccentBackground,
-                        side: BorderSide(
-                            color: !isAdBlockerOn || isAdBlockerBrowserApp
+                              : KBlockColors.buttonAccentBackground,
+                          side: BorderSide(
+                              color: !isAdBlockerOn || isAdBlockerBrowserOnly
+                                  ? KBlockColors.buttonPositiveBackground
+                                  : Colors.transparent),
+                          shape: adBlockerButtonShape),
+                      child: Text(
+                          AppLocalizations.of(context)?.ad_block_browser_only ??
+                              'ブラウザのみで広告ブロック',
+                          style: adBlockerButtonTextStyle),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5, left: 28, right: 28),
+                    child: OutlinedButton(
+                        onPressed:
+                            isAdBlockerOn ? onPressedAdBlockerBrowserApp : null,
+                        style: OutlinedButton.styleFrom(
+                            disabledForegroundColor:
+                                KBlockColors.buttonPositiveBackground,
+                            disabledBackgroundColor: Colors.white,
+                            foregroundColor: isAdBlockerBrowserApp
+                                ? Colors.white
+                                : KBlockColors.buttonAccentForeground,
+                            backgroundColor: isAdBlockerBrowserApp
                                 ? KBlockColors.buttonPositiveBackground
-                                : Colors.transparent),
-                        shape: adBlockerButtonShape),
-                    child: Text(
-                        AppLocalizations.of(context)?.ad_block_apps_block ??
-                            'アプリとブラウザで広告ブロック',
-                        style: adBlockerButtonTextStyle)),
+                                : KBlockColors.buttonAccentBackground,
+                            side: BorderSide(
+                                color: !isAdBlockerOn || isAdBlockerBrowserApp
+                                    ? KBlockColors.buttonPositiveBackground
+                                    : Colors.transparent),
+                            shape: adBlockerButtonShape),
+                        child: Text(
+                            AppLocalizations.of(context)?.ad_block_apps_block ??
+                                'アプリとブラウザで広告ブロック',
+                            style: adBlockerButtonTextStyle)),
+                  )
+                ],
               )
             ])),
       ),

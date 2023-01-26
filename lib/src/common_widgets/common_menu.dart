@@ -40,8 +40,8 @@ class CommonMenu {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          Theme.of(context).colorScheme.secondary,
-          Theme.of(context).colorScheme.primary
+          Theme.of(context).colorScheme.primary,
+          Theme.of(context).colorScheme.secondary
         ]);
     void onItemTapped(int index) {
       ref.read(widgetPathProvider.notifier).state = index;

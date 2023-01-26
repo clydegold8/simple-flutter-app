@@ -24,7 +24,7 @@ class KBlockApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      theme: ref.watch(activeThemeProvider).themeData,
+      theme: ref.watch(activeThemeProvider),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateRoute: RouteGenerator.generateRoute,
