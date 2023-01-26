@@ -136,6 +136,41 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20));
     const adBlockerButtonTextStyle = TextStyle(fontSize: 12);
 
+    final Map<String, Widget> switchButtons = {
+      'switch': Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? onTapAdBlockerSwitch(false) : null,
+            child: isAdBlockerOn ? offDownImage : offRaisedImage,
+          ),
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? null : onTapAdBlockerSwitch(true),
+            child: isAdBlockerOn ? onRaisedImage : onDownImage,
+          )
+        ],
+      ),
+      'toggle': GestureDetector(
+          onTap: () => onTapAdBlockerSwitch(!isAdBlockerOn),
+          child: isAdBlockerOn ? toggleOnImage : toggleOffImage),
+      'circle': Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? onTapAdBlockerSwitch(false) : null,
+            child: isAdBlockerOn ? powerGrayImage : powerOrangeImage,
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          GestureDetector(
+            onTap: () => isAdBlockerOn ? null : onTapAdBlockerSwitch(true),
+            child: isAdBlockerOn ? powerGreenImage : powerGrayImage,
+          )
+        ],
+      )
+    };
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -165,39 +200,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                   Center(
                       child: SvgPicture.asset(
                           'assets/icons/ad_blocker_switch_bg.svg')),
-                  activeSwitchButton == 'toggle'
-                      ? GestureDetector(
-                          onTap: () => onTapAdBlockerSwitch(!isAdBlockerOn),
-                          child: isAdBlockerOn ? toggleOnImage : toggleOffImage)
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () => isAdBlockerOn
-                                  ? onTapAdBlockerSwitch(false)
-                                  : null,
-                              child: isAdBlockerOn
-                                  ? (activeSwitchButton == 'switch'
-                                      ? offDownImage
-                                      : powerGrayImage)
-                                  : (activeSwitchButton == 'switch'
-                                      ? offRaisedImage
-                                      : powerOrangeImage),
-                            ),
-                            GestureDetector(
-                              onTap: () => isAdBlockerOn
-                                  ? null
-                                  : onTapAdBlockerSwitch(true),
-                              child: isAdBlockerOn
-                                  ? (activeSwitchButton == 'switch'
-                                      ? onRaisedImage
-                                      : powerGreenImage)
-                                  : (activeSwitchButton == 'switch'
-                                      ? onDownImage
-                                      : powerGrayImage),
-                            )
-                          ],
-                        )
+                  switchButtons[activeSwitchButton] ?? const SizedBox.shrink(),
                 ]),
               ),
               Column(
