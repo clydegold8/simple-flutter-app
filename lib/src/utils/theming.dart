@@ -4,8 +4,6 @@ import 'package:k_block_app/src/constants/colors.dart';
 
 KBlockTheme getTheme(String name) {
   switch (name) {
-    case ThemeNames.simple:
-      return KBlockThemes.simple;
     case ThemeNames.black:
       return KBlockThemes.black;
     case ThemeNames.skyBlue:
@@ -18,16 +16,30 @@ KBlockTheme getTheme(String name) {
       return KBlockThemes.yellow;
     case ThemeNames.beige:
       return KBlockThemes.beige;
-    case ThemeNames.gradient:
-      return KBlockThemes.gradient;
   }
   return KBlockThemes.simple;
 }
 
+KBlockTheme getGradientTheme(String name) {
+  switch (name) {
+    case ThemeNames.black:
+      return KBlockThemes.blackGradient;
+    case ThemeNames.skyBlue:
+      return KBlockThemes.skyBlueGradient;
+    case ThemeNames.pink:
+      return KBlockThemes.pinkGradient;
+    case ThemeNames.green:
+      return KBlockThemes.greenGradient;
+    case ThemeNames.yellow:
+      return KBlockThemes.yellowGradient;
+    case ThemeNames.beige:
+      return KBlockThemes.beigeGradient;
+  }
+  return KBlockThemes.simpleGradient;
+}
+
 List<Color> getLinearGradient(String name) {
   switch (name) {
-    case ThemeNames.simple:
-      return [KBlockColors.greenLG1, KBlockColors.greenLG2];
     case ThemeNames.black:
       return [KBlockColors.blackLG1, KBlockColors.blackLG2];
     case ThemeNames.skyBlue:

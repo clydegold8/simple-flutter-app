@@ -71,6 +71,7 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
     ];
 
     final activeTheme = ref.watch(activeThemeNameProvider);
+    final lastActiveTheme = ref.watch(lastActiveThemeNameProvider);
     final activeSwitchButton = ref.watch(activeSwitchButtonProvider);
     final activeHomeBackground = ref.watch(activeHomeBackgroundProvider);
 
@@ -86,7 +87,13 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
 
     void onChangedTheme(value) {
       ref.read(activeThemeNameProvider.notifier).state = value;
-      ref.read(activeThemeProvider.notifier).state = getTheme(value);
+      if (value == ThemeNames.gradient) {
+        ref.read(activeThemeProvider.notifier).state =
+            getGradientTheme(lastActiveTheme);
+      } else {
+        ref.read(lastActiveThemeNameProvider.notifier).state = value;
+        ref.read(activeThemeProvider.notifier).state = getTheme(value);
+      }
     }
 
     void onChangedSwitchButton(value) {
