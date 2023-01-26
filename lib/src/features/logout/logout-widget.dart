@@ -18,16 +18,21 @@ Future<void> logOutWidget(BuildContext context, WidgetRef ref) {
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         content: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+            padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
             child: Center(
                 child: ListBody(
               children: <Widget>[
                 Center(
-                  child: Text(AppLocalizations.of(context)?.sure_to_logout ??
-                      'ログアウトしてよろしいですか?'),
+                  child: Text(
+                      AppLocalizations.of(context)?.sure_to_logout ??
+                          'ログアウトしてよろしいですか?',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                      )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 25),
+                  padding: const EdgeInsets.fromLTRB(0,10,0,0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
