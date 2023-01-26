@@ -200,56 +200,62 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                         )
                 ]),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: OutlinedButton(
-                  onPressed:
-                      isAdBlockerOn ? onPressedAdBlockerBrowserOnly : null,
-                  style: OutlinedButton.styleFrom(
-                      disabledForegroundColor:
-                          KBlockColors.buttonPositiveBackground,
-                      disabledBackgroundColor: Colors.white,
-                      foregroundColor: isAdBlockerBrowserOnly
-                          ? Colors.white
-                          : KBlockColors.buttonAccentForeground,
-                      backgroundColor: isAdBlockerBrowserOnly
-                          ? KBlockColors.buttonPositiveBackground
-                          : KBlockColors.buttonAccentBackground,
-                      side: BorderSide(
-                          color: !isAdBlockerOn || isAdBlockerBrowserOnly
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 20, left: 28, right: 28),
+                    child: OutlinedButton(
+                      onPressed:
+                          isAdBlockerOn ? onPressedAdBlockerBrowserOnly : null,
+                      style: OutlinedButton.styleFrom(
+                          disabledForegroundColor:
+                              KBlockColors.buttonPositiveBackground,
+                          disabledBackgroundColor: Colors.white,
+                          foregroundColor: isAdBlockerBrowserOnly
+                              ? Colors.white
+                              : KBlockColors.buttonAccentForeground,
+                          backgroundColor: isAdBlockerBrowserOnly
                               ? KBlockColors.buttonPositiveBackground
-                              : Colors.transparent),
-                      shape: adBlockerButtonShape),
-                  child: Text(
-                      AppLocalizations.of(context)?.ad_block_browser_only ??
-                          'ブラウザのみで広告ブロック',
-                      style: adBlockerButtonTextStyle),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: OutlinedButton(
-                    onPressed:
-                        isAdBlockerOn ? onPressedAdBlockerBrowserApp : null,
-                    style: OutlinedButton.styleFrom(
-                        disabledForegroundColor:
-                            KBlockColors.buttonPositiveBackground,
-                        disabledBackgroundColor: Colors.white,
-                        foregroundColor: isAdBlockerBrowserApp
-                            ? Colors.white
-                            : KBlockColors.buttonAccentForeground,
-                        backgroundColor: isAdBlockerBrowserApp
-                            ? KBlockColors.buttonPositiveBackground
-                            : KBlockColors.buttonAccentBackground,
-                        side: BorderSide(
-                            color: !isAdBlockerOn || isAdBlockerBrowserApp
+                              : KBlockColors.buttonAccentBackground,
+                          side: BorderSide(
+                              color: !isAdBlockerOn || isAdBlockerBrowserOnly
+                                  ? KBlockColors.buttonPositiveBackground
+                                  : Colors.transparent),
+                          shape: adBlockerButtonShape),
+                      child: Text(
+                          AppLocalizations.of(context)?.ad_block_browser_only ??
+                              'ブラウザのみで広告ブロック',
+                          style: adBlockerButtonTextStyle),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5, left: 28, right: 28),
+                    child: OutlinedButton(
+                        onPressed:
+                            isAdBlockerOn ? onPressedAdBlockerBrowserApp : null,
+                        style: OutlinedButton.styleFrom(
+                            disabledForegroundColor:
+                                KBlockColors.buttonPositiveBackground,
+                            disabledBackgroundColor: Colors.white,
+                            foregroundColor: isAdBlockerBrowserApp
+                                ? Colors.white
+                                : KBlockColors.buttonAccentForeground,
+                            backgroundColor: isAdBlockerBrowserApp
                                 ? KBlockColors.buttonPositiveBackground
-                                : Colors.transparent),
-                        shape: adBlockerButtonShape),
-                    child: Text(
-                        AppLocalizations.of(context)?.ad_block_apps_block ??
-                            'アプリとブラウザで広告ブロック',
-                        style: adBlockerButtonTextStyle)),
+                                : KBlockColors.buttonAccentBackground,
+                            side: BorderSide(
+                                color: !isAdBlockerOn || isAdBlockerBrowserApp
+                                    ? KBlockColors.buttonPositiveBackground
+                                    : Colors.transparent),
+                            shape: adBlockerButtonShape),
+                        child: Text(
+                            AppLocalizations.of(context)?.ad_block_apps_block ??
+                                'アプリとブラウザで広告ブロック',
+                            style: adBlockerButtonTextStyle)),
+                  )
+                ],
               )
             ])),
       ),
