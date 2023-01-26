@@ -129,7 +129,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   @override
   Widget build(BuildContext context) {
     final isAdBlockerOn = ref.watch(adBlockerSwitchStateProvider);
-    final lastActiveTheme = ref.watch(lastActiveThemeNameProvider);
+    final activeTheme = ref.watch(activeThemeNameProvider);
     final activeSwitchButton = ref.watch(activeSwitchButtonProvider);
 
     final adBlockerButtonShape =
@@ -177,7 +177,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: KBlockThemes.linearGradient[lastActiveTheme]!)),
+              colors: KBlockThemes.linearGradient[activeTheme]!)),
       child: FractionallySizedBox(
         heightFactor: 0.85,
         widthFactor: 0.75,
