@@ -45,7 +45,7 @@ class KBlockColors {
   // Black Theme
   static const Color blackPrimary = Color(0xFF4A4949);
   static const Color blackSurface = Color(0xFFCBCBCB);
-  static const Color blackLG1 = Color(0x60000000);
+  static const Color blackLG1 = Color(0xAA000000);
   static const Color blackLG2 = Color(0x369C9B98);
   static const Color blackGradientPrimary = Color(0xFF8D8D8D);
   static const Color blackGradientSecondary = Color(0xFF4A4949);
