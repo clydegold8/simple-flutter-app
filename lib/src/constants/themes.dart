@@ -17,7 +17,6 @@ class ThemeNames {
   static const String green = 'green';
   static const String yellow = 'yellow';
   static const String beige = 'beige';
-  static const String gradient = 'gradient';
 }
 
 final ThemeData _baseThemeData = ThemeData(fontFamily: 'NunitoSans');
@@ -74,58 +73,6 @@ class KBlockThemes {
             secondary: KBlockColors.beigePrimary,
             surface: KBlockColors.beigeSurface,
             surfaceVariant: KBlockColors.beigeSurface,
-            inversePrimary: KBlockColors.foregroundColor)),
-  };
-
-  static Map<String, ThemeData> gradient = {
-    ThemeNames.simple: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.greenGradientPrimary,
-            secondary: KBlockColors.greenGradientSecondary,
-            surface: KBlockColors.greenGradientSurface,
-            surfaceVariant: KBlockColors.greenGradientSurfaceVariant,
-            inversePrimary: Colors.white)),
-    ThemeNames.black: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.blackGradientPrimary,
-            secondary: KBlockColors.blackGradientSecondary,
-            surface: KBlockColors.blackGradientSurface,
-            surfaceVariant: KBlockColors.blackGradientSurfaceVariant,
-            inversePrimary: Colors.white)),
-    ThemeNames.skyBlue: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.skyBlueGradientPrimary,
-            secondary: KBlockColors.skyBlueGradientSecondary,
-            surface: KBlockColors.skyBlueGradientSurface,
-            surfaceVariant: KBlockColors.skyBlueGradientSurfaceVariant,
-            inversePrimary: Colors.white)),
-    ThemeNames.pink: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.pinkGradientPrimary,
-            secondary: KBlockColors.pinkGradientSecondary,
-            surface: KBlockColors.pinkGradientSurface,
-            surfaceVariant: KBlockColors.pinkGradientSurfaceVariant,
-            inversePrimary: Colors.white)),
-    ThemeNames.green: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.greenGradientPrimary,
-            secondary: KBlockColors.greenGradientSecondary,
-            surface: KBlockColors.greenGradientSurface,
-            surfaceVariant: KBlockColors.greenGradientSurfaceVariant,
-            inversePrimary: Colors.white)),
-    ThemeNames.yellow: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.yellowGradientPrimary,
-            secondary: KBlockColors.yellowGradientSecondary,
-            surface: KBlockColors.yellowGradientSurface,
-            surfaceVariant: KBlockColors.yellowGradientSurfaceVariant,
-            inversePrimary: KBlockColors.foregroundColor)),
-    ThemeNames.beige: _baseThemeData.copyWith(
-        colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.beigeGradientPrimary,
-            secondary: KBlockColors.beigeGradientSecondary,
-            surface: KBlockColors.beigeGradientSurface,
-            surfaceVariant: KBlockColors.beigeGradientSurfaceVariant,
             inversePrimary: KBlockColors.foregroundColor)),
   };
 

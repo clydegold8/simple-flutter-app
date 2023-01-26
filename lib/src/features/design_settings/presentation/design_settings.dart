@@ -40,9 +40,6 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
       RadioOption(
           value: ThemeNames.beige,
           name: AppLocalizations.of(context)?.beige ?? 'ベージュ'),
-      RadioOption(
-          value: ThemeNames.gradient,
-          name: AppLocalizations.of(context)?.gradient ?? 'グラデーション'),
     ];
 
     final List<RadioOption> switchButtonOptions = [
@@ -70,7 +67,6 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
     ];
 
     final activeTheme = ref.watch(activeThemeNameProvider);
-    final lastActiveTheme = ref.watch(lastActiveThemeNameProvider);
     final activeSwitchButton = ref.watch(activeSwitchButtonProvider);
     final activeHomeBackground = ref.watch(activeHomeBackgroundProvider);
 
@@ -86,14 +82,7 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
 
     void onChangedTheme(value) {
       ref.read(activeThemeNameProvider.notifier).state = value;
-      if (value == ThemeNames.gradient) {
-        ref.read(activeThemeProvider.notifier).state =
-            KBlockThemes.gradient[lastActiveTheme];
-      } else {
-        ref.read(lastActiveThemeNameProvider.notifier).state = value;
-        ref.read(activeThemeProvider.notifier).state =
-            KBlockThemes.solid[value];
-      }
+      ref.read(activeThemeProvider.notifier).state = KBlockThemes.solid[value];
     }
 
     void onChangedSwitchButton(value) {
