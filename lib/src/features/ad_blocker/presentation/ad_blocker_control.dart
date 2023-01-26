@@ -6,7 +6,7 @@ import 'package:app_settings/app_settings.dart';
 
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
-import 'package:k_block_app/src/utils/theming.dart';
+import 'package:k_block_app/src/constants/themes.dart';
 
 import 'package:k_block_app/src/common_widgets/simple_dialogue.dart';
 
@@ -177,7 +177,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: getLinearGradient(lastActiveTheme))),
+              colors: KBlockThemes.linearGradient[lastActiveTheme]!)),
       child: FractionallySizedBox(
         heightFactor: 0.85,
         widthFactor: 0.75,
@@ -200,7 +200,7 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                   Center(
                       child: SvgPicture.asset(
                           'assets/icons/ad_blocker_switch_bg.svg')),
-                  switchButtons[activeSwitchButton] ?? const SizedBox.shrink(),
+                  switchButtons[activeSwitchButton]!,
                 ]),
               ),
               Column(

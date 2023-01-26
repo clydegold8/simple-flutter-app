@@ -5,7 +5,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:k_block_app/src/constants/themes.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/constants/providers.dart';
-import 'package:k_block_app/src/utils/theming.dart';
 
 import 'package:k_block_app/src/common_widgets/radio.dart';
 
@@ -89,10 +88,11 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
       ref.read(activeThemeNameProvider.notifier).state = value;
       if (value == ThemeNames.gradient) {
         ref.read(activeThemeProvider.notifier).state =
-            getGradientTheme(lastActiveTheme);
+            KBlockThemes.gradient[lastActiveTheme];
       } else {
         ref.read(lastActiveThemeNameProvider.notifier).state = value;
-        ref.read(activeThemeProvider.notifier).state = getTheme(value);
+        ref.read(activeThemeProvider.notifier).state =
+            KBlockThemes.solid[value];
       }
     }
 
