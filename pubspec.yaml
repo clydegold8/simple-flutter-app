@@ -115,6 +115,7 @@ flutter:
     - assets/icons/copy.svg
     - assets/icons/arrow_head_down.svg
     - assets/icons/tutorial_illustration.svg
+    - assets/icons/question_mark.svg
     - assets/images/app_sample_1.png
     - assets/images/app_sample_2.png
     - assets/images/app_sample_3.png
