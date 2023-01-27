@@ -25,23 +25,21 @@ Future<void> onMaximumDevicesReached(BuildContext context, WidgetRef ref) {
           }
 
           return SimpleDialogueWidget(
+              edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
               showNegativeBtn: false,
               onClickPositiveBtn: onClickPositiveBtn,
               positiveBtnText: AppLocalizations.of(context)?.close_btn ?? "閉じる",
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Text(
-                      AppLocalizations.of(context)?.maximum_devices_reached ??
-                          "利用台数の上限を超えているため\nご利用いただけません。",
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                          color: KBlockColors.foregroundColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                    ),
+                  Text(
+                    AppLocalizations.of(context)?.maximum_devices_reached ??
+                        "利用台数の上限を超えているため\nご利用いただけません。",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        color: KBlockColors.foregroundColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
                   ),
                 ],
               ));
