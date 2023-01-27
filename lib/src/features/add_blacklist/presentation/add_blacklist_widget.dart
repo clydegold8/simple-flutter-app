@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:k_block_app/src/features/blacklist/data_provider/blacklist_list_provider.dart';
 
 import '../../../constants/colors.dart';
@@ -45,7 +46,7 @@ Future<void> addBlacklist(BuildContext context, WidgetRef ref) {
                 children: <Widget>[
                   Positioned(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 24),
+                      padding: const EdgeInsets.only(top: 25),
                       child: Align(
                           alignment: Alignment.topRight,
                           child: JustTheTooltip(
@@ -82,10 +83,9 @@ Future<void> addBlacklist(BuildContext context, WidgetRef ref) {
                                 ),
                               ),
                             ),
-                            child: const Icon(
-                              size: 30,
-                              Icons.help,
-                              color: KBlockColors.buttonNeutralForeground,
+                            child: SvgPicture.asset(
+                              'assets/icons/question_mark.svg',
+                              height: 28,
                             ),
                           )),
                     ),
