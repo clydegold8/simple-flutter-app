@@ -31,19 +31,18 @@ Future<void> onMaximumDevicesReached(BuildContext context, WidgetRef ref) {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
                     child: Text(
                       AppLocalizations.of(context)?.maximum_devices_reached ??
                           "利用台数の上限を超えているため\nご利用いただけません。",
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.left,
                       style: const TextStyle(
                           color: KBlockColors.foregroundColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w400),
                     ),
-                  )),
+                  ),
                 ],
               ));
         });

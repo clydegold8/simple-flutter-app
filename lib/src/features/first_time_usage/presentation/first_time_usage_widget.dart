@@ -16,13 +16,12 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
     onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     child: Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-          child: Column(children: [
+      body:Column(children: [
         Padding(
-            padding: const EdgeInsets.fromLTRB(40, 140, 40, 0),
+            padding: const EdgeInsets.fromLTRB(0, 140, 0, 0),
             child: SvgPicture.asset('assets/icons/logo_kblock.svg')),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+          padding: const EdgeInsets.fromLTRB(15, 60, 0, 0),
           child: Text(AppLocalizations.of(context)?.a_serial_code_required ??
               'K-BLOCKを利用するには  シリアルコードが必要です。'),
         ),
@@ -35,7 +34,7 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
                   'シリアルコードの入力',
               focusedBorder: const OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
+                BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
               ),
               filled: true,
               fillColor: KBlockColors.white,
@@ -44,7 +43,7 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
               ),
               isDense: true,
               contentPadding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
+              const EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
             ),
           ),
         ),
@@ -71,7 +70,7 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
             ),
           ),
         )
-      ])),
+      ]),
     ),
   );
 }

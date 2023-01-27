@@ -24,19 +24,18 @@ Future<void> onSerialCodeIncorrect(BuildContext context, WidgetRef ref) {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
                     child: Text(
                       AppLocalizations.of(context)?.incorrect_serial_code ??
                           "シリアルコードが正しくありません。\n もう一度入力し直してください。",
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.left,
                       style: const TextStyle(
                           color: KBlockColors.foregroundColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w400),
                     ),
-                  )),
+                  ),
                 ],
               ));
         });
