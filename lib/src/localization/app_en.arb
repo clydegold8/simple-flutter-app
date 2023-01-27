@@ -144,7 +144,7 @@
     "enter_btn": "Proceed",
     "close_btn": "Close up",
     "incorrect_serial_code": "Incorrect serial code. Please try again.",
-    "maximum_devices_reached": "It cannot be used because it exceeds the maximum number of devices that can be used.",
+    "maximum_devices_reached": "It cannot be used because it exceeds \nthe maximum number of devices that \ncan be used.",
     "request_vpn_config_title": "「K-BLOCK」is requesting for\nadditional VPN configurations.",
     "request_vpn_config_desc": "In order to block ads from K-BLOCK\nrequires permission to add VPN\nconfigurations.",
     "dont_allow": "Do not Allow",

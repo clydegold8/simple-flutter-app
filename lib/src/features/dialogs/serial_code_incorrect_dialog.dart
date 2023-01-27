@@ -18,25 +18,22 @@ Future<void> onSerialCodeIncorrect(BuildContext context, WidgetRef ref) {
           }
 
           return SimpleDialogueWidget(
+              edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
               showNegativeBtn: false,
               onClickPositiveBtn: onClickPositiveBtn,
               positiveBtnText: AppLocalizations.of(context)?.close_btn ?? "閉じる",
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: Text(
-                      AppLocalizations.of(context)?.incorrect_serial_code ??
-                          "シリアルコードが正しくありません。\n もう一度入力し直してください。",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          color: KBlockColors.foregroundColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  )),
+                  Text(
+                    AppLocalizations.of(context)?.incorrect_serial_code ??
+                        "シリアルコードが正しくありません。\n もう一度入力し直してください。",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        color: KBlockColors.foregroundColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  ),
                 ],
               ));
         });
