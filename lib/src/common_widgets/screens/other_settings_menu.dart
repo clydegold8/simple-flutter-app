@@ -218,137 +218,169 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
         automaticallyImplyLeading: false,
       ),
       backgroundColor: KBlockColors.lightGray,
-      body: Column(children: [
-        Container(
-          color: Colors.white,
-          child: ListView(shrinkWrap: true, children: [
-            Container(
-              decoration: listTileContDecoration,
-              child: ListTile(
-                  onTap: () {
-                    ref.read(widgetPathProvider.notifier).state = 8;
-                  },
-                  title: Text(
-                    AppLocalizations.of(context)?.account_settings ?? 'アカウント',
-                    style: listTileTitleStyle,
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+            color: Colors.white,
+            child: ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  Container(
+                    decoration: listTileContDecoration,
+                    child: ListTile(
+                        onTap: () {
+                          ref.read(widgetPathProvider.notifier).state = 8;
+                        },
+                        title: Text(
+                          AppLocalizations.of(context)?.account_settings ??
+                              'アカウント',
+                          style: listTileTitleStyle,
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                    ?.account_settings_subtitle ??
+                                'シリアルコード・アプリのバージョン確認',
+                            style: listTileSubtitleStyle,
+                          ),
+                        ),
+                        trailing: trailingChevron),
                   ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      AppLocalizations.of(context)?.account_settings_subtitle ??
-                          'シリアルコード・アプリのバージョン確認',
-                      style: listTileSubtitleStyle,
-                    ),
+                  Container(
+                    decoration: listTileContDecoration,
+                    child: ListTile(
+                        onTap: () {
+                          ref.read(widgetPathProvider.notifier).state = 11;
+                        },
+                        title: Text(
+                          AppLocalizations.of(context)?.design_settings ??
+                              'デザイン設定',
+                          style: listTileTitleStyle,
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                    ?.design_settings_subtitle ??
+                                '着せかえ・デザインの変更',
+                            style: listTileSubtitleStyle,
+                          ),
+                        ),
+                        trailing: trailingChevron),
                   ),
-                  trailing: trailingChevron),
-            ),
-            Container(
-              decoration: listTileContDecoration,
-              child: ListTile(
-                  onTap: () {
-                    ref.read(widgetPathProvider.notifier).state = 11;
-                  },
-                  title: Text(
-                    AppLocalizations.of(context)?.design_settings ?? 'デザイン設定',
-                    style: listTileTitleStyle,
+                  Container(
+                    decoration: listTileContDecoration,
+                    child: ListTile(
+                        title: Text(
+                          AppLocalizations.of(context)?.notification_settings ??
+                              '通知設定',
+                          style: listTileTitleStyle,
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                    ?.notification_settings_subtitle ??
+                                '広告ブロック数・節約約通信量をお知らせ',
+                            style: listTileSubtitleStyle,
+                          ),
+                        ),
+                        trailing: trailingChevron),
                   ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      AppLocalizations.of(context)?.design_settings_subtitle ??
-                          '着せかえ・デザインの変更',
-                      style: listTileSubtitleStyle,
-                    ),
+                  Container(
+                    decoration: listTileContDecoration,
+                    child: ListTile(
+                        title: Text(
+                          AppLocalizations.of(context)?.msg_receive_settings ??
+                              'メッセージR受信設定',
+                          style: listTileTitleStyle,
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                    ?.msg_receive_settings_subtitle ??
+                                'Docomo回線をご利用の方のみ',
+                            style: listTileSubtitleStyle,
+                          ),
+                        ),
+                        trailing: SwitchWidget(
+                          index: 0,
+                          switchValue: isMsgReceiveSettingsOn,
+                          updateValue: toggleMsgReceiveSettingsOn,
+                        )),
                   ),
-                  trailing: trailingChevron),
-            ),
-            Container(
-              decoration: listTileContDecoration,
-              child: ListTile(
-                  title: Text(
-                    AppLocalizations.of(context)?.notification_settings ??
-                        '通知設定',
-                    style: listTileTitleStyle,
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      AppLocalizations.of(context)
-                              ?.notification_settings_subtitle ??
-                          '広告ブロック数・節約約通信量をお知らせ',
-                      style: listTileSubtitleStyle,
-                    ),
-                  ),
-                  trailing: trailingChevron),
-            ),
-            Container(
-              decoration: listTileContDecoration,
-              child: ListTile(
-                  title: Text(
-                    AppLocalizations.of(context)?.msg_receive_settings ??
-                        'メッセージR受信設定',
-                    style: listTileTitleStyle,
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      AppLocalizations.of(context)
-                              ?.msg_receive_settings_subtitle ??
-                          'Docomo回線をご利用の方のみ',
-                      style: listTileSubtitleStyle,
-                    ),
-                  ),
-                  trailing: SwitchWidget(
-                    index: 0,
-                    switchValue: isMsgReceiveSettingsOn,
-                    updateValue: toggleMsgReceiveSettingsOn,
-                  )),
-            ),
-            Container(
-              decoration: listTileContDecoration,
-              child: ListTile(
-                  title: Text(
-                    AppLocalizations.of(context)?.ad_block_wifi_only ??
-                        'Wi-Fi接続時のみ広告ブロック',
-                    style: listTileTitleStyle,
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      AppLocalizations.of(context)
-                              ?.ad_block_wifi_only_subtitle ??
-                          'モバイルデータ通信を利用せず広告をブロック',
-                      style: listTileSubtitleStyle,
-                    ),
-                  ),
-                  trailing: SwitchWidget(
-                    index: 1,
-                    switchValue: isAdBlockWifiOnlyOn,
-                    updateValue: toggleAdBlockWifiOnlyOn,
-                  )),
-            )
-          ]),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 12, 30, 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                    onTap: () async {
-                      final url = Uri.parse(KBlockUrls.faq);
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url,
-                            mode: LaunchMode.externalApplication);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
+                  Container(
+                    decoration: listTileContDecoration,
+                    child: ListTile(
+                        title: Text(
+                          AppLocalizations.of(context)?.ad_block_wifi_only ??
+                              'Wi-Fi接続時のみ広告ブロック',
+                          style: listTileTitleStyle,
+                        ),
+                        subtitle: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                    ?.ad_block_wifi_only_subtitle ??
+                                'モバイルデータ通信を利用せず広告をブロック',
+                            style: listTileSubtitleStyle,
+                          ),
+                        ),
+                        trailing: SwitchWidget(
+                          index: 1,
+                          switchValue: isAdBlockWifiOnlyOn,
+                          updateValue: toggleAdBlockWifiOnlyOn,
+                        )),
+                  )
+                ]),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(30, 12, 30, 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                      onTap: () async {
+                        final url = Uri.parse(KBlockUrls.faq);
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url,
+                              mode: LaunchMode.externalApplication);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 56,
+                            width: 56,
+                            margin: const EdgeInsets.only(bottom: 7),
+                            decoration: aboutSectionIconContDecoration,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 14, bottom: 14),
+                              child: SvgPicture.asset('assets/icons/faq.svg'),
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)?.faq ?? 'よくある質問',
+                            textAlign: TextAlign.center,
+                            style: aboutSectionTextStyle,
+                          )
+                        ],
+                      )),
+                  GestureDetector(
+                    onTap: () {
+                      ref.read(widgetPathProvider.notifier).state = 9;
                     },
                     child: Column(
                       children: [
@@ -359,117 +391,100 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                           decoration: aboutSectionIconContDecoration,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 14, bottom: 14),
-                            child: SvgPicture.asset('assets/icons/faq.svg'),
+                            child: SvgPicture.asset('assets/icons/app.svg'),
                           ),
                         ),
                         Text(
-                          AppLocalizations.of(context)?.faq ?? 'よくある質問',
-                          textAlign: TextAlign.center,
-                          style: aboutSectionTextStyle,
-                        )
-                      ],
-                    )),
-                GestureDetector(
-                  onTap: () {
-                    ref.read(widgetPathProvider.notifier).state = 9;
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 56,
-                        width: 56,
-                        margin: const EdgeInsets.only(bottom: 7),
-                        decoration: aboutSectionIconContDecoration,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 14, bottom: 14),
-                          child: SvgPicture.asset('assets/icons/app.svg'),
-                        ),
-                      ),
-                      Text(AppLocalizations.of(context)?.about_app ?? 'アプリについて',
-                          textAlign: TextAlign.center,
-                          style: aboutSectionTextStyle)
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    ref.read(widgetPathProvider.notifier).state = 10;
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 56,
-                        width: 56,
-                        margin: const EdgeInsets.only(bottom: 7),
-                        decoration: aboutSectionIconContDecoration,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 14, right: 14),
-                          child: SvgPicture.asset('assets/icons/youtube.svg'),
-                        ),
-                      ),
-                      Text(
-                          AppLocalizations.of(context)?.about_youtube_ad ??
-                              'YouTube広告\nについて',
-                          textAlign: TextAlign.center,
-                          style: aboutSectionTextStyle)
-                    ],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () => _onPressedContactUs(context),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 56,
-                        width: 56,
-                        margin: const EdgeInsets.only(bottom: 7),
-                        decoration: aboutSectionIconContDecoration,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 14, right: 14),
-                          child: SvgPicture.asset('assets/icons/mail.svg'),
-                        ),
-                      ),
-                      Text(AppLocalizations.of(context)?.contact_us ?? 'お問い合わせ',
-                          textAlign: TextAlign.center,
-                          style: aboutSectionTextStyle)
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(45, 0, 45, 7),
-            child: Center(
-              child: OutlinedButton(
-                onPressed: () {
-                  logOutWidget(context, ref);
-                },
-                style: OutlinedButton.styleFrom(
-                    foregroundColor: KBlockColors.text01,
-                    backgroundColor: KBlockColors.greenThemeColor,
-                    side: const BorderSide(color: KBlockColors.greenThemeColor),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40.0),
-                    )),
-                child: SizedBox(
-                    height: 55.0,
-                    child: Center(
-                        child: Text(
-                            AppLocalizations.of(context)?.log_out ?? 'ログアウト',
+                            AppLocalizations.of(context)?.about_app ??
+                                'アプリについて',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: KBlockColors.white, fontSize: 16)))),
+                            style: aboutSectionTextStyle)
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      ref.read(widgetPathProvider.notifier).state = 10;
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 56,
+                          width: 56,
+                          margin: const EdgeInsets.only(bottom: 7),
+                          decoration: aboutSectionIconContDecoration,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 14, right: 14),
+                            child: SvgPicture.asset('assets/icons/youtube.svg'),
+                          ),
+                        ),
+                        Text(
+                            AppLocalizations.of(context)?.about_youtube_ad ??
+                                'YouTube広告\nについて',
+                            textAlign: TextAlign.center,
+                            style: aboutSectionTextStyle)
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => _onPressedContactUs(context),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 56,
+                          width: 56,
+                          margin: const EdgeInsets.only(bottom: 7),
+                          decoration: aboutSectionIconContDecoration,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 14, right: 14),
+                            child: SvgPicture.asset('assets/icons/mail.svg'),
+                          ),
+                        ),
+                        Text(
+                            AppLocalizations.of(context)?.contact_us ??
+                                'お問い合わせ',
+                            textAlign: TextAlign.center,
+                            style: aboutSectionTextStyle)
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           ),
-        )
-      ]),
+          const SizedBox(
+            height: 30,
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(45, 0, 45, 30),
+              child: Center(
+                child: OutlinedButton(
+                  onPressed: () {
+                    logOutWidget(context, ref);
+                  },
+                  style: OutlinedButton.styleFrom(
+                      foregroundColor: KBlockColors.text01,
+                      backgroundColor: KBlockColors.greenThemeColor,
+                      side:
+                          const BorderSide(color: KBlockColors.greenThemeColor),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40.0),
+                      )),
+                  child: SizedBox(
+                      height: 55.0,
+                      child: Center(
+                          child: Text(
+                              AppLocalizations.of(context)?.log_out ?? 'ログアウト',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  color: KBlockColors.white, fontSize: 16)))),
+                ),
+              ),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
