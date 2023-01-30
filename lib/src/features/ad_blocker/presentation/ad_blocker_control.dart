@@ -216,17 +216,19 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                             : null,
                         style: OutlinedButton.styleFrom(
                             disabledForegroundColor:
-                                KBlockColors.buttonPositiveBackground,
+                                Theme.of(context).colorScheme.secondary,
                             disabledBackgroundColor: Colors.white,
                             foregroundColor: isAdBlockerBrowserOnly
                                 ? Colors.white
-                                : KBlockColors.buttonAccentForeground,
+                                : Theme.of(context).colorScheme.tertiary,
                             backgroundColor: isAdBlockerBrowserOnly
-                                ? KBlockColors.buttonPositiveBackground
-                                : KBlockColors.buttonAccentBackground,
+                                ? Theme.of(context).colorScheme.secondary
+                                : Theme.of(context)
+                                    .colorScheme
+                                    .tertiaryContainer,
                             side: BorderSide(
                                 color: !isAdBlockerOn || isAdBlockerBrowserOnly
-                                    ? KBlockColors.buttonPositiveBackground
+                                    ? Theme.of(context).colorScheme.secondary
                                     : Colors.transparent),
                             shape: adBlockerButtonShape),
                         child: Padding(
@@ -247,17 +249,19 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
                               : null,
                           style: OutlinedButton.styleFrom(
                               disabledForegroundColor:
-                                  KBlockColors.buttonPositiveBackground,
+                                  Theme.of(context).colorScheme.secondary,
                               disabledBackgroundColor: Colors.white,
                               foregroundColor: isAdBlockerBrowserApp
                                   ? Colors.white
-                                  : KBlockColors.buttonAccentForeground,
+                                  : Theme.of(context).colorScheme.tertiary,
                               backgroundColor: isAdBlockerBrowserApp
-                                  ? KBlockColors.buttonPositiveBackground
-                                  : KBlockColors.buttonAccentBackground,
+                                  ? Theme.of(context).colorScheme.secondary
+                                  : Theme.of(context)
+                                      .colorScheme
+                                      .tertiaryContainer,
                               side: BorderSide(
                                   color: !isAdBlockerOn || isAdBlockerBrowserApp
-                                      ? KBlockColors.buttonPositiveBackground
+                                      ? Theme.of(context).colorScheme.secondary
                                       : Colors.transparent),
                               shape: adBlockerButtonShape),
                           child: Padding(

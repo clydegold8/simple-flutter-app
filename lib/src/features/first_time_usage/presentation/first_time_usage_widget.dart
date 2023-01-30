@@ -16,7 +16,7 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
     onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     child: Scaffold(
       backgroundColor: Colors.white,
-      body:Column(children: [
+      body: Column(children: [
         Padding(
             padding: const EdgeInsets.fromLTRB(0, 140, 0, 0),
             child: SvgPicture.asset('assets/icons/logo_kblock.svg')),
@@ -34,7 +34,7 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
                   'シリアルコードの入力',
               focusedBorder: const OutlineInputBorder(
                 borderSide:
-                BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
+                    BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
               ),
               filled: true,
               fillColor: KBlockColors.white,
@@ -43,7 +43,7 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
               ),
               isDense: true,
               contentPadding:
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
             ),
           ),
         ),
@@ -54,8 +54,9 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
               onPressed: () => onProcessSerialNumber(),
               style: OutlinedButton.styleFrom(
                   foregroundColor: KBlockColors.text01,
-                  backgroundColor: KBlockColors.greenThemeColor,
-                  side: const BorderSide(color: KBlockColors.greenThemeColor),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  side:
+                      BorderSide(color: Theme.of(context).colorScheme.primary),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40.0),
                   )),

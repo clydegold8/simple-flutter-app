@@ -187,7 +187,9 @@ Widget historyCommunicationCostTabWidget(
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: selectedIndex == index
-                                            ? KBlockColors.greenThemeColor
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .primary
                                             : KBlockColors
                                                 .tabUnselectedForeground,
                                         fontWeight: FontWeight.w400),
@@ -259,7 +261,8 @@ Widget historyCommunicationCostTabWidget(
                       context,
                       ref,
                       tooltipBehaviorWeekMonthCommunicationsCost,
-                      zoomPanBehavior, false), // six months
+                      zoomPanBehavior,
+                      false), // six months
                 ]),
           ),
         ],

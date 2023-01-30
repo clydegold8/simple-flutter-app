@@ -101,7 +101,9 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
           backgroundColor: Colors.white,
           foregroundColor: KBlockColors.foregroundColor,
           leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.read(widgetPathProvider.notifier).state = 3;
+              },
               icon: const Icon(Icons.arrow_back_ios, size: 25))),
       body: SingleChildScrollView(
           child: Column(children: [
@@ -123,7 +125,8 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RadioWidget(
-                            selectedColor: KBlockColors.greenThemeColor,
+                            selectedColor:
+                                Theme.of(context).colorScheme.primary,
                             value: themeOptions[index].value,
                             groupValue: activeTheme,
                             onChanged: onChangedTheme,
@@ -159,7 +162,8 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RadioWidget(
-                            selectedColor: KBlockColors.greenThemeColor,
+                            selectedColor:
+                                Theme.of(context).colorScheme.primary,
                             value: switchButtonOptions[index].value,
                             groupValue: activeSwitchButton,
                             onChanged: onChangedSwitchButton,
@@ -195,7 +199,8 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RadioWidget(
-                            selectedColor: KBlockColors.greenThemeColor,
+                            selectedColor:
+                                Theme.of(context).colorScheme.primary,
                             value: homeBackgroundOptions[index].value,
                             groupValue: activeHomeBackground,
                             onChanged: onChangedHomeBackground,

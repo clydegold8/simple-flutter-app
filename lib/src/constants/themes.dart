@@ -28,51 +28,65 @@ class KBlockThemes {
     ThemeNames.simple: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.greenThemeColor,
-            secondary: KBlockColors.greenThemeColor,
+            secondary: KBlockColors.buttonPositiveBackground,
+            tertiary: KBlockColors.buttonAccentForeground,
+            tertiaryContainer: KBlockColors.buttonAccentBackground,
             surface: KBlockColors.greenSurface,
-            surfaceVariant: KBlockColors.greenSurface,
+            surfaceVariant: KBlockColors.greenIcon,
             inversePrimary: Colors.white)),
     ThemeNames.black: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.blackPrimary,
             secondary: KBlockColors.blackPrimary,
+            tertiary: KBlockColors.blackPrimary,
+            tertiaryContainer: KBlockColors.blackAccent,
             surface: KBlockColors.blackSurface,
-            surfaceVariant: KBlockColors.blackSurface,
+            surfaceVariant: KBlockColors.blackSurfaceVariant,
             inversePrimary: Colors.white)),
     ThemeNames.skyBlue: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.skyBluePrimary,
             secondary: KBlockColors.skyBluePrimary,
+            tertiary: KBlockColors.skyBluePrimary,
+            tertiaryContainer: KBlockColors.skyBlueAccent,
             surface: KBlockColors.skyBlueSurface,
-            surfaceVariant: KBlockColors.skyBlueSurface,
+            surfaceVariant: KBlockColors.skyBlueSurfaceVariant,
             inversePrimary: Colors.white)),
     ThemeNames.pink: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.pinkPrimary,
             secondary: KBlockColors.pinkPrimary,
+            tertiary: KBlockColors.pinkPrimary,
+            tertiaryContainer: KBlockColors.pinkAccent,
             surface: KBlockColors.pinkSurface,
-            surfaceVariant: KBlockColors.pinkSurface,
+            surfaceVariant: KBlockColors.pinkSurfaceVariant,
             inversePrimary: Colors.white)),
     ThemeNames.green: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.greenThemeColor,
-            secondary: KBlockColors.greenThemeColor,
+            primary: KBlockColors.greenPrimary,
+            secondary: KBlockColors.greenPrimary,
+            tertiary: KBlockColors.greenPrimary,
+            tertiaryContainer: KBlockColors.greenAccent,
             surface: KBlockColors.greenSurface,
-            surfaceVariant: KBlockColors.greenSurface,
+            surfaceVariant: KBlockColors.greenSurfaceVariant,
             inversePrimary: Colors.white)),
     ThemeNames.yellow: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.yellowPrimary,
             secondary: KBlockColors.yellowPrimary,
+            tertiary: KBlockColors.yellowPrimary,
+            tertiaryContainer: KBlockColors.yellowAccent,
             surface: KBlockColors.yellowSurface,
-            surfaceVariant: KBlockColors.yellowSurface,
+            surfaceVariant: KBlockColors.yellowSurfaceVariant,
             inversePrimary: KBlockColors.foregroundColor)),
     ThemeNames.beige: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.beigePrimary,
             secondary: KBlockColors.beigePrimary,
+            tertiary: KBlockColors.beigePrimary,
+            tertiaryContainer: KBlockColors.beigeAccent,
             surface: KBlockColors.beigeSurface,
-            surfaceVariant: KBlockColors.beigeSurface,
+            surfaceVariant: KBlockColors.beigeSurfaceVariant,
             inversePrimary: KBlockColors.foregroundColor)),
   };
 

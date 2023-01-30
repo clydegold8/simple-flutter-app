@@ -160,8 +160,8 @@ class _AgreementState extends ConsumerState<Agreement> {
             onPressed: isAgreeChecked ? onPressedStart : null,
             style: OutlinedButton.styleFrom(
               disabledForegroundColor: KBlockColors.white,
-              disabledBackgroundColor: KBlockColors.greenThemeColor,
-              backgroundColor: KBlockColors.greenThemeColor,
+              disabledBackgroundColor: Theme.of(context).colorScheme.primary,
+              backgroundColor: Theme.of(context).colorScheme.primary,
               foregroundColor: KBlockColors.white,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50)),

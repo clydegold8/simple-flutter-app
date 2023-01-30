@@ -148,9 +148,9 @@ Future<void> addBlacklist(BuildContext context, WidgetRef ref) {
                           blackListName != '' ? addBlackListItem(ref) : null,
                       style: OutlinedButton.styleFrom(
                           backgroundColor:
-                              KBlockColors.buttonPositiveBackground,
-                          side: const BorderSide(
-                              color: KBlockColors.buttonPositiveBackground),
+                              Theme.of(context).colorScheme.secondary,
+                          side: BorderSide(
+                              color: Theme.of(context).colorScheme.secondary),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           )),

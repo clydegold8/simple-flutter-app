@@ -78,11 +78,13 @@ class SimpleDialogueWidget extends StatelessWidget {
                                         onPressed: onClickPositiveBtn,
                                         style: OutlinedButton.styleFrom(
                                             foregroundColor: Colors.white,
-                                            backgroundColor: KBlockColors
-                                                .buttonPositiveBackground,
-                                            side: const BorderSide(
-                                                color: KBlockColors
-                                                    .buttonPositiveBackground),
+                                            backgroundColor: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            side: BorderSide(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary),
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(8))),

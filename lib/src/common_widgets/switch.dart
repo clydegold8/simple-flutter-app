@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:k_block_app/src/constants/colors.dart';
 
 class SwitchWidget extends StatefulWidget {
   final bool switchValue;
@@ -24,7 +23,7 @@ class SwitchState extends State<SwitchWidget> {
       width: 40,
       child: Switch(
         value: widget.switchValue,
-        activeColor: KBlockColors.activeSwitch,
+        activeColor: Theme.of(context).colorScheme.primary,
         onChanged: (bool value) {
           widget.updateValue(widget.index, value);
         },
