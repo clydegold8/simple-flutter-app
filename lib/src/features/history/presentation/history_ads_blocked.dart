@@ -140,7 +140,9 @@ Widget historyAdsBlockedTabWidget(
 
   void onItemTapped(int index) {
     ref.read(widgetAdsBlockedTabProvider.notifier).state = index;
-    ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
+    Future.delayed(const Duration(milliseconds: 350), () async {
+      ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
+    });
   }
 
   return DefaultTabController(

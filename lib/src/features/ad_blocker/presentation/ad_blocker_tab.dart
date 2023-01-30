@@ -20,6 +20,7 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
   }
 
   return DefaultTabController(
+      initialIndex: 0,
       length: 5,
       child: Column(
         children: [
