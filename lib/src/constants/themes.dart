@@ -28,7 +28,9 @@ class KBlockThemes {
     ThemeNames.simple: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.greenThemeColor,
-            secondary: KBlockColors.greenThemeColor,
+            secondary: KBlockColors.buttonPositiveBackground,
+            tertiary: KBlockColors.buttonAccentForeground,
+            tertiaryContainer: KBlockColors.buttonAccentBackground,
             surface: KBlockColors.greenSurface,
             surfaceVariant: KBlockColors.greenSurface,
             inversePrimary: Colors.white)),
@@ -36,6 +38,8 @@ class KBlockThemes {
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.blackPrimary,
             secondary: KBlockColors.blackPrimary,
+            tertiary: KBlockColors.blackPrimary,
+            tertiaryContainer: KBlockColors.blackAccent,
             surface: KBlockColors.blackSurface,
             surfaceVariant: KBlockColors.blackSurface,
             inversePrimary: Colors.white)),
@@ -43,6 +47,8 @@ class KBlockThemes {
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.skyBluePrimary,
             secondary: KBlockColors.skyBluePrimary,
+            tertiary: KBlockColors.skyBluePrimary,
+            tertiaryContainer: KBlockColors.skyBlueAccent,
             surface: KBlockColors.skyBlueSurface,
             surfaceVariant: KBlockColors.skyBlueSurface,
             inversePrimary: Colors.white)),
@@ -50,13 +56,17 @@ class KBlockThemes {
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.pinkPrimary,
             secondary: KBlockColors.pinkPrimary,
+            tertiary: KBlockColors.pinkPrimary,
+            tertiaryContainer: KBlockColors.pinkAccent,
             surface: KBlockColors.pinkSurface,
             surfaceVariant: KBlockColors.pinkSurface,
             inversePrimary: Colors.white)),
     ThemeNames.green: _baseThemeData.copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: KBlockColors.greenThemeColor,
-            secondary: KBlockColors.greenThemeColor,
+            primary: KBlockColors.greenPrimary,
+            secondary: KBlockColors.greenPrimary,
+            tertiary: KBlockColors.greenPrimary,
+            tertiaryContainer: KBlockColors.greenAccent,
             surface: KBlockColors.greenSurface,
             surfaceVariant: KBlockColors.greenSurface,
             inversePrimary: Colors.white)),
@@ -64,6 +74,8 @@ class KBlockThemes {
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.yellowPrimary,
             secondary: KBlockColors.yellowPrimary,
+            tertiary: KBlockColors.yellowPrimary,
+            tertiaryContainer: KBlockColors.yellowAccent,
             surface: KBlockColors.yellowSurface,
             surfaceVariant: KBlockColors.yellowSurface,
             inversePrimary: KBlockColors.foregroundColor)),
@@ -71,6 +83,8 @@ class KBlockThemes {
         colorScheme: ColorScheme.fromSwatch().copyWith(
             primary: KBlockColors.beigePrimary,
             secondary: KBlockColors.beigePrimary,
+            tertiary: KBlockColors.beigePrimary,
+            tertiaryContainer: KBlockColors.beigeAccent,
             surface: KBlockColors.beigeSurface,
             surfaceVariant: KBlockColors.beigeSurface,
             inversePrimary: KBlockColors.foregroundColor)),

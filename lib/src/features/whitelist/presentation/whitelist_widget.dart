@@ -13,7 +13,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
   final isDeleteSnackBarShown = ref.watch(whiteListDeleteSnackBarShownProvider);
   String whitelistText = AppLocalizations.of(context)?.whitelist ?? 'ホワイトリスト';
   Color getFilledColor(Set<MaterialState> states) {
-    return KBlockColors.activeSwitch;
+    return Theme.of(context).colorScheme.primary;
   }
 
   void showDeleteSnackBar() {
@@ -123,7 +123,8 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                                     getFilledColor),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
-                                activeColor: KBlockColors.activeSwitch,
+                                activeColor:
+                                    Theme.of(context).colorScheme.primary,
                                 value: listWhitelist[index].isSelected,
                                 onChanged: (value) {
                                   ref
@@ -153,7 +154,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
                           : null,
                       title: Text(listWhitelist[index].name),
                       trailing: Switch(
-                        activeColor: KBlockColors.activeSwitch,
+                        activeColor: Theme.of(context).colorScheme.primary,
                         value: listWhitelist[index].isOn,
                         onChanged: (bool value) {
                           ref
@@ -177,7 +178,7 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
             addWhitelist(context, ref);
           },
           tooltip: whitelistText,
-          backgroundColor: KBlockColors.greenThemeColor,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           child: const Icon(
             Icons.add,
             size: 35.0,

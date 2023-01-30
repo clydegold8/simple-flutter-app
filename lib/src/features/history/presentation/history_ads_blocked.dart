@@ -181,7 +181,9 @@ Widget historyAdsBlockedTabWidget(
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: selectedIndex == index
-                                            ? KBlockColors.greenThemeColor
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .primary
                                             : KBlockColors
                                                 .tabUnselectedForeground,
                                         fontWeight: FontWeight.w400),
@@ -253,8 +255,12 @@ Widget historyAdsBlockedTabWidget(
                       '十月',
                       true),
                   // 1 month
-                  historySixMonthsTabWidget(context, ref,
-                      tooltipBehaviorWeekMonthAdsBlocked, zoomPanBehavior, true),
+                  historySixMonthsTabWidget(
+                      context,
+                      ref,
+                      tooltipBehaviorWeekMonthAdsBlocked,
+                      zoomPanBehavior,
+                      true),
                   // six months
                 ]),
           ),

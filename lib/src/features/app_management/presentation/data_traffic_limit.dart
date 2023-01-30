@@ -88,10 +88,11 @@ Widget dataTrafficLimitDialogue(BuildContext context, WidgetRef ref) {
                             style: OutlinedButton.styleFrom(
                                 foregroundColor: Colors.white,
                                 backgroundColor:
-                                    KBlockColors.buttonPositiveBackground,
-                                side: const BorderSide(
-                                    color:
-                                        KBlockColors.buttonPositiveBackground),
+                                    Theme.of(context).colorScheme.secondary,
+                                side: BorderSide(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondary),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8))),
                             child: Text(

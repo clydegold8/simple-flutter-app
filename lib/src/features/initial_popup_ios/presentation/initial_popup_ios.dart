@@ -48,7 +48,7 @@ Widget initialPopupIOSWidget(BuildContext context) {
                       height: 2.0,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: KBlockColors.greenThemeColor,
+                          color: Theme.of(context).colorScheme.primary,
                           border: Border.all(
                             width: 8,
                           ),
@@ -197,7 +197,7 @@ Widget initialPopupIOSWidget(BuildContext context) {
                         Navigator.pushNamed(context, Routes.homeRoute);
                       },
                       style: OutlinedButton.styleFrom(
-                        backgroundColor: KBlockColors.greenThemeColor,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: KBlockColors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),

@@ -123,9 +123,10 @@ Widget loginFormWidget(BuildContext context, formKey) {
                       },
                       style: OutlinedButton.styleFrom(
                           foregroundColor: KBlockColors.text01,
-                          backgroundColor: KBlockColors.greenThemeColor,
-                          side: const BorderSide(
-                              color: KBlockColors.greenThemeColor),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: BorderSide(
+                              color: Theme.of(context).colorScheme.primary),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40.0),
                           )),

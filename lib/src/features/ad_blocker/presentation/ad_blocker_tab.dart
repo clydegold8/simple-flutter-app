@@ -27,7 +27,7 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.primary,
                         width: 1))),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 31, 20, 0),
@@ -47,24 +47,9 @@ Widget adBlockerTabWidget(BuildContext context, WidgetRef ref) {
                             height: 26,
                             child: Container(
                                 decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: selectedIndex == index
-                                            ? [
-                                                Theme.of(context)
-                                                    .colorScheme
-                                                    .primary,
-                                                Theme.of(context)
-                                                    .colorScheme
-                                                    .secondary,
-                                              ]
-                                            : [
-                                                KBlockColors
-                                                    .tabUnselectedBackground,
-                                                KBlockColors
-                                                    .tabUnselectedBackground
-                                              ]),
+                                    color: selectedIndex == index
+                                        ? Theme.of(context).colorScheme.primary
+                                        : KBlockColors.tabUnselectedBackground,
                                     borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(5),
                                         topRight: Radius.circular(5))),

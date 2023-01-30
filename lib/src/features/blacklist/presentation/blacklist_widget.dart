@@ -13,7 +13,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
   final onDeleteMode = ref.watch(blackListDeleteMode);
   final isDeleteSnackBarShown = ref.watch(blackListDeleteSnackBarShownProvider);
   Color getColor(Set<MaterialState> states) {
-    return KBlockColors.activeSwitch;
+    return Theme.of(context).colorScheme.primary;
   }
 
   void showDeleteSnackBar() {
@@ -118,7 +118,8 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                                   MaterialStateProperty.resolveWith(getColor),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50)),
-                              activeColor: KBlockColors.activeSwitch,
+                              activeColor:
+                                  Theme.of(context).colorScheme.primary,
                               value: listBlacklist[index].isSelected,
                               onChanged: (value) {
                                 ref
@@ -147,7 +148,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                         : null,
                     title: Text(listBlacklist[index].name),
                     trailing: Switch(
-                      activeColor: KBlockColors.activeSwitch,
+                      activeColor: Theme.of(context).colorScheme.primary,
                       value: listBlacklist[index].isOn,
                       onChanged: (bool value) {
                         ref
@@ -166,7 +167,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: KBlockColors.greenThemeColor,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           onPressed: () {
             addBlacklist(context, ref);
           },

@@ -49,16 +49,17 @@ Widget historyMainTabWidget(
                       splashColor: Colors.transparent,
                       highlightColor: Colors.transparent),
                   child: TabBar(
-                    indicator: const BoxDecoration(
+                    indicator: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
-                              width: 2, color: KBlockColors.greenThemeColor),
+                              width: 2,
+                              color: Theme.of(context).colorScheme.primary),
                         ),
                         color: KBlockColors.white),
                     onTap: onTabTapped,
                     unselectedLabelColor: KBlockColors.grayThemeColor,
-                    labelColor: KBlockColors.greenThemeColor,
-                    indicatorColor: KBlockColors.greenThemeColor,
+                    labelColor: Theme.of(context).colorScheme.primary,
+                    indicatorColor: Theme.of(context).colorScheme.primary,
                     labelStyle: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -80,7 +81,7 @@ Widget historyMainTabWidget(
                               style: TextStyle(
                                   fontSize: 12,
                                   color: selectedIndex == 0
-                                      ? KBlockColors.greenThemeColor
+                                      ? Theme.of(context).colorScheme.primary
                                       : KBlockColors.tabUnselectedForeground,
                                   fontWeight: FontWeight.w400),
                             ),
@@ -100,7 +101,7 @@ Widget historyMainTabWidget(
                               style: TextStyle(
                                   fontSize: 12,
                                   color: selectedIndex == 1
-                                      ? KBlockColors.greenThemeColor
+                                      ? Theme.of(context).colorScheme.primary
                                       : KBlockColors.tabUnselectedForeground,
                                   fontWeight: FontWeight.w400),
                             ),

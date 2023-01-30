@@ -123,7 +123,8 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RadioWidget(
-                            selectedColor: KBlockColors.greenThemeColor,
+                            selectedColor:
+                                Theme.of(context).colorScheme.primary,
                             value: themeOptions[index].value,
                             groupValue: activeTheme,
                             onChanged: onChangedTheme,
@@ -159,7 +160,8 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RadioWidget(
-                            selectedColor: KBlockColors.greenThemeColor,
+                            selectedColor:
+                                Theme.of(context).colorScheme.primary,
                             value: switchButtonOptions[index].value,
                             groupValue: activeSwitchButton,
                             onChanged: onChangedSwitchButton,
@@ -195,7 +197,8 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RadioWidget(
-                            selectedColor: KBlockColors.greenThemeColor,
+                            selectedColor:
+                                Theme.of(context).colorScheme.primary,
                             value: homeBackgroundOptions[index].value,
                             groupValue: activeHomeBackground,
                             onChanged: onChangedHomeBackground,

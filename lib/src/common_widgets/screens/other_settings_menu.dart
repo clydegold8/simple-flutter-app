@@ -197,7 +197,8 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
     const listTileSubtitleStyle =
         TextStyle(color: KBlockColors.tileSub, fontSize: 12);
     final aboutSectionIconContDecoration = BoxDecoration(
-        color: KBlockColors.greenIcon, borderRadius: BorderRadius.circular(56));
+        color: Theme.of(context).colorScheme.tertiaryContainer,
+        borderRadius: BorderRadius.circular(56));
     const aboutSectionTextStyle =
         TextStyle(color: KBlockColors.foregroundColor, fontSize: 8);
     const trailingChevron = Padding(
@@ -465,9 +466,9 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
                   },
                   style: OutlinedButton.styleFrom(
                       foregroundColor: KBlockColors.text01,
-                      backgroundColor: KBlockColors.greenThemeColor,
-                      side:
-                          const BorderSide(color: KBlockColors.greenThemeColor),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      side: BorderSide(
+                          color: Theme.of(context).colorScheme.primary),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40.0),
                       )),

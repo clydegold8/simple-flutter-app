@@ -144,7 +144,9 @@ Widget historySixMonthsTabWidget(
                                     style: TextStyle(
                                         fontSize: 12,
                                         color: selectedIndex == index
-                                            ? KBlockColors.greenThemeColor
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .primary
                                             : KBlockColors
                                                 .tabUnselectedForeground,
                                         fontWeight: FontWeight.w400),
