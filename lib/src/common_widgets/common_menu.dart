@@ -6,14 +6,14 @@ import 'package:k_block_app/src/common_widgets/screens/home_screen.dart';
 import 'package:k_block_app/src/common_widgets/screens/other_settings_menu.dart';
 import 'package:k_block_app/src/constants/colors.dart';
 import 'package:k_block_app/src/features/about_youtube/presentation/about_youtube.dart';
+import 'package:k_block_app/src/features/account_settings/presentation/account_settings.dart';
 import 'package:k_block_app/src/features/add_whitelist/presentation/add_whitelist.dart';
 import 'package:k_block_app/src/features/app_management/presentation/app_individual_settings.dart';
 import 'package:k_block_app/src/features/app_management_list/presentation/app_management_list.dart';
 import 'package:k_block_app/src/features/blacklist/presentation/blacklist.dart';
-import 'package:k_block_app/src/features/history/presentation/history.dart';
-import 'package:k_block_app/src/features/account_settings/presentation/account_settings.dart';
-import 'package:k_block_app/src/features/other/other_account.dart';
 import 'package:k_block_app/src/features/design_settings/presentation/design_settings.dart';
+import 'package:k_block_app/src/features/history/presentation/history.dart';
+import 'package:k_block_app/src/features/other/other_account.dart';
 
 import '../constants/providers.dart';
 
@@ -37,6 +37,9 @@ class CommonMenu {
       BuildContext context, int selectedIndex, ref) {
     void onItemTapped(int index) {
       ref.read(widgetPathProvider.notifier).state = index;
+      Future.delayed(const Duration(milliseconds: 350), () async {
+        ref.read(widgetHomePageTabProvider.notifier).state = 0;
+      });
     }
 
     return BottomNavigationBar(

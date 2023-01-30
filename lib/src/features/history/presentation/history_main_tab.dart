@@ -20,9 +20,11 @@ Widget historyMainTabWidget(
 
   void onTabTapped(int index) {
     ref.read(widgetHistoryMainTabProvider.notifier).state = index;
-    ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
-    ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
-    ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
+    Future.delayed(const Duration(milliseconds: 350), () async {
+      ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
+      ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
+      ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
+    });
   }
 
   return MaterialApp(
