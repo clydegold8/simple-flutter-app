@@ -101,7 +101,9 @@ class _DesignSettingsState extends ConsumerState<DesignSettings> {
           backgroundColor: Colors.white,
           foregroundColor: KBlockColors.foregroundColor,
           leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                ref.read(widgetPathProvider.notifier).state = 3;
+              },
               icon: const Icon(Icons.arrow_back_ios, size: 25))),
       body: SingleChildScrollView(
           child: Column(children: [
