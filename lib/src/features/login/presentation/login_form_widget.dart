@@ -76,6 +76,7 @@ Widget loginFormWidget(BuildContext context, formKey) {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(40, 0, 40, 23),
                   child: TextField(
+                    obscureText: true,
                     style: const TextStyle(height: 2),
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
