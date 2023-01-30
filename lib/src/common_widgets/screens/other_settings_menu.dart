@@ -197,7 +197,7 @@ class _OtherSettingsMenuState extends ConsumerState<OtherSettingsMenu> {
     const listTileSubtitleStyle =
         TextStyle(color: KBlockColors.tileSub, fontSize: 12);
     final aboutSectionIconContDecoration = BoxDecoration(
-        color: Theme.of(context).colorScheme.tertiaryContainer,
+        color: Theme.of(context).colorScheme.surfaceVariant,
         borderRadius: BorderRadius.circular(56));
     const aboutSectionTextStyle =
         TextStyle(color: KBlockColors.foregroundColor, fontSize: 8);

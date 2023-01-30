@@ -14,13 +14,8 @@ Widget adBlockerWidget(BuildContext context, WidgetRef ref) {
   return Column(children: [
     Container(
       decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-            Theme.of(context).colorScheme.surface,
-            Theme.of(context).colorScheme.surfaceVariant
-          ])),
+        color: Theme.of(context).colorScheme.surface,
+      ),
       child: Padding(
         padding: const EdgeInsets.only(top: 15, bottom: 13),
         child: Center(

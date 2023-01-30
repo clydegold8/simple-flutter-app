@@ -46,6 +46,7 @@ class KBlockColors {
   static const Color blackPrimary = Color(0xFF4A4949);
   static const Color blackAccent = Color(0x154A4949);
   static const Color blackSurface = Color(0xFFCBCBCB);
+  static const Color blackSurfaceVariant = Color(0x404A4949);
   static const Color blackLG1 = Color(0xAA000000);
   static const Color blackLG2 = Color(0x369C9B98);
 
@@ -53,6 +54,7 @@ class KBlockColors {
   static const Color skyBluePrimary = Color(0xFF64B3F4);
   static const Color skyBlueAccent = Color(0x1564B3F4);
   static const Color skyBlueSurface = Color(0xFF64B3F4);
+  static const Color skyBlueSurfaceVariant = Color(0x4064B3F4);
   static const Color skyBlueLG1 = Color(0x6264B3F4);
   static const Color skyBlueLG2 = Color(0xFFE6F5ED);
 
@@ -60,6 +62,7 @@ class KBlockColors {
   static const Color pinkPrimary = Color(0xFFF88F9F);
   static const Color pinkAccent = Color(0x15F88F9F);
   static const Color pinkSurface = Color(0xFFF88F9F);
+  static const Color pinkSurfaceVariant = Color(0x40F88F9F);
   static const Color pinkLG1 = Color(0xFFFFB6C1);
   static const Color pinkLG2 = Color(0x07FFB6C1);
 
@@ -67,6 +70,7 @@ class KBlockColors {
   static const Color greenPrimary = Color(0xFF14B53D);
   static const Color greenAccent = Color(0x1514B53D);
   static const Color greenSurface = Color(0xFF89D68C);
+  static const Color greenSurfaceVariant = Color(0x4014B53D);
   static const Color greenLG1 = Color(0xFFBDEFBF);
   static const Color greenLG2 = Color(0x34B3E2B5);
 
@@ -74,6 +78,7 @@ class KBlockColors {
   static const Color yellowPrimary = Color(0xFFEFE56B);
   static const Color yellowAccent = Color(0x15EFE56B);
   static const Color yellowSurface = Color(0xFFF8F08F);
+  static const Color yellowSurfaceVariant = Color(0x40F8F08F);
   static const Color yellowLG1 = Color(0xFFFCFFB6);
   static const Color yellowLG2 = Color(0x09FCFFB6);
 
@@ -81,6 +86,7 @@ class KBlockColors {
   static const Color beigePrimary = Color(0xFFD0BF7C);
   static const Color beigeAccent = Color(0x15D0BF7C);
   static const Color beigeSurface = Color(0xFFFFF2BC);
+  static const Color beigeSurfaceVariant = Color(0x40FFF2BC);
   static const Color beigeLG1 = Color(0xFFFFF2BC);
   static const Color beigeLG2 = Color(0x09FDF9F2);
 }
