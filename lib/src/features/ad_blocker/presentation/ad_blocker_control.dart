@@ -17,44 +17,6 @@ class AdBlockerControl extends ConsumerStatefulWidget {
   ConsumerState<AdBlockerControl> createState() => _AdBlockerControlState();
 }
 
-Future<void> onFirstTimeOn(BuildContext context) {
-  return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        const baseTextStyle = TextStyle(color: KBlockColors.foregroundColor);
-
-        return SimpleDialogueWidget(
-            edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
-            onClickNegativeBtn: () {
-              Navigator.of(context).pop();
-            },
-            onClickPositiveBtn: () {
-              Navigator.of(context).pop();
-              AppSettings.openDeviceSettings();
-            },
-            negativeBtnText:
-                AppLocalizations.of(context)?.dont_allow ?? '許可しない',
-            positiveBtnText: AppLocalizations.of(context)?.allow ?? '許可',
-            child: Column(
-              children: [
-                Text(
-                  AppLocalizations.of(context)?.request_vpn_config_title ??
-                      '「K-BLOCK」 がVPN構成の追加を\n求めています。',
-                  style: baseTextStyle.copyWith(
-                      fontSize: 16, fontWeight: FontWeight.w800),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 21, bottom: 11),
-                  child: Text(
-                      AppLocalizations.of(context)?.request_vpn_config_desc ??
-                          'K-BLOCKから広告ブロックをするために\nは、VPN構成追加の許可が必要です。',
-                      style: baseTextStyle.copyWith(fontSize: 14)),
-                )
-              ],
-            ));
-      });
-}
-
 class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   final offDownImage = SvgPicture.asset(
     'assets/icons/off_down.svg',
@@ -102,13 +64,54 @@ class _AdBlockerControlState extends ConsumerState<AdBlockerControl> {
   bool isAdBlockerBrowserApp = false;
   bool isFirstTimeOn = true;
 
-  void onTapAdBlockerSwitch(bool value) {
-    setState(() {
-      ref.read(adBlockerSwitchStateProvider.notifier).state = value;
-    });
+  Future<void> onFirstTimeOn() {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          const baseTextStyle = TextStyle(color: KBlockColors.foregroundColor);
 
+          return SimpleDialogueWidget(
+              edgeInsetsBtnPadding: const EdgeInsets.only(top: 17),
+              onClickNegativeBtn: () {
+                Navigator.of(context).pop();
+              },
+              onClickPositiveBtn: () {
+                Navigator.of(context).pop();
+                AppSettings.openDeviceSettings();
+                setState(() {
+                  ref.read(adBlockerSwitchStateProvider.notifier).state = true;
+                });
+              },
+              negativeBtnText:
+                  AppLocalizations.of(context)?.dont_allow ?? '許可しない',
+              positiveBtnText: AppLocalizations.of(context)?.allow ?? '許可',
+              child: Column(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)?.request_vpn_config_title ??
+                        '「K-BLOCK」 がVPN構成の追加を\n求めています。',
+                    style: baseTextStyle.copyWith(
+                        fontSize: 16, fontWeight: FontWeight.w800),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 21, bottom: 11),
+                    child: Text(
+                        AppLocalizations.of(context)?.request_vpn_config_desc ??
+                            'K-BLOCKから広告ブロックをするために\nは、VPN構成追加の許可が必要です。',
+                        style: baseTextStyle.copyWith(fontSize: 14)),
+                  )
+                ],
+              ));
+        });
+  }
+
+  void onTapAdBlockerSwitch(bool value) {
     if (value && isFirstTimeOn) {
-      onFirstTimeOn(context);
+      onFirstTimeOn();
+    } else {
+      setState(() {
+        ref.read(adBlockerSwitchStateProvider.notifier).state = value;
+      });
     }
   }
 
