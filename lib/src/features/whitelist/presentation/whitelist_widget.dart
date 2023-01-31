@@ -34,8 +34,9 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               ref.read(whiteListListProvider.notifier).deleteWhiteLists();
             },
             style: OutlinedButton.styleFrom(
-                backgroundColor: KBlockColors.white,
-                side: const BorderSide(color: KBlockColors.white),
+                backgroundColor: Theme.of(context).colorScheme.errorContainer,
+                side: BorderSide(
+                    color: Theme.of(context).colorScheme.errorContainer),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 )),
@@ -45,8 +46,8 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               child: Center(
                   child: Text(AppLocalizations.of(context)?.delete ?? '削除',
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          color: KBlockColors.text02,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
                           fontSize: 16,
                           fontWeight: FontWeight.w400))),
             ),
