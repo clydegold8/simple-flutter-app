@@ -39,6 +39,10 @@ class CommonMenu {
       ref.read(widgetPathProvider.notifier).state = index;
       Future.delayed(const Duration(milliseconds: 350), () async {
         ref.read(widgetHomePageTabProvider.notifier).state = 0;
+        ref.read(widgetHistoryMainTabProvider.notifier).state = 0;
+        ref.read(widgetAdsBlockedTabProvider.notifier).state = 0;
+        ref.read(widgetCommunicationCostTabProvider.notifier).state = 0;
+        ref.read(widgetSixMonthsTabProvider.notifier).state = 0;
       });
     }
 
