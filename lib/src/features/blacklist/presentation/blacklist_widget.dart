@@ -49,7 +49,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.error,
                           fontSize: 16,
-                          fontWeight: FontWeight.w400))),
+                          fontWeight: FontWeight.w500))),
             ),
           )
         ],
