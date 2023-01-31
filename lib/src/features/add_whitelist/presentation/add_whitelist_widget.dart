@@ -97,11 +97,17 @@ Future<void> addWhitelist(BuildContext context, WidgetRef ref) {
                           onChanged: (value) {
                             whiteListName = value;
                           },
+                          cursorColor: KBlockColors.text02,
                           decoration: InputDecoration(
                             hintStyle: const TextStyle(fontSize: 14),
                             hintText: 'whitelist.com',
                             fillColor: KBlockColors.white,
                             border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: KBlockColors.text02, width: 2),
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             isDense: true,

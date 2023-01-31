@@ -62,9 +62,11 @@ Future<void> forgotPassword(BuildContext context) {
                     padding: const EdgeInsets.fromLTRB(41, 0, 41, 22),
                     child: TextField(
                         style: const TextStyle(height: 2),
+                        cursorColor: KBlockColors.text02,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
+                            borderSide: const BorderSide(
+                                color: KBlockColors.text02, width: 2.0),
                             borderRadius: BorderRadius.circular(40.0),
                           ),
                           hintStyle: const TextStyle(fontSize: 16),
