@@ -44,10 +44,11 @@ Widget loginFormWidget(BuildContext context, formKey) {
                   padding: const EdgeInsets.fromLTRB(40, 0, 40, 28),
                   child: TextField(
                       style: const TextStyle(height: 2),
+                      cursorColor: KBlockColors.text02,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                              color: KBlockColors.greenThemeColor, width: 2.0),
+                              color: KBlockColors.text02, width: 2.0),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
                         filled: true,
@@ -78,10 +79,11 @@ Widget loginFormWidget(BuildContext context, formKey) {
                   child: TextField(
                     obscureText: true,
                     style: const TextStyle(height: 2),
+                    cursorColor: KBlockColors.text02,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
-                            color: KBlockColors.greenThemeColor, width: 2.0),
+                            color: KBlockColors.text02, width: 2.0),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       filled: true,

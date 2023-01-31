@@ -17,6 +17,7 @@ class ThemeNames {
   static const String green = 'green';
   static const String yellow = 'yellow';
   static const String beige = 'beige';
+  static const String gradient = 'gradient';
 }
 
 final ThemeData _baseThemeData = ThemeData(fontFamily: 'NunitoSans');
@@ -31,6 +32,8 @@ class KBlockThemes {
             secondary: KBlockColors.buttonPositiveBackground,
             tertiary: KBlockColors.buttonAccentForeground,
             tertiaryContainer: KBlockColors.buttonAccentBackground,
+            error: KBlockColors.text02,
+            errorContainer: Colors.white,
             surface: KBlockColors.greenSurface,
             surfaceVariant: KBlockColors.greenIcon,
             inversePrimary: Colors.white)),
@@ -40,6 +43,8 @@ class KBlockThemes {
             secondary: KBlockColors.blackPrimary,
             tertiary: KBlockColors.blackPrimary,
             tertiaryContainer: KBlockColors.blackAccent,
+            error: Colors.white,
+            errorContainer: KBlockColors.blackPrimary,
             surface: KBlockColors.blackSurface,
             surfaceVariant: KBlockColors.blackSurfaceVariant,
             inversePrimary: Colors.white)),
@@ -49,6 +54,8 @@ class KBlockThemes {
             secondary: KBlockColors.skyBluePrimary,
             tertiary: KBlockColors.skyBluePrimary,
             tertiaryContainer: KBlockColors.skyBlueAccent,
+            error: KBlockColors.text02,
+            errorContainer: KBlockColors.skyBluePrimary,
             surface: KBlockColors.skyBlueSurface,
             surfaceVariant: KBlockColors.skyBlueSurfaceVariant,
             inversePrimary: Colors.white)),
@@ -58,6 +65,8 @@ class KBlockThemes {
             secondary: KBlockColors.pinkPrimary,
             tertiary: KBlockColors.pinkPrimary,
             tertiaryContainer: KBlockColors.pinkAccent,
+            error: KBlockColors.text02,
+            errorContainer: KBlockColors.pinkPrimary,
             surface: KBlockColors.pinkSurface,
             surfaceVariant: KBlockColors.pinkSurfaceVariant,
             inversePrimary: Colors.white)),
@@ -67,6 +76,8 @@ class KBlockThemes {
             secondary: KBlockColors.greenPrimary,
             tertiary: KBlockColors.greenPrimary,
             tertiaryContainer: KBlockColors.greenAccent,
+            error: KBlockColors.text02,
+            errorContainer: KBlockColors.greenPrimary,
             surface: KBlockColors.greenSurface,
             surfaceVariant: KBlockColors.greenSurfaceVariant,
             inversePrimary: Colors.white)),
@@ -76,6 +87,8 @@ class KBlockThemes {
             secondary: KBlockColors.yellowPrimary,
             tertiary: KBlockColors.yellowPrimary,
             tertiaryContainer: KBlockColors.yellowAccent,
+            error: KBlockColors.text02,
+            errorContainer: KBlockColors.yellowPrimary,
             surface: KBlockColors.yellowSurface,
             surfaceVariant: KBlockColors.yellowSurfaceVariant,
             inversePrimary: KBlockColors.foregroundColor)),
@@ -85,6 +98,8 @@ class KBlockThemes {
             secondary: KBlockColors.beigePrimary,
             tertiary: KBlockColors.beigePrimary,
             tertiaryContainer: KBlockColors.beigeAccent,
+            error: KBlockColors.text02,
+            errorContainer: KBlockColors.beigePrimary,
             surface: KBlockColors.beigeSurface,
             surfaceVariant: KBlockColors.beigeSurfaceVariant,
             inversePrimary: KBlockColors.foregroundColor)),

@@ -29,12 +29,12 @@ Widget firstTimeUserWidget(BuildContext context, WidgetRef ref) {
           padding: const EdgeInsets.fromLTRB(40, 60, 40, 23),
           child: TextField(
             // style: const TextStyle(height: 2),
+            cursorColor: KBlockColors.text02,
             decoration: InputDecoration(
               hintText: AppLocalizations.of(context)?.enter_serial_code ??
                   'シリアルコードの入力',
               focusedBorder: const OutlineInputBorder(
-                borderSide:
-                    BorderSide(color: KBlockColors.greenThemeColor, width: 2.0),
+                borderSide: BorderSide(color: KBlockColors.text02, width: 2.0),
               ),
               filled: true,
               fillColor: KBlockColors.white,

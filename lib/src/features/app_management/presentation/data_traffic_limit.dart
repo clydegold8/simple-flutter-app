@@ -34,6 +34,7 @@ Widget dataTrafficLimitDialogue(BuildContext context, WidgetRef ref) {
                 child: SizedBox(
                     width: 120,
                     child: TextField(
+                      cursorColor: KBlockColors.text02,
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.zero,
