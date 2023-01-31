@@ -17,6 +17,7 @@ class ThemeNames {
   static const String green = 'green';
   static const String yellow = 'yellow';
   static const String beige = 'beige';
+  static const String gradient = 'gradient';
 }
 
 final ThemeData _baseThemeData = ThemeData(fontFamily: 'NunitoSans');
