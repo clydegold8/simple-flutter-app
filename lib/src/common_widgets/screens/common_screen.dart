@@ -18,6 +18,12 @@ class CommonScreen extends ConsumerWidget {
         final selectedIndex = ref.watch(widgetPathProvider);
 
         checkIndex(int selectedIndex) {
+          Future.delayed(const Duration(milliseconds: 350), () async {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            ref.read(whiteListDeleteMode.notifier).state = false;
+            ref.read(blackListDeleteMode.notifier).state = false;
+          });
+
           if (selectedIndex == 4 ||
               selectedIndex == 5 ||
               selectedIndex == 6 ||

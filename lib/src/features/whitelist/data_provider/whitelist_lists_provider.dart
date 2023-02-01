@@ -41,6 +41,11 @@ class WhitelistNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetList(){
+    for (var element in whitelists) {element.isSelected = false; element.isOn = true;}
+    notifyListeners();
+  }
+
   deleteWhiteLists() {
     whitelists =
         whitelists.where((element) => element.isSelected != true).toList();

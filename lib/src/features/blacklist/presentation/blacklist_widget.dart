@@ -63,6 +63,7 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
         ref.read(widgetPathProvider.notifier).state = 1;
         ref.read(blackListDeleteMode.notifier).state = false;
         ref.read(blackListDeleteSnackBarShownProvider.notifier).state = false;
+        ref.read(blackListProvider.notifier).resetList();
         return false;
       },
       child: Scaffold(
@@ -76,7 +77,8 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
                     ref
                         .read(blackListDeleteSnackBarShownProvider.notifier)
                         .state = false,
-                    ScaffoldMessenger.of(context).hideCurrentSnackBar()
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+                    ref.read(blackListProvider.notifier).resetList()
                   },
               icon: const Icon(Icons.arrow_back_ios, size: 25)),
           backgroundColor: KBlockColors.white,
@@ -90,7 +92,11 @@ Widget blackListWidget(BuildContext context, WidgetRef ref) {
               icon: const Icon(Icons.more_vert),
               tooltip: 'Delete Blacklist',
               onPressed: () {
-                ref.read(blackListDeleteMode.notifier).state = true;
+                ref.read(blackListProvider.notifier).resetList();
+                ref.read(blackListDeleteMode.notifier).state = !onDeleteMode;
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ref.read(blackListDeleteSnackBarShownProvider.notifier).state =
+                    false;
               },
             ),
           ],

@@ -34,6 +34,11 @@ class BlackListItemNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetList(){
+    for (var element in blacklists) {element.isSelected = false; element.isOn = true;}
+    notifyListeners();
+  }
+
   deleteBlackLists() {
     blacklists =
         blacklists.where((element) => element.isSelected != true).toList();
