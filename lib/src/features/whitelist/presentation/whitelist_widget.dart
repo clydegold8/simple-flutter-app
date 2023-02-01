@@ -63,19 +63,22 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
         ref.read(widgetPathProvider.notifier).state = 1;
         ref.read(whiteListDeleteMode.notifier).state = false;
         ref.read(whiteListDeleteSnackBarShownProvider.notifier).state = false;
+        ref.read(whiteListListProvider.notifier).resetList();
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           leading: IconButton(
-              onPressed: () => {
+              onPressed: () =>
+              {
                     ScaffoldMessenger.of(context).hideCurrentSnackBar(),
                     ref.read(widgetPathProvider.notifier).state = 1,
                     ref.read(whiteListDeleteMode.notifier).state = false,
                     ref
                         .read(whiteListDeleteSnackBarShownProvider.notifier)
-                        .state = false
+                        .state = false,
+                    ref.read(whiteListListProvider.notifier).resetList()
                   },
               icon: const Icon(Icons.arrow_back_ios, size: 25)),
           title: Text(
@@ -93,7 +96,10 @@ Widget whitelistWidget(BuildContext context, WidgetRef ref) {
               icon: const Icon(Icons.more_vert),
               tooltip: 'Delete Whitelist',
               onPressed: () {
-                ref.read(whiteListDeleteMode.notifier).state = true;
+                ref.read(whiteListListProvider.notifier).resetList();
+                ref.read(whiteListDeleteMode.notifier).state = !onDeleteMode;
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                ref.read(whiteListDeleteSnackBarShownProvider.notifier).state = false;
               },
             ),
           ],
