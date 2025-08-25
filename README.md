@@ -1,52 +1,109 @@
-# K-Block App
+# Simple Flutter Ad Blocker (Demo App)
 
-A K-Block app that blocks unwanted ads to the users
+A **personal Flutter demo app** that showcases a simple ad-blocking interface.  
+⚠️ This project is **frontend only** — no APIs, no backend communication.  
+It’s built purely for **UI/UX demonstration purposes**.
 
-## Project Setup
+---
 
-Clone Repo
+## 🚀 Project Setup
+
+Clone the repository:
 ```sh
-git clone git@github.com:vananaz-systems/k-block.git
+git clone git@github.com:your-username/k-block-demo.git
 ```
 
-Update packages and dependencies
+Install dependencies:
 ```sh
 flutter pub get
 ```
 
+---
 
-## Flutter Setup
+## 🛠️ Flutter Setup
 
-### Getting Started for Windows OS users
- - Recommended IDE [Android Studio](https://developer.android.com/)
- - Download flutter framework [See Here](https://docs.flutter.dev/get-started/install/windows)
- - Extract the downloaded zip on your desired path on your pc.
- - Add the flutter directory on your <code>PATH</code> env eg. <code>your_path/flutter/bin</code> on the env variable PATH.
- - On your <code>CMD</code> try to run <code>flutter --version </code> if its working proceed to next step.
- - Open this repo through your IDE and <code>File > Settings > Plugins</code> search for <code>Flutter</code> and <code>Dart</code> and install it.
- - Run <code>flutter pub get</code> on your IDE terminal
- - Make sure to run first your Emulator or create a device emulator
- - Run the app through IDE
+### For Windows Users
+1. Install [Android Studio](https://developer.android.com/) (recommended IDE).  
+2. Download Flutter SDK: [Get Flutter](https://docs.flutter.dev/get-started/install/windows)  
+3. Extract the SDK to your preferred location.  
+4. Add `<your_path>/flutter/bin` to your system `PATH`.  
+5. Verify installation:
+   ```sh
+   flutter --version
+   ```
+6. Open this project in Android Studio and install **Flutter** + **Dart** plugins.  
+7. Run:
+   ```sh
+   flutter pub get
+   ```
+8. Start an emulator or connect a device.  
+9. Run the app from your IDE.
 
-### Getting Started for MAC OS users
- - Download Flutter SDK and follow steps https://docs.flutter.dev/get-started/install/macos#get-sdk
- 
+### For macOS Users
+1. Install Flutter SDK: [Get Flutter](https://docs.flutter.dev/get-started/install/macos#get-sdk)  
+2. Follow the official installation steps.  
+3. Open the project in your IDE and run as described above.
 
-## Run the main build
+---
 
-### Build and Run project via IDE
- - on Run > Run 'main.dart' <code>shift + F10</code>
+## ▶️ Running the App
 
-### Build and Run project via CLI
- - Open simulator or device
- - Use command <code>flutter run</code>
+### From IDE
+- Run → `main.dart`  
+  *(Windows shortcut: `Shift + F10`)*
 
+### From CLI (Mobile/Desktop)
+```sh
+flutter run
+```
 
-## Run the Widgetbook
+### 🌐 Run on Web
+Flutter supports running apps directly in the browser.  
 
- This will create some UI/UX documentation for the app [See More](https://docs.widgetbook.io/widgetbook/overview)
-- Run <code>flutter pub get</code> to get latest packages and dependencies
-- Build app <code>flutter pub run build_runner build</code>
-- On second terminal run <code>flutter pub run build_runner watch</code> so <code>package:build_runner</code> will listen for changes in the file system and update Widgetbook accordingly.
-- Run the widgetbook <code>flutter run .\lib\src\app.widgetbook.dart</code>
-- Select browser/emulator/ to preview widgetbook
+1. Make sure web support is enabled:
+   ```sh
+   flutter config --enable-web
+   flutter devices
+   ```
+   You should see `Chrome` or another browser listed as a device.  
+
+2. Run the app on web:
+   ```sh
+   flutter run -d chrome
+   ```
+   or  
+   ```sh
+   flutter run -d edge
+   ```
+
+3. To build a release version for web:
+   ```sh
+   flutter build web
+   ```
+   The output will be in the `build/web` folder.
+
+---
+
+## 📖 Widgetbook (UI Showcase)
+
+This app also includes a **Widgetbook setup** for browsing and testing UI components.  
+
+1. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
+2. Build:
+   ```sh
+   flutter pub run build_runner build
+   ```
+3. Keep build runner watching:
+   ```sh
+   flutter pub run build_runner watch
+   ```
+4. Run Widgetbook:
+   ```sh
+   flutter run lib/src/app.widgetbook.dart
+   ```
+5. Preview in browser or emulator.
+
+---
