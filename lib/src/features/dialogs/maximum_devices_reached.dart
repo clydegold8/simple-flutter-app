@@ -16,12 +16,14 @@ Future<void> onMaximumDevicesReached(BuildContext context, WidgetRef ref) {
         return StatefulBuilder(builder: (context, setState) {
           void onClickPositiveBtn() {
             Navigator.of(context).pop();
-            if (Platform.isIOS) {
-              Navigator.pushNamed(context, Routes.initialPopupIOSRoute);
-            } else {
-              Navigator.pushNamed(context, Routes.homeRoute);
-              ref.read(widgetPathProvider.notifier).state = 0;
-            }
+            // if (Platform.isIOS) {
+            //   Navigator.pushNamed(context, Routes.initialPopupIOSRoute);
+            // } else {
+            //   Navigator.pushNamed(context, Routes.homeRoute);
+            //   ref.read(widgetPathProvider.notifier).state = 0;
+            // }
+            Navigator.pushNamed(context, Routes.homeRoute);
+            ref.read(widgetPathProvider.notifier).state = 0;
           }
 
           return SimpleDialogueWidget(
