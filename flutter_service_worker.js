@@ -34,7 +34,7 @@ const RESOURCES = {
 "assets/assets/icons/switch_on.svg": "88985a12e8d785581c438990c65a8b61",
 "assets/assets/icons/toggle_off.svg": "5247cfefb85e5497d07556699214bf74",
 "assets/assets/icons/toggle_on.svg": "0d539dba16479329e6828195c7792baa",
-"assets/assets/icons/tutorial_illustration.svg": "7fc4a724d454a37c6f846d1d2e369d89",
+"assets/assets/icons/tutorial_illustration.svg": "c82bf8a5c08ee70afbc508eef3632a65",
 "assets/assets/icons/youtube.svg": "250bbc75df7bc76312fe5088538495bf",
 "assets/assets/images/app_sample_1.png": "fc8561b501f1a158829e498452793626",
 "assets/assets/images/app_sample_10.png": "421a2c6285729f4f5817d136f5793ce7",
@@ -79,9 +79,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "b7de4ef6863f5e9682e42f9f964955c9",
-"/": "b7de4ef6863f5e9682e42f9f964955c9",
-"main.dart.js": "92323ed261044475028a03e4d6d0f950",
+"index.html": "ed84e1773862013f571c9657a62b35fc",
+"/": "ed84e1773862013f571c9657a62b35fc",
+"main.dart.js": "bd55a9c239904fe5197506bb75667c91",
 "manifest.json": "8042d3ff19d2ce47bf4f81d566c14aec",
 "version.json": "cd5f8e4f397b86cb39c7ace6ea433c04"
 };
